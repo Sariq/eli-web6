@@ -1,0 +1,367 @@
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<style type="text/css">
+
+#wrapper {
+    width: 100%;
+
+}
+#page-wrapper {
+
+  
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+ 
+    
+    }
+}
+
+.chat {
+     margin: 0;
+ padding: 0; 
+	list-style: none;
+
+}
+
+.chat li {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #999;
+}
+
+.chat li.left .chat-body {
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body {
+    margin-right: 60px;
+}
+
+.chat li .chat-body p {
+    margin: 0;
+}
+
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
+    margin-right: 5px;
+}
+
+.chat-panel .panel-body {
+    height: 350px;
+    overflow-y: scroll;
+}
+
+.login-panel {
+    margin-top: 25%;
+}
+
+.flot-chart {
+    display: block;
+    height: 400px;
+}
+
+.flot-chart-content {
+    width: 100%;
+    height: 100%;
+}
+  
+
+
+
+
+#fixed {
+    bottom: 0;
+    left: 15%;
+    margin-left: -200px;
+    overflow: hidden;
+    padding: 0 5px;
+    position: fixed;
+    width: 400px;
+    z-index: 1001;
+}
+
+.fixedHeader {
+
+    width: 395px;   
+    font-weight:700;
+    font-size:15px;
+}
+
+.fixedContent {
+    background: none repeat scroll 0 0 #ffffff;
+    border-left: 1px solid #b2b2b2;
+    border-right: 1px solid #b2b2b2;
+    margin: 0 auto;   
+    width: 400px;
+    height:300px;
+    overflow: auto;
+}
+
+.userinput{
+    width: 390px;
+    height:16px;
+    outline:none;
+    display:block;
+    resize:none;
+    padding:5px;    
+}
+
+.messages{
+    color: #333;
+    line-height: 1.28;
+    padding:5px;
+    margin-left:70px;
+    font-size: 14px;
+    display: block;
+}
+
+.userwrap{
+    position:relative;
+}
+
+.user{
+    padding: 5px ;
+    font-size:12px;
+    color:#888;
+    font-weight:700;
+    position:absolute;
+    left:0; top:0;
+}
+
+
+
+
+
+
+</style>
+ <!--<div id="fullscreen_bg" class="fullscreen_bg"/>
+<div class="modal show" tabindex="-1" role="dialog" >
+  <div class="modal-dialog">
+  <div class="modal-content">
+
+
+ 
+  
+  
+        <div class="modal-header">
+       
+         
+          <h1 class="text-center">Login</h1>
+      </div>
+              <div class="panel-body">
+            
+                   
+                <div class="form-group">
+                  <input class="form-control input-lg" ng-model="logIn.user.UserId" placeholder="User" type="text">
+              </div>
+              <div class="form-group">
+                <input class="form-control input-lg" ng-model="logIn.user.Password" placeholder="Password"  type="password" value="">
+              </div>
+               {{logIn.user.credentials}}
+              <div class="checkbox">
+                  <label>
+                    <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                  </label>
+                </div>
+              <input class="btn btn-lg btn-success btn-block" ng-click="logIn.logIn()"  value="Login">
+           
+      
+          </div>
+  
+
+     
+    <button ng-click="add()">Add</button>
+    <ul>
+        <li ng-animate="{enter: 'repeat-enter',
+                        leave: 'repeat-leave',
+                        move: 'repeat-move'}" ng-click="remove($index)" ng-repeat="name in names">{{name}}</li>
+    </ul>
+</div>
+</div>
+</div>
+</div>-->
+
+
+       <div id="fixed">
+    
+            <div class="row">
+               
+                <div class="col-lg-4">
+
+                    <!-- /.panel -->
+
+                    <!-- /.panel -->
+                    <div class="chat-panel panel panel-primary">
+                        <div class="panel-heading fixedHeader" >
+                            <i class="fa fa-comments fa-fw"></i>
+                            Chat
+                            <div class="btn-group pull-right">
+                             
+                                <ul class="dropdown-menu slidedown">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> Refresh
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-check-circle fa-fw"></i> Available
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-times fa-fw"></i> Busy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-clock-o fa-fw"></i> Away
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body fixedContent">
+                            <ul class="chat">
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong> 
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                                            </small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
+                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong> 
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
+                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-footer" style="width: 400px;">
+                            <div class="input-group"  ">
+                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                                <span class="input-group-btn">
+                                    <button  class="btn btn-warning btn-sm" id="btn-chat">
+                                        Send
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- /.panel-footer -->
+                    </div>
+                    <!-- /.panel .chat-panel -->
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+                </div>
+        <!-- /#page-wrapper -->
+
+ 
+
+	
+	<script>
+
+	    var toggle = false;
+	    var user = "jQuery404";
+	    var searchBoxText = "Type here...";
+	    var fixIntv;
+	    var fixedBoxsize = $('#fixed').outerHeight() + 'px';
+	    var Parent = $("#fixed"); // cache parent div
+	    var Header = $(".fixedHeader"); // cache header div
+	    var Chatbox = $(".userinput"); // cache header div
+	    Parent.css('height', '40px');
+
+	    Header.click(function () {
+	        toggle = (!toggle) ? true : false;
+	        if (toggle) {
+	            Parent.animate({ 'height': '440px' }, 300);
+	        }
+	        else {
+	            Parent.animate({ 'height': '40px' }, 300);
+	        }
+
+	    });
+
+	    Chatbox.focus(function () {
+	        $(this).val(($(this).val() == searchBoxText) ? '' : $(this).val());
+	    }).blur(function () {
+	        $(this).val(($(this).val() == '') ? searchBoxText : $(this).val());
+	    }).keyup(function (e) {
+	        var code = (e.keyCode ? e.keyCode : e.which);
+	        if (code == 13) {
+	            $('.fixedContent').append("<div class='userwrap'><span class='user'>" + user + "</span><span class='messages'>" + $(this).val() + "</span></div>");
+	            event.preventDefault();
+
+	            $(".fixedContent").scrollTop($(".fixedContent").height());
+	            $(this).val('');
+	        }
+
+	    });
+
+	    $('#fixed').on('scroll', function (event) {
+	        element = $(this);
+	        console.log(element)
+	    });
+	</script>
+	

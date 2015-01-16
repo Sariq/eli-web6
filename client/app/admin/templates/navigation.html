@@ -1,0 +1,168 @@
+ 
+
+
+  <!-- Navigation -->
+    <nav   class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0"  >
+      
+        
+           <!-- /.navbar-header -->
+          <div class="navbar-header">
+    
+            <a class="navbar-brand" href="index.html">Welcome {{userInfo.userId}}</a>
+    
+        </div>
+        <!-- /.navbar-header -->
+           
+         <!-- /.dropdownUser -->
+        <ul class="nav navbar-top-links navbar-left">
+               <li class="btn-group" dropdown>
+                <a class=" dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                    <i class="fa fa-user"></i> Sari <b
+                        class="caret"></b></a>
+                </a>
+                <ul class="dropdown-menu " role="menu">
+                    <li>
+                        <a ng-click="menu.logout();" translate><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                    </li>
+                </ul>
+            </li>
+                 <!-- /.dropdownUser -->
+            <!-- /.dropdown-messages -->
+             <li class="btn-group" dropdown>
+
+
+                <a class=" dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                    <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-messages" role="menu">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <strong>John Smith</strong>
+                                <span class="pull-right text-muted">
+                                    <em>Yesterday</em>
+                                </span>
+                            </div>
+                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                        </a>
+                    </li>
+   
+                </ul>
+            </li>
+                <!-- /.dropdown-messages -->
+            
+               
+         <!-- /.dropdown-tasks -->
+              <li class="btn-group" dropdown>
+                <a class=" dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                      <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-tasks" role="menu">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <p>
+                                    <strong>Task 1</strong>
+                                    <span class="pull-right text-muted">40% Complete</span>
+                                </p>
+                                <div class="progress progress-striped active">
+                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                        <span class="sr-only">40% Complete (success)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+                            <!-- /.dropdown-tasks -->
+             <!-- /.dropdown-alerts -->
+              <li class="btn-group" dropdown>
+                <a class=" dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                   <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i></a>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts" role="menu">
+                     <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-comment fa-fw"></i> New Comment
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+           <!-- /.dropdown-alerts -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div  class="nav navbar-default   sidebar text-right" >
+            <div class="nav sidebar-nav  navbar-collapse ">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+                    <li>
+                        <a class="active" href="#dashboard"> {{"HOME" | translate}} <i class="fa fa-dashboard fa-fw"></i></a>
+                    </li>
+                    <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+                         <a href="#">דוגמא  <i class="fa fa-bar-chart-o fa-fw"></i></a> 
+
+                    </li>
+                        <ul class="sub-menu collapse nav nav-second-level" id="products">
+                            <li>
+                                <a href="#/flot">Flot Charts</a>
+                            </li>
+                            <li>
+                                <a href="#/morris">Morris.js Charts</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                
+                    <li>
+                        <a href="#/tables"> טבלאות <i class="fa fa-table fa-fw"></i></a>
+                    </li>
+                    <li>
+                        <a href="#/forms"> טפסים <i class="fa fa-edit fa-fw"></i></a>
+                    </li>
+                    <li data-toggle="collapse" data-target="#products2" class="collapsed active">
+                    
+                        <a href="#"> <span class="fa arrow pull-left"></span>ניהול תוכן <i class="fa fa-wrench fa-fw"></i></a></li>
+                        <ul class="sub-menu collapse nav nav-second-level" id="products2">
+                            <li>
+                                <a href="#/panels-wells">Panels and Wells</a>
+                            </li>
+                            <li>
+                                <a href="#/buttons">Buttons</a>
+                            </li>
+                            <li>
+                                <a href="#/notifications">Notifications</a>
+                            </li>
+                            <li>
+                                <a href="#/typography">Typography</a>
+                            </li>
+                            <li>
+                                <a href="#/grid">Grid</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+               
+            
+          
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        
+        <!-- /.navbar-static-side -->
+		</div>
+    </nav>
+
+    

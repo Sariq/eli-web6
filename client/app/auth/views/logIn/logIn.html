@@ -1,0 +1,96 @@
+     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<style type="text/css">
+
+
+
+
+
+
+
+
+
+
+body{
+    background: url(client/app/images/login-wallpaper.jpg);
+ 
+}
+
+.repeat-enter-setup, .repeat-leave-setup, .repeat-move-setup {
+    -webkit-transition:all linear 1s;
+    -moz-transition:all linear 1s;
+    -ms-transition:all linear 1s;
+    -o-transition:all linear 1s;
+    transition:all linear 1s;
+}
+.repeat-enter-setup {
+    max-height: 0;
+    opacity:0;
+}
+.repeat-enter-setup.repeat-enter-start {
+    max-height: 250px;
+    opacity:1;
+}
+.repeat-leave-setup {
+    opacity:1;
+    max-height: 250px;
+}
+.repeat-leave-setup.repeat-leave-start {
+    opacity:0;
+    max-height: 0;
+}
+.repeat-move-setup {
+}
+.repeat-move-setup.repeat-move-start {
+}
+
+
+</style>
+ <div id="fullscreen_bg" class="fullscreen_bg"/>
+<div class="modal show" tabindex="-1" role="dialog" >
+  <div class="modal-dialog">
+  <div class="modal-content">
+
+
+ 
+  
+  
+        <div class="modal-header">
+       
+         
+          <h1 class="text-center">Login</h1>
+      </div>
+              <div class="panel-body">
+            
+                   
+                <div class="form-group">
+                  <input class="form-control input-lg" ng-model="logIn.user.UserId" placeholder="User" type="text">
+              </div>
+              <div class="form-group">
+                <input class="form-control input-lg" ng-model="logIn.user.Password" placeholder="Password"  type="password" value="">
+              </div>
+               {{logIn.user.credentials}}
+              <div class="checkbox">
+                  <label>
+                    <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                  </label>
+                </div>
+              <input class="btn btn-lg btn-success btn-block" ng-click="logIn.logIn()"  value="Login">
+           
+      
+          </div>
+  
+
+     
+    <button ng-click="add()">Add</button>
+    <ul>
+        <li ng-animate="{enter: 'repeat-enter',
+                        leave: 'repeat-leave',
+                        move: 'repeat-move'}" ng-click="remove($index)" ng-repeat="name in names">{{name}}</li>
+    </ul>
+</div>
+</div>
+</div>
+</div
+

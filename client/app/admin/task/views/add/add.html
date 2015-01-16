@@ -1,0 +1,91 @@
+<h1 class="page-header" translate>Add Task</h1>
+<ol class="breadcrumb">
+    <li><a href="#" translate>Admin</a></li>
+    <li><a href="#/tasks" translate>Task</a></li>
+    <li class="active" translate>Add Task</li>
+</ol>
+
+<div ng-if="add.error" class="alert alert-danger" role="alert">{{ add.error }}</div>
+<div ng-if="add.debug" class="alert alert-warning" role="alert">{{ add.debug }}</div>
+
+
+
+<div class="well">
+    <div class="well">
+
+        <form name="myForm" class="form-horizontal" role="form" novalidate>
+
+
+            <div ng-class="{'has-error':!add.task.ip_address}" class="form-group ">
+                <label for="first_name" class="col-sm-2 control-label">First Name</label>
+
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="ipaddress" ng-model="add.task.first_name"
+                           id="ip_address"
+                           placeholder="First Name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Last Name</label>
+
+                <div class="col-sm-10">
+                    <input type="text" ng-model="add.task.last_name" class="form-control" id="last_name"
+                           placeholder="Last Name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description" class="col-sm-2 control-label">Address</label>
+
+                <div class="col-sm-10">
+                    <input type="text" ng-model="add.task.address" class="form-control" id="address"
+                           placeholder="address" required>
+                </div>
+            </div>
+<!--<label>Due Date :</label><br>
+		<datetimepicker ng-change="validatmpeventDuedate()" min-date="minDate"
+			show-weeks="showWeeks" hour-step="hourStep" minute-step="minuteStep"
+			ng-model="event.tmpeventDuedate" show-meridian="showMeridian"
+			date-format="dd-MMM-yyyy" date-options="dateOptions"
+			date-disabled="disabled(date, mode)" readonly-time="false"></datetimepicker>
+		<br>-->
+           
+
+ 
+          <button class="btn btn-info" ng-click="add.addTask(add.task)" translate>Add task</button>
+
+            <table class="table">
+                <tr>
+                    <td translate>Project Family</td>
+                    <td translate>Project</td>
+                    <td translate>Step</td>
+                </tr>
+
+
+                <tr ng-repeat="task in add.task.tasks" pf-directive task="add.task.tasks" >
+                      <td><input ng-model="service.comments"></td>
+                     <td><input ng-model="service.comments"></td>
+                     <td><input ng-model="service.comments"></td>
+                    </tr>
+
+
+            </table>
+
+
+
+
+              <div class="form-group">
+                <div class="col-sm-2 control-label"></div>
+                <div class="col-sm-10">
+                    <div class="btn-group col-sm-10">
+                        <button ng-disabled="!add.task.ip_address" style="width: 50%;" ng-click="add.save();"
+                                class="btn btn-info"
+                                translate>Save
+                        </button>
+                        <a style="width: 50%;" href="#/tasks" class="btn btn-warning">Cancel</a>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

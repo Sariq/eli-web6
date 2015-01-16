@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="TokenService" CodeBehind="~/App_Code/Token/TokenService.cs"
+    Factory="System.ServiceModel.Activation.WebServiceHostFactory" %>

@@ -1,0 +1,84 @@
+
+
+
+
+<h1 class="page-header" translate>Tasks</h1>
+<ol class="breadcrumb">
+  <li><a href="#" translate>Admin</a></li>
+  <li class="active" translate>taskss</li>
+</ol>
+
+
+<div class="well">
+
+     <label translate>Project Family</label>
+
+  <span  class="nullable">
+    <select  id="project-family"
+             ng-model="list.project_family_id"
+      ng-options="pf._id as pf.name  for pf in list.projectFamilies"
+      ng-change="list.projectFamiliesChange(true)">
+      <option value="">-- All --</option>
+    </select>
+  </span>
+
+
+ <label translate>Project</label>
+
+  <span  class="nullable">
+    <select  id="project"
+             ng-model="list.project_id"
+      ng-options="project.id as project.name  for project in list.projects"
+      ng-change="list.projectChange(true)">
+      <option value="">-- All --</option>
+    </select>
+  </span>
+
+ <label translate>Step</label>
+   <span  class="nullable">
+    <select  id="step" ng-model="list.step_id"
+     ng-options="step.id as step.name  for step in list.steps"
+             ng-change="list.stepChange(true)">
+
+      <option value="" translate>-- All --</option>
+    </select>
+  </span>
+
+
+  <label translate>Search</label> <input placeholder="search" ng-model="q">
+  <a  class="btn btn-info" href="#/tasks/add"><span class="fa fa-plus" ></span>{{'Add tasks'|translate}}</a>
+
+</div>
+
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <td></td>
+    <td translate>First Name</td>
+    <td translate>Last Name</td>
+    <td translate>ID</td>
+      <td></td>
+       <td></td>
+  </tr>
+  </thead>
+  <tr ng-repeat="tasks in list.taskss|filter:{project_family_id: list.project_family_id,project_id: list.project_id,step_id:list.step_id}">
+    <td>{{$index}}</td>
+          <td>{{tasks.first_name}}</td>
+    <td>{{tasks.last_name}}</td>
+      <td>{{tasks.identity_number}}</td>
+      <td></td>
+    <td>
+      <a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/tasks/edit/1"></a>
+    </td>
+    <td>
+         <i object-name="tasks" confirm-action="list.remove(tasks)"  class="btn btn-xs btn-danger glyphicon glyphicon-trash"></i>
+    </td>
+  </tr>
+
+</table>
+
+
+
+

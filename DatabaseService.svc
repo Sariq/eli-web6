@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="DatabaseService" CodeBehind="~/App_Code/Database/DatabaseService.cs"
+    Factory="System.ServiceModel.Activation.WebServiceHostFactory" %>

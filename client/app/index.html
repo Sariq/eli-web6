@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html class="no-js">
+  <head>
+    <title>ELI</title>
+
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="client/app/bower_components/bootstrap/dist/css/bootstrap.css">
+        <!--main-->
+        <link rel="stylesheet" href="client/app/styles/fancybox/jquery.fancybox-v=2.1.5.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="client/app/styles/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="client/app/styles/style.css">  
+       <!-- <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,600,300,200&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
+        <link rel="prefetch" href="client/app/images/zoom.png">
+      <!--main-->
+ </head>
+  <body ng-app="eliApp" ng-controller="LogInCtrl">
+
+    <div ui-view=""></div>
+      <div ng-include='"client/app/templates/chat.html"'></div>
+
+        <script src="client/app/bower_components/jquery/dist/jquery.js"></script>
+        <script src="client/app/bower_components/angular/angular.js"></script>
+
+        <!-- build:js scripts/modules.js -->
+        <script src="client/app/bower_components/angular-resource/angular-resource.js"></script>
+        <script src="client/app/bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="client/app/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="client/app/bower_components/angular-animate/angular-animate.js"></script>
+         <script src="client/app/bower_components/angular-translate/angular-translate.js"></script>
+         <script src="client/app/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+
+        <!-- app -->
+        <script src="client/app/scripts/eli-app.js"></script>
+        <!-- app -->
+       
+        <!--main-->
+        <script src="client/app/main/views/main.js"></script>
+        <script src="client/app/main/main_service.js"></script>
+        <script src="client/app/main/routes.js"></script>  
+        <!--main-->
+
+        <!--auth-->
+          <!--LogIn-->
+          <script src="client/app/auth/views/logIn/logIn.js"></script>
+          <!--LogIn-->
+          <script src="client/app/auth/auth_service.js"></script>
+          <script src="client/app/auth/routes.js"></script>  
+        <!--auth-->
+
+        <!--admin-->
+      
+        <script src="client/app/admin/routes.js"></script>  
+        <!--admin-->
+        
+        <!--information-->
+        <script src="client/app/information/routes.js"></script>  
+        <!--information-->
+</body>
+</html>
