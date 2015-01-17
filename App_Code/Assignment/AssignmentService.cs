@@ -4,9 +4,9 @@ using System.ServiceModel.Web;
 
 public class AssignmentService : DatabaseActions, IAssignment
 {
-    public void AddAssignment(Assignment assignment)
+    public Assignment AddAssignment(Assignment assignment)
     {
-        InsertObject(assignment, "Assignment");
+        return InsertObjectSari<Assignment>(assignment, "Assignment").Result;
         //var dbAssignment = GetAssignment(assignment._id);
         //return dbAssignment;
     }

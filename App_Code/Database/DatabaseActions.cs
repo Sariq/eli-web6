@@ -17,6 +17,14 @@ public class DatabaseActions
         await collection.InsertAsync(obj);
     }
 
+    protected async Task<Assignment> InsertObjectSari<ObjectType>(Assignment obj, string collectionName)
+    {
+        var collection = database.GetCollection(collectionName);
+        obj._id = Convert.ToString((ObjectId.GenerateNewId()));
+        await collection.InsertAsync(obj);
+        return obj;
+    }
+
     protected async void RemoveObject(string objId, string collectionName)
     {
         var collection = database.GetCollection(collectionName);

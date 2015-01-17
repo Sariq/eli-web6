@@ -27,7 +27,8 @@
         last_name: '',
         birth_date: '',
         address: '',
-        tasks:[]
+        email:'',
+        meetings: []
       };
       return new self.patientResource(patient);
     };

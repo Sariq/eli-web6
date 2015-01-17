@@ -13,7 +13,7 @@ public interface IAssignment
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    void AddAssignment(Assignment assignment);
+    Assignment AddAssignment(Assignment assignment);
 
     [OperationContract]
     [WebInvoke(

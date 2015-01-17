@@ -2,7 +2,7 @@
 
     function routes($stateProvider,$urlRouterProvider) {
         $stateProvider
-      .state('meetings', {
+      .state('#/meetings', {
         url:'/meetings' ,
         templateUrl: 'meeting/views/list/list.html',
         controller: 'MeetingListController',

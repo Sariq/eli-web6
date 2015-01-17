@@ -36,30 +36,19 @@
             self.patient = PatientAdmin.create();
         }
 
-        self.save = function () {
-            if (!self.isValid()) {
-                return false;
-            }
-
-        };
-        self.deleteConf = function (idx, patient) {
-
-            PatientAdmin.deleteConf(idx, patient);
-            $scope.$apply()
-
-        };
+      
+       
 
         self.save = function () {
-            if (!self.isValid()) {
-                return false;
-            }
+           
             var success_url = '/patients';
             if (self.configurationId) {
                 success_url = success_url + '/' + self.patient;
 
-                console.log(success_url);
             }
             if (self.isNew) {
+
+                console.log(self.patient);
                 self.patient.$save(function (response) {
                     console.log(response);
                     if (response.status == 0) {

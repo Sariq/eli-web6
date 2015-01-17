@@ -5,7 +5,13 @@
      * @param MeetingAdmin: Service
      * @constructor
      */
-    function MeetingAddController($location, $scope, MeetingAdmin, $stateParams, TaskModalService, $modal, $http) {
+    function MeetingAddController($location, $rootScope,$state, $scope, MeetingAdmin, $stateParams, TaskModalService, $modal, $http) {
+        console.log("MeetingAddController")
+        $scope.$on('$stateChangeSuccess', function (ev, to, toParams, from, fromParams) {
+            $scope.pathFrom = $state.href(from)
+           
+
+        });
         var self = this;
         self.error = '';
         self.debug = '';
@@ -25,12 +31,12 @@
         self.isValid = function () {
             return true;
         };
-
+       
         if (self.meetingId) {
             self.meeting = MeetingAdmin.get(self.meetingId);
             console.log(self.meeting);
             self.meeting.$promise.then(function (result) {
-               
+              
                 $http({
                     url: '/AssignmentService.svc/getAssignmentsByIds',
                     method: 'POST',
@@ -61,17 +67,20 @@
             if (!self.isValid()) {
                 return false;
             }
-            var success_url = '/meetings';
+            var success_url = $scope.pathFrom;
             if (self.configurationId) {
                 success_url = success_url + '/' + self.meeting;
 
                 console.log(success_url);
             }
             if (self.isNew) {
+                console.log("self.meeting");
+                console.log(self.meeting);
                 self.meeting.$save(function (response) {
-                    console.log(response);
-                    
-                        $location.path(success_url);
+                    //console.log(response);
+                    alert(success_url)
+                 
+                    $state.go(success_url)
                     
                
                 });
@@ -149,7 +158,7 @@
     }
 
     angular.module('eli.admin')
-        .controller('MeetingAddController', ['$location', '$scope', 'MeetingAdmin', '$stateParams', 'TaskModalService', '$modal', '$http', MeetingAddController]);
+        .controller('MeetingAddController', ['$location', '$rootScope', '$state', '$scope', 'MeetingAdmin', '$stateParams', 'TaskModalService', '$modal', '$http', MeetingAddController]);
 }());
 
 

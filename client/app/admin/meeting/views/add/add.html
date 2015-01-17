@@ -1,7 +1,4 @@
-﻿<link href="meeting/css/style.css" rel="stylesheet" />
-<link href="meeting/css/to-do.css" rel="stylesheet" />
-<link href="meeting/css/style-responsive.css" rel="stylesheet" />
-
+﻿
 <style>
 
     /* TODO PANEL */
@@ -81,14 +78,12 @@
         border: 1px solid #46b7e5;
     }*/
 
-.well {
-    background:#f5f5f5
-}
+
 
 </style>
 
 
-<h1 style="margin-top: 0px;padding-top: 10px;" class=" text-right" translate>Add Meeting</h1>
+<!--<h1 style="margin-top: 0px;padding-top: 10px;" class=" text-right" translate>Add Meeting</h1>
 <ol class="breadcrumb text-right">
     
   
@@ -107,14 +102,25 @@
 
                       	<!-- SORTABLE TO DO LIST -->
 	
-              <div class="row mt mb">
-                  <div class="col-md-12">
-                      <div class="form-panel">
-                  	 
-                      <form class="form-horizontal style-form" method="get">
+      	<img id="top" src="imgs/top.png" alt="">
+
+	<div id="form_container">
+	<span class="form-header"><h1 style="" class=" text-right" translate>הוסף טיפול</h1></span>
+        
+
+<ol class="breadcrumb text-right">
+    
+  
+    <li class="active" translate>Add Meeting</li>
+      <li><a href="#/meetings" translate>Meeting</a></li>
+    <li><a href="#" translate>Admin</a></li>
+</ol>
+		
+        <br />
+   <form class="form-horizontal style-form" method="get">
                  
                   <div  class="form-group ">
-                          <label for="first_name" style="padding-right:10px" class="col-md-1   control-label pull-right"><strong>: מטפל</strong></label>
+                          <label for="first_name" class="col-md-2   control-label pull-right"><strong>: מטפל</strong></label>
 
                           <div class="col-sm-10 pull-right">
                            <input type="text" class="form-control text-right " name="therapistId" ng-model="add.meeting.therapistId"
@@ -124,7 +130,7 @@
                  </div>
 
                   <div  class="form-group ">
-                          <label for="patientId" style="padding-right:10px" class="col-md-1  control-label pull-right"><strong>: Last Name</strong></label>
+                          <label for="patientId" class="col-md-2  control-label pull-right"><strong>: Last Name</strong></label>
 
                           <div class="col-sm-10 pull-right">
                            <input type="text" class="form-control text-right " name="patientId" ng-model="add.meeting.patientId"
@@ -134,7 +140,7 @@
                  </div>
 
                  <div  class="form-group ">
-                          <label for="title" style="padding-right:10px" class="col-md-1  control-label pull-right"><strong>: title</strong></label>
+                          <label for="title"  class="col-md-2  control-label pull-right"><strong>: title</strong></label>
 
                           <div class="col-sm-10 pull-right">
                            <input type="text" class="form-control text-right " name="title" ng-model="add.meeting.title"
@@ -144,7 +150,7 @@
                  </div>
 
                  <div  class="form-group ">
-                          <label for="adress" style="padding-right:10px" class="col-md-1 control-label pull-right"><strong>: adress</strong></label>
+                          <label for="adress" class="col-md-2 control-label pull-right"><strong>: adress</strong></label>
 
                           <div class="col-sm-10 pull-right">
                            <input type="text" class="form-control text-right " name="adress" ng-model="add.meeting.adress"
@@ -154,7 +160,7 @@
                  </div>
 
                  <div  class="form-group ">
-                          <label for="note" style="padding-right:10px" class="col-md-1 control-label pull-right"><strong>: note</strong></label>
+                          <label for="note"  class="col-md-2 control-label pull-right"><strong>: note</strong></label>
 
                           <div class="col-sm-10 pull-right">
                            <input type="text" class="form-control text-right " name="note" ng-model="add.meeting.note"
@@ -167,8 +173,13 @@
 
                          
                       </form>
-          
-                      <section  class="task-panel tasks-widget">
+		<div id="footer">
+	
+		</div>
+	
+	<img id="bottom" src="imgs/bottom.png" alt="">
+
+ <section   class="task-panel tasks-widget">
 	                	<div class="panel-heading">
 	                        <div class="pull-right"><h5>משימות <span class="white-panel"><i class=" fa fa-tasks"></i> </span></h5></div>
 	                        <br>
@@ -206,18 +217,8 @@
                               </div>
                           </div>
 
-                      </section>
-                               </div>
-                  </div><!--/col-md-12 -->
-              </div><!-- /row -->
-
-
-
-
-  
-
-         <br />
-              <div class="form-group row">
+                      </section><br />
+            <div class="form-group row">
                 <div class="col-sm-2 control-label"></div>
                 <div class="col-sm-10">
                     <div class="btn-group col-sm-10">
@@ -229,8 +230,5 @@
                     </div>
                 </div>
             </div>
-
-    <!--    </form>-->
-
 </div>
 <script src="meeting/css/tasks.js"></script>

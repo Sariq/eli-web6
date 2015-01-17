@@ -16,7 +16,7 @@
         $scope.ok = function () {
             //add the task to assiement DB and return the id of the object
             $scope.task.$save(function (response) {
-           
+                alert(response._id)
                 $modalInstance.close(response._id);
             });
            

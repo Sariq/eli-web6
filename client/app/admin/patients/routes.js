@@ -10,7 +10,7 @@
 
       })
               
-      .state('patient/add', {
+      .state('#/patient/add', {
           url: '/patient/add',
           templateUrl: 'patients/views/add/add.html',
         controller: 'PatientAddController',
