@@ -60,17 +60,4 @@ public class PatientService : DatabaseActions, IPatient
         return GetAllObject<Patient>("Patient");
     }
 
-    public List<Assignment> GetAllAssignmentsOfPatient(string patientId)
-    {
-        List<Assignment> assignments = new List<Assignment> { };
-        Patient patient = GetPatient(patientId);
-        foreach (string assignmentId in patient.assignments)
-        {
-            Assignment assignment = GetObject<Assignment>(assignmentId, "Assignment").Result;
-            assignments.Add(assignment);
-        }
-
-        return assignments;
-    }
-
 }

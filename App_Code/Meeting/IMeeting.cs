@@ -55,8 +55,7 @@ public interface IMeeting
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
+         UriTemplate = "GetMeetingsByIds")
     ]
-    List<Assignment> GetAllAssignmentsOfMeeting(string id);
-
+    List<Meeting> GetMeetingsByIds(string[] meetings);
 }

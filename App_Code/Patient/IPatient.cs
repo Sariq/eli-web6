@@ -50,12 +50,4 @@ public interface IPatient
     ]
     List<Patient> GetAllPatients();
 
-    [OperationContract]
-    [WebInvoke(
-         Method = "POST",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
-    ]
-    List<Assignment> GetAllAssignmentsOfPatient(string id);
 }

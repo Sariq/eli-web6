@@ -25,7 +25,7 @@
         identity_number:'',
         first_name: '',
         last_name: '',
-        birth_date: '',
+        //birth_date: '',
         address: '',
         email:'',
         meetings: []

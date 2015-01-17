@@ -30,16 +30,15 @@ public class MeetingService : DatabaseActions, IMeeting
         return GetAllObject<Meeting>("Meeting");
     }
 
-    public List<Assignment> GetAllAssignmentsOfMeeting(string meetingId)
+    public List<Meeting> GetMeetingsByIds(string[] tmpMeetings)
     {
-        List<Assignment> assignments = new List<Assignment> { };
-        Meeting meeting = GetMeeting(meetingId);
-        foreach (string assignmentId in meeting.assignments) 
+        List<Meeting> meetings = new List<Meeting> { };
+        foreach (string meetingId in tmpMeetings)
         {
-            Assignment assignment = GetObject<Assignment>(assignmentId, "Assignment").Result;
-            assignments.Add(assignment);
+            Meeting meeting = GetObject<Meeting>(meetingId, "Meeting").Result;
+            meetings.Add(meeting);
         }
-        return assignments;
+        return meetings;
     }
 
 }
