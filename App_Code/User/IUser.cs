@@ -25,15 +25,6 @@ public interface IUser
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetUser/{id}")
-    ]
-    User GetUser(string id);
-
-    [OperationContract]
-    [WebInvoke(
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
@@ -58,6 +49,15 @@ public interface IUser
          UriTemplate = "UpdateUser")
     ]
     void UpdateUser(User user);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "GET",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetUser/{id}")
+    ]
+    User GetUser(string id);
 
     [OperationContract]
     [WebInvoke(

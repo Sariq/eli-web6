@@ -13,8 +13,7 @@ public class Assignment : DatabaseObject
 
     public Assignment(string title, string content, bool isDone)
         : base()
-    {
-        
+    {       
         this.title = title;
         this.content = content;
         this.isDone = isDone;

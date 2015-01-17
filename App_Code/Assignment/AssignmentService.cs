@@ -6,9 +6,7 @@ public class AssignmentService : DatabaseActions, IAssignment
 {
     public Assignment AddAssignment(Assignment assignment)
     {
-        return InsertObjectSari<Assignment>(assignment, "Assignment").Result;
-        //var dbAssignment = GetAssignment(assignment._id);
-        //return dbAssignment;
+        return InsertObjectWithReturn<Assignment>(assignment, "Assignment").Result;
     }
 
     public void RemoveAssignment(string assignmentId)

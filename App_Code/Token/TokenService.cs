@@ -26,7 +26,6 @@ public class TokenService : DatabaseActions, IToken
        
     }
 
-
     public User SignIn(User user)
     {
         return user;

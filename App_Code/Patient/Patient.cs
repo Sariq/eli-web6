@@ -32,14 +32,6 @@ public class Patient : DatabaseObject
         this.meetings = meetings;
     }
 
-    public Patient(string identityNumber, string firstName, string lastName)
-        : base()
-    {
-        this.identity_number = identityNumber;
-        this.first_name = firstName;
-        this.last_name = lastName;
-    }
-
     public Patient(Patient patient)
     {
         this._id = patient._id;

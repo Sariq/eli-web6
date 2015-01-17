@@ -10,14 +10,14 @@ public class DatabaseActions
 {
     DatabaseService database = new DatabaseService();
 
-    protected async void InsertObject(DatabaseObject obj, string collectionName)
+    protected void InsertObject(DatabaseObject obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
         obj._id = Convert.ToString((ObjectId.GenerateNewId()));
-        await collection.InsertAsync(obj);
+        collection.Insert(obj);
     }
 
-    protected async Task<Assignment> InsertObjectSari<ObjectType>(Assignment obj, string collectionName)
+    protected async Task<Assignment> InsertObjectWithReturn<ObjectType>(Assignment obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
         obj._id = Convert.ToString((ObjectId.GenerateNewId()));
