@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.ServiceModel.Web;
 
@@ -32,7 +33,7 @@ public class PatientService : DatabaseActions, IPatient
 
     public void UpdatePatient(Patient patient)
     {
-        var dbPatient = GetPatient(patient.identity_number);
+        var dbPatient = GetPatient(patient._id);
         if (dbPatient != null)
             UpdateObject(patient, "Patient");
         else
@@ -45,8 +46,9 @@ public class PatientService : DatabaseActions, IPatient
     public Patient GetPatient(string patientIdentityNumber)
     {
         try
-        {
-            return GetObject<Patient>("identity_number", patientIdentityNumber, "Patient").Result;
+        {              
+            Patient patientA = GetObject<Patient>("_id", patientIdentityNumber, "Patient").Result; 
+                 return patientA;
         }
         catch
         {

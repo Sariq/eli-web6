@@ -17,6 +17,13 @@
         controllerAs: 'add'
 
       })
+        .state('#/patient/add/:patientId/:meetingId', {
+            url: '/patient/add/:patientId/:meetingId',
+            templateUrl: 'patients/views/add/add.html',
+            controller: 'PatientAddController',
+            controllerAs: 'add'
+
+        })
       .state('patient/edit/:patientId', {
           url: '/patient/edit/:patientId',
           templateUrl: 'patients/views/add/add.html',

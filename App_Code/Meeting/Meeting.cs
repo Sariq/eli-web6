@@ -12,7 +12,7 @@ public class Meeting : DatabaseObject
     public string title { get; set; }    
     [DataMember]
     public string address { get; set; }
-    [DataMember]
+  
     public DateTime time { get; set; }
     [DataMember]
     public string note { get; set; }
@@ -34,6 +34,7 @@ public class Meeting : DatabaseObject
     }
 
     public Meeting(Meeting meeting)
+        : base()
     {
         this._id = meeting._id;
         this.therapistId = meeting.therapistId;
@@ -46,3 +47,6 @@ public class Meeting : DatabaseObject
     }
  
 }
+
+
+

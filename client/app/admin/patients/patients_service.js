@@ -8,12 +8,12 @@
       locations:['apc', 'afula']
     };
 
-    self.patientResource = $resource('/PatientService.svc/api', {},
+    self.patientResource = $resource('/PatientService.svc/api/:id', {},
       {update: {method: 'PUT'}}
     );
 
     self.get = function(patient_id){
-      return self.patientResource.get({_id:patient_id });
+      return self.patientResource.get({id:patient_id });
     };
 
     self.save = function (patient) {
@@ -40,13 +40,11 @@
 
     };
 
-    self.addTask= function(patient){
-        patient.tasks.push({
-            title: '',
-            content: '',
-            done: false
-      });
-    }
+      self.addMeeting = function (patient, meetingId) {
+          console.log(patient)
+          patient.meetings.push(meetingId);
+      }
+
 
     self.query = function (){
       return self.patientResource.query();

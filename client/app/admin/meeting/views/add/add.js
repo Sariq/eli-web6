@@ -9,10 +9,13 @@
         console.log("MeetingAddController")
         $scope.$on('$stateChangeSuccess', function (ev, to, toParams, from, fromParams) {
             $scope.pathFrom = $state.href(from)
-           
+         
+            console.log(from)
 
         });
+
         var self = this;
+        self.id = '';
         self.error = '';
         self.debug = '';
         self.isNew = false;
@@ -21,6 +24,7 @@
         self.meeting = MeetingAdmin.create();
    
         self.meetingId = $stateParams.meetingId;
+        self.patientId = $stateParams.patientId;
         self.steps = [];
 
         self.addMeeting = function (meeting) {
@@ -77,10 +81,11 @@
                 console.log("self.meeting");
                 console.log(self.meeting);
                 self.meeting.$save(function (response) {
-                    //console.log(response);
-                    alert(success_url)
+                    console.log("response");
+                  alert(angular.toJson(response));
+                  
                  
-                    $state.go(success_url)
+                  $location.path('patient/add/' + self.patientId +'/'+ response._id)
                     
                
                 });

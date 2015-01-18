@@ -12,24 +12,33 @@
         self.isNew = false;
         self.info = PatientAdmin.info;
  
-        self.patient = PatientAdmin.create();
+  
    
         self.patientId = $stateParams.patientId;
+        self.meetingId = $stateParams.meetingId;
+        alert($stateParams.patientId)
         self.steps = [];
 
-        self.addTask = function (patient) {
-            return PatientAdmin.addTask(patient);
-
-        }
+       
 
         self.isValid = function () {
             return true;
         };
 
         if (self.patientId) {
+
             self.patient = PatientAdmin.get($stateParams.patientId);
-            //self.patient.$promise.then(function (result) {
-            //});
+            self.patient.$promise.then(function (result) {
+                console.log(self.patient);
+                if (typeof (self.meetingId) != 'undefined') {
+
+                    PatientAdmin.addMeeting(self.patient, self.meetingId);
+                    self.patient.$save(function (response) {
+
+                    });
+                }
+
+            });
 
         } else {
             self.isNew = true;
@@ -51,22 +60,18 @@
                 console.log(self.patient);
                 self.patient.$save(function (response) {
                     console.log(response);
-                    if (response.status == 0) {
+                   
                         $location.path(success_url);
-                    } else {
-                        self.error = response.error;
-                        self.debug = response.debug;
-                    }
+                   
+                        
+                   
                 });
             } else {
                 self.patient.$update(function (response) {
                     console.log(response);
-                    if (response.status == 0) {
+                   
                         $location.path(success_url);
-                    } else {
-                        self.error = response.error;
-                        self.debug = response.debug;
-                    }
+                 
                 });
             }
         };
