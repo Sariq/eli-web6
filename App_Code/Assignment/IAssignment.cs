@@ -5,7 +5,6 @@ using System.ServiceModel.Web;
 [ServiceContract]
 public interface IAssignment
 {
-
     [OperationContract]
     [WebInvoke(
          Method = "POST",

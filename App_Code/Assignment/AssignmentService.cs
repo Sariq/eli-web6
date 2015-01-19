@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using MongoDB.Bson;
+using System;
+using System.Collections.Generic;
 using System.Net;
 using System.ServiceModel.Web;
 
@@ -6,7 +8,9 @@ public class AssignmentService : DatabaseActions, IAssignment
 {
     public Assignment AddAssignment(Assignment assignment)
     {
-        return InsertObjectWithReturn<Assignment>(assignment, "Assignment").Result;
+        var assignmentId = InsertObjectAndReturnId(assignment, "Assignment").Result;
+        var dbAssignment = GetAssignment(assignmentId);
+        return dbAssignment;
     }
 
     public void RemoveAssignment(string assignmentId)

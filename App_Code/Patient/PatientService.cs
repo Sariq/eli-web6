@@ -11,7 +11,7 @@ public class PatientService : DatabaseActions, IPatient
     {
         try
         {
-            InsertObject(patient, "Patient");
+            InsertObjectNotAsync(patient, "Patient");
         }
         catch (MongoDuplicateKeyException)
         {

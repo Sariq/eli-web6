@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.ServiceModel.Web;
 using System.Web;
@@ -56,9 +57,8 @@ public class UserService : DatabaseActions, IUser
     {
         try
         {
-            InsertObject(user, "User");
+            InsertObjectNotAsync(user, "User");
         }
-
         catch (MongoDuplicateKeyException)
         {
             var error = new Error(Error.ErrorType.UserIsAlreadyExist);

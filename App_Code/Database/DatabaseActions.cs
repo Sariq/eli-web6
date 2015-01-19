@@ -4,25 +4,34 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.ServiceModel.Web;
 using System.Threading.Tasks;
 
 public class DatabaseActions
 {
     DatabaseService database = new DatabaseService();
 
-    protected void InsertObject(DatabaseObject obj, string collectionName)
+    protected async void InsertObject(DatabaseObject obj, string collectionName)
+    {
+        var collection = database.GetCollection(collectionName);
+        obj._id = Convert.ToString((ObjectId.GenerateNewId()));
+        await collection.InsertAsync(obj);
+    }
+
+    protected void InsertObjectNotAsync(DatabaseObject obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
         obj._id = Convert.ToString((ObjectId.GenerateNewId()));
         collection.Insert(obj);
     }
 
-    protected async Task<Assignment> InsertObjectWithReturn<ObjectType>(Assignment obj, string collectionName)
+    protected async Task<string> InsertObjectAndReturnId(DatabaseObject obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
         obj._id = Convert.ToString((ObjectId.GenerateNewId()));
         await collection.InsertAsync(obj);
-        return obj;
+        return obj._id;
     }
 
     protected async void RemoveObject(string objId, string collectionName)
