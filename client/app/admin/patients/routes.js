@@ -8,8 +8,15 @@
         controller: 'PatientListController',
         controllerAs: 'list'
 
-      })
-              
+      })  
+             $stateProvider
+      .state('/patient/profile/:patientId', {
+          url: '/patient/profile/:patientId',
+          templateUrl: 'patients/views/profile/profile.html',
+          controller: 'PatientProfileController',
+          controllerAs: 'profile'
+
+      })      
       .state('#/patient/add', {
           url: '/patient/add',
           templateUrl: 'patients/views/add/add.html',

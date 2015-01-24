@@ -7,13 +7,16 @@
       stages:['DOCS','TF', 'QL', 'Production'],
       locations:['apc', 'afula']
     };
+    self.patient = '';
 
     self.patientResource = $resource('/PatientService.svc/api/:id', {},
       {update: {method: 'PUT'}}
     );
 
-    self.get = function(patient_id){
-      return self.patientResource.get({id:patient_id });
+    self.get = function (patient_id) {
+        self.patient = self.patientResource.get({ id: patient_id });
+       
+        return self.patient;
     };
 
     self.save = function (patient) {
@@ -29,8 +32,9 @@
         address: '',
         email:'',
         meetings: []
-      };
-      return new self.patientResource(patient);
+        };
+        self.patient = new self.patientResource(patient)
+        return self.patient;
     };
 
       self.deleteTask = function (idx,patient) {
@@ -44,6 +48,9 @@
           console.log(patient)
           patient.meetings.push(meetingId);
       }
+      self.deleteMeeting = function (patient, idx) {
+         return patient.meetings.splice(idx, 1);
+      };
 
 
     self.query = function (){

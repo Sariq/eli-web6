@@ -11,7 +11,7 @@
 .steps input[type=submit]{
   background: #f1783c;
   border: none;
-  padding: 0px;
+  piteming: 0px;
   margin: 0 auto;
   width: 100%;
   height: 55px;
@@ -83,7 +83,7 @@
 </style>
 
 
-<!--<h1 style="margin-top: 0px;padding-top: 10px;" class=" text-right" translate>Add Meeting</h1>
+<!--<h1 style="margin-top: 0px;piteming-top: 10px;" class=" text-right" translate>Add Meeting</h1>
 <ol class="breadcrumb text-right">
     
   
@@ -92,8 +92,8 @@
     <li><a href="#" translate>Admin</a></li>
 </ol>
 
-<div ng-if="add.error" class="alert alert-danger" role="alert">{{ add.error }}</div>
-<div ng-if="add.debug" class="alert alert-warning" role="alert">{{ add.debug }}</div>
+<div ng-if="item.error" class="alert alert-danger" role="alert">{{ item.error }}</div>
+<div ng-if="item.debug" class="alert alert-warning" role="alert">{{ item.debug }}</div>
 
 
 
@@ -102,19 +102,23 @@
 
                       	<!-- SORTABLE TO DO LIST -->
 	
+
+        <div class="text-right">
+   
+    <div class="form-header " style="padding-top:30px" > <img id="Img1" style="width:100%" src="imgs/top.png" alt=""><h1 class="page-header text-right" translate>Meeting</h1>
+<ol class="breadcrumb">
+    <li class="active" translate>{{item.meeting.title}}</li>
+    <li ><a href="#meetings/{{item.patient._id}}" translate>Meetings</a></li>
+    <li><a href="#/patient/profile/{{item.patient._id}}" translate>{{item.patient.first_name}}</a></li>
+  <li><a href="#patients" translate>Patients</a></li>
+  <li  ><a href="#dashboard" translate>Dashboard</a></li>
+</ol>
+</div>
+</div>
       	<img id="top" src="imgs/top.png" alt="">
 
 	<div id="form_container">
-	<span class="form-header"><h1 style="" class=" text-right" translate>הוסף טיפול</h1></span>
-        
-
-<ol class="breadcrumb text-right">
-    
-  
-    <li class="active" translate>Add Meeting</li>
-      <li><a href="#/meetings" translate>Meeting</a></li>
-    <li><a href="#" translate>Admin</a></li>
-</ol>
+	
 		
         <br />
    <form class="form-horizontal style-form" method="get">
@@ -123,9 +127,8 @@
                           <label for="first_name" class="col-md-2   control-label pull-right"><strong>: מטפל</strong></label>
 
                           <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="therapistId" ng-model="add.meeting.therapistId"
-                           id="Text5"
-                           placeholder="therapistId" required>
+                              <label for="first_name" class="col-md-2   control-label pull-right"><strong>{{item.meeting.therapistId}}</strong></label>
+                  
                           </div>
                  </div>
 
@@ -133,9 +136,8 @@
                           <label for="patientId" class="col-md-2  control-label pull-right"><strong>: Last Name</strong></label>
 
                           <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="patientId" ng-model="add.meeting.patientId"
-                           id="Text6"
-                           placeholder="patientId" required>
+                                   <label for="patientId" class="col-md-2  control-label pull-right"><strong>{{item.meeting.patientId}}</strong></label>
+                         
                           </div>
                  </div>
 
@@ -143,9 +145,7 @@
                           <label for="title"  class="col-md-2  control-label pull-right"><strong>: title</strong></label>
 
                           <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="title" ng-model="add.meeting.title"
-                           id="Text7"
-                           placeholder="title" required>
+                              <label for="title"  class="col-md-2  control-label pull-right"><strong>{{item.meeting.title}}</strong></label>
                           </div>
                  </div>
 
@@ -153,9 +153,8 @@
                           <label for="adress" class="col-md-2 control-label pull-right"><strong>: adress</strong></label>
 
                           <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="adress" ng-model="add.meeting.adress"
-                           id="Text8"
-                           placeholder="adress" required>
+                               <label for="adress" class="col-md-2 control-label pull-right"><strong>{{item.meeting.adress}}</strong></label>
+                        
                           </div>
                  </div>
 
@@ -163,9 +162,8 @@
                           <label for="note"  class="col-md-2 control-label pull-right"><strong>: note</strong></label>
 
                           <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="note" ng-model="add.meeting.note"
-                           id="Text9"
-                           placeholder="note" required>
+                              <label for="note"  class="col-md-2 control-label pull-right"><strong>{{item.meeting.note}}</strong></label>
+
                           </div>
                  </div>
 
@@ -181,13 +179,13 @@
 
  <section   class="task-panel tasks-widget">
 	                	<div class="panel-heading">
-	                        <div class="pull-right"><h5>משימות <span class="white-panel"><i class=" fa fa-tasks"></i> </span></h5></div>
-	                        <br>
+	                        <div class="pull-right"><h3>משימות <span class="white-panel"><i class=" fa fa-tasks"></i> </span></h3></div>
+	                        <br><br>
 	                 	</div>
                           <div class="panel-body">
                               <div class="task-content">
                                   <ul id="sortable" class="task-list ui-sortable">
-                                      <li ng-repeat="assignment in add.assignments" class="list-primary ">
+                                      <li ng-repeat="assignment in item.assignments" class="list-primary ">
                                           <i class=" fa fa-ellipsis-v"></i>
                                           <div class="task-checkbox pull-right">
                                               <input type="checkbox" class="list-child" value="" />
@@ -211,24 +209,13 @@
 
                                   </ul>
                               </div>
-                              <div class=" add-task-row">
-                                  <a ng-click="add.openModal()" class="btn btn-success btn-sm pull-left">Add New Tasks</a>
+                              <div class=" item-task-row">
+                                  <a ng-click="item.openModal()" class="btn btn-success btn-sm pull-left">Add New Tasks</a>
                                   <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
                               </div>
                           </div>
 
                       </section><br />
-            <div class="form-group row">
-                <div class="col-sm-2 control-label"></div>
-                <div class="col-sm-10">
-                    <div class="btn-group col-sm-10">
-                        <button ng-disabled="!add.meeting.title" style="width: 50%;" ng-click="add.save();"
-                                class="btn btn-info"
-                                translate>Save
-                        </button>
-                        <a style="width: 50%;" href="#/meetings/{{add.patient._id}}" class="btn btn-warning">Cancel</a>
-                    </div>
-                </div>
-            </div>
+    
 </div>
 <script src="meeting/css/tasks.js"></script>

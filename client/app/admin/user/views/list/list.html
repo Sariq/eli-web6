@@ -1,0 +1,54 @@
+﻿
+
+
+<div class="text-right">
+   
+    <div class="form-header " style="padding-top:30px" > <img id="top" style="width:100%" src="imgs/top.png" alt=""><h1 class="page-header text-right" translate>Users</h1>
+<ol class="breadcrumb">
+  <li class="active"><a href="#users" translate>Users</a></li>
+  <li  ><a href="#dashboard" translate>Dashboard</a></li>
+</ol>
+</div>
+</div>
+
+
+
+
+<table class="table table-striped text-right">
+  <thead>
+  <tr>
+    
+       <td></td>
+      <td></td>
+       <td></td>
+       
+    <td translate>Last Name</td>
+
+       <td translate>First Name</td>
+    
+  </tr>
+  </thead>
+
+  <tr ng-repeat="user in list.users">
+
+          <td>
+      <a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/user/edit/{{user._id}}"></a>
+    </td>
+    <td>
+         <i object-name="user" confirm-action="list.remove(user)"  class="btn btn-xs btn-danger glyphicon glyphicon-trash"></i>
+    </td>
+            <td></td>
+   
+        
+    <td>{{user.last_name}}</td>
+
+              <td><a href="#/user/profile/{{user._id}}">{{user.first_name}}</a></td>
+       <td>{{$index}}</td>
+  </tr>
+
+</table>
+
+       <span  class="pull-left">  <a  class="btn btn-info" href="#/user/add"><span class="fa fa-plus" ></span>{{'Add user'|translate}}</a></span>
+
+
+

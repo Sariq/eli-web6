@@ -2,53 +2,60 @@
 
 
 
-<h1 class="page-header" translate>Meeting</h1>
+
+
+<div class="text-right">
+   
+    <div class="form-header " style="padding-top:30px" > <img id="top" style="width:100%" src="imgs/top.png" alt=""><h1 class="page-header text-right" translate>Meetings</h1>
 <ol class="breadcrumb">
-  <li><a href="#" translate>Admin</a></li>
-  <li class="active" translate>meeting</li>
+    <li class="active" translate>Meetings</li>
+    <li><a href="#/patient/profile/{{list.patient._id}}" translate>{{list.patient.first_name}}</a></li>
+  <li><a href="#patients" translate>Patients</a></li>
+  <li  ><a href="#dashboard" translate>Dashboard</a></li>
 </ol>
-
-
-<div class="well">
-
-
-
-
-
-
-  <label translate>Search</label> <input placeholder="search" ng-model="q">
-  <a  class="btn btn-info" href="#/meeting/add"><span class="fa fa-plus" ></span>{{'Add meeting'|translate}}</a>
-
+</div>
 </div>
 
 
 
-<table class="table table-striped">
+
+
+
+
+
+
+
+<table class="table table-striped text-right">
   <thead>
   <tr>
-    <td></td>
-    <td translate>Ttile</td>
-    <td translate>Address</td>
-    <td translate>Note</td>
+    
+       <td></td>
       <td></td>
        <td></td>
+
+    <td translate>Time</td>
+
+       <td translate>Title</td>
+    
   </tr>
   </thead>
+
   <tr ng-repeat="meeting in list.meetings">
-    <td>{{$index}}</td>
-          <td>{{meeting.title}}</td>
-    <td>{{meeting.address}}</td>
-      <td>{{meeting.note}}</td>
-      <td></td>
-    <td>
-      <a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/meeting/edit/{{meeting._id}}"></a>
+
+          <td>
+         <a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/meeting/edit/{{meeting._id}}"></a>
     </td>
-    <td>
-         <i object-name="meeting" confirm-action="list.remove(meeting)"  class="btn btn-xs btn-danger glyphicon glyphicon-trash"></i>
+    <td> 
+       <i object-name="meeting"   confirm-action="list.remove($index,meeting)"  class="btn btn-xs btn-danger glyphicon glyphicon-trash"></i>
     </td>
+            <td></td>
+  
+    <td>{{meeting.time}}</td>
+
+              <td><a href="#/meeting/item/{{meeting._id}}">{{meeting.title}}</a></td>
+       <td>{{$index}}</td>
   </tr>
 
 </table>
 
-
-
+        <a  class="btn btn-info" href="#/meeting/add"><span class="fa fa-plus" ></span>{{'Add meeting'|translate}}</a>
