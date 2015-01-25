@@ -5,17 +5,11 @@
      * @param MeetingAdmin: Service
      * @constructor
      */
-    function MeetingAddController($location, $rootScope, $state, $scope, MeetingAdmin, $stateParams, TaskModalService, $modal, $http, PatientAdmin) {
-        console.log("MeetingAddController")
-        $scope.$on('$stateChangeSuccess', function (ev, to, toParams, from, fromParams) {
-            $scope.pathFrom = $state.href(from)
-         
-            console.log(from)
-
-        });
+    function MeetingItemController($location, $rootScope, $state, $scope, MeetingAdmin, $stateParams, TaskModalService, $modal, $http, PatientAdmin) {
+        console.log("MeetingItemController")
+      
 
         var self = this;
-        self.patient = PatientAdmin.get(PatientAdmin.patient._id);
         self.id = '';
         self.error = '';
         self.debug = '';
@@ -23,14 +17,15 @@
         self.info = MeetingAdmin.info;
         self.assignments = '';
         self.meeting = MeetingAdmin.create();
+        self.patient = PatientAdmin.patient;
        //self.patient = PatientAdmin.patient;
         
         //self.patient = PatientAdmin.patient;
-        
+       
         self.meetingId = $stateParams.meetingId;
         self.patientId = $stateParams.patientId;
         self.steps = [];
-       
+
         self.addMeeting = function (meeting) {
             return MeetingAdmin.addMeeting(meeting);
 
@@ -59,7 +54,6 @@
             });
 
         } else {
-            
             self.isNew = true;
             self.meeting = MeetingAdmin.create();
         }
@@ -83,7 +77,7 @@
 
 
 
-               
+                    self.patient = PatientAdmin.get(PatientAdmin.patient._id);
                     self.patient.$promise.then(function (result) {
                         console.log(self.patient);
                  
@@ -92,9 +86,7 @@
                            
                             
                             self.patient.$update(function (response) {
-                              
-                                $location.path('/meetings/'+self.patient._id);
-                                
+                                $location.path('/meetings');
                             });
                         
 
@@ -114,20 +106,18 @@
                         
                
                 });
-            } else {      
-                self.patient.$promise.then(function (result) {
-                    self.meeting.$update(function (response) {
-                        console.log(response);
-                        //if (response.status == 0) {
-                        //$location.path(success_url);
-                        $location.path('/meetings/'+self.patient._id);
-                        //} else {
-                        //    self.error = response.error;
-                        //    self.debug = response.debug;
-                        //}
-                    });
-                })
-                } 
+            } else {
+                self.meeting.$update(function (response) {
+                    console.log(response);
+                    //if (response.status == 0) {
+                    //$location.path(success_url);
+                    $location.path('/meetings');
+                    //} else {
+                    //    self.error = response.error;
+                    //    self.debug = response.debug;
+                    //}
+                });
+            }
         };
 
 
@@ -191,7 +181,7 @@
     }
 
     angular.module('eli.admin')
-        .controller('MeetingAddController', ['$location', '$rootScope', '$state', '$scope', 'MeetingAdmin', '$stateParams', 'TaskModalService', '$modal', '$http', 'PatientAdmin', MeetingAddController]);
+        .controller('MeetingItemController', ['$location', '$rootScope', '$state', '$scope', 'MeetingAdmin', '$stateParams', 'TaskModalService', '$modal', '$http', 'PatientAdmin', MeetingItemController]);
 }());
 
 

@@ -2,7 +2,8 @@
 
 
 angular.module('eli.admin', [ 
-  'ngResource', 'eli.common',
+  'ngResource',
+  'eli.common',
   'ui.router',
   'ui.bootstrap',
   'LocalStorageModule',

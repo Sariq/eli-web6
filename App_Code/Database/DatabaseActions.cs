@@ -33,6 +33,13 @@ public class DatabaseActions
         await collection.InsertAsync(obj);
         return obj._id;
     }
+    protected async Task<Meeting> InsertObjectSariMeeting<ObjectType>(Meeting obj, string collectionName)
+    {
+        var collection = database.GetCollection(collectionName);
+        obj._id = Convert.ToString((ObjectId.GenerateNewId()));
+        await collection.InsertAsync(obj);
+        return obj;
+    }
 
     protected async void RemoveObject(string objId, string collectionName)
     {

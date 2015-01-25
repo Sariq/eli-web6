@@ -1,13 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.ServiceModel.Web;
 
 
 public class MeetingService : DatabaseActions, IMeeting
 {
-    public void AddMeeting(Meeting meeting)
+    public Meeting AddMeeting(Meeting meeting)
     {
-        InsertObject(meeting, "Meeting");     
+         Meeting meetingA = new Meeting("123", "123", "meetingA", "A", DateTime.Today, "FreeText", new string[] { "AA", "BB" });
+         return InsertObjectSariMeeting<Meeting>(meeting, "Meeting").Result;
+            //InsertObjectSariMeeting<Meeting>(meeting, "Meeting").Result;
+        //InsertObject(meeting, "Meeting");     
     }
 
     public void RemoveMeeting(string mettingId)

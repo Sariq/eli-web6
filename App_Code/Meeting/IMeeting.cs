@@ -12,7 +12,7 @@ public interface IMeeting
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    void AddMeeting(Meeting meeting);
+    Meeting AddMeeting(Meeting meeting);
 
     [OperationContract]
     [WebInvoke(
