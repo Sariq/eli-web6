@@ -10,15 +10,8 @@ public class Error
         UserIsAlreadyExist,
         NoUserInHeader,
         UserInHeaderIsNotExist,
-
-        MeetingIsNotExist,
-        MeetingIsAlreadyExist,
-
         PatientIsNotExist,
-        PatientIsAlreadyExist,
-
-        AssignmentIsNotExist,
-        AssignmentIsAlreadyExist,
+        PatientIsAlreadyExist
     }
 
     [DataMember] 

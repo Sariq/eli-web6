@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.ServiceModel.Web;
 using System.Web;
@@ -25,15 +27,10 @@ public class UserService : DatabaseActions, IUser
         }
 
         if (user.isRememberMe)
-        {
             dbUser.isRememberMe = true;
-            UpdateUser(dbUser);
-        }
         else
-        {
             dbUser.isRememberMe = false;
-            UpdateUser(dbUser);
-        }
+        UpdateUser(dbUser);
 
         communication.SetTokenToHeader(dbUser);
 
@@ -48,20 +45,21 @@ public class UserService : DatabaseActions, IUser
 
     public void SignOut()
     {
-        if (HttpContext.Current.Request.Cookies["TokenId"] != null)
-        {
-            HttpCookie myCookie = new HttpCookie("TokenId");
-            myCookie.Expires = DateTime.Now.AddDays(-1d);
-            HttpContext.Current.Response.Cookies.Add(myCookie);
-        }
+        //if (HttpContext.Current.Request.Cookies["TokenId"] != null)
+        //{
+        //    HttpCookie myCookie = new HttpCookie("TokenId");
+        //    myCookie.Expires = DateTime.Now.AddDays(-1d);
+        //    HttpContext.Current.Response.Cookies.Add(myCookie);
+        //}
     }
 
     public void AddUser(User user)
     {
-        var dbUser = GetUser(user.userId);
-        if (dbUser == null)
-            InsertObject(user, "User");
-        else
+        try
+        {
+            InsertObjectNotAsync(user, "User");
+        }
+        catch (MongoDuplicateKeyException)
         {
             var error = new Error(Error.ErrorType.UserIsAlreadyExist);
             throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
@@ -70,26 +68,12 @@ public class UserService : DatabaseActions, IUser
 
     public void RemoveUser(string userId)
     {
-        var dbUser = GetUser(userId);
-        if (dbUser != null)
-            RemoveObject(userId, "User");
-        else
-        {
-            var error = new Error(Error.ErrorType.UserIsNotExist);
-            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
-        }
+        RemoveObject(userId, "User");
     }
 
     public void UpdateUser(User user)
     {
-        var dbUser = GetUser(user.userId);
-        if (dbUser != null)
-            UpdateObject(user, "User");
-        else
-        {
-            var error = new Error(Error.ErrorType.UserIsNotExist);
-            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
-        }
+        UpdateObject(user, "User");
     }
 
     public User GetUser()
@@ -122,15 +106,7 @@ public class UserService : DatabaseActions, IUser
 
     public User GetUser(string userId)
     {
-        try
-        {
-            return GetObject<User>("userId", userId, "User").Result;
-        }
-        catch
-        {
-            var error = new Error(Error.ErrorType.UserIsNotExist);
-            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
-        }
+        return GetObject<User>("userId", userId, "User").Result;
     }
 
     public List<User> GetAllUsers()
