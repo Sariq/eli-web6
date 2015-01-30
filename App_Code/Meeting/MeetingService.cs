@@ -8,10 +8,9 @@ public class MeetingService : DatabaseActions, IMeeting
 {
     public Meeting AddMeeting(Meeting meeting)
     {
-         Meeting meetingA = new Meeting("123", "123", "meetingA", "A", DateTime.Today, "FreeText", new string[] { "AA", "BB" });
-         return InsertObjectSariMeeting<Meeting>(meeting, "Meeting").Result;
-            //InsertObjectSariMeeting<Meeting>(meeting, "Meeting").Result;
-        //InsertObject(meeting, "Meeting");     
+        var meetingId = InsertObjectAndReturnId(meeting, "Meeting").Result;
+        var dbMeeting = GetMeeting(meetingId);
+        return dbMeeting;
     }
 
     public void RemoveMeeting(string mettingId)

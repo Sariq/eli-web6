@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 ﻿using MongoDB.Driver;
-=======
-﻿using System;
->>>>>>> patient_cat
 using System.Collections.Generic;
 using System.Net;
 using System.ServiceModel.Web;
@@ -31,36 +27,17 @@ public class PatientService : DatabaseActions, IPatient
 
     public void UpdatePatient(Patient patient)
     {
-<<<<<<< HEAD
         UpdateObject(patient, "Patient");
-=======
-        var dbPatient = GetPatient(patient._id);
-        if (dbPatient != null)
-            UpdateObject(patient, "Patient");
-        else
-        {
-            var error = new Error(Error.ErrorType.PatientIsNotExist);
-            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
-        }
->>>>>>> patient_cat
     }
 
-    public Patient GetPatient(string patientIdentityNumber)
+    //public Patient GetPatient(string patientIdentityNumber)
+    //{
+    //    return GetObject<Patient>("identity_number", patientIdentityNumber, "Patient").Result;
+    //}
+
+    public Patient GetPatient(string patientId)
     {
-<<<<<<< HEAD
-        return GetObject<Patient>("identity_number", patientIdentityNumber, "Patient").Result;
-=======
-        try
-        {              
-            Patient patientA = GetObject<Patient>("_id", patientIdentityNumber, "Patient").Result; 
-                 return patientA;
-        }
-        catch
-        {
-            var error = new Error(Error.ErrorType.PatientIsNotExist);
-            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
-        }
->>>>>>> patient_cat
+        return GetObject<Patient>(patientId, "Patient").Result;
     }
 
     public List<Patient> GetAllPatients()
