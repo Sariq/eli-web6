@@ -31,32 +31,12 @@ public class PatientService : DatabaseActions, IPatient
 
     public void UpdatePatient(Patient patient)
     {
-
-        var dbPatient = GetPatient(patient._id);
-        if (dbPatient != null)
-            UpdateObject(patient, "Patient");
-        else
-        {
-            var error = new Error(Error.ErrorType.PatientIsNotExist);
-            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
-        }
-
+        UpdateObject(patient, "Patient");
     }
 
-    public Patient GetPatient(string patientIdentityNumber)
+    public Patient GetPatient(string patientId)
     {
-
-        try
-        {              
-            Patient patientA = GetObject<Patient>("_id", patientIdentityNumber, "Patient").Result; 
-                 return patientA;
-        }
-        catch
-        {
-            var error = new Error(Error.ErrorType.PatientIsNotExist);
-            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
-        }
-
+        return GetObject<Patient>(patientId, "Patient").Result; 
     }
 
     public List<Patient> GetAllPatients()

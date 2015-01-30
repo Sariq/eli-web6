@@ -55,7 +55,7 @@ public interface IUser
          Method = "GET",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetUser/{id}")
+         UriTemplate = "api/{id}")
     ]
     User GetUser(string id);
 
@@ -64,7 +64,7 @@ public interface IUser
          Method = "GET",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetAllUsers")
+         UriTemplate = "api")
     ]
     List<User> GetAllUsers();
 }
