@@ -19,7 +19,11 @@
 
     self.addTask = function (meeting, task) {
         meeting.assignments.push(task);
-    };                       
+    };
+
+    self.deleteAssignment = function (meeting, idx) {
+        return meeting.assignments.splice(idx, 1);
+    };
 
     self.save = function (meeting) {
       return self.meetingResource.save();

@@ -120,7 +120,19 @@
             }
         };
 
+        self.getAssignmentsByIds = function () {
+            $http({
+                url: '/AssignmentService.svc/getAssignmentsByIds',
+                method: 'POST',
+                data: self.meeting.assignments
+            }).then(function (response) {
 
+                self.assignments = response.data;
+
+
+            }, function () { alert("getAssignmentsByIds error") });
+
+        }
 
 
         self.openModal = function () {
@@ -142,16 +154,7 @@
             modalInstance.result.then(function (res) {
    
                 MeetingAdmin.addTask(self.meeting, res);
-                $http({
-                    url: '/AssignmentService.svc/getAssignmentsByIds',
-                    method: 'POST',
-                    data: self.meeting.assignments
-                }).then(function (response) {
-                 
-                    self.assignments = response.data;
-
-
-                }, function () { alert("getAssignmentsByIds error") });
+                self.getAssignmentsByIds();
 
                 console.log('Selected True');
             }, function (data) {
@@ -160,10 +163,23 @@
             });
         };
 
-        self.removeAssignment=function(assignment)
+        self.removeAssignment=function(assignment,idx)
         {
-                      
-            console.log('TaskModalService.openModal');
+            $http({
+                url: '/AssignmentService.svc/deleteAssignment',
+                method: 'POST',
+                data: assignment._id
+            }).then(function (response) {
+               
+
+                MeetingAdmin.deleteAssignment(self.meeting, idx);
+                self.meeting.$update(function (response) {
+              
+                    self.getAssignmentsByIds()
+                })
+
+
+            }, function () { alert("deleteAssignment error") });
            
 
         }
@@ -178,22 +194,33 @@
                     }
                 }
             });
+
+
+            modalInstance.result.then(function (response) {
+                console.log(response)
+                assignment = response;
+            }, function (data) {
+                var resp = angular.copy(data);
+                console.log('Selected false');
+            });
         }
-        //self.bgColor = {};
 
-        //self.init = function () {
+        self.isDoneAssignmentToggle = function (assignment) {
 
-        //}
+            assignment.isDone = !assignment.isDone
+            $http({
+                url: '/AssignmentService.svc/api',
+                method: 'PUT',
+                data: assignment
+            }).then(function (response) {
 
-        //self.pickColor = function () {
-        //    return 'red';
-        //}
+                
+               
 
-        //self.newColor = function () {
-        //    alert()
-        //    self.bgColor['background'] = self.pickColor();
+            }, function () { alert("AssignmentIsDone error") });
+        }
+        
 
-        //}
 
         self.showTask = function (assignment) {
             //MeetingAdmin.addTask(self.meeting);

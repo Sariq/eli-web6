@@ -10,7 +10,7 @@
      self.remove = function (patient) {
         console.log(patient);
         console.log(patient._id);
-        patient.$remove({_id: patient._id}, function () {
+        patient.$remove({id: patient._id}, function () {
           self.patients = PatientAdmin.query();
         });
       };

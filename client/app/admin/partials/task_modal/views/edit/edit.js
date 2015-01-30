@@ -14,14 +14,15 @@
         };
 
         $scope.ok = function () {
+            console.log($scope.task.data)
             $http({
                 url: '/AssignmentService.svc/api',
                 method: 'PUT',
-                data: $scope.task
+                data: $scope.task.data
             }).then(function (response) {
-                alert(response._id)
-                self.assignments = response.data;
-                $modalInstance.close(response._id);
+                
+                self.assignment = $scope.task.data;
+                $modalInstance.close(response);
 
             }, function () { alert("getAssignmentsByIds error") });
            

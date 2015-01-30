@@ -53,7 +53,7 @@
      
 
         $http({
-            url: '/MeetingService.svc/Delete',
+            url: '/MeetingService.svc/deleteMeeting',
             method: 'POST',
             data:  meeting._id 
         }).then(function (response) {

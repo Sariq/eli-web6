@@ -20,6 +20,7 @@
         self.error = '';
         self.debug = '';
         self.isNew = false;
+        self.patient = PatientAdmin.patient;
         self.info = MeetingAdmin.info;
         self.assignments = '';
         self.meeting = MeetingAdmin.create();
@@ -189,8 +190,83 @@
         //}
 
 
+   
+
+
+    self.removeAssignment = function (assignment, idx) {
+        $http({
+            url: '/AssignmentService.svc/deleteAssignment',
+            method: 'POST',
+            data: assignment._id
+        }).then(function (response) {
+
+
+            MeetingAdmin.deleteAssignment(self.meeting, idx);
+            self.meeting.$update(function (response) {
+
+                self.getAssignmentsByIds()
+            })
+
+
+        }, function () { alert("deleteAssignment error") });
+
+
+    }
+    self.editAssignment = function (assignment) {
+        var modalInstance = $modal.open({
+            templateUrl: '../admin/partials/task_modal/views/edit/edit.html',
+            controller: 'EditTaskCtrl',
+            size: 'lg',
+            resolve: {
+                data: function () {
+                    return { data: assignment };
+                }
+            }
+        });
+
+
+        modalInstance.result.then(function (response) {
+            console.log(response)
+            assignment = response;
+        }, function (data) {
+            var resp = angular.copy(data);
+            console.log('Selected false');
+        });
     }
 
+    self.isDoneAssignmentToggle = function (assignment) {
+
+        assignment.isDone = !assignment.isDone
+        $http({
+            url: '/AssignmentService.svc/api',
+            method: 'PUT',
+            data: assignment
+        }).then(function (response) {
+
+
+
+
+        }, function () { alert("AssignmentIsDone error") });
+    }
+
+
+
+    self.showTask = function (assignment) {
+        //MeetingAdmin.addTask(self.meeting);
+
+        console.log('TaskModalService.openModal');
+        var modalInstance = $modal.open({
+            templateUrl: '../admin/partials/task_modal/views/content/content.html',
+            controller: 'TaskModalInstanceCtrl',
+            size: 'lg',
+            resolve: {
+                data: function () {
+                    return { data: assignment };
+                }
+            }
+        });
+    }
+    }
     angular.module('eli.admin')
         .controller('MeetingAddController', ['$location', '$rootScope', '$state', '$scope', 'MeetingAdmin', '$stateParams', 'TaskModalService', '$modal', '$http', 'PatientAdmin', MeetingAddController]);
 }());

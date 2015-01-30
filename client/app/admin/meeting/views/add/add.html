@@ -102,20 +102,22 @@
 
                       	<!-- SORTABLE TO DO LIST -->
 	
-      	<img id="top" src="imgs/top.png" alt="">
-
-	<div id="form_container">
-	<span class="form-header"><h1 style="" class=" text-right" translate>הוסף טיפול</h1></span>
-        
-
-<ol class="breadcrumb text-right">
-    
-  
+        <div class="text-right">
+   
+    <div class="form-header " style="padding-top:30px" > <img id="Img1" style="width:100%" src="imgs/top.png" alt=""><h1 class="page-header text-right" translate>Meetings</h1>
+<ol class="breadcrumb">
     <li class="active" translate>Add Meeting</li>
-      <li><a href="#/meetings" translate>Meeting</a></li>
-    <li><a href="#" translate>Admin</a></li>
+    <li> <a href="#/meetings" translate>Meetings</a></li>
+    <li><a href="#/patient/profile/{{add.patient._id}}" translate>{{add.patient.first_name}}</a></li>
+  <li><a href="#patients" translate>Patients</a></li>
+  <li  ><a href="#dashboard" translate>Dashboard</a></li>
 </ol>
-		
+</div>
+</div>
+        <br />
+
+<div id="form_container">
+	
         <br />
    <form class="form-horizontal style-form" method="get">
                  
@@ -195,14 +197,15 @@
                                           <div class="task-title">
 
                                               <div class="pull-left hidden-phone">
-                                                  <button ng-click="assignment.idDone=!assignment.idDone" class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                   <button ng-if="!assignment.isDone" ng-click="add.isDoneAssignmentToggle(assignment)" class="btn btn-success btn-xs fa fa-check"></button>
+                                                  <button ng-if="assignment.isDone" ng-click="add.isDoneAssignmentToggle(assignment)" class="btn btn-warning btn-xs fa fa-remove"></button>
+                                                  <button ng-click="add.editAssignment(assignment)" class="btn btn-primary btn-xs fa fa-pencil"></button>
                                                   <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
                                               </div>
 
-                                              <span ng-if="assignment.idDone" class="badge bg-success">בוצע</span>
-                                              <span ng-if="!assignment.idDone" class="badge bg-info">לא בוצע</span>
-                                              <span class="assignment-title-sp pull-right">{{assignment.title}}</span>
+                                             <span ng-if="assignment.isDone" class="badge bg-success">בוצע</span>
+                                              <span ng-if="!assignment.isDone" class="badge bg-info">לא בוצע</span>
+                                              <span class="assignment-title-sp pull-right"><a ng-click="add.showTask(assignment)"  >{{assignment.title}}</a></span>
 
 
                                           </div>
@@ -230,5 +233,6 @@
                     </div>
                 </div>
             </div>
+</div>
 </div>
 <script src="meeting/css/tasks.js"></script>
