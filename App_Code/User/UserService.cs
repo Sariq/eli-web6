@@ -12,7 +12,7 @@ public class UserService : DatabaseActions, IUser
 
     public User SignIn(User user)
     {
-        var dbUser = GetUser(user.userId);
+        var dbUser = GetUserForSignIn(user.userId);
 
         if (dbUser == null)
         {
@@ -66,14 +66,33 @@ public class UserService : DatabaseActions, IUser
         }
     }
 
-    public void RemoveUser(string userId)
+    public void RemoveUser(string id)
     {
-        RemoveObject(userId, "User");
+        RemoveObject(id, "User");
     }
 
     public void UpdateUser(User user)
     {
         UpdateObject(user, "User");
+    }
+
+    public User GetUser(string id)
+    {
+        return GetObject<User>(id, "User").Result;
+    }
+
+    public User GetUserForSignIn(string userId)
+    {
+        try
+        {
+            User user = GetObject<User>("userId", userId, "User").Result;
+            return user;
+        }
+        catch
+        {
+            var error = new Error(Error.ErrorType.UserIsNotExist);
+            throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
+        }
     }
 
     public User GetUser()
@@ -103,12 +122,7 @@ public class UserService : DatabaseActions, IUser
 
         return user;
     }
-
-    public User GetUser(string userId)
-    {
-        return GetObject<User>("userId", userId, "User").Result;
-    }
-
+    
     public List<User> GetAllUsers()
     {
         return GetAllObject<User>("User");

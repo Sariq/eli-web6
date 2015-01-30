@@ -38,7 +38,7 @@ public class AssignmentService : DatabaseActions, IAssignment
         List<Assignment> assignments = new List<Assignment> { };
         foreach (string assignmentId in tmpAssignments)
         {
-            Assignment assignment = GetObject<Assignment>(assignmentId, "Assignment").Result;
+            Assignment assignment = GetAssignment(assignmentId);
             assignments.Add(assignment);
         }
         return assignments;
