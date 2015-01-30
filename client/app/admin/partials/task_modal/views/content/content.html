@@ -1,0 +1,96 @@
+﻿<style>
+.modal-header-success {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5cb85c;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-warning {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #f0ad4e;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-danger {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #d9534f;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-info {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5bc0de;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-primary {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #428bca;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+
+</style>
+
+      <!-- Modal -->
+   
+       
+                <div class="modal-header modal-header-primary">
+                  <div style="font-size:20px; padding-left:80%;">
+            תוכן משימה</div>
+                </div>
+                <div class="modal-body">
+                    
+   <div class="container">     
+ 
+  <form role="form">
+    <div class="form-group">
+      <div class="col-sm-9 ">
+                <label class="pull-right font-size:20px text-right" for="title">: כותרת</label>
+           <label class="pull-right font-size:20px text-right" for="title"> {{items.data.title}}</label>
+   
+              </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-9">
+                <label class="pull-right" for="content">: תוכן</label>
+      <textarea ng-model="items.data.content" class="form-control text-right" rows="4"  id="content"></textarea>
+              </div>
+    </div>
+  </form>
+</div> 
+                </div>
+       
+
+
+    <!-- Modal -->

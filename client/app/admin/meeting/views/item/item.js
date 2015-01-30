@@ -160,7 +160,25 @@
             });
         };
 
+        self.removeAssignment=function(assignment)
+        {
+                      
+            console.log('TaskModalService.openModal');
+           
 
+        }
+        self.editAssignment = function (assignment) {
+            var modalInstance = $modal.open({
+                templateUrl: '../admin/partials/task_modal/views/edit/edit.html',
+                controller: 'EditTaskCtrl',
+                size: 'lg',
+                resolve: {
+                    data: function () {
+                        return { data: assignment };
+                    }
+                }
+            });
+        }
         //self.bgColor = {};
 
         //self.init = function () {
@@ -176,6 +194,22 @@
         //    self.bgColor['background'] = self.pickColor();
 
         //}
+
+        self.showTask = function (assignment) {
+            //MeetingAdmin.addTask(self.meeting);
+
+            console.log('TaskModalService.openModal');
+            var modalInstance = $modal.open({
+                templateUrl: '../admin/partials/task_modal/views/content/content.html',
+                controller: 'TaskModalInstanceCtrl',
+                size: 'lg',
+                resolve: {
+                    data: function () {
+                        return { data: assignment};
+                    }
+                }
+            });
+        }
 
 
     }

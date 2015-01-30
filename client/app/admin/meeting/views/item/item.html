@@ -115,11 +115,11 @@
 </ol>
 </div>
 </div>
+		<a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/meeting/edit/{{item.meeting._id}}"></a>
       	<img id="top" src="imgs/top.png" alt="">
 
 	<div id="form_container">
 	
-		
         <br />
    <form class="form-horizontal style-form" method="get">
                  
@@ -194,13 +194,13 @@
 
                                               <div class="pull-left hidden-phone">
                                                   <button ng-click="assignment.idDone=!assignment.idDone" class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                                  <button ng-click="item.editAssignment(assignment)" class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                                  <button ng-click="item.removeAssignment(assignment)" class="btn btn-danger btn-xs fa fa-trash-o"></button>
                                               </div>
 
                                               <span ng-if="assignment.idDone" class="badge bg-success">בוצע</span>
                                               <span ng-if="!assignment.idDone" class="badge bg-info">לא בוצע</span>
-                                              <span class="assignment-title-sp pull-right">{{assignment.title}}</span>
+                                              <span class="assignment-title-sp pull-right"><a ng-click="item.showTask(assignment)"  >{{assignment.title}}</a></span>
 
 
                                           </div>

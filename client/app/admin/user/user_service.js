@@ -25,14 +25,15 @@
 
     self.create = function(){
         var user = {
-        identity_number:'',
-        first_name: '',
-        last_name: '',
-        //birth_date: '',
+            userId:'',
+            password: '',
+            first_name: '',
+            last_name: '',
         address: '',
-        email:'',
-        meetings: []
+        //role:''
         };
+
+
         self.user = new self.userResource(user)
         return self.user;
     };

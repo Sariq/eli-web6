@@ -1,22 +1,22 @@
 (function () {
-    /** Patient Controller
+    /** User Controller
      *
      * @param $location:
-     * @param PatientAdmin: Service
+     * @param UserAdmin: Service
      * @constructor
      */
-    function PatientAddController($location, $scope, PatientAdmin, $stateParams) {
+    function UserAddController($location, $scope, UserAdmin, $stateParams) {
         var self = this;
         self.error = '';
         self.debug = '';
         self.isNew = false;
-        self.info = PatientAdmin.info;
+        self.info = UserAdmin.info;
  
   
    
-        self.patientId = $stateParams.patientId;
+        self.userId = $stateParams.userId;
         self.meetingId = $stateParams.meetingId;
-        //alert($stateParams.patientId)
+        //alert($stateParams.userId)
         self.steps = [];
 
        
@@ -25,25 +25,17 @@
             return true;
         };
 
-        if (self.patientId) {
-
-            self.patient = PatientAdmin.get($stateParams.patientId);
-            self.patient.$promise.then(function (result) {
-                console.log(self.patient);
-                if (typeof (self.meetingId) != 'undefined') {
-
-                    PatientAdmin.addMeeting(self.patient, self.meetingId);
-                   // alert(angular.toJson(self.patient))
-                    self.patient.$save(function (response) {
-                        //alert(angular.toJson(response))
-                    });
-                }
-
-            });
+        if (self.userId) {
+            alert(self.userId)
+            self.user = UserAdmin.get($stateParams.userId);
+            self.user.$promise.then(function (result) {
+                console.log(self.user);
+              
+            })
 
         } else {
             self.isNew = true;
-            self.patient = PatientAdmin.create();
+            self.user = UserAdmin.create();
         }
 
       
@@ -51,15 +43,15 @@
 
         self.save = function () {
            
-            var success_url = '/patients';
+            var success_url = '/users';
             if (self.configurationId) {
-                success_url = success_url + '/' + self.patient;
+                success_url = success_url + '/' + self.user;
 
             }
             if (self.isNew) {
 
-                console.log(self.patient);
-                self.patient.$save(function (response) {
+                console.log(self.user);
+                self.user.$save(function (response) {
                     console.log(response);
                    
                         $location.path(success_url);
@@ -69,7 +61,7 @@
                 });
             } else {
               
-                self.patient.$update(function (response) {
+                self.user.$update(function (response) {
                     console.log(response);
                    
                         $location.path(success_url);
@@ -90,7 +82,7 @@
     }
 
     angular.module('eli.admin')
-        .controller('PatientAddController', ['$location', '$scope', 'PatientAdmin', '$stateParams', PatientAddController]);
+        .controller('UserAddController', ['$location', '$scope', 'UserAdmin', '$stateParams', UserAddController]);
 }());
 
 

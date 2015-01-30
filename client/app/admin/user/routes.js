@@ -19,7 +19,7 @@
       })      
       .state('#/user/add', {
           url: '/user/add',
-          templateUrl: 'users/views/add/add.html',
+          templateUrl: 'user/views/add/add.html',
         controller: 'UserAddController',
         controllerAs: 'add'
 
@@ -33,7 +33,7 @@
         })
       .state('user/edit/:userId', {
           url: '/user/edit/:userId',
-          templateUrl: 'users/views/add/add.html',
+          templateUrl: 'user/views/add/add.html',
         controller: 'UserAddController',
         controllerAs: 'add'
       })
