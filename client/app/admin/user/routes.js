@@ -12,9 +12,9 @@
              $stateProvider
       .state('/user/profile/:userId', {
           url: '/user/profile/:userId',
-          templateUrl: 'users/views/profile/profile.html',
+          templateUrl: 'user/views/profile/profile.html',
           controller: 'UserProfileController',
-          controllerAs: 'profile'
+          controllerAs: 'user'
 
       })      
       .state('#/user/add', {

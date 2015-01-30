@@ -7,10 +7,9 @@
 
 
 
-     self.remove = function (user) {
-        console.log(user);
-        console.log(user._id);
-        user.$remove({_id: user._id}, function () {
+    self.remove = function (user) {
+
+        user.$remove({id: user._id}, function () {
           self.users = UserAdmin.query();
         });
       };

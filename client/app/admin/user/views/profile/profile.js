@@ -1,25 +1,25 @@
 (function () {
-    /** Patient Controller
+    /** User Controller
      *
      * @param $location:
-     * @param PatientAdmin: Service
+     * @param UserAdmin: Service
      * @constructor
      */
-    function PatientProfileController($location, $scope, PatientAdmin, $stateParams) {
+    function UserProfileController($location, $scope, UserAdmin, $stateParams) {
         var self = this;
-        self.patient = $stateParams.patientId;
-        self.patient = PatientAdmin.get($stateParams.patientId);
-        self.patient.$promise.then(function (result) {
-            console.log(self.patient);
+       // self.profile = $stateParams.userId;
+        self.profile = UserAdmin.get($stateParams.userId);
+        self.profile.$promise.then(function (result) {
+            console.log(self.profile);
 
         });
-        if (self.patientId) {
-            self.patient = PatientAdmin.get(self.patientId);
+        if (self.profileId) {
+            self.profile = UserAdmin.get(self.profileId);
 
         }
     }
     angular.module('eli.admin')
-        .controller('PatientProfileController', ['$location', '$scope', 'PatientAdmin', '$stateParams', PatientProfileController]);
+        .controller('UserProfileController', ['$location', '$scope', 'UserAdmin', '$stateParams', UserProfileController]);
 }());
 
 

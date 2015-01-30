@@ -28,7 +28,7 @@ public interface IUser
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "AddUser")
+         UriTemplate = "api")
     ]
     void AddUser(User user);
 
@@ -37,16 +37,16 @@ public interface IUser
          Method = "DELETE",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "RemoveUser")
+         UriTemplate = "api/{id}")
     ]
-    void RemoveUser(string userId);
+    void RemoveUser(string id);
 
     [OperationContract]
     [WebInvoke(
          Method = "PUT",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "UpdateUser")
+         UriTemplate = "api")
     ]
     void UpdateUser(User user);
 

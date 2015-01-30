@@ -26,7 +26,7 @@
         };
 
         if (self.userId) {
-            alert(self.userId)
+
             self.user = UserAdmin.get($stateParams.userId);
             self.user.$promise.then(function (result) {
                 console.log(self.user);
