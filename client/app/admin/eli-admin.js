@@ -34,12 +34,12 @@ angular.module('eli.admin', [
 
     $stateProvider
       .state('dashboard', {
-        url: '/dashboard',
+        url: '/',
         templateUrl: 'partials/dashboard.html',
       
       }) 
         .state('logIn', {
-         url: '/',
+            url: '/logIn',
         templateUrl: 'auth/views/logIn/logIn.html',
        
         controllerAs: 'logIn'
@@ -57,11 +57,12 @@ angular.module('eli.admin', [
 
 
     if (!isToken) {
-         //   alert("log");
+         
             $rootScope.nav.show = false;
             $location.path("/logIn")
         }
-        else {
+    else {
+  
             $rootScope.nav.show = true;
             $location.path($location.path())
         }

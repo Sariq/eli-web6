@@ -7,7 +7,7 @@
         $stateProvider
        .state('main', {
            url: '/main',
-           templateUrl: 'client/app/main/views/main.html',
+           templateUrl: 'main/views/main.html',
            controller: 'MainCtrl',
            controllerAs: 'main'
 
