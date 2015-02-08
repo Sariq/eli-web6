@@ -17,8 +17,8 @@
   <body ng-app="eliApp" ng-controller="LogInCtrl">
 
     <div ui-view=""></div>
-      <div ng-include='"templates/chat.html"'></div>
-
+      <div ng-controller="ChatController as chat" ng-include='"chat/views/chat.html"'></div>
+ 
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/angular/angular.js"></script>
 
@@ -52,7 +52,10 @@
       
         <script src="admin/routes.js"></script>  
         <!--admin-->
-        
+        <!--chat-->
+                <script src="chat/views/chat.js"></script>
+      <script src="chat/chat_service.js"></script>
+        <!--chat-->
         <!--information-->
         <script src="information/routes.js"></script>  
         <!--information-->
