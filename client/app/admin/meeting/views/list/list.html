@@ -1,61 +1,49 @@
+<div class="row form-header text-right">
 
-
-
-
-
-
-<div class="text-right">
-   
-    <div class="form-header " style="padding-top:30px" > <img id="top" style="width:100%" src="imgs/top.png" alt=""><h1 class="page-header text-right" translate>Meetings</h1>
-<ol class="breadcrumb">
-    <li class="active" translate>Meetings</li>
-    <li><a href="#/patient/profile/{{list.patient._id}}" translate>{{list.patient.first_name}}</a></li>
-  <li><a href="#patients" translate>Patients</a></li>
-  <li  ><a href="#dashboard" translate>Dashboard</a></li>
-</ol>
-</div>
+    <img id="Img1" src="imgs/top.png">
+    <h1 class="page-header" translate>Meetings</h1>
+    <ol class="breadcrumb">
+        <li class="active" translate>Meetings</li>
+        <li><a href="#/patient/profile/{{list.patient._id}}" translate>{{list.patient.first_name}}</a></li>
+        <li><a href="#patients" translate>Patients</a></li>
+        <li><a href="#dashboard" translate>Dashboard</a></li>
+    </ol>
 </div>
 
 
+<div class="row">
+    <table class="table table-striped text-right">
+        <thead>
+            <tr>
 
+                <td></td>
+                <td></td>
+                <td></td>
 
+                <td translate>Time</td>
 
+                <td translate>Title</td>
 
+            </tr>
+        </thead>
 
+        <tr ng-repeat="meeting in list.meetings">
 
-
-
-<table class="table table-striped text-right">
-  <thead>
-  <tr>
-    
-       <td></td>
-      <td></td>
-       <td></td>
-
-    <td translate>Time</td>
-
-       <td translate>Title</td>
-    
-  </tr>
-  </thead>
-
-  <tr ng-repeat="meeting in list.meetings">
-
-          <td>
-         <a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/meeting/edit/{{meeting._id}}"></a>
-    </td>
-    <td> 
-       <i object-name="meeting"   confirm-action="list.remove($index,meeting)"  class="btn btn-xs btn-danger glyphicon glyphicon-trash"></i>
-    </td>
+            <td>
+                <a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/meeting/edit/{{meeting._id}}"></a>
+            </td>
+            <td>
+                <i object-name="meeting" confirm-action="list.remove($index,meeting)" class="btn btn-xs btn-danger glyphicon glyphicon-trash"></i>
+            </td>
             <td></td>
-  
-    <td>{{meeting.time}}</td>
 
-              <td><a href="#/meeting/item/{{meeting._id}}">{{meeting.title}}</a></td>
-       <td>{{$index}}</td>
-  </tr>
+            <td>{{meeting.time}}</td>
 
-</table>
+            <td><a href="#/meeting/item/{{meeting._id}}">{{meeting.title}}</a></td>
+            <td>{{$index}}</td>
+        </tr>
 
-        <a  class="btn btn-info" href="#/meeting/add"><span class="fa fa-plus" ></span>{{'Add meeting'|translate}}</a>
+    </table>
+
+    <a class="btn btn-info" href="#/meeting/add"><span class="fa fa-plus"></span>{{'Add meeting'|translate}}</a>
+</div>

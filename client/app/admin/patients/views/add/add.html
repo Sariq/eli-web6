@@ -1,144 +1,54 @@
-﻿<!--<h1 class="page-header" translate>Add Patient</h1>
-<ol class="breadcrumb">
-    <li><a href="#" translate>Admin</a></li>
-    <li><a href="#/patients" translate>Patient</a></li>
-    <li class="active" translate>Add Patient</li>
-</ol>
+﻿<div class="row form-header text-right">
 
-<div ng-if="add.error" class="alert alert-danger" role="alert">{{ add.error }}</div>
-<div ng-if="add.debug" class="alert alert-warning" role="alert">{{ add.debug }}</div>
-
-
-
-<div class="well">
-    <div class="well">
-
-        <form name="myForm" class="form-horizontal" role="form" novalidate>
-
-
-            <div ng-class="{'has-error':!add.patient.ip_address}" class="form-group ">
-                <label for="first_name" class="col-sm-2 control-label">First Name</label>
-
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="ipaddress" ng-model="add.patient.first_name"
-                           id="ip_address"
-                           placeholder="First Name" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">Last Name</label>
-
-                <div class="col-sm-10">
-                    <input type="text" ng-model="add.patient.last_name" class="form-control" id="last_name"
-                           placeholder="Last Name" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="description" class="col-sm-2 control-label">Address</label>
-
-                <div class="col-sm-10">
-                    <input type="text" ng-model="add.patient.address" class="form-control" id="address"
-                           placeholder="address" required>
-                </div>
-            </div>-->
-<!--<label>Due Date :</label><br>
-		<datetimepicker ng-change="validatmpeventDuedate()" min-date="minDate"
-			show-weeks="showWeeks" hour-step="hourStep" minute-step="minuteStep"
-			ng-model="event.tmpeventDuedate" show-meridian="showMeridian"
-			date-format="dd-MMM-yyyy" date-options="dateOptions"
-			date-disabled="disabled(date, mode)" readonly-time="false"></datetimepicker>
-		<br>-->
-           
-
-<!-- 
-          <button class="btn btn-info" ng-click="add.addTask(add.patient)" translate>Add task</button>
-
-            <table class="table">
-                <tr>
-                    <td translate>Project Family</td>
-                    <td translate>Project</td>
-                    <td translate>Step</td>
-                </tr>
-
-
-                <tr ng-repeat="task in add.patient.tasks" pf-directive patient="add.patient.tasks" >
-                      <td><input ng-model="service.comments"></td>
-                     <td><input ng-model="service.comments"></td>
-                     <td><input ng-model="service.comments"></td>
-                    </tr>
-
-
-            </table>
-
-
-
-
-              <div class="form-group">
-                <div class="col-sm-2 control-label"></div>
-                <div class="col-sm-10">
-                    <div class="btn-group col-sm-10">
-                        <button ng-disabled="!add.patient.ip_address" style="width: 50%;" ng-click="add.save();"
-                                class="btn btn-info"
-                                translate>Save
-                        </button>
-                        <a style="width: 50%;" href="#/patients" class="btn btn-warning">Cancel</a>
-                    </div>
-                </div>
-            </div>
-
-        </form>
-    </div>
-</div>-->
-
-
-<div class="text-right">
-   
-    <div class="form-header " style="padding-top:30px" > <img id="Img1" style="width:100%" src="imgs/top.png" alt=""><h1 class="page-header text-right" translate>Patients</h1>
-<ol class="breadcrumb">
-  <li class="active"><a href="#patients" translate>Patients</a></li>
-  <li  ><a href="#dashboard" translate>Dashboard</a></li>
-</ol>
+    <img id="Img2" src="imgs/top.png">
+    <h1 class="page-header" translate>Patients</h1>
+    <ol class="breadcrumb">
+        <li class="active"><a href="#patients" translate>Patients</a></li>
+        <li><a href="#dashboard" translate>Dashboard</a></li>
+    </ol>
 </div>
-</div>
-	<img id="top" src="imgs/top.png" alt="">
 
-	<div id="form_container">
 
-</span>		
-        <br />
-   <form class="form-horizontal style-form" method="get">
-                
-                  <div  class="form-group ">
-                          <label for="first_name" class="col-md-2   control-label pull-right"><strong>: מטופל</strong></label>
 
-                          <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="first_name" ng-model="add.patient.first_name"
-                           id="Text5"
-                           placeholder="" required>
-                          </div>
-                 </div>
 
-                  <div  class="form-group ">
-                          <label for="last_name" class="col-md-2  control-label pull-right"><strong>: Last Name</strong></label>
 
-                          <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="last_name" ng-model="add.patient.last_name"
-                           id="Text6"
-                           placeholder="" required>
-                          </div>
-                 </div>
+<div class="row" id="form_container">
 
-                   <div  class="form-group ">
-                          <label for="identity_number"  class="col-md-2 control-label pull-right"><strong>: ת.ז</strong></label>
+    <img id="top" src="imgs/top.png" alt="">
+    <br />
+    <form class="form-horizontal style-form" method="get">
 
-                          <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="identity_number" ng-model="add.patient.identity_number"
-                           id="Text1"
-                           placeholder="" required>
-                          </div>
-                 </div>
+        <div class="form-group ">
+            <label for="first_name" class="col-md-2   control-label pull-right"><strong>: מטופל</strong></label>
 
-                 <!--<div  class="form-group ">
+            <div class="col-sm-10 pull-right">
+                <input type="text" class="form-control text-right " name="first_name" ng-model="add.patient.first_name"
+                    id="Text5"
+                    placeholder="" required>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label for="last_name" class="col-md-2  control-label pull-right"><strong>: Last Name</strong></label>
+
+            <div class="col-sm-10 pull-right">
+                <input type="text" class="form-control text-right " name="last_name" ng-model="add.patient.last_name"
+                    id="Text6"
+                    placeholder="" required>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label for="identity_number" class="col-md-2 control-label pull-right"><strong>: ת.ז</strong></label>
+
+            <div class="col-sm-10 pull-right">
+                <input type="text" class="form-control text-right " name="identity_number" ng-model="add.patient.identity_number"
+                    id="Text1"
+                    placeholder="" required>
+            </div>
+        </div>
+
+        <!--<div  class="form-group ">
                           <label for="birth_date"  class="col-md-2  control-label pull-right"><strong>: birth_date </strong></label>
 
                           <div class="col-sm-10 pull-right">
@@ -148,88 +58,43 @@
                           </div>
                  </div>-->
 
-                 <div  class="form-group ">
-                          <label for="address" class="col-md-2 control-label pull-right"><strong>: address</strong></label>
+        <div class="form-group ">
+            <label for="address" class="col-md-2 control-label pull-right"><strong>: address</strong></label>
 
-                          <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="address" ng-model="add.patient.address"
-                           id="Text8"
-                           placeholder="" required>
-                          </div>
-                 </div>
-
-                 <div  class="form-group ">
-                          <label for="email"  class="col-md-2 control-label pull-right"><strong>: email</strong></label>
-
-                          <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="email" ng-model="add.patient.email"
-                           id="Text9"
-                           placeholder="" required>
-                          </div>
-                 </div>
-
-                
-              
-
-       
-
-                         
-                      </form>
-		<div id="footer">
-	
-		</div>
-	
-	<img id="bottom" src="imgs/bottom.png" alt="">
-
-<!-- <section   class="task-panel tasks-widget">
-	                	<div class="panel-heading">
-	                        <div class="pull-right"><h5>טיפולים <span class="white-panel"><i class=" fa fa-tasks"></i> </span></h5></div>
-	                        <br>
-	                 	</div>
-                          <div class="panel-body">
-                              <div class="task-content">
-                                  <ul id="sortable" class="task-list ui-sortable">
-                                      <li ng-repeat="meeting in add.meetings" class="list-primary ">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-checkbox pull-right">
-                                              <input type="checkbox" class="list-child" value="" />
-                                          </div>
-                                          <div class="task-title">
-
-                                              <div class="pull-left hidden-phone">
-                                                  <button ng-click="meeting.idDone=!meeting.idDone" class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
-                                              </div>
-
-                                              <span ng-if="meeting.idDone" class="badge bg-success">בוצע</span>
-                                              <span ng-if="!meeting.idDone" class="badge bg-info">לא בוצע</span>
-                                              <span class="meeting-title-sp pull-right">{{meeting.title}}</span>
-
-
-                                          </div>
-                                      </li>
-                                                                    
-
-                                  </ul>
-                              </div>
-                              <div class=" add-task-row">
-                                  <a href="#/meeting/add/{{add.patient._id}}" class="btn btn-success btn-sm pull-left">Add New meeting</a>
-                                 
-                              </div>
-                          </div>
-
-                      </section>--><br />
-            <div class="form-group row">
-                <div class="col-sm-2 control-label"></div>
-                <div class="col-sm-10">
-                    <div class="btn-group col-sm-10">
-                        <button style="width: 50%;" ng-click="add.save();"
-                                class="btn btn-info"
-                                translate>Save
-                        </button>
-                        <a style="width: 50%;" href="#/patients" class="btn btn-warning">Cancel</a>
-                    </div>
-                </div>
+            <div class="col-sm-10 pull-right">
+                <input type="text" class="form-control text-right " name="address" ng-model="add.patient.address"
+                    id="Text8"
+                    placeholder="" required>
             </div>
+        </div>
+
+        <div class="form-group ">
+            <label for="email" class="col-md-2 control-label pull-right"><strong>: email</strong></label>
+
+            <div class="col-sm-10 pull-right">
+                <input type="text" class="form-control text-right " name="email" ng-model="add.patient.email"
+                    id="Text9"
+                    placeholder="" required>
+            </div>
+        </div>
+    </form>
+    <div id="footer">
+    </div>
+
+    <img id="bottom" src="imgs/bottom.png" alt="">
+
+    <br />
+    <div class="form-group row">
+        <div class="col-sm-2 control-label"></div>
+        <div class="col-sm-10">
+            <div class="btn-group col-sm-10">
+                <button style="width: 50%;" ng-click="add.save();"
+                    class="btn btn-info"
+                    translate>
+                    Save
+                </button>
+                <a style="width: 50%;" href="#/patients" class="btn btn-warning">Cancel</a>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,120 +1,117 @@
 <!DOCTYPE html>
-<html class="no-js"> 
-    <head>
-        <title>Admin</title>
-        <!-- Meta-Information -->
-        <title>ELI Admin</title>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="description" content="ACME Inc.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html  class="no-js">
+<head>
 
-        <!-- Vendor: Bootstrap Stylesheets http://getbootstrap.com -->
-                <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-        <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
-        <link href="../bower_components/Font-Awesome/css/font-awesome.css" rel="stylesheet" />
-         <link rel="stylesheet" type="text/css" href="../bower_components/sweetalert/lib/sweet-alert.css">
- 
-        <!--form-->
-        <link href="meeting/css/style.css" rel="stylesheet" />
-<link href="meeting/css/to-do.css" rel="stylesheet" />
+    <title>ELI Admin</title>
 
-<link href="css/form/view.css" rel="stylesheet" />
-<script src="css/form/view.js"></script>
-        <!--form-->
 
-        <!-- Our Website CSS Styles -->
-        <!-- MetisMenu CSS -->
-        <link rel="stylesheet" href="css/plugins/metisMenu/metisMenu.min.css">
+    <!-- Vendor: Bootstrap Stylesheets http://getbootstrap.com -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/master/dist/cdnjs/3.3.1/css/bootstrap-rtl.min.css">-->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../bower_components/Font-Awesome/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../bower_components/sweetalert/lib/sweet-alert.css">
 
-        <!-- Timeline CSS -->
-        <link rel="stylesheet" href="css/plugins/timeline.css">
+    <!--form-->
+    <link href="meeting/css/style.css" rel="stylesheet" />
+    <link href="meeting/css/to-do.css" rel="stylesheet" />
 
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/sb-admin-2.css">
-
-        <!-- Morris Charts CSS -->
-        <link rel="stylesheet" href="css/plugins/morris.css">
-
-    </head>
-    <body ng-app="eli.admin" ng-controller="LogInCtrl">
-         <div ng-controller="NavCtrl" ng-show="nav.show==true" ng-include='"templates/navigation.html"'></div>
+    <link href="css/form/view.css" rel="stylesheet" />
+    <script src="css/form/view.js"></script>
+    <!--form-->
     
-           
-            <div id="page-wrapper">
+    <!-- SB admin CSS Styles -->
+    <!-- MetisMenu CSS -->
+    <link rel="stylesheet" href="css/plugins/metisMenu/metisMenu.min.css">
 
-                <div ui-view=""></div>
+    <!-- Timeline CSS -->
+    <link rel="stylesheet" href="css/plugins/timeline.css">
 
-                </div>
-    
-          <script src="../bower_components/jquery/dist/jquery.js"></script>
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="../bower_components/angular/angular.js"></script>
-        <script src="../bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-        <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script src="../bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-      <script src="../bower_components/angular-resource/angular-resource.js"></script>
-         <script src="../bower_components/angular-websocket/angular-websocket.js"></script>
-        <script src="../bower_components/sweetalert/lib/sweet-alert.min.js"></script>
-        <script src="../bower_components/angular-jwt/dist/angular-jwt.min.js"></script>
-        <script src="../bower_components/angular-cookie/angular-cookie.min.js"></script>
-         <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
-        <!--common-->
-        <script src="css/sb-admin-2.js"></script>
-        <script src="../common/common_module.js"></script>
-        <script src="../common/services/task_modal.js"></script>
-         <!--Task Modal-->
-        <script src="partials/task_modal/views/add/add.js"></script>
-        <script src="partials/task_modal/routes.js"></script>
-        <script src="partials/task_modal/task_service.js"></script>
-         <!--Task Modal-->
-        <!--common-->
-      
-        <!-- Our Website Javascripts -->
-        <script src="eli-admin.js"></script>
-            <script src="directives/sweetAlert.js"></script>
-            <!--auth-->
-          <!--LogIn-->
-          <script src="auth/views/logIn/logIn.js"></script>
-          <!--LogIn-->
-          <script src="auth/auth_service.js"></script>
-          <script src="auth/routes.js"></script>  
-        <!--auth-->
-        <script src="templates/navigation.js"></script>
-        <!--patient-->
-        <script src="patients/patients_service.js"></script>
-        <script src="patients/routes.js"></script>
-        <script src="patients/views/list/list.js"></script>
-        <script src="patients/views/add/add.js"></script>
-        <script src="patients/views/profile/profile.js"></script>
-        <!--task-->
-        <script src="task/task_service.js"></script>
-        <script src="task/routes.js"></script>
-        <script src="task/views/list/list.js"></script>
-        <script src="task/views/add/add.js"></script>
-         <!--meeting-->
-        <script src="meeting/meeting_service.js"></script>
-        <script src="meeting/routes.js"></script>
-        <script src="meeting/views/list/list.js"></script>
-        <script src="meeting/views/add/add.js"></script>
-        <script src="meeting/views/item/item.js"></script>
-          <!--user-->
-        <script src="user/routes.js"></script>
-        <script src="user/user_service.js"></script>
-        <script src="user/views/list/list.js"></script>
-        <script src="user/views/profile/profile.js"></script>
-        <script src="user/views/add/add.js"></script>
-        <!--date_time_picker-->
-        <script src="../common/datetimepicker/datetimepicker-tpls-0.11.js"></script>
-         <!--translation-->
-        <script src="../bower_components/angular-translate/angular-translate.min.js"></script>
-        <script src="../bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
-        <script src="../common/translation/translation.js"></script>
-        <!--assigment-->
-        <script src="partials/task_modal/views/edit/edit.js"></script>
-        
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/sb-admin-2.css">
 
-        
-    </body>
+    <!-- Morris Charts CSS -->
+    <link rel="stylesheet" href="css/plugins/morris.css">
+</head>
+<body ng-app="eli.admin" ng-controller="LogInCtrl">
+    <div ng-controller="NavCtrl" ng-show="nav.show==true" ng-include='"templates/navigation.html"'></div>
+
+
+    <div id="page-wrapper">
+
+        <div ui-view=""></div>
+
+    </div>
+
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-websocket/angular-websocket.js"></script>
+    <script src="../bower_components/sweetalert/lib/sweet-alert.min.js"></script>
+    <script src="../bower_components/angular-jwt/dist/angular-jwt.min.js"></script>
+    <script src="../bower_components/angular-cookie/angular-cookie.min.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+    <script src="css/sb-admin-2.js"></script>
+    <!--common-->
+
+    <script src="../common/common_module.js"></script>
+    <script src="../common/services/task_modal.js"></script>
+    <!--Task Modal-->
+    <script src="partials/task_modal/views/add/add.js"></script>
+    <script src="partials/task_modal/routes.js"></script>
+    <script src="partials/task_modal/task_service.js"></script>
+    <!--Task Modal-->
+    <!--common-->
+
+    <!-- Our Website Javascripts -->
+    <script src="eli-admin.js"></script>
+    <script src="directives/sweetAlert.js"></script>
+    <!--auth-->
+    <!--LogIn-->
+    <script src="auth/views/logIn/logIn.js"></script>
+    <!--LogIn-->
+    <script src="auth/auth_service.js"></script>
+    <script src="auth/routes.js"></script>
+    <!--auth-->
+    <script src="templates/navigation.js"></script>
+    <!--patient-->
+    <script src="patients/patients_service.js"></script>
+    <script src="patients/routes.js"></script>
+    <script src="patients/views/list/list.js"></script>
+    <script src="patients/views/add/add.js"></script>
+    <script src="patients/views/profile/profile.js"></script>
+    <!--task-->
+    <script src="task/task_service.js"></script>
+    <script src="task/routes.js"></script>
+    <script src="task/views/list/list.js"></script>
+    <script src="task/views/add/add.js"></script>
+    <!--meeting-->
+    <script src="meeting/meeting_service.js"></script>
+    <script src="meeting/routes.js"></script>
+    <script src="meeting/views/list/list.js"></script>
+    <script src="meeting/views/add/add.js"></script>
+    <script src="meeting/views/item/item.js"></script>
+    <!--user-->
+    <script src="user/routes.js"></script>
+    <script src="user/user_service.js"></script>
+    <script src="user/views/list/list.js"></script>
+    <script src="user/views/profile/profile.js"></script>
+    <script src="user/views/add/add.js"></script>
+    <!--date_time_picker-->
+    <script src="../common/datetimepicker/datetimepicker-tpls-0.11.js"></script>
+    <!--translation-->
+    <script src="../bower_components/angular-translate/angular-translate.min.js"></script>
+    <script src="../bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
+    <script src="../common/translation/translation.js"></script>
+    <!--assigment-->
+    <script src="partials/task_modal/views/edit/edit.js"></script>
+
+
+
+</body>
 </html>

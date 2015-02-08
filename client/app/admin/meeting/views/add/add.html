@@ -1,238 +1,143 @@
 ﻿
-<style>
 
-    /* TODO PANEL */
-/*.steps{
-  display: block;
-}
-.steps input[type=checkbox] {
-  display: none;
-}
-.steps input[type=submit]{
-  background: #f1783c;
-  border: none;
-  padding: 0px;
-  margin: 0 auto;
-  width: 100%;
-  height: 55px;
-  color: white;
-  text-transform: uppercase;
-  font-weight: 900;
-  font-size: 11px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: background 0.5s ease
-}
-.steps input[type=submit]:hover{
-  background: #8fde9c;
-  
-}
-.steps label{
-  background: #393D40;
-  height: 65px;
-  line-height: 65px;
-  width: 100%;
-  display: block;
-  border-bottom: 1px solid #44494e;
-  color: #889199;
-  text-transform: uppercase;
-  font-weight: 900;
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-indent: 52px;
-  cursor: pointer;
-  transition: all 0.7s ease;
-  margin: 0px;
-}
-.pn {
+<div class="row form-header text-right">
 
-	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-.pn:hover {
-	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
-	
-}
-
-#op1:checked ~ label[for=op1]:before,
-#op2:checked ~ label[for=op2]:before,
-#op3:checked ~ label[for=op3]:before{
-  border: 2px solid #96c93c;
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHCAYAAAA1WQxeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGFJREFUeNpinHLMhgEHKADia0xQThIQs6JJ9gPxZhYQAcS6QHwDiI8hSYJAC0gBPxDLAvFcIJ6JJJkDxFNBVtgBcQ8Qa6BLghgwN4A4a9ElQYAFSj8C4mwg3o8sCQIAAQYA78QTYqnPZuEAAAAASUVORK5CYII=') no-repeat center center;
-}
-.steps label:before{
-  content:"";
-  width: 12px;
-  height: 12px;
-  display: block;
-  position: absolute;
-  margin: 26px 0px 0px 18px;
-  border-radius: 100%;
-  transition: border 0.7s ease
-}
-.steps label:hover{
-  background: #2B2E30;
-  color: #46b7e5
-}
-    .steps label:hover:before {
-        border: 1px solid #46b7e5;
-    }*/
-
-
-
-</style>
-
-
-<!--<h1 style="margin-top: 0px;padding-top: 10px;" class=" text-right" translate>Add Meeting</h1>
-<ol class="breadcrumb text-right">
-    
-  
-    <li class="active" translate>Add Meeting</li>
-      <li><a href="#/meetings" translate>Meeting</a></li>
-    <li><a href="#" translate>Admin</a></li>
-</ol>
-
-<div ng-if="add.error" class="alert alert-danger" role="alert">{{ add.error }}</div>
-<div ng-if="add.debug" class="alert alert-warning" role="alert">{{ add.debug }}</div>
-
-
-
-<div class="well">
-
-
-                      	<!-- SORTABLE TO DO LIST -->
-	
-        <div class="text-right">
-   
-    <div class="form-header " style="padding-top:30px" > <img id="Img1" style="width:100%" src="imgs/top.png" alt=""><h1 class="page-header text-right" translate>Meetings</h1>
-<ol class="breadcrumb">
-    <li class="active" translate>Add Meeting</li>
-    <li> <a href="#/meetings" translate>Meetings</a></li>
-    <li><a href="#/patient/profile/{{add.patient._id}}" translate>{{add.patient.first_name}}</a></li>
-  <li><a href="#patients" translate>Patients</a></li>
-  <li  ><a href="#dashboard" translate>Dashboard</a></li>
-</ol>
+    <img id="Img2" src="imgs/top.png">
+    <h1 class="page-header" translate>Meetings</h1>
+      <ol class="breadcrumb">
+            <li class="active" translate>Add Meeting</li>
+            <li><a href="#/meetings" translate>Meetings</a></li>
+            <li><a href="#/patient/profile/{{add.patient._id}}" translate>{{add.patient.first_name}}</a></li>
+            <li><a href="#patients" translate>Patients</a></li>
+            <li><a href="#dashboard" translate>Dashboard</a></li>
+        </ol>
 </div>
-</div>
-        <br />
 
-<div id="form_container">
-	
-        <br />
-   <form class="form-horizontal style-form" method="get">
-                 
-                  <div  class="form-group ">
-                          <label for="first_name" class="col-md-2   control-label pull-right"><strong>: מטפל</strong></label>
+<br />
 
-                          <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="therapistId" ng-model="add.meeting.therapistId"
-                           id="Text5"
-                           placeholder="therapistId" required>
-                          </div>
-                 </div>
+<div  class="row"  id="form_container">
 
-                  <div  class="form-group ">
-                          <label for="patientId" class="col-md-2  control-label pull-right"><strong>: Last Name</strong></label>
+      <img id="top" src="imgs/top.png" alt="">
+    <br />
+    <form class="form-horizontal style-form" method="get">
 
-                          <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="patientId" ng-model="add.meeting.patientId"
-                           id="Text6"
-                           placeholder="patientId" required>
-                          </div>
-                 </div>
+        <div class="form-group ">
+            <label for="first_name" class="col-md-2   control-label pull-right"><strong>: מטפל</strong></label>
 
-                 <div  class="form-group ">
-                          <label for="title"  class="col-md-2  control-label pull-right"><strong>: title</strong></label>
-
-                          <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="title" ng-model="add.meeting.title"
-                           id="Text7"
-                           placeholder="title" required>
-                          </div>
-                 </div>
-
-                 <div  class="form-group ">
-                          <label for="adress" class="col-md-2 control-label pull-right"><strong>: adress</strong></label>
-
-                          <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="adress" ng-model="add.meeting.adress"
-                           id="Text8"
-                           placeholder="adress" required>
-                          </div>
-                 </div>
-
-                 <div  class="form-group ">
-                          <label for="note"  class="col-md-2 control-label pull-right"><strong>: note</strong></label>
-
-                          <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right " name="note" ng-model="add.meeting.note"
-                           id="Text9"
-                           placeholder="note" required>
-                          </div>
-                 </div>
-
-
-
-                         
-                      </form>
-		<div id="footer">
-	
-		</div>
-	
-	<img id="bottom" src="imgs/bottom.png" alt="">
-
- <section   class="task-panel tasks-widget">
-	                	<div class="panel-heading">
-	                        <div class="pull-right"><h5>משימות <span class="white-panel"><i class=" fa fa-tasks"></i> </span></h5></div>
-	                        <br>
-	                 	</div>
-                          <div class="panel-body">
-                              <div class="task-content">
-                                  <ul id="sortable" class="task-list ui-sortable">
-                                      <li ng-repeat="assignment in add.assignments" class="list-primary ">
-                                          <i class=" fa fa-ellipsis-v"></i>
-                                          <div class="task-checkbox pull-right">
-                                              <input type="checkbox" class="list-child" value="" />
-                                          </div>
-                                          <div class="task-title">
-
-                                              <div class="pull-left hidden-phone">
-                                                   <button ng-if="!assignment.isDone" ng-click="add.isDoneAssignmentToggle(assignment)" class="btn btn-success btn-xs fa fa-check"></button>
-                                                  <button ng-if="assignment.isDone" ng-click="add.isDoneAssignmentToggle(assignment)" class="btn btn-warning btn-xs fa fa-remove"></button>
-                                                  <button ng-click="add.editAssignment(assignment)" class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
-                                              </div>
-
-                                             <span ng-if="assignment.isDone" class="badge bg-success">בוצע</span>
-                                              <span ng-if="!assignment.isDone" class="badge bg-info">לא בוצע</span>
-                                              <span class="assignment-title-sp pull-right"><a ng-click="add.showTask(assignment)"  >{{assignment.title}}</a></span>
-
-
-                                          </div>
-                                      </li>
-                                                                    
-
-                                  </ul>
-                              </div>
-                              <div class=" add-task-row">
-                                  <a ng-click="add.openModal()" class="btn btn-success btn-sm pull-left">Add New Tasks</a>
-                                  <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
-                              </div>
-                          </div>
-
-                      </section><br />
-            <div class="form-group row">
-                <div class="col-sm-2 control-label"></div>
-                <div class="col-sm-10">
-                    <div class="btn-group col-sm-10">
-                        <button ng-disabled="!add.meeting.title" style="width: 50%;" ng-click="add.save();"
-                                class="btn btn-info"
-                                translate>Save
-                        </button>
-                        <a style="width: 50%;" href="#/meetings/{{add.patient._id}}" class="btn btn-warning">Cancel</a>
-                    </div>
-                </div>
+            <div class="col-sm-10 pull-right">
+                <input type="text" class="form-control text-right " name="therapistId" ng-model="add.meeting.therapistId"
+                    id="Text5"
+                    placeholder="therapistId" required>
             </div>
-</div>
+        </div>
+
+        <div class="form-group ">
+            <label for="patientId" class="col-md-2  control-label pull-right"><strong>: Last Name</strong></label>
+
+            <div class="col-sm-10 pull-right">
+                <input type="text" class="form-control text-right " name="patientId" ng-model="add.meeting.patientId"
+                    id="Text6"
+                    placeholder="patientId" required>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label for="title" class="col-md-2  control-label pull-right"><strong>: title</strong></label>
+
+            <div class="col-sm-10 pull-right">
+                <input type="text" class="form-control text-right " name="title" ng-model="add.meeting.title"
+                    id="Text7"
+                    placeholder="title" required>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label for="adress" class="col-md-2 control-label pull-right"><strong>: adress</strong></label>
+
+            <div class="col-sm-10 pull-right">
+                <input type="text" class="form-control text-right " name="adress" ng-model="add.meeting.adress"
+                    id="Text8"
+                    placeholder="adress" required>
+            </div>
+        </div>
+
+        <div class="form-group ">
+            <label for="note" class="col-md-2 control-label pull-right"><strong>: note</strong></label>
+
+            <div class="col-sm-10 pull-right">
+                <input type="text" class="form-control text-right " name="note" ng-model="add.meeting.note"
+                    id="Text9"
+                    placeholder="note" required>
+            </div>
+        </div>
+
+
+
+
+    </form>
+    <div id="footer">
+    </div>
+
+    <img id="bottom" src="imgs/bottom.png" alt="">
+
+<div class="row">
+    <section class="task-panel tasks-widget">
+        <div class="panel-heading">
+            <div class="pull-right">
+                <h5>משימות <span class="white-panel"><i class=" fa fa-tasks"></i></span></h5>
+            </div>
+            <br>
+        </div>
+        <div class="panel-body">
+            <div class="task-content">
+                <ul id="sortable" class="task-list ui-sortable">
+                    <li ng-repeat="assignment in add.assignments" class="list-primary ">
+                        <i class=" fa fa-ellipsis-v"></i>
+                        <div class="task-checkbox pull-right">
+                            <input type="checkbox" class="list-child" value="" />
+                        </div>
+                        <div class="task-title">
+
+                            <div class="pull-left hidden-phone">
+                                <button ng-if="!assignment.isDone" ng-click="add.isDoneAssignmentToggle(assignment)" class="btn btn-success btn-xs fa fa-check"></button>
+                                <button ng-if="assignment.isDone" ng-click="add.isDoneAssignmentToggle(assignment)" class="btn btn-warning btn-xs fa fa-remove"></button>
+                                <button ng-click="add.editAssignment(assignment)" class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                            </div>
+
+                            <span ng-if="assignment.isDone" class="badge bg-success">בוצע</span>
+                            <span ng-if="!assignment.isDone" class="badge bg-info">לא בוצע</span>
+                            <span class="assignment-title-sp pull-right"><a ng-click="add.showTask(assignment)">{{assignment.title}}</a></span>
+
+
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class=" add-task-row">
+                <a ng-click="add.openModal()" class="btn btn-success btn-sm pull-left">Add New Tasks</a>
+                <a class="btn btn-default btn-sm pull-right" href="todo_list.html#">See All Tasks</a>
+            </div>
+        </div>
+
+    </section>
+    <br />
+    <div class="form-group row">
+        <div class="col-sm-2 control-label"></div>
+        <div class="col-sm-10">
+            <div class="btn-group col-sm-10">
+                <button ng-disabled="!add.meeting.title" style="width: 50%;" ng-click="add.save();"
+                    class="btn btn-info"
+                    translate>
+                    Save
+                </button>
+                <a style="width: 50%;" href="#/meetings/{{add.patient._id}}" class="btn btn-warning">Cancel</a>
+            </div>
+        </div>
+    </div>
+
 </div>
 <script src="meeting/css/tasks.js"></script>
+    </div>

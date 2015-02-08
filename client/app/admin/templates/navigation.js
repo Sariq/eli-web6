@@ -14,7 +14,7 @@
   });
 
 
-       $scope.logOut=function(){
+   	  $scope.logOut = function () {
        	 $rootScope.$broadcast("logOut");
 
        }
