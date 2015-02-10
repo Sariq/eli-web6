@@ -11,7 +11,7 @@ $(document).ready(function (e) {
                 var tops = [];
 
                 $('.story').each(function (index, element) {
-                    $(element).css("height", (window.innerHeight) + "px");
+                    $(element).css("height", (100) + "vh");
                     tops.push($(element).offset().top - 200);
                 });
                 //console.log(tops)//tops=slides locations
