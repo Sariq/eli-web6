@@ -11,15 +11,18 @@ public class AsyncServer
     private static int z=0;
 
     private static chatMessage[] arrchatMessage;
+    
 
     static AsyncServer()
     {
-        arrchatMessage = new chatMessage[10];
+        arrchatMessage = new chatMessage[30];
+        
     }
 
 
     public static void sendMessage(String message)
     {
+        int counter=0;
         lock (_lock)
         {
            
@@ -27,7 +30,23 @@ public class AsyncServer
                 arrchatMessage[z].content = message;
                 z++;
                 JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
-                string resultStr = myJavaScriptSerializer.Serialize(arrchatMessage);
+                for (int y = 0; y < arrchatMessage.Length; y++)
+                {
+                    if (arrchatMessage[y] != null)
+                    {
+                        counter++;
+                    }
+                }
+
+                chatMessage[] temp_arrchatMessage = new chatMessage[counter];
+                for (int y = 0; y < arrchatMessage.Length; y++)
+                {
+                    if (arrchatMessage[y] != null)
+                    {
+                        temp_arrchatMessage[y] = arrchatMessage[y];
+                    }
+                }
+                string resultStr = myJavaScriptSerializer.Serialize(temp_arrchatMessage);
                 foreach (AsyncResult clientState in _clientStateList)
                 {
                     if (clientState._context.Session != null)
@@ -78,10 +97,27 @@ public class AsyncServer
 
     public static void FirstTimeClient(AsyncResult state)
     {
+        int counter = 0;
         lock (_lock)
         {
             JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
-            string resultStr = myJavaScriptSerializer.Serialize(arrchatMessage);
+            for (int y = 0; y < arrchatMessage.Length; y++)
+            {
+                if (arrchatMessage[y] != null)
+                {
+                    counter++;
+                }
+            }
+
+            chatMessage[] temp_arrchatMessage = new chatMessage[counter];
+            for (int y = 0; y < arrchatMessage.Length; y++)
+            {
+                if (arrchatMessage[y] != null)
+                {
+                    temp_arrchatMessage[y] = arrchatMessage[y];
+                }
+            }
+            string resultStr = myJavaScriptSerializer.Serialize(temp_arrchatMessage);
            
             state._context.Response.Write(resultStr);
         }

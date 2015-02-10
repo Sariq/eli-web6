@@ -16,29 +16,26 @@
 
         self.myLoad = function () {
             self.xmlHttp_OneTime = ChatService.loadChat();
-
             self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Connect;
             self.xmlHttp_OneTime.send();
             
            
             }
-
+                                  
            
         self.getResponse_Connect = function () {
             if (self.xmlHttp_OneTime.readyState == 4) {
                 self.GuID = self.xmlHttp_OneTime.responseText;
                 ChatService.GuID = self.GuID;
-                self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Process;
-                self.xmlHttp_Process = ChatService.ProcessFunction();
-                self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
-                self.xmlHttp_Process.send();
+                self.xmlHttp_OneTime = ChatService.FirstTimeFunction();
+                self.xmlHttp_OneTime.onreadystatechange = self.getResponse_FirstTime;
+                self.xmlHttp_OneTime.send();
 
             }
           
         }
 
         self.getResponse_FirstTime = function () {
-            alert("FIRST")
             if (self.xmlHttp_OneTime.readyState == 4) {
                 var myJSON_Text = self.xmlHttp_OneTime.responseText;
                 myJsonObject = eval('(' + myJSON_Text + ')');
@@ -73,13 +70,13 @@
   
         self.myClick=function () {
             ChatService.myClick(self.myMessage);
-            self.myMessage='';
+            self.myMessage = '';
      
         }
 
         window.onunload = self.myUnLoad;
         window.onload = self.myLoad;
-
+        self.myLoad();
    
         return self;
 
@@ -89,7 +86,7 @@
 
     }
 
-    angular.module('eliApp')
+    angular.module('eli.admin')
         .controller('ChatController', ['$location', '$scope',  '$stateParams','ChatService', ChatController]);
 }());
 

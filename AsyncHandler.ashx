@@ -46,7 +46,7 @@ public class AsyncHandler : IHttpAsyncHandler, System.Web.SessionState.IReadOnly
         {
             case "sendMessage":
                 String myText;
-                if (myAsyncResult._context.Request.QueryString["myText"] != null)
+                 if (myAsyncResult._context.Request.QueryString["myText"] != null)
                 {
                     myText = (myAsyncResult._context.Request.QueryString["myText"]);
                     AsyncServer.sendMessage(myText);
