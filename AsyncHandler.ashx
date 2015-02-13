@@ -45,17 +45,24 @@ public class AsyncHandler : IHttpAsyncHandler, System.Web.SessionState.IReadOnly
         switch (command)
         {
             case "sendMessage":
-                String myText;
+                String myText,clientId;
                  if (myAsyncResult._context.Request.QueryString["myText"] != null)
                 {
+                    clientId = (myAsyncResult._context.Request.QueryString["clientId"]);
                     myText = (myAsyncResult._context.Request.QueryString["myText"]);
-                    AsyncServer.sendMessage(myText);
+                    AsyncServer.sendMessage(myText, clientId);
                     myAsyncResult.CompleteRequest();
                 }
                 break;
             case "register":
-                AsyncServer.RegicterClient(myAsyncResult);
+                  String type;
+                  if (myAsyncResult._context.Request.QueryString["type"] != null)
+                {
+                    type = (myAsyncResult._context.Request.QueryString["type"]);
+
+                  AsyncServer.RegicterClient(myAsyncResult, type);
                  myAsyncResult.CompleteRequest();
+                }
                 break;
             case "unregister":
                 AsyncServer.UnregisterClient(myAsyncResult);

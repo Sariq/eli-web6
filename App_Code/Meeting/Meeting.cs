@@ -12,7 +12,7 @@ public class Meeting : DatabaseObject
     public string title { get; set; }    
     [DataMember]
     public string address { get; set; }
-  
+    [DataMember]
     public DateTime time { get; set; }
     [DataMember]
     public string note { get; set; }

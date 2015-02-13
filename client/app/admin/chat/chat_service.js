@@ -19,7 +19,7 @@
                 catch (e) {
                 }
             }
-            var url = "/AsyncHandler.ashx?cmd=register";
+            var url = "/AsyncHandler.ashx?cmd=register&type=" + "admin";
             self.xmlHttp_OneTime.open("POST", url, true);
             return self.xmlHttp_OneTime;
         }

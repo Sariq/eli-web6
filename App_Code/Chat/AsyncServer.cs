@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
-
 using System.Web.Script.Serialization;
 
 public class AsyncServer
@@ -8,46 +8,50 @@ public class AsyncServer
     private static Object _lock = new Object();
 
     private static List<AsyncResult> _clientStateList = new List<AsyncResult>();
-    private static int z=0;
-
+    private static int z = 0;
     private static chatMessage[] arrchatMessage;
-    
 
     static AsyncServer()
     {
         arrchatMessage = new chatMessage[30];
-        
+
     }
 
-
-    public static void sendMessage(String message)
+    public static void sendMessage(String message, String clientId)
     {
         int counter=0;
         lock (_lock)
         {
-           
-                arrchatMessage[z] = new chatMessage();
-                arrchatMessage[z].content = message;
-                z++;
-                JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
-                for (int y = 0; y < arrchatMessage.Length; y++)
-                {
-                    if (arrchatMessage[y] != null)
-                    {
-                        counter++;
-                    }
-                }
+            Message currentMessage = new Message(clientId, message);
+            new MessageService().AddMessage(currentMessage);
 
-                chatMessage[] temp_arrchatMessage = new chatMessage[counter];
-                for (int y = 0; y < arrchatMessage.Length; y++)
+            var allMessages = new MessageService().GetAllMessages(clientId);
+
+            arrchatMessage[z] = new chatMessage();
+            arrchatMessage[z].content = message;
+            z++;
+            JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
+            for (int y = 0; y < arrchatMessage.Length; y++)
+            {
+                if (arrchatMessage[y] != null)
                 {
-                    if (arrchatMessage[y] != null)
-                    {
-                        temp_arrchatMessage[y] = arrchatMessage[y];
-                    }
+                    counter++;
                 }
-                string resultStr = myJavaScriptSerializer.Serialize(temp_arrchatMessage);
-                foreach (AsyncResult clientState in _clientStateList)
+            }
+
+            chatMessage[] temp_arrchatMessage = new chatMessage[counter];
+            for (int y = 0; y < arrchatMessage.Length; y++)
+            {
+                if (arrchatMessage[y] != null)
+                {
+                    temp_arrchatMessage[y] = arrchatMessage[y];
+                }
+            }
+
+            string resultStr = myJavaScriptSerializer.Serialize(temp_arrchatMessage);
+            foreach (AsyncResult clientState in _clientStateList)
+            {
+                if (clientState.ClientGuid == clientId)
                 {
                     if (clientState._context.Session != null)
                     {
@@ -55,9 +59,35 @@ public class AsyncServer
                         clientState.CompleteRequest();
                     }
                 }
-            
-        }
+
+                try
+                {
+                    var admin = new ClientService().GetAdmin(clientState.ClientGuid);
+                    if (admin != null)
+                    {
+                        if (clientState._context.Session != null)
+                        {
+                            clientState._context.Response.Write(resultStr);
+                            clientState.CompleteRequest();
+                        }
+                    }
+                }
+                catch {}
+                }
+
+
+                //admin = new AdminService().GetAdmin(clientState.ClientGuid).adminId;
+                //if (admin != null || clientState.ClientGuid==clinetId)
+                //{
+                //    if (clientState._context.Session != null)
+                //    {
+                //        clientState._context.Response.Write(resultStr);
+                //        clientState.CompleteRequest();
+                //    }
+                //}
+            }
     }
+
     public static void UpdateClient(AsyncResult state, String guid)
     {
         lock (_lock)
@@ -82,6 +112,38 @@ public class AsyncServer
         lock (_lock)
         {
             state.ClientGuid = Guid.NewGuid().ToString("N");
+            //_clientStateList.Add(state); //#
+
+            var currentClient = new Client(state.ClientGuid);
+            new ClientService().AddClient(currentClient);
+
+            if (state._state != null)
+            {
+                var collection = new DatabaseService().GetCollection("AsyncResult");
+                collection.Insert(state);
+                state._id = Convert.ToString((ObjectId.GenerateNewId()));
+            }
+
+            state._context.Response.Write(state.ClientGuid.ToString());
+        }
+    }
+
+    public static void RegicterClient(AsyncResult state, string type)
+    {
+        lock (_lock)
+        {
+            state.ClientGuid = Guid.NewGuid().ToString("N");
+            if (type == "admin")
+            {
+                var currentAdmin = new Admin(state.ClientGuid);
+                new ClientService().AddClient(currentAdmin);
+            }
+            else
+            {
+                var currentClient = new Web(state.ClientGuid);
+                new ClientService().AddClient(currentClient);
+            }
+
             _clientStateList.Add(state);
             state._context.Response.Write(state.ClientGuid.ToString());
         }
@@ -91,7 +153,8 @@ public class AsyncServer
     {
         lock (_lock)
         {
-             _clientStateList.Remove(state);
+            _clientStateList.Remove(state);
+            //new ClientService().RemoveAdmin(state.ClientGuid);
         }
     }
 
@@ -118,7 +181,7 @@ public class AsyncServer
                 }
             }
             string resultStr = myJavaScriptSerializer.Serialize(temp_arrchatMessage);
-           
+
             state._context.Response.Write(resultStr);
         }
     }

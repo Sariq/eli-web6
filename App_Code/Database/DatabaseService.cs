@@ -35,6 +35,12 @@ public class DatabaseService : IDatabaseService
         CreateCollection("Patient");
         SetCollectionPrimeryKey("Patient", "identity_number");
 
+        CreateCollection("Web");
+
+        CreateCollection("Admin");
+
+        CreateCollection("Message");
+
         InitializeUserCollection();
         InitializeMeetingCollection();
         InitializeAssignmentCollection();
@@ -70,7 +76,6 @@ public class DatabaseService : IDatabaseService
         meetingService.AddMeeting(meetingA);
         meetingService.AddMeeting(meetingB);
     }
-
 
     private MongoDatabase GetDatabase()
     {

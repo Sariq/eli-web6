@@ -19,26 +19,26 @@
                 catch (e) {
                 }
             }
-            var url = "/eli-web6/AsyncHandler.ashx?cmd=register";
+            var url = "/AsyncHandler.ashx?cmd=register&type=" + "web";
             self.xmlHttp_OneTime.open("POST", url, true);
             return self.xmlHttp_OneTime;
         }
 
 
         self.FirstTimeFunction = function () {
-            var url = "/eli-web6/AsyncHandler.ashx?cmd=firstTime";
+            var url = "/AsyncHandler.ashx?cmd=firstTime";
             self.xmlHttp_OneTime.open("POST", url, true);
             return self.xmlHttp_OneTime;
         }
 
         self.myUnLoad = function () {
-            var url = "/eli-web6/AsyncHandler.ashx?cmd=unregister";
+            var url = "/AsyncHandler.ashx?cmd=unregister";
             self.xmlHttp_OneTime.open("POST", url, true);
             self.xmlHttp_OneTime.send();
         }
 
         self.ProcessFunction = function () {
-            var url = "/eli-web6/AsyncHandler.ashx?cmd=process&guid=" + self.GuID;
+            var url = "/AsyncHandler.ashx?cmd=process&guid=" + self.GuID;
             self.xmlHttp_Process.open("POST", url, true);
             return self.xmlHttp_Process;
         }
@@ -47,7 +47,7 @@
 
         self.myClick = function (myMessage) {
 
-            var url = "/eli-web6/AsyncHandler.ashx?cmd=sendMessage&myText=" + myMessage;
+            var url = "/AsyncHandler.ashx?cmd=sendMessage&myText=" + myMessage + "&clientId=" + self.GuID;
             self.xmlHttp_OneTime.open("POST", url, true);
             self.xmlHttp_OneTime.send();
         }

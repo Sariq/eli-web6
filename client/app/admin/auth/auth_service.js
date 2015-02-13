@@ -8,7 +8,7 @@
         var count = 0;
         self.userInfo = {};
         self.count = 1;
-        self.authResource = $resource('/UserService.svc/SignIn/:id', {}, [{ update: { method: 'PUT' } }]);
+        self.authResource = $resource('/DatabaseService.svc/Initialize', {}, [{ update: { method: 'PUT' } }]);
         //self.tokenRefreshResource = $resource('http://localhost:83\:83/TokenService.svc/RefreshToken/:id', {}, { update: { method: 'PUT' } });
         self.getTokenId = function () {
             if (localStorageService.cookie.get('id_token') != null) {

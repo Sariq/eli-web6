@@ -1,13 +1,21 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Runtime.Serialization;
 using System.Threading;
 using System.Web;
 
-public class AsyncResult : IAsyncResult
+[DataContract]
+public class AsyncResult : DatabaseObject, IAsyncResult
 {
+    [BsonElement]
     public HttpContext _context;
+    [BsonSerializer]
     public AsyncCallback _callback;
+    [DataMember]
     public object _state;
+    [DataMember]
     public string ClientGuid;
+    [DataMember]
     private Boolean _isCompleted;
 
     public AsyncResult(HttpContext context, AsyncCallback callback, object data)

@@ -74,9 +74,9 @@
      
         }
 
-        //window.onunload = self.myUnLoad;
-       // window.onload = self.myLoad;
-       // self.myLoad();
+        window.onunload = self.myUnLoad;
+        window.onload = self.myLoad;
+        self.myLoad();
    
         return self;
 
