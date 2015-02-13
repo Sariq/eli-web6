@@ -7,19 +7,19 @@ public class DatabaseService : IDatabaseService
 
     #region Properties
 
-    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "K", DateTime.Today, "role", true);
-    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", DateTime.Today, "role", true);
-    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K", DateTime.Today, "role", true);
+    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "K", DateTime.Today.Date, "role", true);
+    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", DateTime.Today.Date, "role", true);
+    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K", DateTime.Today.Date, "role", true);
     public readonly User userD = new User("User", "123");
 
     public readonly Assignment assignmentA = new Assignment("AssignmentA", "FreeText", false);
     public readonly Assignment assignmentB = new Assignment("AssignmentB", "FreeText", false);
 
-    public readonly Patient patientA = new Patient("111", "A", "A", "a@gmail.com", "A", DateTime.Today, new string[] { "AA", "BB" });
-    public readonly Patient patientB = new Patient("222", "B", "B", "b@gmail.com", "B", DateTime.Today, new string[] { "AA", "BB" });
+    public readonly Patient patientA = new Patient("111", "A", "A", "a@gmail.com", "A", DateTime.Today.Date, new string[] { "AA", "BB" });
+    public readonly Patient patientB = new Patient("222", "B", "B", "b@gmail.com", "B", DateTime.Today.Date, new string[] { "AA", "BB" });
 
-    public readonly Meeting meetingA = new Meeting("123", "123", "meetingA", "A", DateTime.Today, "FreeText", new string[] { "AA", "BB" });
-    public readonly Meeting meetingB = new Meeting("123", "123", "meetingB", "B", DateTime.Today, "FreeText", new string[] { "AA", "BB" });
+    public readonly Meeting meetingA = new Meeting("123", "123", "meetingA", "A", DateTime.Today.Date, "FreeText", new string[] { "AA", "BB" });
+    public readonly Meeting meetingB = new Meeting("123", "123", "meetingB", "B", DateTime.Today.Date, "FreeText", new string[] { "AA", "BB" });
     
     #endregion
 
@@ -72,7 +72,7 @@ public class DatabaseService : IDatabaseService
     }
 
 
-    private MongoDatabase GetDatabase()
+    public MongoDatabase GetDatabase()
     {
         MongoClient client = new MongoClient();
         var server = client.GetServer();

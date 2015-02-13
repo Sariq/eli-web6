@@ -6,12 +6,17 @@ public class Error
     public enum ErrorType
     {
         PasswordIsIncorrect,
+
         UserIsNotExist,
         UserIsAlreadyExist,
         NoUserInHeader,
         UserInHeaderIsNotExist,
+
         PatientIsNotExist,
-        PatientIsAlreadyExist
+        PatientIsAlreadyExist,
+
+        DocIsNotExist,
+        DocIsAlreadyExist
     }
 
     [DataMember] 
