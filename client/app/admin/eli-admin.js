@@ -13,7 +13,8 @@ angular.module('eli.admin', [
   'ui.bootstrap',
   'ui.bootstrap.datetimepicker',
   'pascalprecht.translate',
-  'angularTranslateApp'
+  'angularTranslateApp',
+  'ngTable'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $resourceProvider, jwtInterceptorProvider, $httpProvider) {
       //delete $httpProvider.defaults.headers.common['X-Requested-With'];

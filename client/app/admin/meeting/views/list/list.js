@@ -1,9 +1,10 @@
 (function () {
-    function MeetingListController(MeetingAdmin,$http, $stateParams, PatientAdmin) {
+    function MeetingListController($scope,MeetingAdmin, $http, $stateParams, PatientAdmin, $filter, ngTableParams) {
     var self = this;
     console.log(MeetingAdmin);
         //self.meetings = MeetingAdmin.listMeetings();
     self.meetings = '';
+    self.data;
  
     //self.patient = PatientAdmin.patient;
     self.patient = PatientAdmin.get($stateParams.patientId);
@@ -11,7 +12,7 @@
     self.op1 = false;
     self.op2 = true;
     self.op3 = false;
-
+    self.patient = PatientAdmin.patient;
     self.getMeetingsByIds=function(){
 
         self.patient.$promise.then(function (result) {
@@ -23,13 +24,38 @@
                 }).then(function (response) {
 
                     self.meetings = response.data;
-
+                    self.data = response.data;
+                    console.log(self.data)
+                    self.myFun();
 
                 }, function () { alert("getAssignmentsByIds edit error") });
             }
 
         });
 
+    }
+
+
+
+    self.myFun = function () {
+        $scope.tableParams = new ngTableParams({
+            page: 1,            // show first page
+            count: 10,          // count per page
+            sorting: {
+                title: 'asc'     // initial sorting
+            }
+        }, {
+            total: self.data.length, // length of self.data
+            getData: function ($defer, params) {
+                // use build-in angular filter
+                var orderedData = params.sorting() ?
+                                    $filter('orderBy')(self.data, params.orderBy()) :
+                                    self.data;
+
+                $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+            }
+
+        });
     }
 
 
@@ -75,7 +101,7 @@
   }
 
   angular.module('eli.admin')
-    .controller('MeetingListController', ['MeetingAdmin','$http', '$stateParams', 'PatientAdmin', MeetingListController]);
+    .controller('MeetingListController', ['$scope','MeetingAdmin', '$http', '$stateParams', 'PatientAdmin', '$filter', 'ngTableParams', MeetingListController]);
 }());
 
 

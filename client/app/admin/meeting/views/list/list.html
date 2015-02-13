@@ -1,49 +1,54 @@
-<div class="row form-header text-right">
+﻿<div class="row form-header text-right">
 
-    <img id="Img1" src="imgs/top.png">
-    <h1 class="page-header" translate>Meetings</h1>
     <ol class="breadcrumb">
         <li class="active" translate>Meetings</li>
         <li><a href="#/patient/profile/{{list.patient._id}}" translate>{{list.patient.first_name}}</a></li>
-        <li><a href="#patients" translate>Patients</a></li>
+        <li><a href="#meetings" translate>Patients</a></li>
         <li><a href="#dashboard" translate>Dashboard</a></li>
     </ol>
 </div>
 
 
-<div class="row">
-    <table class="table table-striped text-right">
-        <thead>
-            <tr>
 
-                <td></td>
-                <td></td>
-                <td></td>
 
-                <td translate>Time</td>
+<div class="col-md-12 col-xs-12 ">
+    <div class="modal-dialog ng-table-edit-modal" >
+        <div class="modal-content">
+            <div class="modal-header text-right">
+                <h3>טבלת טיפולם</h3>
+            </div>
+            <div class="panel-body" style="width: 100%">
+                <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
+                    <tr ng-repeat="meeting in $data" class="text-right">
 
-                <td translate>Title</td>
+                            <td data-title="'Title'" sortable="'title'">
+                            <a href="#/meeting/item/{{meeting._id}}">{{meeting.title}}</a>
+                        </td>
 
-            </tr>
-        </thead>
+                    
 
-        <tr ng-repeat="meeting in list.meetings">
+                        <td data-title="'Time'" sortable="'time'">
+                            <a href="#/meeting/item/{{meeting._id}}">{{meeting.time}}</a>
+                        </td>
 
-            <td>
-                <a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/meeting/edit/{{meeting._id}}"></a>
-            </td>
-            <td>
-                <i object-name="meeting" confirm-action="list.remove($index,meeting)" class="btn btn-xs btn-danger glyphicon glyphicon-trash"></i>
-            </td>
-            <td></td>
-
-            <td>{{meeting.time}}</td>
-
-            <td><a href="#/meeting/item/{{meeting._id}}">{{meeting.title}}</a></td>
-            <td>{{$index}}</td>
-        </tr>
-
-    </table>
-
-    <a class="btn btn-info" href="#/meeting/add"><span class="fa fa-plus"></span>{{'Add meeting'|translate}}</a>
+                        
+                    
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="col-md-12">
+    <span class="pull-left"><a class="btn btn-info" href="#/meeting/add"><span class="fa fa-plus"></span>{{'Add meeting'|translate}}</a></span>
+</div>
+
+<style>
+    .modal-header > h3 {
+    
+    margin-top: 0px;
+    margin-bottom: 0px;
+
+    }
+
+</style>

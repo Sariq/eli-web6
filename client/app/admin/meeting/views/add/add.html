@@ -13,75 +13,112 @@
         </ol>
 </div>
 
-<br />
 
-<div  class="row"  id="form_container">
+    
 
-      <img id="top" src="imgs/top.png" alt="">
-    <br />
-    <form class="form-horizontal style-form" method="get">
+<script src="meeting/css/tasks.js"></script>
 
-        <div class="form-group ">
-            <label for="first_name" class="col-md-2   control-label pull-right"><strong>: מטפל</strong></label>
 
-            <div class="col-sm-10 pull-right">
-                <input type="text" class="form-control text-right " name="therapistId" ng-model="add.meeting.therapistId"
-                    id="Text5"
-                    placeholder="therapistId" required>
+<div class="modal-dialog add-form form_container">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h1 class="text-center">טיפול חדש</h1>
+       </div>
+
+        <div class="panel-body text-right">
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : מטפל
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.meeting.therapistId" placeholder="">
+                </div>
+
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : שם משפחה
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.meeting.last_name" placeholder="">
+                </div>
+
+            </div>
+
+            <br/>
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : title
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.meeting.title" placeholder="">
+                </div>
+
+            </div>
+          
+             <br/>
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : address
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.meeting.address" placeholder="">
+                </div>
+
+            </div>
+
+                  <br/>
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : note
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.meeting.note" placeholder="">
+                </div>
+
             </div>
         </div>
 
-        <div class="form-group ">
-            <label for="patientId" class="col-md-2  control-label pull-right"><strong>: Last Name</strong></label>
 
-            <div class="col-sm-10 pull-right">
-                <input type="text" class="form-control text-right " name="patientId" ng-model="add.meeting.patientId"
-                    id="Text6"
-                    placeholder="patientId" required>
+        
+        <div class="panel-footer">
+            <div class="form-group row">
+                <div class="col-md-6  ">
+                    <a href="#/meetings" class="btn btn-warning btn-block label-text-size">בטל</a>
+                </div>
+                <div class="col-md-6  ">
+                    <button ng-click="add.save();"
+                        class="btn btn-info btn-block label-text-size"
+                        translate>
+                        שמור
+                    </button>
+                </div>
             </div>
         </div>
-
-        <div class="form-group ">
-            <label for="title" class="col-md-2  control-label pull-right"><strong>: title</strong></label>
-
-            <div class="col-sm-10 pull-right">
-                <input type="text" class="form-control text-right " name="title" ng-model="add.meeting.title"
-                    id="Text7"
-                    placeholder="title" required>
-            </div>
-        </div>
-
-        <div class="form-group ">
-            <label for="adress" class="col-md-2 control-label pull-right"><strong>: adress</strong></label>
-
-            <div class="col-sm-10 pull-right">
-                <input type="text" class="form-control text-right " name="adress" ng-model="add.meeting.adress"
-                    id="Text8"
-                    placeholder="adress" required>
-            </div>
-        </div>
-
-        <div class="form-group ">
-            <label for="note" class="col-md-2 control-label pull-right"><strong>: note</strong></label>
-
-            <div class="col-sm-10 pull-right">
-                <input type="text" class="form-control text-right " name="note" ng-model="add.meeting.note"
-                    id="Text9"
-                    placeholder="note" required>
-            </div>
-        </div>
-
-
-
-
-    </form>
-    <div id="footer">
+             
     </div>
+</div>
 
-    <img id="bottom" src="imgs/bottom.png" alt="">
 
-<div class="row">
-    <section class="task-panel tasks-widget">
+<div class="modal-dialog add-form form_container">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h1 class="text-center">משימות</h1>
+       </div>
+         <section class="task-panel tasks-widget">
         <div class="panel-heading">
             <div class="pull-right">
                 <h5>משימות <span class="white-panel"><i class=" fa fa-tasks"></i></span></h5>
@@ -123,21 +160,20 @@
         </div>
 
     </section>
-    <br />
-    <div class="form-group row">
-        <div class="col-sm-2 control-label"></div>
-        <div class="col-sm-10">
-            <div class="btn-group col-sm-10">
-                <button ng-disabled="!add.meeting.title" style="width: 50%;" ng-click="add.save();"
-                    class="btn btn-info"
-                    translate>
-                    Save
-                </button>
-                <a style="width: 50%;" href="#/meetings/{{add.patient._id}}" class="btn btn-warning">Cancel</a>
-            </div>
-        </div>
-    </div>
+        
 
+          </div>
 </div>
-<script src="meeting/css/tasks.js"></script>
-    </div>
+
+
+<style>
+    .panel-footer {
+        padding-top:30px;
+        background-color: #005B7F;
+    }
+    .modal-content {
+        background-color: #005B7F;background-image:none;color:white
+    }
+.modal-header{
+    background-color:#005B7F;background-image:none;color:white}
+</style>

@@ -1,0 +1,22 @@
+.label-text-size {
+    font-size: 130%;
+}
+
+@media(min-width:768px) {
+   .add-form {
+width:60%;
+}
+
+hr {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+input {
+    direction:rtl
+}
+th {
+    direction:rtl
+}
+
+
+}

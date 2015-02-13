@@ -1,7 +1,5 @@
 ﻿<div class="row form-header text-right">
 
-    <img id="Img2" src="imgs/top.png">
-    <h1 class="page-header" translate>Patients</h1>
     <ol class="breadcrumb">
         <li class="active"><a href="#patients" translate>Patients</a></li>
         <li><a href="#dashboard" translate>Dashboard</a></li>
@@ -9,10 +7,127 @@
 </div>
 
 
+<div class="modal-dialog add-form form_container">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h1 class="text-center">מטופל חדש</h1>
+       </div>
+
+        <div class="panel-body text-right">
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : שם
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.patient.first_name" placeholder="">
+                </div>
+
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : שם משפחה
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.patient.last_name" placeholder="">
+                </div>
+
+            </div>
+
+            <br/>
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : ת.ז
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.patient.identity_number" placeholder="">
+                </div>
+
+            </div>
+       
 
 
+           
+        <!--  <br/>  <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : birth_date
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.patient.birth_date" placeholder="">
+                </div>
 
-<div class="row" id="form_container">
+            </div>-->
+        
+
+             <br/>
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : address
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.patient.address" placeholder="">
+                </div>
+
+            </div>
+
+                  <br/>
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : email
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.patient.email" placeholder="">
+                </div>
+
+            </div>
+        </div>
+
+
+        
+        <div class="panel-footer">
+            <div class="form-group row">
+                <div class="col-md-6  ">
+                    <a href="#/patients" class="btn btn-warning btn-block label-text-size">בטל</a>
+                </div>
+                <div class="col-md-6  ">
+                    <button ng-click="add.save();"
+                        class="btn btn-info btn-block label-text-size"
+                        translate>
+                        שמור
+                    </button>
+                </div>
+            </div>
+        </div>
+             
+    </div>
+</div>
+
+
+<style>
+    .panel-footer {
+        padding-top:30px;
+        background-color: #005B7F;
+    }
+    .modal-content {
+        background-color: #005B7F;background-image:none;color:white
+    }
+.modal-header{
+    background-color:#005B7F;background-image:none;color:white}
+</style>
+<!--<div class="row" id="form_container">
 
     <img id="top" src="imgs/top.png" alt="">
     <br />
@@ -56,7 +171,7 @@
                            id="Text7"
                            placeholder="birth_date" required>
                           </div>
-                 </div>-->
+                 </div>
 
         <div class="form-group ">
             <label for="address" class="col-md-2 control-label pull-right"><strong>: address</strong></label>
@@ -82,7 +197,7 @@
     </div>
 
     <img id="bottom" src="imgs/bottom.png" alt="">
-
+    
     <br />
     <div class="form-group row">
         <div class="col-sm-2 control-label"></div>
@@ -97,4 +212,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
