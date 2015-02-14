@@ -10,11 +10,14 @@ public class Message : DatabaseObject
     public string clientId { get; set; }
     [DataMember]
     public string messageContent { get; set; }
+    [DataMember]
+    public string messageTime { get; set; }
 
     public Message(string clientId, string messageContent)
         : base()
     {
         this.clientId = clientId;
         this.messageContent = messageContent;
+        this.messageTime = DateTime.Now.ToString();
     }
 }

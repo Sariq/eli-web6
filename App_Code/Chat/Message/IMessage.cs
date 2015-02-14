@@ -12,23 +12,14 @@ public interface IMessage
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    Assignment AddMessage(Message message);
-
-    [OperationContract]
-    [WebInvoke(
-         Method = "GET",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api")
-    ]
-    List<Message> GetAllMessages();
+    void AddMessage(Message message);
 
     [OperationContract]
     [WebInvoke(
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api{id}")
+         UriTemplate = "GetAllMessages")
     ]
     List<Message> GetAllMessages(string id);
 

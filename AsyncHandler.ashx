@@ -65,8 +65,15 @@ public class AsyncHandler : IHttpAsyncHandler, System.Web.SessionState.IReadOnly
                 }
                 break;
             case "unregister":
-                AsyncServer.UnregisterClient(myAsyncResult);
-                myAsyncResult.CompleteRequest();
+                String unregisterType;
+                  if (myAsyncResult._context.Request.QueryString["type"] != null)
+                {
+                    unregisterType = (myAsyncResult._context.Request.QueryString["type"]);
+
+                    AsyncServer.UnregisterClient(myAsyncResult, unregisterType);
+                 myAsyncResult.CompleteRequest();
+                }
+            
                 break;
             case "firstTime":
                 AsyncServer.FirstTimeClient(myAsyncResult);

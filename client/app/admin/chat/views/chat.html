@@ -17,24 +17,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
+                                        <tr ng-repeat="webUser in chat.chatWebs">
+                                            <td>{{$index}}</td>
+                                            <td ng-click="chat.getWebUserChat(webUser.clientId)">{{webUser.webName}}</td>
+                                            
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
+                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -97,7 +85,7 @@
                                             <strong class="pull-right primary-font" style="color:blue">Jack Sparrow</strong>
                                         </div>
                                         <p class="text-right">
-                                            {{message.content}}-{{$index}}
+                                            {{message.messageContent}}-{{$index}}
                                         </p>
                                     </div>
                                         </span>
@@ -111,7 +99,7 @@
                                             <strong class="pull-right primary-font" style="color:orange">Bhaumik Patel</strong>
                                         </div>
                                         <p class="text-right">
-                                            {{message.content}}-{{$index}}
+                                            {{message.messageContent}}-{{$index}}
                                         </p>
                                     </div>
                                         </span>

@@ -6,8 +6,12 @@ using System.Web;
 [DataContract]
 public class Web : Client
 {
-    public Web(string clientId)
-        : base(clientId)
-    { 
+    [DataMember]
+    public string webName { get; set; }
+
+    public Web(string clientId, int chatWebCounter)
+        : base(clientId, chatWebCounter)
+    {
+        webName = "User" + chatWebCounter;
     }
 }

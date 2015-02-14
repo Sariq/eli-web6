@@ -5,12 +5,19 @@
      * @param ChatService: Service
      * @constructor
      */
-    function ChatController($location, $scope, $stateParams, ChatService) {
+    function ChatController($http,$location, $scope, $stateParams, ChatService) {
         var self = this;
         self.xmlHttp_OneTime;
         self.xmlHttp_Process;
         self.chatMessages = [];
-       
+        self.currentWebUser = '';
+        //self.chatWebs = ChatService.query()
+        
+        //self.chatWebs.$promise.then(function (result) {
+        //    console.log(result);
+           
+
+        //});
 
    
 
@@ -55,8 +62,15 @@
                 var myJSON_Text = self.xmlHttp_Process.responseText;
                                    
                 var myJsonObject_Temp = eval('(' + myJSON_Text + ')');
-                console.log(myJsonObject_Temp)
-                self.chatMessages = myJsonObject_Temp;
+                if (myJsonObject_Temp.hasOwnProperty('messageContent')) {
+                    console.log(myJsonObject_Temp)
+                    self.chatMessages = myJsonObject_Temp;
+                } else {
+                    console.log(myJsonObject_Temp)
+                    self.chatWebs = myJsonObject_Temp;
+
+                }
+              
                 $scope.$apply();
                 self.xmlHttp_Process = ChatService.ProcessFunction();
                 self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
@@ -68,11 +82,28 @@
       
 
   
-        self.myClick=function () {
-            ChatService.myClick(self.myMessage);
+        self.myClick = function () {
+            alert(self.currentWebUser)
+            ChatService.myClick(self.myMessage, self.currentWebUser);
             self.myMessage = '';
      
         }
+
+        self.getWebUserChat = function (clientId) {
+            self.currentWebUser = clientId;
+            $http({
+                url: '/MessageService.svc/GetAllMessages',
+                method: 'POST',
+                data: clientId
+            }).then(function (response) {
+                console.log(response)
+                self.chatMessages = response.data;
+
+
+            }, function () { alert("GetAllMessages error") });
+        }
+
+
 
         window.onunload = self.myUnLoad;
         window.onload = self.myLoad;
@@ -87,7 +118,7 @@
     }
 
     angular.module('eli.admin')
-        .controller('ChatController', ['$location', '$scope',  '$stateParams','ChatService', ChatController]);
+        .controller('ChatController', ['$http','$location', '$scope',  '$stateParams','ChatService', ChatController]);
 }());
 
 

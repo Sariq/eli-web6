@@ -9,7 +9,7 @@ public class Client : DatabaseObject
     [DataMember]
     public string clientId { get; set; }
 
-    public Client(string clientId)
+    public Client(string clientId, int chatWebCounter)
         : base()
     {
         this.clientId = clientId;

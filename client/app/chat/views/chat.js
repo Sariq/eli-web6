@@ -5,14 +5,27 @@
      * @param ChatService: Service
      * @constructor
      */
-    function ChatController($location, $scope, $stateParams, ChatService) {
+    function ChatController($http,$location, $scope, $stateParams, ChatService) {
         var self = this;
         self.xmlHttp_OneTime;
         self.xmlHttp_Process;
         self.chatMessages = [];
-       
+        self.GuID=''
 
    
+        //self.isAdminOnline = function () {
+            $http({
+                url: '/ClientService.svc/isAdminOnline',
+                method: 'POST',
+             
+            }).then(function (response) {
+                console.log(response)
+                self.adminOnlineStatus = response.data;
+
+
+            }, function () { alert("isAdminOnline error") });
+
+        //}
 
         self.myLoad = function () {
             self.xmlHttp_OneTime = ChatService.loadChat();
@@ -76,6 +89,16 @@
             self.myMessage='';
      
         }
+        self.register = function () {
+            self.myLoad();
+
+        }
+        self.myUnLoad = function () {
+            alert()
+            var url = "AsyncHandler.ashx?cmd=unregister&type=" + "web";
+            xmlHttp_OneTime.open("POST", url, true);
+            xmlHttp_OneTime.send();
+        }
 
         window.onunload = self.myUnLoad;
         window.onload = self.myLoad;
@@ -90,7 +113,7 @@
     }
 
     angular.module('eliApp')
-        .controller('ChatController', ['$location', '$scope',  '$stateParams','ChatService', ChatController]);
+        .controller('ChatController', ['$http','$location', '$scope',  '$stateParams','ChatService', ChatController]);
 }());
 
 
