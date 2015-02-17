@@ -1,19 +1,135 @@
 ﻿<div class="row form-header text-right">
 
-        <img  src="imgs/top.png">
-        <h1 class="page-header" translate>Meeting</h1>
+
     <ol class="breadcrumb">
-            <li class="active" translate>{{item.meeting.title}}</li>
-            <li><a href="#meetings/{{item.patient._id}}" translate>Meetings</a></li>
-            <li><a href="#/patient/profile/{{item.patient._id}}" translate>{{item.patient.first_name}}</a></li>
-            <li><a href="#patients" translate>Patients</a></li>
-            <li><a href="#dashboard" translate>Dashboard</a></li>
-        </ol>
+        <li class="active" translate>{{item.meeting.title}}</li>
+        <li><a href="#meetings/{{item.patient._id}}" translate>Meetings</a></li>
+        <li><a href="#/patient/profile/{{item.patient._id}}" translate>{{item.patient.first_name}}</a></li>
+        <li><a href="#patients" translate>Patients</a></li>
+        <li><a href="#dashboard" translate>Dashboard</a></li>
+    </ol>
 </div>
-<a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/meeting/edit/{{item.meeting._id}}"></a>
+<!--<a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/meeting/edit/{{item.meeting._id}}"></a>-->
+
+<div class="row ">
+
+    <div class="col-sm-9">
+
+        <div class="modal-content" style="width: 100%">
+
+            <div class="modal-header">
+                <h1 class="text-center">משימות</h1>
+            </div>
+
+            <div class="panel-body text-right">
+                <section class="task-panel tasks-widget">
+
+                    <div class="">
+                        <div class="">
+                            <ul id="sortable" class="task-list ui-sortable">
+                                <li ng-repeat="assignment in item.assignments" class=" " ng-class="{'list-success':assignment.isDone,'list-warning':!assignment.isDone}">
+                                    <i class=" fa fa-ellipsis-v"></i>
+                                    <div class="task-checkbox pull-right">
+                                        <input type="checkbox" class="list-child" value="" />
+                                    </div>
+                                    <div class="task-title">
+
+                                        <div class="pull-left hidden-phone">
+                                            <button ng-if="!assignment.isDone" ng-click="item.isDoneAssignmentToggle(assignment)" class="btn btn-success btn-xs fa fa-check"></button>
+                                            <button ng-if="assignment.isDone" ng-click="item.isDoneAssignmentToggle(assignment)" class="btn btn-warning btn-xs fa fa-remove"></button>
+                                            <button ng-click="item.editAssignment(assignment)" class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                            <button ng-click="item.removeAssignment(assignment,$index)" class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                        </div>
+
+                                        <span class="assignment-title-sp pull-right" style="font-size: 130%"><a ng-click="item.showTask(assignment)">{{assignment.title}}</a></span>
 
 
-<div  id="form_container">
+                                    </div>
+                                </li>
+
+
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-3">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h1 class="text-center">טיפול</h1>
+            </div>
+
+            <div class="panel-body text-right" style="padding-bottom: 0px;">
+                <form class="form-horizontal style-form text-right" method="get">
+
+                    <div class="row form-group ">
+                        <div class="col-md-8 col-xs-8 ">
+                            <label for="first_name" class="control-label "><strong>{{item.meeting.therapistId}}</strong></label>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: מטפל</strong></label>
+                        </div>
+                    </div>
+
+                        <div class="row form-group ">
+                        <div class="col-md-8 col-xs-8 ">
+                            <label for="first_name" class="control-label "><strong>{{item.meeting.patientId}}</strong></label>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: Last Name</strong></label>
+                        </div>
+                    </div>
+
+                    
+
+
+                    <div class="row form-group ">
+                        <div class="col-md-8 col-xs-8 ">
+                            <label for="first_name" class="control-label "><strong>{{item.meeting.title}}</strong></label>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: title</strong></label>
+                        </div>
+                    </div>
+
+
+                         <div class="row form-group ">
+                        <div class="col-md-8 col-xs-8 ">
+                            <label for="first_name" class="control-label "><strong>{{item.meeting.adress}}</strong></label>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: adress</strong></label>
+                        </div>
+                    </div>
+
+
+                          <div class="row form-group " style="margin-bottom: 0px;">
+                        <div class="col-md-8 col-xs-8 ">
+                            <label for="first_name" class="control-label "><strong>{{item.meeting.note}}</strong></label>
+                        </div>
+                        <div class="col-md-4 col-xs-4 " >
+                            <label for="first_name" class="control-label " ><strong>: note</strong></label>
+                        </div>
+                    </div>
+
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!--<div  id="form_container">
     <img id="top" src="imgs/top.png" alt="">
     <br />
     <form class="form-horizontal style-form text-right" method="get">
@@ -63,10 +179,6 @@
 
             </div>
         </div>
-
-
-
-
     </form>
     <div id="footer">
     </div>
@@ -115,5 +227,20 @@
     </section>
     <br />
 
-</div>
+</div>-->
 <script src="meeting/css/tasks.js"></script>
+
+
+<style>
+
+    .modal-header {
+      padding-top: 1px;
+        padding-bottom: 0px;
+    }
+    h1 {
+        margin-top: 10px;
+        padding-bottom:10px;
+    }
+
+
+</style>

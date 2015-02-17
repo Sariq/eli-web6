@@ -1,5 +1,13 @@
-﻿<div class="row">
-    <div class="col-md-8">
+﻿
+<style>
+    .chatRowBackground {
+    background-color: blue;
+    }
+
+</style>
+
+<div class="row">
+    <div class="col-md-8" style="direction:rtl">
         <div class="panel panel-default">
                         <div class="panel-heading">
                             Striped Rows
@@ -7,20 +15,20 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-striped" >
                                     <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
+                                        <tr >
+                                            <td>#</td>
+                                            <td>First Name</td>
+                                            <td></td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="webUser in chat.chatWebs">
+                                        <tr ng-repeat="webUser in chat.chatWebs"  >
                                             <td>{{$index}}</td>
-                                            <td ng-click="chat.getWebUserChat(webUser.clientId)">{{webUser.webName}}</td>
-                                            
+                                            <td ng-click="chat.getWebUserChat(webUser,$index)">{{webUser.webName}}-{{webUser.newMessage}}</td>
+                                            <td><span ng-if="webUser.newMessage" class="badge bg-info">הודעה חדשה</span></td>
+
                                         </tr>
                                        
                                     </tbody>
@@ -42,26 +50,14 @@
                                     <i class="fa fa-chevron-down"></i>
                                 </button>
                                 <ul class="dropdown-menu slidedown">
+                                 
                                     <li>
-                                        <a href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> Refresh
+                                        <a ng-click="chat.register()" href="#">
+                                            <i  class="fa fa-check-circle fa-fw"></i> OnLine
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-check-circle fa-fw"></i> Available
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-times fa-fw"></i> Busy
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-clock-o fa-fw"></i> Away
-                                        </a>
-                                    </li>
+                                   
+                             
                                     <li class="divider"></li>
                                     <li>
                                         <a href="#">
@@ -72,7 +68,7 @@
                             </div>
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="panel-body" scroll-glue>
                             <ul class="chat">
                                                          <li  ng-repeat="message in chat.chatMessages" >
                                     <span ng-if="$even" class="left clearfix">
@@ -81,8 +77,8 @@
                                  
                                         <div class="header">
                                             <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago</small>
-                                            <strong class="pull-right primary-font" style="color:blue">Jack Sparrow</strong>
+                                                <i class="fa fa-clock-o fa-fw"></i> {{message.messageUpdateT}}</small>
+                                            <strong class="pull-right primary-font" style="color:blue">{{chat.currentWebUser.webName}}</strong>
                                         </div>
                                         <p class="text-right">
                                             {{message.messageContent}}-{{$index}}
@@ -95,8 +91,8 @@
                                     <div class="chat-body clearfix">
                                         <div class="header">
                                             <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
-                                            <strong class="pull-right primary-font" style="color:orange">Bhaumik Patel</strong>
+                                                <i class="fa fa-clock-o fa-fw"></i> {{message.messageUpdateT}} mins ago</small>
+                                            <strong class="pull-right primary-font" style="color:orange">{{chat.userInfo.userId}}</strong>
                                         </div>
                                         <p class="text-right">
                                             {{message.messageContent}}-{{$index}}

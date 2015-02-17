@@ -9,18 +9,18 @@
         <span style="background-color:white" class="icon-bar"></span>
     </button>
 
-    <ul class="nav navbar-top-links navbar-left admin-navbar-fixed-top">
+    <ul class="nav navbar-top-links navbar-left admin-navbar-fixed-top" >
          <div class="navbar-header navbar-right " style="padding-right:1%" >
-        <a class="navbar-brand" href="index.html" >   <h3 style="margin-top:0;color:#fff;">אל"י - מערכת ניהול</h3> {{userInfo.userId}}</a>
+        <a class="navbar-brand" href="index.html" >   <h3 style="margin-top:0;color:#fff;">אל"י - מערכת ניהול</h3></a>
     </div>
     <!-- /.navbar-header -->
    
-        <li class="btn-group" dropdown>
+        <li class="btn-group" dropdown > 
             <a class=" dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                <i class="fa fa-user"></i> Sari <b
+                <i class="fa fa-user"></i>  {{userInfo.userId}} <b
                     class="caret"></b></a>
 
-            <ul class="dropdown-menu " role="menu">
+            <ul class="dropdown-menu " role="menu" >
                 <li>
                     <a ng-click="logOut()" translate><i class="fa fa-fw fa-power-off"></i>Log Out</a>
                 </li>
@@ -179,3 +179,9 @@
         $(this).parent().addClass('active');
     })
 </script>
+<style>
+
+    ul .dropdown-menu {
+        background-color: white;
+    }
+</style>

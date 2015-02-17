@@ -16,7 +16,7 @@
             $location.path("/logIn")
             localStorageService.cookie.remove('id_token');
             $rootScope.nav.show = false;
-            
+            AuthService.clearUserInfo();
             console.log( $scope.userInfo) 
 
         });

@@ -5,13 +5,19 @@
      * @param ChatService: Service
      * @constructor
      */
-    function ChatController($http,$location, $scope, $stateParams, ChatService) {
+    function ChatController($interval,$http, $location, $scope, $stateParams, ChatService, AuthService) {
         var self = this;
         self.xmlHttp_OneTime;
         self.xmlHttp_Process;
         self.chatMessages = [];
         self.currentWebUser = '';
-        //self.chatWebs = ChatService.query()
+        self.flag = false;
+
+       
+
+       
+        self.chatWebs = ChatService.query()
+        self.userInfo = AuthService.getUserInfo()
         
         //self.chatWebs.$promise.then(function (result) {
         //    console.log(result);
@@ -22,17 +28,19 @@
    
 
         self.myLoad = function () {
+            alert()
             self.xmlHttp_OneTime = ChatService.loadChat();
             self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Connect;
             self.xmlHttp_OneTime.send();
             
            
-            }
+        }
                                   
            
         self.getResponse_Connect = function () {
             if (self.xmlHttp_OneTime.readyState == 4) {
                 self.GuID = self.xmlHttp_OneTime.responseText;
+               
                 ChatService.GuID = self.GuID;
                 self.xmlHttp_OneTime = ChatService.FirstTimeFunction();
                 self.xmlHttp_OneTime.onreadystatechange = self.getResponse_FirstTime;
@@ -57,68 +65,121 @@
         }
         
         self.getResponse_Process = function () {
-          
+            self.flag = false;
+            var temp_resultInMinutes = '';
             if (self.xmlHttp_Process.readyState == 4) {
                 var myJSON_Text = self.xmlHttp_Process.responseText;
                                    
                 var myJsonObject_Temp = eval('(' + myJSON_Text + ')');
-                if (myJsonObject_Temp.hasOwnProperty('messageContent')) {
-                    console.log(myJsonObject_Temp)
-                    self.chatMessages = myJsonObject_Temp;
-                } else {
-                    console.log(myJsonObject_Temp)
-                    self.chatWebs = myJsonObject_Temp;
+                console.log(self.myJsonObject_Temp)
+                if (myJsonObject_Temp[0].hasOwnProperty('messageContent')) {
+                    //alert("message")
+                    //  console.log(myJsonObject_Temp)
+                   
+                   
+                    console.log(myJsonObject_Temp[0].clientId + "=="+self.currentWebUser.clientId)
+                    if (myJsonObject_Temp[0].clientId == self.currentWebUser.clientId) {
+                        self.chatMessages = myJsonObject_Temp;
+                        self.flag = true;
+                    }
+                    if (self.flag == false) {
+                        for (var i = 0; i < self.chatWebs.length; i++) {
+                            self.chatWebs[i].newMessage = false;
+                            if (self.chatWebs[i].clientId == myJsonObject_Temp[0].clientId) {
+                                self.chatWebs[i].newMessage = true;
+                                }       
+                        } 
+                    }
 
-                }
-              
+                    for (var j = 0; j < self.chatMessages.length; j++) {
+                        self.chatMessages[j].messageUpdateT = self.updateMessageTme(myJsonObject_Temp[j].messageTime)
+                        
+                    }
+                    console.log(self.chatMessages)
+                    
+            } else {
+                // alert("webs")
+                // console.log(myJsonObject_Temp)
+                self.chatWebs = myJsonObject_Temp;
                 $scope.$apply();
-                self.xmlHttp_Process = ChatService.ProcessFunction();
-                self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
-                self.xmlHttp_Process.send();
 
             }
+              
+            $scope.$apply();
+            self.xmlHttp_Process = ChatService.ProcessFunction();
+            self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
+            self.xmlHttp_Process.send();
+
         }
-
-      
-
-  
-        self.myClick = function () {
-            alert(self.currentWebUser)
-            ChatService.myClick(self.myMessage, self.currentWebUser);
-            self.myMessage = '';
-     
-        }
-
-        self.getWebUserChat = function (clientId) {
-            self.currentWebUser = clientId;
-            $http({
-                url: '/MessageService.svc/GetAllMessages',
-                method: 'POST',
-                data: clientId
-            }).then(function (response) {
-                console.log(response)
-                self.chatMessages = response.data;
-
-
-            }, function () { alert("GetAllMessages error") });
-        }
-
-
-
-        window.onunload = self.myUnLoad;
-        window.onload = self.myLoad;
-        self.myLoad();
-   
-        return self;
-
-
-
-
-
     }
 
+        $interval(function() {
+     
+            for (var j = 0; j < self.chatMessages.length; j++) {
+                self.chatMessages[j].messageUpdateT = self.updateMessageTme(self.chatMessages[j].messageTime)
+            }
+        }, 20000);
+  
+    self.myClick = function () {
+           
+        ChatService.myClick(self.myMessage, self.currentWebUser.clientId);
+        self.myMessage = '';
+     
+    }
+
+    self.getWebUserChat = function (webUser,index) {
+        self.currentWebUser = webUser;
+        self.chatWebs[index].newMessage = false;
+           
+        $http({
+            url: '/MessageService.svc/GetAllMessages',
+            method: 'POST',
+            data: webUser.clientId
+        }).then(function (response) {
+            console.log(response)
+            self.chatMessages = response.data;
+            for (var j = 0; j < self.chatMessages.length; j++) {
+                self.chatMessages[j].messageUpdateT = self.updateMessageTme(self.chatMessages[j].messageTime)
+
+            }
+
+
+        }, function () { alert("GetAllMessages error") });
+    }
+
+
+    self.updateMessageTme = function (messageTime) {
+        var startTime = new Date(messageTime)
+        var endTime = new Date()
+        var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
+        var resultInMinutes = Math.round(difference / 60000);
+        if (resultInMinutes > 60) {
+            return resultInMinutes + " more than 1h";
+        } else {
+            return resultInMinutes + " mins ago";
+        }
+        
+    }
+
+    self.register = function () {
+       
+        self.myLoad();
+
+    }
+    window.onunload = self.myUnLoad;
+    // window.onload = self.myLoad;
+    //self.myLoad();
+   
+    return self;
+
+
+
+
+
+}
+
     angular.module('eli.admin')
-        .controller('ChatController', ['$http','$location', '$scope',  '$stateParams','ChatService', ChatController]);
+        .controller('ChatController', ['$interval','$http', '$location', '$scope', '$stateParams', 'ChatService', 'AuthService', ChatController]);
 }());
 
 

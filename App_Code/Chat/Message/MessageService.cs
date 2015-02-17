@@ -3,6 +3,7 @@ using System.Net;
 using System.ServiceModel.Web;
 using System;
 using MongoDB.Driver;
+using System.Diagnostics;
 
 public class MessageService : DatabaseActions, IMessage
 {
@@ -19,6 +20,7 @@ public class MessageService : DatabaseActions, IMessage
 
     public List<Message> GetAllMessages(string clientId)
     {
+        Debug.Write(clientId);
         List<Message> messagesOfClientList = new List<Message>();
 
         foreach (Message message in GetAllObject<Message>("Message"))

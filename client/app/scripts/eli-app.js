@@ -3,12 +3,13 @@
 
   angular.module('eliApp', [
   'ngCookies',
+  'eli.common',
   'ngResource',
   'ui.router',
+  
   'ngAnimate',
   'pascalprecht.translate',
-  'LocalStorageModule',
-  'luegg.directives'
+  'LocalStorageModule'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $resourceProvider, $translateProvider) {
     //delete $httpProvider.defaults.headers.common['X-Requested-With'];
