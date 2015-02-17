@@ -7,29 +7,73 @@ using MongoDB.Driver;
 public class MessageService : DatabaseActions, IMessage
 {
 
-    public void AddMessage(Message message)
+    public void AddOnlineMessage(Message message)
     {
-        InsertObjectNotAsync(message, "Message");
+        InsertObjectNotAsync(message, "OnlineMessage");
     }
 
-    //public List<Message> GetAllMessages()
-    //{
-    //    return GetAllObject<Message>("Message");
-    //}
-
-    public List<Message> GetAllMessages(string clientId)
+    public void RemoveOnlineMessage(Message message)
     {
-        List<Message> messagesOfClientList = new List<Message>();
+        RemoveObject(message._id, "OnlineMessage");
+    }
 
-        foreach (Message message in GetAllObject<Message>("Message"))
+    public void AddHistoryMessage(Message message)
+    {
+        InsertObjectNotAsync(message, "HistoryMessage");
+    }
+
+    public void RemoveHistoryMessage(Message message)
+    {
+        RemoveObject(message._id, "HistoryMessage");
+    }
+
+    public List<Message> GetAllOnlineMessages()
+    {
+        return GetAllObject<Message>("OnlineMessage");
+    }
+
+    public List<Message> GetAllHistoryMessages()
+    {
+        return GetAllObject<Message>("HistoryMessage");
+    }
+
+    public List<Message> GetAllOnlineMessagesOfClient(string clientId)
+    {
+        var onlineMessagesOfClientList = new List<Message>();
+        var allOnlineMessage = GetAllOnlineMessages();
+
+        foreach (Message message in allOnlineMessage)
         {
             if (message.clientId == clientId)
-                messagesOfClientList.Add(message);
+                onlineMessagesOfClientList.Add(message);
         }
 
-        return messagesOfClientList;
+        return onlineMessagesOfClientList;
     }
 
+    public List<Message> GetAllHistoryMessagesOfClient(string clientId)
+    {
+        var historyMessagesOfClientList = new List<Message>();
+        var allMessage = GetAllHistoryMessages();
 
-   
+        foreach (Message message in allMessage)
+        {
+            if (message.clientId == clientId)
+                historyMessagesOfClientList.Add(message);
+        }
+
+        return historyMessagesOfClientList;
+    }
+
+    public void SaveAllMessagesOfClient(string clientId)
+    {
+        var allOnlineMessage = GetAllOnlineMessagesOfClient(clientId);
+
+        foreach (Message message in allOnlineMessage)
+        {
+            AddHistoryMessage(message);
+            RemoveOnlineMessage(message);
+        }
+    }
+  
 }

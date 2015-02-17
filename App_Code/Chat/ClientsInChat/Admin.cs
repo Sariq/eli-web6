@@ -7,7 +7,7 @@ using System.Web;
 public class Admin : Client
 {
     public Admin(string clientId)
-        : base(clientId, 0)
+        : base(clientId)
     { 
     }
 }

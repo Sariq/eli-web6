@@ -12,7 +12,16 @@ public interface IMessage
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    void AddMessage(Message message);
+    void AddOnlineMessage(Message message);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "AddHistoryMessage")
+    ]
+    void AddHistoryMessage(Message message);
 
     [OperationContract]
     [WebInvoke(
@@ -21,6 +30,24 @@ public interface IMessage
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "GetAllMessages")
     ]
-    List<Message> GetAllMessages(string id);
+    List<Message> GetAllOnlineMessagesOfClient(string id);
+
+        [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetAllHistoryMessagesOfClient")
+    ]
+    List<Message> GetAllHistoryMessagesOfClient(string id);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "SaveAllMessagesOfClient")
+    ]
+    void SaveAllMessagesOfClient(string id);
 
 }

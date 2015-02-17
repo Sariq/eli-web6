@@ -28,6 +28,7 @@ public class ClientService : DatabaseActions, IClient
     {
         RemoveObject(clientId, "Web");
     }
+
     public void RemoveAdmin(string clientId)
     {
         RemoveObject(clientId, "Admin");
@@ -37,6 +38,7 @@ public class ClientService : DatabaseActions, IClient
     {
         return GetObject<Web>("clientId", clientId, "Web").Result;
     }
+
     public Admin GetAdmin(string clientId)
     {
         return GetObject<Admin>("clientId", clientId, "Admin").Result;
@@ -46,11 +48,12 @@ public class ClientService : DatabaseActions, IClient
     {
         return GetAllObject<Web>("Web");
     }
+
     public List<Admin> GetAllAdmins()
     {
         return GetAllObject<Admin>("Admin");
     }
- 
+
     public bool isAdminOnline()
     {
         return (GetAllAdmins().Count > 0);

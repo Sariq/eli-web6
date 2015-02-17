@@ -10,7 +10,7 @@ public class Web : Client
     public string webName { get; set; }
 
     public Web(string clientId, int chatWebCounter)
-        : base(clientId, chatWebCounter)
+        : base(clientId)
     {
         webName = "User" + chatWebCounter;
     }

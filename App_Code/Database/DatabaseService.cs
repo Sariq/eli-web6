@@ -39,7 +39,9 @@ public class DatabaseService : IDatabaseService
 
         CreateCollection("Admin");
 
-        CreateCollection("Message");
+        CreateCollection("OnlineMessage");
+
+        CreateCollection("MessageHistory");
 
         InitializeUserCollection();
         InitializeMeetingCollection();

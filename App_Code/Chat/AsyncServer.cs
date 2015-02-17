@@ -20,13 +20,12 @@ public class AsyncServer
 
     public static void sendMessage(String message, String clientId)
     {
-        //int counter=0;
         lock (_lock)
         {
             Message currentMessage = new Message(clientId, message);
-            new MessageService().AddMessage(currentMessage);
+            new MessageService().AddOnlineMessage(currentMessage);
 
-            var allMessages = new MessageService().GetAllMessages(clientId);
+            var allMessages = new MessageService().GetAllOnlineMessagesOfClient(clientId);
 
             //arrchatMessage[z] = new chatMessage();
             //arrchatMessage[z].content = message;
