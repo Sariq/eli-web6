@@ -132,7 +132,7 @@
         self.chatWebs[index].newMessage = false;
            
         $http({
-            url: '/MessageService.svc/GetAllMessages',
+            url: '/MessageService.svc/GetAllOnlineMessagesOfClient',
             method: 'POST',
             data: webUser.clientId
         }).then(function (response) {
@@ -166,6 +166,20 @@
         self.myLoad();
 
     }
+
+    self.myUnLoad = function () {
+        alert("myUnLoad")
+        var url = "/AsyncHandler.ashx?cmd=unregister&type=" + "admin";
+        self.xmlHttp_OneTime.open("POST", url, true);
+        self.xmlHttp_OneTime.send();
+    }
+        
+    self.unRegister = function () {
+        
+        self.myUnLoad();
+
+    }
+    
     window.onunload = self.myUnLoad;
     // window.onload = self.myLoad;
     //self.myLoad();

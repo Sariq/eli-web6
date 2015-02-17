@@ -8,10 +8,13 @@ public class Web : Client
 {
     [DataMember]
     public string webName { get; set; }
+    [DataMember]
+    public bool isNewMessage { get; set; }
 
     public Web(string clientId, int chatWebCounter)
         : base(clientId)
     {
         webName = "User" + chatWebCounter;
+        isNewMessage = true;
     }
 }

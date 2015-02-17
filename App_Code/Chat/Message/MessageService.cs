@@ -40,19 +40,22 @@ public class MessageService : DatabaseActions, IMessage
 
     public List<Message> GetAllOnlineMessagesOfClient(string clientId)
     {
-<<<<<<< HEAD
+        var clientService = new ClientService();
+
         var onlineMessagesOfClientList = new List<Message>();
         var allOnlineMessage = GetAllOnlineMessages();
-=======
-        Debug.Write(clientId);
+
         List<Message> messagesOfClientList = new List<Message>();
->>>>>>> 8f71c8d364ebbed3f919c3d0178079892f4a1acb
 
         foreach (Message message in allOnlineMessage)
         {
             if (message.clientId == clientId)
                 onlineMessagesOfClientList.Add(message);
         }
+
+        var web = clientService.GetWeb(clientId);
+        web.isNewMessage = false;
+        clientService.UpdateWeb(web);
 
         return onlineMessagesOfClientList;
     }

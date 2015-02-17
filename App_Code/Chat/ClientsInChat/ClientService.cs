@@ -31,7 +31,12 @@ public class ClientService : DatabaseActions, IClient
 
     public void RemoveAdmin(string clientId)
     {
-        RemoveObject(clientId, "Admin");
+        RemoveAdmin(clientId, "Admin");
+    }
+    
+    public void UpdateWeb(Client client)
+    {
+        UpdateObject(client, "Web");
     }
 
     public Web GetWeb(string clientId)
@@ -57,6 +62,12 @@ public class ClientService : DatabaseActions, IClient
     public bool isAdminOnline()
     {
         return (GetAllAdmins().Count > 0);
+    }
+
+    public void SetNoNewMessage(string clientId)
+    {
+        var web = GetWeb(clientId);
+        web.isNewMessage = false;
     }
 
 }

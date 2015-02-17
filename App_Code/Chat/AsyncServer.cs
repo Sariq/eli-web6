@@ -10,12 +10,11 @@ public class AsyncServer
     private static Object _lock = new Object();
     private static List<AsyncResult> _clientStateList = new List<AsyncResult>();
     private static int z = 0;
-    private static chatMessage[] arrchatMessage;
     private static int chatWebCounter = 0;
 
     static AsyncServer()
     {
-        arrchatMessage = new chatMessage[30];
+        
 
     }
 
@@ -27,7 +26,7 @@ public class AsyncServer
             new MessageService().AddOnlineMessage(currentMessage);
 
             var allMessages = new MessageService().GetAllOnlineMessagesOfClient(clientId);
-
+            var chatMessage = new ChatMessage(clientId, allMessages);
             //arrchatMessage[z] = new chatMessage();
             //arrchatMessage[z].content = message;
             //z++;
@@ -49,7 +48,7 @@ public class AsyncServer
             //    }
             //}
             JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
-            string resultStr = myJavaScriptSerializer.Serialize(allMessages);
+            string resultStr = myJavaScriptSerializer.Serialize(chatMessage);
             foreach (AsyncResult clientState in _clientStateList)
             {
                 if (clientState.ClientGuid == clientId)
@@ -136,6 +135,7 @@ public class AsyncServer
             state.ClientGuid = chatWebCounter.ToString();
             if (type == "admin")
             {
+                chatWebCounter++;
                 state.ClientGuid = state.ClientGuid + 123;
                 var currentAdmin = new Admin((state.ClientGuid));
                 new ClientService().AddClient(currentAdmin);
@@ -183,39 +183,63 @@ public class AsyncServer
     {
         lock (_lock)
         {
+            Debug.Write(state.ClientGuid);
             if (type == "admin")
                 new ClientService().RemoveAdmin(state.ClientGuid);
             else
-                new ClientService().RemoveWeb(state.ClientGuid);                
+            { 
+                new ClientService().RemoveWeb(state.ClientGuid);
+                _clientStateList.Remove(state);
+
+                JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
+                var allWeb = new ClientService().GetAllWebs();
+                string resultStr = myJavaScriptSerializer.Serialize(allWeb);
+                foreach (AsyncResult clientState in _clientStateList)
+                {
+                    try
+                    {
+                        var admin = new ClientService().GetAdmin(clientState.ClientGuid);
+                        if (admin != null)
+                        {
+                            if (clientState._context.Session != null)
+                            {
+                                clientState._context.Response.Write(resultStr);
+                                clientState.CompleteRequest();
+                            }
+                        }
+                    }
+                    catch { }
+                }
+            }
         }
     }
 
-    public static void FirstTimeClient(AsyncResult state)
-    {
-        int counter = 0;
-        lock (_lock)
-        {
-            JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
-            for (int y = 0; y < arrchatMessage.Length; y++)
-            {
-                if (arrchatMessage[y] != null)
-                {
-                    counter++;
-                }
-            }
+    //public static void FirstTimeClient(AsyncResult state)
+    //{
+    //    int counter = 0;
+    //    lock (_lock)
+    //    {
+    //        JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
+    //        for (int y = 0; y < arrchatMessage.Length; y++)
+    //        {
+    //            if (arrchatMessage[y] != null)
+    //            {
+    //                counter++;
+    //            }
+    //        }
 
-            chatMessage[] temp_arrchatMessage = new chatMessage[counter];
-            for (int y = 0; y < arrchatMessage.Length; y++)
-            {
-                if (arrchatMessage[y] != null)
-                {
-                    temp_arrchatMessage[y] = arrchatMessage[y];
-                }
-            }
-            string resultStr = myJavaScriptSerializer.Serialize(temp_arrchatMessage);
+    //        chatMessage[] temp_arrchatMessage = new chatMessage[counter];
+    //        for (int y = 0; y < arrchatMessage.Length; y++)
+    //        {
+    //            if (arrchatMessage[y] != null)
+    //            {
+    //                temp_arrchatMessage[y] = arrchatMessage[y];
+    //            }
+    //        }
+    //        string resultStr = myJavaScriptSerializer.Serialize(temp_arrchatMessage);
 
-            state._context.Response.Write(resultStr);
-        }
-    }
+    //        state._context.Response.Write(resultStr);
+    //    }
+    //}
 
 }

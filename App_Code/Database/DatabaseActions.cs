@@ -40,6 +40,12 @@ public class DatabaseActions
         await collection.RemoveAsync(new QueryDocument("_id", objId));
     }
 
+    protected async void RemoveAdmin(string objId, string collectionName)
+    {
+        var collection = database.GetCollection(collectionName);
+        await collection.RemoveAsync(new QueryDocument("clientId", objId));
+    }
+
     protected async void UpdateObject(DatabaseObject obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);

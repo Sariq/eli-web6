@@ -76,7 +76,7 @@ public class AsyncHandler : IHttpAsyncHandler, System.Web.SessionState.IReadOnly
             
                 break;
             case "firstTime":
-                AsyncServer.FirstTimeClient(myAsyncResult);
+                //AsyncServer.FirstTimeClient(myAsyncResult);
                 myAsyncResult.CompleteRequest();
                 break;
             case "process":

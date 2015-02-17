@@ -28,7 +28,7 @@ public interface IMessage
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetAllMessages")
+         UriTemplate = "GetAllOnlineMessagesOfClient")
     ]
     List<Message> GetAllOnlineMessagesOfClient(string id);
 

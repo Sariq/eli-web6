@@ -23,14 +23,14 @@ public interface IClient
     //]
     //void RemoveWeb(string id);
 
-    //[OperationContract]
-    //[WebInvoke(
-    //     Method = "DELETE",
-    //     ResponseFormat = WebMessageFormat.Json,
-    //     BodyStyle = WebMessageBodyStyle.Bare,
-    //     UriTemplate = "api/{id}")
-    //]
-    //void RemoveAdmin(string id);
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "RemoveAdmin")
+    ]
+    void RemoveAdmin(string id);
 
     //[OperationContract]
     //[WebInvoke(
