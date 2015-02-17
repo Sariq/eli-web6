@@ -1,6 +1,9 @@
 (function () {
 
-    function routes($stateProvider,$urlRouterProvider) {
+    function routes($stateProvider, $urlRouterProvider) {
+        //abstract: true,
+
+   
         $stateProvider
       .state('patients', {
         url:'/patients' ,
@@ -12,11 +15,37 @@
              $stateProvider
       .state('/patient/profile/:patientId', {
           url: '/patient/profile/:patientId',
+          
           templateUrl: 'patients/views/profile/profile.html',
           controller: 'PatientProfileController',
           controllerAs: 'profile'
 
-      })      
+      })
+
+//        $stateProvider
+//.state('/patient/profile/:patientId', {
+//    url: '/patient/profile/:patientId',
+//    views: {
+//        'profile': {
+//            url: '/patient/profile/:patientId',
+//            templateUrl: 'patients/views/profile/profile.html',
+//            controller: 'PatientProfileController',
+//            controllerAs: 'profile'
+//        },
+//        'meetings': {
+//            templateUrl: 'meeting/views/list/list.html',
+//            controller: 'MeetingListController',
+//            controllerAs: 'list'
+//        },
+
+
+//    }
+
+//})
+
+  
+        
+
       .state('#/patient/add', {
           url: '/patient/add',
           templateUrl: 'patients/views/add/add.html',
