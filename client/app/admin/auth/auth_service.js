@@ -8,8 +8,8 @@
         var count = 0;
         self.userInfo = {};
         self.count = 1;
-        //self.authResource = $resource('/UserService.svc/SignIn/:id', {}, [{ update: { method: 'PUT' } }]);
-        self.authResource = $resource('/DatabaseService.svc/Initialize', {}, [{ update: { method: 'PUT' } }]);
+        self.authResource = $resource('/UserService.svc/SignIn/:id', {}, [{ update: { method: 'PUT' } }]);
+        //self.authResource = $resource('/DatabaseService.svc/Initialize', {}, [{ update: { method: 'PUT' } }]);
         //self.tokenRefreshResource = $resource('http://localhost:83\:83/TokenService.svc/RefreshToken/:id', {}, { update: { method: 'PUT' } });
         self.getTokenId = function () {
             if (localStorageService.cookie.get('id_token') != null) {
@@ -44,11 +44,16 @@
         };
 
         self.setUserInfo = function (userInfo) {
-            self.userInfo = userInfo;
+          
+            return localStorageService.set("userInfo", userInfo);
         };
         self.getUserInfo = function (userInfo) {
-            return self.userInfo;
+            return localStorageService.get("userInfo");
         };
+        self.clearUserInfo = function () {
+
+            return localStorageService.remove("userInfo");
+        }
         self.create = function () {
             var user = {
                 userId: '',

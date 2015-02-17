@@ -11,7 +11,6 @@
         self.xmlHttp_Process;
         self.chatMessages = [];
         self.GuID=''
-
    
         //self.isAdminOnline = function () {
             $http({
@@ -19,7 +18,7 @@
                 method: 'POST',
              
             }).then(function (response) {
-                console.log(response)
+                console.log(response.data)
                 self.adminOnlineStatus = response.data;
 
 
@@ -40,7 +39,9 @@
         self.getResponse_Connect = function () {
             if (self.xmlHttp_OneTime.readyState == 4) {
                 self.GuID = self.xmlHttp_OneTime.responseText;
+                alert(self.GuID)
                 ChatService.GuID = self.GuID;
+                $scope.$apply();
                 self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Process;
                 self.xmlHttp_Process = ChatService.ProcessFunction();
                 self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
@@ -84,24 +85,26 @@
       
 
   
-        self.myClick=function () {
+        self.myClick = function () {
+           
             ChatService.myClick(self.myMessage);
             self.myMessage='';
      
         }
         self.register = function () {
+           
             self.myLoad();
 
         }
         self.myUnLoad = function () {
-            alert()
+            alert("myUnLoad")
             var url = "AsyncHandler.ashx?cmd=unregister&type=" + "web";
             xmlHttp_OneTime.open("POST", url, true);
             xmlHttp_OneTime.send();
         }
 
         window.onunload = self.myUnLoad;
-        window.onload = self.myLoad;
+        //window.onload = self.myLoad;
 
    
         return self;

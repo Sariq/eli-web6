@@ -1,5 +1,6 @@
 ﻿(function () {
     angular.module('eli.common', [
-            'ui.router'
+            'ui.router',
+            'luegg.directives'
     ]);
 }());

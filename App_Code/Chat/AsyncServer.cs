@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Web.Script.Serialization;
 
 public class AsyncServer
@@ -132,10 +133,11 @@ public class AsyncServer
     {
         lock (_lock)
         {
-            state.ClientGuid = Guid.NewGuid().ToString("N");
+            state.ClientGuid = chatWebCounter.ToString();
             if (type == "admin")
             {
-                var currentAdmin = new Admin(state.ClientGuid);
+                state.ClientGuid = state.ClientGuid + 123;
+                var currentAdmin = new Admin((state.ClientGuid));
                 new ClientService().AddClient(currentAdmin);
             }
             else
@@ -146,6 +148,7 @@ public class AsyncServer
             }
 
             _clientStateList.Add(state);
+            Debug.Write(state.ClientGuid.ToString());
             state._context.Response.Write(state.ClientGuid.ToString());
 
 

@@ -4,7 +4,7 @@
     console.log("nav2");
 
 
-
+    $scope.userInfo = AuthService.getUserInfo()
    	  $scope.$on('authLoaded', function() {
        $scope.userInfo=AuthService.getUserInfo()
 

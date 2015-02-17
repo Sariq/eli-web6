@@ -1,15 +1,24 @@
 (function () {
 
-    function routes($stateProvider,$urlRouterProvider) {
-        $stateProvider
-      .state('#/meetings', {
-        url:'/meetings' ,
-        templateUrl: 'meeting/views/list/list.html',
-        controller: 'MeetingListController',
-        controllerAs: 'list'
+    function routes($stateProvider, $urlRouterProvider) {
 
-      })
-              
+
+      //  $stateProvider
+      //.state('meetings', {
+      //    url: '/meetings',
+      //    templateUrl: 'meeting/views/list/list.html',
+      //    controller: 'MeetingListController',
+      //    controllerAs: 'list'
+
+      //})
+
+        $stateProvider
+
+
+
+
+
+
             .state('/meetings/:patientId', {
                 url: '/meetings/:patientId',
                 templateUrl: 'meeting/views/list/list.html',
@@ -21,7 +30,7 @@
           url: '/meeting/add',
           templateUrl: 'meeting/views/add/add.html',
           controller: 'MeetingAddController',
-        controllerAs: 'add'
+          controllerAs: 'add'
 
       })
                 .state('meeting/item/:meetingId', {
@@ -41,12 +50,12 @@
       .state('meeting/edit/:meetingId', {
           url: '/meeting/edit/:meetingId',
           templateUrl: 'meeting/views/add/add.html',
-        controller: 'MeetingAddController',
-        controllerAs: 'add'
+          controller: 'MeetingAddController',
+          controllerAs: 'add'
       })
-     
-  }
-  angular.module('eli.admin')
-    .config(['$stateProvider','$urlRouterProvider',routes])
+
+    }
+    angular.module('eli.admin')
+      .config(['$stateProvider', '$urlRouterProvider', routes])
 
 }());

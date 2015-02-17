@@ -6,6 +6,10 @@
         self.xmlHttp_OneTime;
         self.xmlHttp_Process;
         var myJsonObject;
+
+        self.myData = { name: "sari", lasname: "qashuw" }
+        //alert(JSON.stringify(self.myData))
+        //self.myDatas = JSON.stringify(self.myData);
         self.loadChat = function () {
             try {
                 self.xmlHttp_OneTime = new ActiveXObject("Microsoft.XMLHTTP");
@@ -46,7 +50,7 @@
 
 
         self.myClick = function (myMessage) {
-
+            alert(self.GuID)
             var url = "/AsyncHandler.ashx?cmd=sendMessage&myText=" + myMessage + "&clientId=" + self.GuID;
             self.xmlHttp_OneTime.open("POST", url, true);
             self.xmlHttp_OneTime.send();
