@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using System;
+using System.Collections.Generic;
 
 public class DatabaseService : IDatabaseService
 {
@@ -20,33 +21,33 @@ public class DatabaseService : IDatabaseService
 
     public readonly Meeting meetingA = new Meeting("123", "123", "meetingA", "A", DateTime.Today, "FreeText", new string[] { "AA", "BB" });
     public readonly Meeting meetingB = new Meeting("123", "123", "meetingB", "B", DateTime.Today, "FreeText", new string[] { "AA", "BB" });
-    
+
+    public readonly MailMessage mailMessage = new MailMessage
+        (new List<string> { "123", "karin" }, new List<string> { "123", "karin" }, "subject", "content", DateTime.Today, true, true, true);
+
     #endregion
 
     public void Initialize()
     {
         CreateCollection("User");
         SetCollectionPrimeryKey("User", "userId");
-
-        CreateCollection("Meeting");
-
-        CreateCollection("Assignment");
-
+        
         CreateCollection("Patient");
         SetCollectionPrimeryKey("Patient", "identity_number");
 
+        CreateCollection("Meeting");
+        CreateCollection("Assignment");
         CreateCollection("Web");
-
         CreateCollection("Admin");
-
         CreateCollection("OnlineMessage");
-
         CreateCollection("MessageHistory");
+        CreateCollection("MailMessage");
 
         InitializeUserCollection();
         InitializeMeetingCollection();
         InitializeAssignmentCollection();
         InitializePatientCollection();
+        InitializeMailMessageCollection();
     }
 
     private void InitializeAssignmentCollection()
@@ -77,6 +78,12 @@ public class DatabaseService : IDatabaseService
         var meetingService = new MeetingService();
         meetingService.AddMeeting(meetingA);
         meetingService.AddMeeting(meetingB);
+    }
+
+    private void InitializeMailMessageCollection()
+    {
+        var mailMessageService = new MailMessageService();
+        mailMessageService.SendMailMessage(mailMessage);
     }
 
     private MongoDatabase GetDatabase()

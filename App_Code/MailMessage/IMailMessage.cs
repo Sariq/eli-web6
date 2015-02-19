@@ -3,81 +3,59 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 
 [ServiceContract]
-public interface IClient
+public interface IMailMessage
 {
     [OperationContract]
     [WebInvoke(
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api")
+         UriTemplate = "SendMailMessage")
     ]
-    void AddClient(Client Client);
+    MailMessage SendMailMessage(MailMessage mailMessage);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "DeleteMailMessagesFromInbox")
+    ]
+    void DeleteMailMessagesFromInbox(string[] mailMessagesId);
 
     [OperationContract]
     [WebInvoke(
          Method = "DELETE",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
+         UriTemplate = "DeleteMailMessageFromTrash")
     ]
-    void RemoveWeb(string id);
-
-    [OperationContract]
-    [WebInvoke(
-         Method = "POST",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "RemoveAdmin")
-    ]
-    void RemoveAdmin(string id);
+    void DeleteMailMessageFromTrash(string[] mailMessagesId);
 
     [OperationContract]
     [WebInvoke(
          Method = "GET",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
+         UriTemplate = "GetInboxMessages/{id}")
     ]
-    Web GetWeb(string id);
+    List<MailMessage> GetInboxMessages(string id);
 
     [OperationContract]
     [WebInvoke(
          Method = "GET",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
+         UriTemplate = "GetSentMessages/{id}")
     ]
-    Admin GetAdmin(string id);
+    List<MailMessage> GetSentMessages(string id);
 
     [OperationContract]
     [WebInvoke(
          Method = "GET",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetAllWebs")
+         UriTemplate = "GetDeleteMessages/{id}")
     ]
-    List<Web> GetAllWebs();
-
-
-    [OperationContract]
-    [WebInvoke(
-         Method = "POST",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "isAdminOnline")
-    ]
-    bool isAdminOnline();
-
-    [OperationContract]
-    [WebInvoke(
-         Method = "GET",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetAllAdmins")
-    ]
-    List<Admin> GetAllAdmins();
-
-
-
+    List<MailMessage> GetDeleteMessages(string id);
 }
