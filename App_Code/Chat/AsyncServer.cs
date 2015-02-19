@@ -132,12 +132,16 @@ public class AsyncServer
     {
         lock (_lock)
         {
-            state.ClientGuid = chatWebCounter.ToString();
+            state.ClientGuid = Convert.ToString((ObjectId.GenerateNewId()));// Guid.NewGuid().ToString();// chatWebCounter.ToString();
             if (type == "admin")
             {
+                var x = Convert.ToString((ObjectId.GenerateNewId()));
+                state.ClientGuid = x;// Convert.ToString((ObjectId.GenerateNewId()));// Guid.NewGuid().ToString();// chatWebCounter.ToString();
+                Debug.Write(state.ClientGuid);
+                Debug.Write(x);
                 chatWebCounter++;
-                state.ClientGuid = state.ClientGuid + 123;
-                var currentAdmin = new Admin((state.ClientGuid));
+                //state.ClientGuid = Guid.NewGuid().ToString();// state.ClientGuid + 123;
+                var currentAdmin = new Admin(state.ClientGuid);
                 new ClientService().AddClient(currentAdmin);
             }
             else
@@ -148,7 +152,7 @@ public class AsyncServer
             }
 
             _clientStateList.Add(state);
-            Debug.Write(state.ClientGuid.ToString());
+            Debug.Write(state.ClientGuid);
             state._context.Response.Write(state.ClientGuid.ToString());
 
 
@@ -181,24 +185,25 @@ public class AsyncServer
 
     public static void UnregisterClient(AsyncResult state, string type)
     {
+        var clientService = new ClientService();
         lock (_lock)
         {
             Debug.Write(state.ClientGuid);
             if (type == "admin")
-                new ClientService().RemoveAdmin(state.ClientGuid);
+                clientService.RemoveAdmin(state.ClientGuid);
             else
-            { 
-                new ClientService().RemoveWeb(state.ClientGuid);
+            {
+                clientService.RemoveWeb(state.ClientGuid);
                 _clientStateList.Remove(state);
 
                 JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
-                var allWeb = new ClientService().GetAllWebs();
+                var allWeb = clientService.GetAllWebs();
                 string resultStr = myJavaScriptSerializer.Serialize(allWeb);
                 foreach (AsyncResult clientState in _clientStateList)
                 {
                     try
                     {
-                        var admin = new ClientService().GetAdmin(clientState.ClientGuid);
+                        var admin = clientService.GetAdmin(clientState.ClientGuid);
                         if (admin != null)
                         {
                             if (clientState._context.Session != null)
