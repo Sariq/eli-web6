@@ -3,33 +3,42 @@ $(document).ready(function (e) {
     $('.with-hover-text, .regular-link').click(function (e) {
         e.stopPropagation();
     });
+    $('.story').each(function (index, element) {
+        $(element).css("height", (100) + "vh");
+       
+    })
+   
+    alert()
     $(function () {
         var pause = 10;
         $(document).scroll(function (e) {
+              
             delay(function () {
-
+               
                 var tops = [];
 
                 $('.story').each(function (index, element) {
-                    $(element).css("height", (100) + "vh");
+                  
                     tops.push($(element).offset().top - 200);
-                });
+                })
                 //console.log(tops)//tops=slides locations
                 var scroll_top = $(this).scrollTop();
 
-
+                           
                 console.log(scroll_top)//location while scrollin
                 var lis = $('.nav > li');
                 //console.log(lis)//which tab is active
                 for (var i = tops.length - 1; i >= 0; i--) {
+                   // alert(scroll_top +'-'+tops[i])
                     if (scroll_top >= tops[i]) {
+                      
                         //   console.log(lis[tops.length - 1 - i])
                         menu_focus(lis[tops.length - 1 - i], i + 1);
                         break;
                     }
                 }
             },
-            pause);
+            10);
         });
 
 
@@ -152,7 +161,7 @@ var delay = (function () {
 })();
 
 function menu_focus(element, i) {
-
+          
     if ($(element).hasClass('active')) {
         if (i == mytops) {
             if ($('.navbar').hasClass('inv') == false)
@@ -181,7 +190,7 @@ function menu_focus(element, i) {
     //console.log(tx_pos)
 
 
-
+    //alert(i)
     $('.active-menu').stop(false, false).animate(
 		{
 		    left: tx_pos,

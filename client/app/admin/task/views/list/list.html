@@ -1,84 +1,43 @@
+﻿
+        <div class="modal-content" style="width: 100%">
+
+            <div class="modal-header">
+                <h1 class="text-center">משימות</h1>
+            </div>
+
+            <div class="panel-body text-right">
+                <section class="task-panel tasks-widget">
+
+                    <div class="">
+                        <div class="">
+                            <ul id="sortable" class="task-list ui-sortable">
+                                <li ng-repeat="assignment in item.assignments" class=" " ng-class="{'list-success':assignment.isDone,'list-warning':!assignment.isDone}">
+                                    <i class=" fa fa-ellipsis-v"></i>
+                                    <div class="task-checkbox pull-right">
+                                        <input type="checkbox" class="list-child" value="" />
+                                    </div>
+                                    <div class="task-title">
+
+                                        <div class="pull-left hidden-phone">
+                                            <button ng-if="!assignment.isDone" ng-click="item.isDoneAssignmentToggle(assignment)" class="btn btn-success btn-xs fa fa-check"></button>
+                                            <button ng-if="assignment.isDone" ng-click="item.isDoneAssignmentToggle(assignment)" class="btn btn-warning btn-xs fa fa-remove"></button>
+                                            <button ng-click="item.editAssignment(assignment)" class="btn btn-primary btn-xs fa fa-pencil"></button>
+                                            <button ng-click="item.removeAssignment(assignment,$index)" class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                        </div>
+
+                                        <span class="assignment-title-sp pull-right" style="font-size: 130%"><a ng-click="item.showTask(assignment)">{{assignment.title}}</a></span>
 
 
+                                    </div>
+                                </li>
 
 
-<h1 class="page-header" translate>Tasks</h1>
-<ol class="breadcrumb">
-  <li><a href="#" translate>Admin</a></li>
-  <li class="active" translate>taskss</li>
-</ol>
+                            </ul>
+                        </div>
 
+                    </div>
 
-<div class="well">
-
-     <label translate>Project Family</label>
-
-  <span  class="nullable">
-    <select  id="project-family"
-             ng-model="list.project_family_id"
-      ng-options="pf._id as pf.name  for pf in list.projectFamilies"
-      ng-change="list.projectFamiliesChange(true)">
-      <option value="">-- All --</option>
-    </select>
-  </span>
-
-
- <label translate>Project</label>
-
-  <span  class="nullable">
-    <select  id="project"
-             ng-model="list.project_id"
-      ng-options="project.id as project.name  for project in list.projects"
-      ng-change="list.projectChange(true)">
-      <option value="">-- All --</option>
-    </select>
-  </span>
-
- <label translate>Step</label>
-   <span  class="nullable">
-    <select  id="step" ng-model="list.step_id"
-     ng-options="step.id as step.name  for step in list.steps"
-             ng-change="list.stepChange(true)">
-
-      <option value="" translate>-- All --</option>
-    </select>
-  </span>
-
-
-  <label translate>Search</label> <input placeholder="search" ng-model="q">
-  <a  class="btn btn-info" href="#/tasks/add"><span class="fa fa-plus" ></span>{{'Add tasks'|translate}}</a>
-
-</div>
-
-
-
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <td></td>
-    <td translate>First Name</td>
-    <td translate>Last Name</td>
-    <td translate>ID</td>
-      <td></td>
-       <td></td>
-  </tr>
-  </thead>
-  <tr ng-repeat="tasks in list.taskss|filter:{project_family_id: list.project_family_id,project_id: list.project_id,step_id:list.step_id}">
-    <td>{{$index}}</td>
-          <td>{{tasks.first_name}}</td>
-    <td>{{tasks.last_name}}</td>
-      <td>{{tasks.identity_number}}</td>
-      <td></td>
-    <td>
-      <a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/tasks/edit/1"></a>
-    </td>
-    <td>
-         <i object-name="tasks" confirm-action="list.remove(tasks)"  class="btn btn-xs btn-danger glyphicon glyphicon-trash"></i>
-    </td>
-  </tr>
-
-</table>
-
-
-
-
+                </section>
+            </div>
+        </div>
+           <a ng-click="add.openModal()" class="btn btn-success btn-sm pull-left">Add New Tasks</a>

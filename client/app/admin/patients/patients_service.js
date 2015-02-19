@@ -1,6 +1,6 @@
 (function () {
                                                                                                                               
-  function PatientAdmin($resource) {
+    function PatientAdmin($resource, localStorageService) {
     var self = this;
     self.info ={
       os:['linux','windows'],
@@ -62,6 +62,19 @@
     };
 
 
+    self.setPatientId = function (patient) {
+
+        return localStorageService.set("patient", patient);
+    };
+    self.getPatientId = function () {
+        return localStorageService.get("patient");
+    };
+    self.clearPatientId = function () {
+
+        return localStorageService.remove("patient");
+    }
+
+
     return self;
 
 
@@ -69,5 +82,5 @@
   }
 
     angular.module('eli.admin')
-    .service('PatientAdmin', ['$resource',PatientAdmin])
+    .service('PatientAdmin', ['$resource', 'localStorageService', PatientAdmin])
 }());

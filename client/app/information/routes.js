@@ -7,7 +7,7 @@
         $stateProvider
        .state('forParents', {
            url: '/forParents',
-           templateUrl: 'client/app/information/forParents.html',
+           templateUrl: 'information/forParents.html',
            controller: 'LogInCtrl',
            controllerAs: 'logIn'
 

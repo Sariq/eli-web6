@@ -1,16 +1,41 @@
 (function () {
   function TaskListController(TaskAdmin,$stateParams) {
-    var self = this;
-    console.log(TaskAdmin);
-    self.tasks = TaskAdmin.query();
+    
+      self.openModal = function () {
+          //MeetingAdmin.addTask(self.meeting);
+
+          console.log('TaskModalService.openModal');
+          var newTask = { title: '', user: '', content: '', isDone: false };
+          var modalInstance = $modal.open({
+              templateUrl: '../admin/partials/task_modal/views/add/add.html',
+              controller: 'TaskModalInstanceCtrl',
+              size: 'lg',
+              resolve: {
+                  data: function () {
+                      return { data: newTask };
+                  }
+              }
+          });
+
+          modalInstance.result.then(function (res) {
+
+              MeetingAdmin.addTask(self.meeting, res);
+              $http({
+                  url: '/AssignmentService.svc/getAssignmentsByIds',
+                  method: 'POST',
+                  data: self.meeting.assignments
+              }).then(function (response) {
+
+                  self.assignments = response.data;
 
 
-     self.remove = function (task) {
-        console.log(task);
-        console.log(task._id);
-        task.$remove({_id: task._id}, function () {
-          self.tasks = TaskAdmin.query();
-        });
+              }, function () { alert("getAssignmentsByIds error") });
+
+              console.log('Selected True');
+          }, function (data) {
+              var resp = angular.copy(data);
+              console.log('Selected false');
+          });
       };
   }
 

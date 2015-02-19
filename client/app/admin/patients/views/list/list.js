@@ -1,5 +1,5 @@
 (function () {
-    function PatientListController(PatientAdmin, $stateParams,$scope, $filter, ngTableParams) {
+    function PatientListController(PatientAdmin, $stateParams, $scope, $filter, ngTableParams) {
     var self = this;
     console.log(PatientAdmin);
     self.patients = PatientAdmin.query();
@@ -52,7 +52,10 @@
         });
     }
 
-
+    self.setPatientId = function (patient) {
+ 
+        PatientAdmin.setPatientId(patient)
+    }
      self.remove = function (patient) {
         console.log(patient);
         console.log(patient._id);

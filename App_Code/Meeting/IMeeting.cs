@@ -16,10 +16,10 @@ public interface IMeeting
 
     [OperationContract]
     [WebInvoke(
-         Method = "DELETE",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
+         UriTemplate = "deleteMeeting")
     ]
     void RemoveMeeting(string id);
 

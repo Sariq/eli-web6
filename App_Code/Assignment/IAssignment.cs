@@ -16,10 +16,10 @@ public interface IAssignment
 
     [OperationContract]
     [WebInvoke(
-         Method = "DELETE",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
+         UriTemplate = "deleteAssignment")
     ]
     void RemoveAssignment(string id);
 

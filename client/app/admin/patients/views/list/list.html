@@ -18,7 +18,7 @@
                     <tr ng-repeat="patient in $data" class="text-right">
 
                             <td data-title="'First_name'" sortable="'first_name'">
-                            <a href="#/patient/profile/{{patient._id}}">{{patient.first_name}}</a>
+                            <a ng-click="list.setPatientId(patient)" href="#/patient/profile/{{patient._id}}">{{patient.first_name}}</a>
                         </td>
 
                     

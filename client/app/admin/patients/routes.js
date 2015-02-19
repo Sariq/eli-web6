@@ -2,8 +2,16 @@
 
     function routes($stateProvider, $urlRouterProvider) {
         //abstract: true,
+       
+        //$urlRouterProvider.when('/patient/profile/:patientId', ['$state', '$timeout', function ($state, $timeout) {
+        //    alert(angular.toJson($state))
+        //    $timeout(function () {
+        //        $state.go('profile.meetings');
+        //    }, 1000);
+        //}]);
+       
 
-   
+        $urlRouterProvider.when('/patient/profile/:patientId', '/patient/profile/:patientId/meetings');
         $stateProvider
       .state('patients', {
         url:'/patients' ,
@@ -12,15 +20,37 @@
         controllerAs: 'list'
 
       })  
-             $stateProvider
-      .state('/patient/profile/:patientId', {
-          url: '/patient/profile/:patientId',
           
+      .state('profile', {
+          url: '/patient/profile/:patientId',
           templateUrl: 'patients/views/profile/profile.html',
           controller: 'PatientProfileController',
-          controllerAs: 'profile'
+          controllerAs: 'profile',
+          //onEnter: ['$state', '$timeout', function ($state, $timeout) {
+          //    $timeout(function () {
+          //        $state.go('profile.meetings')
+          //    }, 1000);
+          //}]
 
       })
+
+            .state('profile.inbox', {
+                url: '/inbox',
+                templateUrl: 'mail/views/inbox.html',
+                controller: '',
+                controllerAs: ''
+
+            })
+
+     
+      .state('profile.meetings', {
+          url: '/meetings',
+          templateUrl: 'meeting/views/list/list.html',
+          controller: 'MeetingListController',
+          controllerAs: 'list'
+
+      })
+
 
 //        $stateProvider
 //.state('/patient/profile/:patientId', {

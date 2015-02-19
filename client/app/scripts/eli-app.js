@@ -4,9 +4,10 @@
   angular.module('eliApp', [
   'ngCookies',
   'eli.common',
+    
   'ngResource',
   'ui.router',
-  
+ 
   'ngAnimate',
   'pascalprecht.translate',
   'LocalStorageModule'

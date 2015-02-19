@@ -3,6 +3,8 @@
 using System;
 using System.Web;
 using System.Threading;
+using System.Diagnostics;
+using System.Web.Script.Serialization;
 
 public class AsyncHandler : IHttpAsyncHandler, System.Web.SessionState.IReadOnlySessionState
 {
@@ -56,6 +58,8 @@ public class AsyncHandler : IHttpAsyncHandler, System.Web.SessionState.IReadOnly
                 break;
             case "register":
                   String type;
+
+             
                   if (myAsyncResult._context.Request.QueryString["type"] != null)
                 {
                     type = (myAsyncResult._context.Request.QueryString["type"]);

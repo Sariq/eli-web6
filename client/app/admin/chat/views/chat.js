@@ -19,16 +19,16 @@
         self.chatWebs = ChatService.query()
         self.userInfo = AuthService.getUserInfo()
         
-        //self.chatWebs.$promise.then(function (result) {
-        //    console.log(result);
+        self.chatWebs.$promise.then(function (result) {
+            console.log(result);
            
 
-        //});
+        });
 
    
 
         self.myLoad = function () {
-            alert()
+         
             self.xmlHttp_OneTime = ChatService.loadChat();
             self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Connect;
             self.xmlHttp_OneTime.send();
@@ -65,6 +65,7 @@
         }
         
         self.getResponse_Process = function () {
+            alert()
             self.flag = false;
             var temp_resultInMinutes = '';
             if (self.xmlHttp_Process.readyState == 4) {
@@ -74,7 +75,7 @@
                 console.log(self.myJsonObject_Temp)
                 if (myJsonObject_Temp[0].hasOwnProperty('messageContent')) {
                     //alert("message")
-                    //  console.log(myJsonObject_Temp)
+                     
                    
                    
                     console.log(myJsonObject_Temp[0].clientId + "=="+self.currentWebUser.clientId)
@@ -82,14 +83,14 @@
                         self.chatMessages = myJsonObject_Temp;
                         self.flag = true;
                     }
-                    if (self.flag == false) {
-                        for (var i = 0; i < self.chatWebs.length; i++) {
-                            self.chatWebs[i].newMessage = false;
-                            if (self.chatWebs[i].clientId == myJsonObject_Temp[0].clientId) {
-                                self.chatWebs[i].newMessage = true;
-                                }       
-                        } 
-                    }
+                    //if (self.flag == false) {
+                    //    for (var i = 0; i < self.chatWebs.length; i++) {
+                    //        self.chatWebs[i].newMessage = false;
+                    //        if (self.chatWebs[i].clientId == myJsonObject_Temp[0].clientId) {
+                    //            self.chatWebs[i].newMessage = true;
+                    //            }       
+                    //    } 
+                    //}
 
                     for (var j = 0; j < self.chatMessages.length; j++) {
                         self.chatMessages[j].messageUpdateT = self.updateMessageTme(myJsonObject_Temp[j].messageTime)

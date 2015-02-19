@@ -73,7 +73,7 @@
                                    
                 var myJsonObject_Temp = eval('(' + myJSON_Text + ')');
                 console.log(myJsonObject_Temp)
-                self.chatMessages = myJsonObject_Temp;
+                self.chatMessages = myJsonObject_Temp.allMessage;
                 $scope.$apply();
                 self.xmlHttp_Process = ChatService.ProcessFunction();
                 self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;

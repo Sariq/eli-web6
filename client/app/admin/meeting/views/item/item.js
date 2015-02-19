@@ -17,7 +17,8 @@
         self.info = MeetingAdmin.info;
         self.assignments = '';
         self.meeting = MeetingAdmin.create();
-        self.patient = PatientAdmin.patient;
+        self.patient = PatientAdmin.getPatientId();
+        
        //self.patient = PatientAdmin.patient;
         
         //self.patient = PatientAdmin.patient;
@@ -65,6 +66,24 @@
             $scope.$apply()
 
         };
+
+        self.deleteMeeting = function (meeting) {
+            $http({
+                url: '/MeetingService.svc/deleteMeeting',
+                method: 'POST',
+                data: meeting._id
+            }).then(function (response) {
+                $location.path('/meetings');
+                //PatientAdmin.deleteMeeting(deleteMeeting.getPatient());
+                //self.patient.$update(function (response) {
+
+                //    $location.path('/meetings');
+
+                //});
+
+            }, function () { alert("getAssignmentsByIds edit error") });
+        }
+
 
         self.save = function () {
            
@@ -135,6 +154,21 @@
         }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         self.openModal = function () {
             //MeetingAdmin.addTask(self.meeting);
            
@@ -154,6 +188,10 @@
             modalInstance.result.then(function (res) {
    
                 MeetingAdmin.addTask(self.meeting, res);
+                self.meeting.$update(function (response) {
+        
+
+                });
                 self.getAssignmentsByIds();
 
                 console.log('Selected True');
