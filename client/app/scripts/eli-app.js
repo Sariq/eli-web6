@@ -15,15 +15,15 @@
   .config(function ($stateProvider, $urlRouterProvider, $resourceProvider, $translateProvider) {
     //delete $httpProvider.defaults.headers.common['X-Requested-With'];
     
-    $urlRouterProvider.otherwise('/');
+  
     $stateProvider
       .state('index', {
-        url: '/',
+          url: '/',
         templateUrl: 'main/views/main.html',
         controller:'MainCtrl'
         ,controllerAs: 'main'
       })
-
+   
 
 
 
@@ -39,7 +39,6 @@
   });
       $translateProvider.preferredLanguage('he');
   });
-
 
 
 

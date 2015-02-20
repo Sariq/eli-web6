@@ -1,5 +1,5 @@
 ﻿/* Have to set height explicity on ui-view 
-to prevent collapsing during animation*/
+to prevent collapsing during animation
 
 .page        { 
     bottom:0; 
@@ -14,8 +14,8 @@ to prevent collapsing during animation*/
 .page a     { margin-top:50px; }
 #about      { color:#333; position:absolute; text-align:center; top:50px; width:100%; }
 
-/* PAGES
-============================================================================= */
+ PAGES
+============================================================================= 
 .page-home      { background:#00D0BC; color:#00907c; }
 .page-about     { background:#E59400; color:#a55400; }
 .page-contact   { background:#ffa6bb; color:#9e0000; }
@@ -60,4 +60,4 @@ to prevent collapsing during animation*/
   -webkit-transform:translate3d(100px, 0, 0);
   -moz-transform:translate3d(100px, 0, 0);
   transform:translate3d(100px, 0, 0);
-}
+}*/

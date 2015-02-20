@@ -1,24 +1,23 @@
 var mytops = [];
 $(document).ready(function (e) {
+
+   
     $('.with-hover-text, .regular-link').click(function (e) {
         e.stopPropagation();
     });
-    $('.story').each(function (index, element) {
-        $(element).css("height", (100) + "vh");
-       
-    })
+
    
-    alert()
+    
     $(function () {
         var pause = 10;
         $(document).scroll(function (e) {
-              
+                    
             delay(function () {
                
                 var tops = [];
 
                 $('.story').each(function (index, element) {
-                  
+                    $(element).css("height", (100) + "vh");
                     tops.push($(element).offset().top - 200);
                 })
                 //console.log(tops)//tops=slides locations
@@ -220,47 +219,7 @@ function enable_arrows(dataslide) {
 *************/
 jQuery(document).ready(function ($) {
     //Cache some variables
-    var links = $('.nav').find('li');
-    slide = $('.slide');
-    button = $('.button');
-    mywindow = $(window);
-    htmlbody = $('html,body');
 
-    //Create a function that will be passed a slide number and then will scroll to that slide using jquerys animate. The Jquery
-    //easing plugin is also used, so we passed in the easing method of 'easeInOutQuint' which is available throught the plugin.
-    function goToByScroll(dataslide) {
-        var offset_top = (dataslide == 1) ? '0px' : $('.slide[data-slide="' + dataslide + '"]').offset().top;
-
-        htmlbody.stop(false, false).animate({
-            scrollTop: offset_top
-        }, 1500, 'easeInOutQuart');
-    }
-
-    //When the user clicks on the navigation links, get the data-slide attribute value of the link and pass that variable to the goToByScroll function
-    links.click(function (e) {
-
-
-        dataslide = $(this).attr('data-slide');
-        console.log(dataslide)
-        if (dataslide != 0) {
-            e.preventDefault();
-        } else { return }
-
-
-
-        goToByScroll(dataslide);
-        //$(".nav-collapse").collapse('hide');
-
-    });
-
-    //When the user clicks on the navigation links, get the data-slide attribute value of the link and pass that variable to the goToByScroll function
-    $('.navigation-slide').click(function (e) {
-
-        e.preventDefault();
-        dataslide = $(this).attr('data-slide');
-        goToByScroll(dataslide);
-        $(".nav-collapse").collapse('hide');
-    });
 });
 
 /***************
@@ -333,15 +292,17 @@ jQuery(document).ready(function ($) {
 jQuery(document).ready(function ($) {
     //Cache some variables
     var arrows = $('#arrows div');
-
+      
     arrows.click(function (e) {
+      
         e.preventDefault();
-
+       
         if ($(this).hasClass('disabled'))
             return;
 
         var slide = null;
-        var datasheet = $('.nav > li.active').data('slide');
+        var datasheet = $('.nav > li.active').attr('data-slide');
+        console.log(datasheet)
         var offset_top = false;
         var offset_left = false;
 
@@ -351,6 +312,7 @@ jQuery(document).ready(function ($) {
                 offset_top = (datasheet - 1 == 1) ? '0px' : $('.slide[data-slide="' + (datasheet - 1) + '"]').offset().top;
                 break;
             case 'arrow-down':
+             
                 offset_top = $('.slide[data-slide="' + (datasheet + 1) + '"]').offset().top;
                 break;
             case 'arrow-left':

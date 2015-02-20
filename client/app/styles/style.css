@@ -6,7 +6,11 @@
  * Version: 1.0
  * URL: http://blacktie.co
  */
- 
+
+.ng-cloak {
+    display: none;
+}
+
 .font-thin {
 	font-family: "Titillium Web", sans-serif;
 	font-weight: 200;

@@ -1,17 +1,17 @@
-	<div class="navbar navbar-fixed-top" data-activeslide="1">
+<!--	<ng-include  src='"navBar/navBar.html"'></ng-include>-->
+
+      <!--nav-->
+      	<div  class="navbar navbar-fixed-top ng-cloak " data-activeslide="1">
 		<div class="container">
-		
-			
+            	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 			<div class=" nav-collapse  navbar-responsive-collapse ">
 				<ul class=" nav row">
-						
-					<li data-slide="3" class="col-12 col-sm-4"><a id="A4" href="#slide-3" title="Next Section"> <span class="text">איך תוכלו לעזור לנו&nbsp;
+					<li ng-repeat="slide in parent.getNav()"  data-slide="3" class="{{slide.class}}" id="3"><a id="3" href="#slide-3" title="Next Section"> <span class="text">{{slide.title}}&nbsp;
 					<span class="icon icon-briefcase"></span></span></a></li>
-
-					<li data-slide="1" class="col-12 col-sm-4"><a id="A5" href="#slide-1" title="Next Section"> <span class="text">מה אנחנו עושים&nbsp;<span class="icon icon-heart"></span></span></a></li>
-					
-					<li data-slide="0" class="col-12 col-sm-4"><a id="A6" href="#main" title="Next Section"> <span class="text">בית&nbsp;<span class="icon icon-home"></span></span></a></li>
-				
 				</ul>
 				<div class=" row">
 					<div class=" col-sm-2 active-menu"></div>
@@ -19,7 +19,11 @@
 			</div><!-- /.nav-collapse -->
 		</div><!-- /.container -->
 	</div><!-- /.navbar -->
-  
+       <!--nav-->
+
+
+
+
 
 
 
@@ -122,13 +126,7 @@
 	
 	
 
-  <script src="client/app/scripts/html5shiv.js"></script>
-  <script src="client/app/scripts/jquery-1.10.2.min.js"></script>
-  <script src="client/app/scripts/jquery-migrate-1.2.1.min.js"></script>
 
-  <script src="client/app/scripts/jquery.easing.1.3.js"></script>
-  <script type="text/javascript" src="client/app/styles/fancybox/jquery.fancybox.pack-v=2.1.5.js"></script>
-  <script src="client/app/scripts/script.js"></script>
 
 	<!-- fancybox init 
 	<script>
@@ -149,16 +147,4 @@
 	});</script>-->
 
 
-<script>
-
-    jQuery(document).ready(function ($) {
-
-
-        htmlbody = $('html,body');
-        htmlbody.stop(false, false).animate({
-            scrollTop: 0
-        }, 0, 'easeInOutQuart');
-
-    })
-</script>
 
