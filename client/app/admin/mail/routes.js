@@ -15,8 +15,8 @@
           .state('#/mail.mail_compose', {
               url: '/mail_compose',
               templateUrl: 'mail/views/mail_compose.html',
-              controller: '',
-              controllerAs: ''
+              controller: 'MailComposeController',
+              controllerAs: 'send'
 
           })
          .state('#/mail.inbox', {

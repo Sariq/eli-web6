@@ -1,7 +1,7 @@
 ﻿<section class="panel">
                     <header class="panel-heading wht-bg">
                        <h4 class="gen-case"> Compose Mail
-                           <form action="#" class="pull-right mail-src-position">
+                           <form  class="pull-right mail-src-position">
                             <div class="input-append">
                                 <input type="text" class="form-control " placeholder="Search Mail">
                             </div>
@@ -15,7 +15,7 @@
                             <button class="btn btn-sm">Draft</button>
                         </div>
                         <div class="compose-mail">
-                            <form role="form-horizontal" method="post">
+                            <form role="form-horizontal" >
                                 <div class="form-group">
                                     <label for="to" class="">To:</label>
                                     <input type="text" tabindex="1" id="to" class="form-control">
@@ -46,7 +46,7 @@
                                     <input type="file" class="default">
                                 </div>
                                 <div class="compose-btn">
-                                    <button class="btn btn-theme btn-sm"><i class="fa fa-check"></i> Send</button>
+                                    <button ng-click="send.sendMail()" class="btn btn-theme btn-sm"><i class="fa fa-check"></i> Send</button>
                                     <button class="btn btn-sm"><i class="fa fa-times"></i> Discard</button>
                                     <button class="btn btn-sm">Draft</button>
                                 </div>
