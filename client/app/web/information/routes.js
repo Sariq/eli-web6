@@ -8,8 +8,8 @@
        .state('forParents', {
            url: '/forParents',
            templateUrl: 'information/forParents.html',
-           controller: 'Parents',
-           controllerAs: 'parent'
+           controller: '',
+           controllerAs: ''
 
        })
    

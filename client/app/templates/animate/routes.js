@@ -27,7 +27,7 @@
 
     function HomeCtrl(MainService) {
         var self = this;
-        alert("HOME")
+    
 
 
     }

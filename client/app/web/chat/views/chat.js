@@ -22,7 +22,8 @@
                 self.adminOnlineStatus = response.data;
 
 
-            }, function () { alert("isAdminOnline error") });
+            }, function () { //alert("isAdminOnline error")
+            });
 
         //}
 

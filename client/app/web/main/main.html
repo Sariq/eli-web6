@@ -1,56 +1,90 @@
+﻿
+<div class="text-right" ng-controller="MyCtrl">
 
-	<title>Eli</title> 
+<!-- === navbar === -->
+    <div class="navbar navbar-fixed-top" data-activeslide="1">
+        <div class="container">
+            <div class=" nav-collapse  navbar-responsive-collapse ">
+                <ul class=" nav row">
+                    <li data-slide="6" class="col-12 col-sm-2"><a data-slide="6" href="#section-6" du-smooth-scroll du-scrollspy><span class="text">{{ 'contact us' | translate }}&nbsp;<span class="icon icon-envelope"></span></span></a></li>
+                    <li data-slide="5" class="col-12 col-sm-2"><a data-slide="5" href="#section-5" du-smooth-scroll du-scrollspy><span class="text">{{ 'about us' | translate }}&nbsp;<span class="icon icon-user"></span></span></a></li>
+                    <li data-slide="4" class="col-12 col-sm-2"><a data-slide="4" href="#section-4" du-smooth-scroll du-scrollspy><span class="text">{{ 'help us' | translate }}&nbsp;<span class="icon icon-briefcase"></span></span></a></li>
+                    <li data-slide="3" class="col-12 col-sm-2"><a data-slide="3" href="#section-3" du-smooth-scroll du-scrollspy><span class="text">{{ 'Information' | translate }}&nbsp;<span class="icon icon-info"></span></span></a></li>
+                    <li data-slide="2" class="col-12 col-sm-2"><a data-slide="2" href="#section-2" du-smooth-scroll du-scrollspy><span class="text">{{ 'Doing' | translate }}&nbsp;<span class="icon icon-heart"></span></span></a></li>
+                    <li data-slide="1" class="col-12 col-sm-2"><a data-slide="1" href="#section-1" du-smooth-scroll du-scrollspy><span class="text">{{ 'Home' | translate }}&nbsp;<span class="icon icon-home"></span></span></a></li>
+                </ul>
+                <div class=" row">
+                    <div class=" col-sm-3 active-menu"></div>
+                </div>
+            </div>
+        </div>
 
-      <!--nav-->
-      	<div  class="navbar navbar-fixed-top ng-cloak " data-activeslide="1">
-		<div class="container">
-			<div class=" nav-collapse  navbar-responsive-collapse ">
-				<ul class=" nav row">
-					<li ng-repeat="slide in main.getNav()"  data-slide="{{slide.data-slide}}" class="{{slide.class}}"><a id="{{slide.id}}" href="{{slide.href}}" title="Next Section"> <span class="text">{{slide.title}}&nbsp;
-					<span class="icon icon-briefcase"></span></span></a></li>
-				</ul>
-				<div class=" row">
-					<div class=" col-sm-2 active-menu"></div>
-				</div>
-			</div><!-- /.nav-collapse -->
-		</div><!-- /.container -->
-	</div><!-- /.navbar -->
-       <!--nav-->
-	
-	<!-- === Arrows === -->
-	<div id="arrows">
-		<div id="arrow-up" class="disabled"></div>
-		<div id="arrow-down"></div>
-		<div id="arrow-left" class="disabled visible-lg"></div>
-		<div id="arrow-right" class="disabled visible-lg"></div>
-	</div><!-- /.arrows -->
-	
+    </div>
+<!-- === navbar === -->
 
 
-	<!-- === MAIN Background === -->
-	<div class="slide story" id="slide-1" data-slide="1">
-		<div class="container">
-			<div id="home-row-1" class="row clearfix">
-				<div class="col-12">
-					<!--<h1 class="font-semibold">אל"י - האגודה להגנת הילד </h1>-->
-					<img src="images/logo3.png" >
-					<br>
 
-					<br>
-				</div><!-- /col-12 -->
-			</div><!-- /row -->
-			<div id="home-row-2" class="row clearfix">
-				<div class="col-12 col-sm-4"><a href="#logIn"><div class="home-hover"><img src="images/s021.png"></div></a><span class="font-semibold text-primary">איך תוכלו לעזור לנו</span></div>
-				<div class="col-12 col-sm-4"><div class="home-hover navigation-slide" data-slide="3"><img src="images/s011.png"></div><span class="font-semibold text-primary">תרומה</span></div>
-				<div class="col-12 col-sm-4"><div class="home-hover navigation-slide" data-slide="4"><img src="images/s031.png"></div><span class="font-semibold text-primary">מידע</span></div>
-			</div><!-- /row -->
-		</div><!-- /container -->
-	</div><!-- /slide1 -->
-	
-	<!-- === Slide 2 === -->
-	<div class="slide story" id="slide-2" data-slide="2">
-		<div class="container">
-			<div class="row title-row">
+<!-- === Arrows === -->
+    <div id="arrows">
+        <div id="arrow-up" ng-click="arrowClick($event)" class="disabled"></div>
+        <div id="arrow-down" ng-click="arrowClick($event)"></div>
+        <div id="arrow-left" ng-click="arrowClick($event)" class="disabled visible-lg"></div>
+        <div id="arrow-right" ng-click="arrowClick($event)" disabled="class visible-lg"></div>
+    </div>
+<!-- === Arrows === -->
+
+
+
+
+
+<!-- === Section 1 === -->
+    <section class="slide story" data-slide="1" id="section-1">
+        <div class="container">
+            <div id="home-row-1" class="row clearfix">
+                <div class="col-12">
+                    <!--<h1 class="font-semibold">אל"י - האגודה להגנת הילד </h1>-->
+                    <img src="/client/app/images/logo3.png">
+                    <br>
+                    <br>
+                </div>
+                <!-- /col-12 -->
+            </div>
+            <!-- /row -->
+            <div id="home-row-2" class="row clearfix">
+                <div class="col-12 col-sm-4">
+                    <a href="#home">
+                        <div class="home-hover">
+                            <img src="/client/app/images/s021.png">
+                        </div>
+                    </a><span class="font-semibold text-primary">איך תוכלו לעזור לנו</span>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <div class="home-hover navigation-slide" data-slide="3">
+                        <img src="/client/app/images/s011.png">
+                    </div>
+                    <span class="font-semibold text-primary">תרומה</span>
+                </div>
+                <div class="col-12 col-sm-4">
+                    <div class="home-hover navigation-slide" data-slide="4">
+                        <img src="/client/app/images/s031.png">
+                    </div>
+                    <span class="font-semibold text-primary">מידע</span>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+
+    </section>
+<!-- === Section 1 === -->
+
+
+
+<!-- === Section 2 === -->
+    <section class="slide story" data-slide="2" id="section-2">
+        <div class="row section-container">
+
+            		<div class="row title-row">
 				<div class="col-12 font-thin"> <span class="font-semibold">מה אנחנו עושים</span> </div>
 			</div><!-- /row -->
 			<div class="row line-row">
@@ -61,74 +95,72 @@
 			</div><!-- /row --> 
 			<div class="row content-row">
 				<div class="col-12 col-lg-3 col-sm-6">
-                    <a href="#forParents">
-					<p><img src="images/doing1.jpg" class="img-circle" width="150" height="150"></i></p>
+					<p><img src="/client/app/images/doing1.jpg" class="img-circle" width="150" height="150"></i></p>
 					<h2 class="font-thin"><span class="font-semibold">מחלקת ההסברה​ והמניעה</span></h2>
-					<h4 class="font-thin"></h4></a>
+					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 				<div class="col-12 col-lg-3 col-sm-6">
-					<p><img src="images/doing2.jpg" class="img-circle" width="150" height="150"></i></p>
+					<p><img src="/client/app/images/doing2.jpg" class="img-circle" width="150" height="150"></i></p>
 					<h2 class="font-thin"> <span class="font-semibold">המרכז הקליני</span></h2>
 					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 				<div class="col-12 col-lg-3 col-sm-6">
-					<p><img src="images/doing3.jpg" class="img-circle" width="150" height="150"></i></p>
+					<p><img src="/client/app/images/doing3.jpg" class="img-circle" width="150" height="150"></i></p>
 					<h2 class="font-thin"> <span class="font-semibold">המחלקה לילדים עם צרכים מיוחדים</span></h2>
 					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 				<div class="col-12 col-lg-3 col-sm-6">
-					<p><img src="images/doing1.jpg" class="img-circle" width="150" height="150"></i></p>
+					<p><img src="/client/app/images/doing1.jpg" class="img-circle" width="150" height="150"></i></p>
 					<h2 class="font-semibold">מכללת אל"י</h2>
 					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 			</div><!-- /row -->
 					<div class="row content-row">
 				<div class="col-12 col-lg-3 col-sm-6">
-					<p><img src="images/doing4.jpg" class="img-circle" width="150" height="150"></i></p>
+					<p><img src="/client/app/images/doing4.jpg" class="img-circle" width="150" height="150"></i></p>
 					<h2 class="font-thin"> <span class="font-semibold">קו המצוקה</span></h2>
 					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 				<div class="col-12 col-lg-3 col-sm-6">
-					<p><img src="images/doing5.jpg" class="img-circle" width="150" height="150"></i></p>
+					<p><img src="/client/app/images/doing5.jpg" class="img-circle" width="150" height="150"></i></p>
 					<h2 class="font-thin"> <span class="font-semibold">המחלקה הרב תרבותית</span></h2>
 					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 				<div class="col-12 col-lg-3 col-sm-6">
-					<p><img src="images/doing6.jpg" class="img-circle" width="150" height="150"></p>
+					<p><img src="/client/app/images/doing6.jpg" class="img-circle" width="150" height="150"></p>
 					<h2 class="font-thin"> <span class="font-semibold">מחלקת בטיחות ברשת אינטרנט</span></h2>
 					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 				<div class="col-12 col-lg-3 col-sm-6">
-					<p><img src="images/doing7.jpg" class="img-circle" width="150" height="150"></p>
+					<p><img src="/client/app/images/doing7.jpg" class="img-circle" width="150" height="150"></p>
 					<h2 class="font-semibold">Development</h2>
 					<h4 class="font-thin"></h4>
 				</div><!-- /col12 -->
 			</div><!-- /row -->
-		</div><!-- /container -->
-	</div><!-- /slide2 -->
-	
-	<!-- === SLide 3 - Portfolio -->
-	<div class="slide story" id="slide-3" data-slide="3">
-		<div class="row">
-			
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p01-large.jpg"><img class="thumb" src="images/portfolio/p01-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p02-large.jpg"><img class="thumb" src="images/portfolio/p02-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p09-large.jpg"><img class="thumb" src="images/portfolio/p09-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p-large.jpg"><img class="thumb" src="images/portfolio/p-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p05-large.jpg"><img class="thumb" src="images/portfolio/p05-small.png" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p06-large.jpg"><img class="thumb" src="images/portfolio/p06-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p07-large.jpg"><img class="thumb" src="images/portfolio/p07-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p08-large.jpg"><img class="thumb" src="images/portfolio/p08-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p03-large.jpg"><img class="thumb" src="images/portfolio/p03-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p04-large.jpg"><img class="thumb" src="images/portfolio/p04-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p11-large.jpg"><img class="thumb" src="images/portfolio/p11-small.jpg" alt=""></a></div>
-			<div class="col-12 col-sm-6 col-lg-2"><a data-fancybox-group="portfolio" class="fancybox" href="images/portfolio/p12-large.jpg"><img class="thumb" src="images/portfolio/p12-small.jpg" alt=""></a></div>
-		</div><!-- /row -->
-	</div><!-- /slide3 -->
-	
-	<!-- === Slide 4 - Process === -->
-	<div class="slide story" id="slide-4" data-slide="4">
-		<div class="container">
+
+        </div>
+    </section>
+<!-- === Section 2 === -->
+
+
+
+<!-- === Section 3 === -->
+    <section class="slide story" data-slide="3" id="section-3">
+        <div class="row section-container">
+            <h2><a href="#forParents">Section 3</a></h2>
+            <p>Shank fatback pastrami short loin, turkey jowl kielbasa ribeye chicken jerky drumstick flank ham. Swine shankle pork belly kielbasa shoulder flank jowl, sirloin doner. Kevin tri-tip bresaola leberkas. Swine ball tip cow strip steak. Ham filet mignon pork chop, pork fatback andouille pork loin shoulder jowl swine strip steak turducken prosciutto rump.</p>
+
+            <p>Tongue tri-tip pastrami, shoulder rump pork belly ground round. Ham hock chuck leberkas doner, strip steak corned beef tri-tip capicola. Rump turkey ham sausage shankle. Flank shankle pork chop ham hock. Shankle venison kielbasa, pancetta swine beef ball tip t-bone bacon hamburger ground round ribeye flank. Turducken bacon bresaola, chicken kevin boudin ball tip strip steak filet mignon pork turkey shank ground round. Kielbasa fatback prosciutto pork chop, jerky ground round leberkas boudin ball tip beef shankle shoulder swine brisket.</p>
+        </div>
+    </section>
+<!-- === Section 3 === -->
+
+
+
+<!-- === Section 4 === -->
+    <section class="slide story" data-slide="4" id="section-4">
+        <div class="row section-container">
+            <div class="container">
 			<div class="row title-row">
 				<div class="col-12 font-thin"><span class="font-semibold">מידע</span></div>
 			</div><!-- /row -->
@@ -136,13 +168,6 @@
 				<div class="hr">&nbsp;</div>
 			</div><!-- /row -->
 			<!-- /row --> 
-
-
-            
-
-
-
-
             <br />
             <div class="row content-row ">
 					<div class="col-12 col-sm-3" >
@@ -175,11 +200,16 @@
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
 		</div><!-- /container -->
-	</div><!-- /slide4 -->
-	
-	<!-- === Slide 5 === -->
-	<div class="slide story" id="slide-5" data-slide="5">
-		<div class="container">
+        </div>
+    </section>
+<!-- === Section 4 === -->
+
+
+
+<!-- === Section 5 === -->
+    <section class="slide story" data-slide="5" id="section-5">
+        <div class="row section-container">
+          		<div class="container">
 			<div class="row title-row">
 				<div class="col-12 font-thin"><span class="font-semibold"> האגודה להגנת הילד</span></div>
 			</div><!-- /row -->
@@ -203,11 +233,16 @@
 				<div class="col-1 col-sm-1 hidden-sm">&nbsp;</div>-->
 			</div><!-- /row -->
 		</div><!-- /container -->
-	</div><!-- /slide5 -->
-	
-	<!-- === Slide 6 / Contact === -->
-	<div class="slide story" id="slide-6" data-slide="6">
-		<div class="container">
+        </div>
+    </section>
+<!-- === Section 5 === -->
+
+
+
+<!-- === Section 6 === -->
+    <section class="slide story" data-slide="6" id="section-6" style="color:white">
+        <div class="slide story" data-slide="6" >
+       	<div class="container">
 			<div class="row title-row">
 				<div class="col-12 font-light">השאר לנו <span class="font-semibold">הודעה</span></div>
 			</div><!-- /row -->
@@ -224,7 +259,7 @@
 
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a target="_blank" href="#"><i class="icon icon-phone"></i></a></p>
-					<span class="hover-text font-light ">03-6091930</span></a>
+					<span class="hover-text font-light " style="color:white">03-6091930</span>
 				</div><!-- /col12 -->
 				<div class="col-12 col-sm-2 with-hover-text">
 					<p><a  href="#contactUs"><i class="icon icon-envelope"></i></a></p>
@@ -245,41 +280,11 @@
 				<div class="col-sm-1 hidden-sm">&nbsp;</div>
 			</div><!-- /row -->
 		</div><!-- /container -->
-	</div><!-- /Slide 6 -->
-	
+            </div>
+    </section>
+<!-- === Section 6 === -->
+
+</div>
 
 
- <script src="scripts/script.js"></script>
 
-
-	<!-- fancybox init 
-	<script>
-	$(document).ready(function(e) {
-		var lis = $('.nav > li');
-		//console.log(lis)
-		menu_focus( lis[5], 1 );
-		
-		$(".fancybox").fancybox({
-			padding: 10,
-			helpers: {
-				overlay: {
-					locked: false
-				}
-			}
-		});
-	
-	});</script>-->
-
-
-<script>
-
-    jQuery(document).ready(function ($) {
-
-
-        htmlbody = $('html,body');
-        htmlbody.stop(false, false).animate({
-            scrollTop: 0
-        }, 0, 'easeInOutQuart');
-
-    })
-</script>

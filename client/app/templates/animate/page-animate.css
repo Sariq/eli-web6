@@ -1,4 +1,4 @@
-﻿/* Have to set height explicity on ui-view 
+﻿ Have to set height explicity on ui-view 
 to prevent collapsing during animation
 
 .page        { 
@@ -24,7 +24,7 @@ to prevent collapsing during animation
   position: relative;
 }
 
-[ui-view].ng-enter, [ui-view].ng-leave {
+  /*.angular-animate.ng-enter, .angular-animate.ng-leave {
   position: absolute;
   left: 0;
   right: 0;
@@ -34,30 +34,65 @@ to prevent collapsing during animation
     transition:all .5s ease-in-out;
 }
 
-[ui-view].ng-enter {
+.angular-animate.ng-enter {
   opacity: 0;
   -webkit-transform:scale3d(0.5, 0.5, 0.5);
   -moz-transform:scale3d(0.5, 0.5, 0.5);
   transform:scale3d(0.5, 0.5, 0.5);
 }
 
-[ui-view].ng-enter-active {
+.angular-animate.ng-enter-active {
   opacity: 1;
   -webkit-transform:scale3d(1, 1, 1);
   -moz-transform:scale3d(1, 1, 1);
   transform:scale3d(1, 1, 1);
 }
 
-[ui-view].ng-leave {
+.angular-animate.ng-leave {
   opacity: 1; 
   -webkit-transform:translate3d(0, 0, 0);
   -moz-transform:translate3d(0, 0, 0);
   transform:translate3d(0, 0, 0);
 }
 
-[ui-view].ng-leave-active {
+.angular-animate.ng-leave-active {
   opacity: 0;
   -webkit-transform:translate3d(100px, 0, 0);
   -moz-transform:translate3d(100px, 0, 0);
   transform:translate3d(100px, 0, 0);
 }*/
+
+.angular-animate.ng-enter,
+.angular-animate.ng-leave,
+.angular-animate.ng-move {
+  -webkit-transition: 0.5s linear all;
+  -moz-transition: 0.5s linear all;
+  -o-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+}
+
+.angular-animate.ng-enter,
+.angular-animate.ng-move {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.angular-animate.ng-move.ng-move-active,
+.angular-animate.ng-enter.ng-enter-active {
+  opacity: 1;
+  height: 120px;
+}
+
+.angular-animate.ng-leave {
+  opacity: 1;
+  overflow: hidden;
+}
+
+.angular-animate.ng-leave.ng-leave-active {
+  opacity: 0;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+

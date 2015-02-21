@@ -1,4 +1,134 @@
-/*
+﻿    /*body, button {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }*/
+
+
+
+
+    /*nav {
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      background: rgba(255, 255, 255, 0.8);
+    }
+    nav li, nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      text-align: center
+    }
+    nav li, nav a {
+      display: inline-block;
+    }*/
+    /*nav li[data-slide="1"]{
+		background-color: #2f2f2f;
+	}
+	
+	nav li[data-slide="2"] {
+		background-color: #1abc9c;
+	}
+	
+	nav li[data-slide="3"] {
+		background-color: #e74c3c;
+	}
+	
+	nav li[data-slide="4"] {
+		background-color: #34495e;
+	}
+	
+	nav li[data-slide="5"] {
+		background-color: #e67e22;
+	}*/
+    /*nav a {
+      padding: 20px;
+      color: #333;
+      text-decoration: none;
+    }
+    a:hover {
+      background: #fff;
+    }
+    a.active {
+      background: #00AC7F;
+      color: #fff;
+    }
+    .wrap {
+      position: relative;
+      width: 100%;
+      height:100vh;
+     
+
+    }*/
+    section {
+        height: 100vh;
+    }
+
+        /*footer {
+        text-align: center;
+    }*/
+
+        /*button {
+        font-size: 18px;
+        border: 0;
+        padding: 15px 30px;
+        background: #00AC7F;
+        color: #fff;
+        cursor: pointer;
+    }*/
+
+
+        section[data-slide="1"] {
+            background-color: #2f2f2f;
+        }
+
+        section[data-slide="2"] {
+            background-color: #1abc9c;
+        }
+
+        section[data-slide="3"] {
+            background-color: #e74c3c;
+        }
+
+        section[data-slide="4"] {
+            background-color: #34495e;
+        }
+
+        section[data-slide="5"] {
+            background-color: #e67e22;
+        }
+
+
+    .section-container {
+        padding-top: 20px;
+    }
+
+    #section-6 {
+	background-color: #2f2f2f;
+	color: #e4e6e5;
+	padding-bottom: 350px;
+	padding-top: 90px;
+	 min-height: 1000px;
+}
+
+    	#section-6 .line-row .hr {
+		background-color: #4e4e4e;
+		color: #4e4e4e;
+	}
+
+	#section-6 a {
+		color: inherit;
+		outline: none;
+		text-decoration: none;
+	}
+
+    #section-6	i {
+		font-size: 80px;
+		color: white;
+	}
+
+    /*
  * Author: Carlos Alvarez
  * URL: http://alvarez.is
  *
@@ -60,6 +190,7 @@ body {
 	border-bottom: 0 none;
 	font-size: 15px;
 	transition: .25s all linear;
+    max-height:50px;
 }
 
 .navbar.inv {
@@ -116,6 +247,13 @@ body {
 	background-color: #e4e6e5;
 }
 
+#current-active-menu-2 {
+	background-color: #1abc9c !important;
+}
+
+
+
+
 .special-active-menu {
 	z-index: 10;
 }
@@ -142,7 +280,7 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-	#slide-4 .content-row h2 {
+	#section-4 .content-row h2 {
 		min-height: 6em;
 	}
 }
@@ -214,13 +352,13 @@ body {
 .slide {
 	background-position: center center;
 	background-repeat: no-repeat;
-	padding-bottom: 65px;
-	padding-top: 50px;
+	padding-bottom: 5px;
+	padding-top: 5px;
 	text-align: center;
 }
 
-#slide-1 {
-	background-image: url('../images/bg1.jpg');
+#section-1 {
+	background-image: url('/client/app/images/bg1.jpg');
 	color: #ffffff;
     -webkit-background-size: 100%;
     -moz-background-size: 100%;
@@ -237,18 +375,18 @@ body {
 	background-position: center center;
 }
 
-#slide-1 h1 {
+#section-1 h1 {
 	padding-top: 130px;
 }
 
 @media (max-width: 991px) {
-	#slide-1 {
+	#section-1 {
 		background-position: -70% 0, 170% 0;
 	}
 }
 
 @media (max-width: 767px) {
-	#slide-1 {
+	#section-1 {
 		background-image: none;
 	}
 }
@@ -306,7 +444,7 @@ body {
 	}
 }
 
-#slide-2 {
+#section-2 {
 	background-color: #348c9a;
 	color: #e4e6e5;
 	padding-top: 90px;
@@ -441,20 +579,20 @@ body {
 	}
 }
 
-#slide-4 {
+#section-4 {
 	background-color: #34495e;
 	color: #e4e6e5;
 	padding-top: 90px;
 	 min-height: 1000px;
 }
 
-#slide-4 i {
+#section-4 i {
 		font-size: 80px;
 		color: white;
 	}
 
 
-#slide-5 {
+#section-5 {
 	background-color: #31587c;
 	color: #e4e6e5;
 	padding-top: 90px;
@@ -475,21 +613,6 @@ body {
 	}
 }
 	
-	#slide-6 .line-row .hr {
-		background-color: #4e4e4e;
-		color: #4e4e4e;
-	}
-
-	#slide-6 a {
-		color: inherit;
-		outline: none;
-		text-decoration: none;
-	}
-
-    #slide-6	i {
-		font-size: 80px;
-		color: white;
-	}
 
 @media (max-width: 767px) {
 	.with-hover-text{
@@ -547,7 +670,7 @@ body {
 }
 
 .zoom {
-	background-image: url('../images/zoom.png');
+	background-image: url('/client/app/images/zoom.png');
 	background-position: center center;
 	background-repeat: no-repeat;
 	height: 100%;
@@ -568,7 +691,7 @@ body {
 }
 
 #arrows div {
-	background-image: url('../images/website-arrows.png');
+	background-image: url('/client/app/images/website-arrows.png');
 	cursor: pointer;
 	height: 30px;
 	position: absolute;
