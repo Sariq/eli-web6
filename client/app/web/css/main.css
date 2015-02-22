@@ -64,8 +64,12 @@
 
     @import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
     section {
-        height: 100vh;
+     height:100vh;
+
     }
+.lead {
+font-size:19px;
+}
 
         /*footer {
         text-align: center;
@@ -102,12 +106,8 @@
         }*/
 
 
-    .section-container {
-        padding-top: 20px;
-    }
-.container {
-height:100vh;
-}
+ 
+     
   
 
 
@@ -316,11 +316,45 @@ body {
 .slide {
 	background-position: center center;
 	background-repeat: no-repeat;
-	padding-bottom: 5px;
-
+	/*padding-bottom: 5px;*/
+	/*padding-top: 5px;*/
+    /*min-height:100vh;*/
 	text-align: center;
 }
 
+#section-1 {
+	background-image: url('/client/app/images/bg1.jpg');
+	color: #ffffff;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    min-height: 100%;
+	background-attachment: relative;
+	background-position: center center;
+}
+
+#section-1 h1 {
+	padding-top: 130px;
+}
+
+@media (max-width: 991px) {
+	#section-1 {
+		background-position: -70% 0, 170% 0;
+	}
+}
+
+@media (max-width: 767px) {
+	#section-1 {
+		background-image: none;
+	}
+}
 
 	#home-row-1,
 	#home-row-2 {

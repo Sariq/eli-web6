@@ -1,7 +1,7 @@
 (function () {
     function indexSection() {
         return {    
-            restrict: 'EA',
+            restrict: 'E',
             templateUrl: 'index_section/index_section.html',
             link: function (scope, element, attr) {
 
