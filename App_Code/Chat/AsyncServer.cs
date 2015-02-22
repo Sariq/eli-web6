@@ -6,22 +6,21 @@ using System.Web.Script.Serialization;
 
 public class AsyncServer
 {
-
-    private static Object _lock = new Object();
+        private static Object _lock = new Object();
     private static List<AsyncResult> _clientStateList = new List<AsyncResult>();
     private static int z = 0;
     private static int chatWebCounter = 0;
 
     static AsyncServer()
     {
-        
-
     }
 
     public static void sendMessage(String message, String clientId)
     {
         lock (_lock)
         {
+            var clientService = new ClientService();
+
             Message currentMessage = new Message(clientId, message);
             new MessageService().AddOnlineMessage(currentMessage);
 
@@ -62,7 +61,7 @@ public class AsyncServer
 
                 try
                 {
-                    var admin = new ClientService().GetAdmin(clientState.ClientGuid);
+                    var admin = clientService.GetAdmin(clientState.ClientGuid);
                     if (admin != null)
                     {
                         if (clientState._context.Session != null)
@@ -132,23 +131,25 @@ public class AsyncServer
     {
         lock (_lock)
         {
+            var clientService = new ClientService();
+
             state.ClientGuid = chatWebCounter.ToString();
             if (type == "admin")
             {
                 chatWebCounter++;
                 state.ClientGuid = state.ClientGuid + 123;
                 var currentAdmin = new Admin((state.ClientGuid));
-                new ClientService().AddClient(currentAdmin);
+                clientService.AddClient(currentAdmin);
             }
             else
             {
                 chatWebCounter++;
                 var currentClient = new Web(state.ClientGuid, chatWebCounter);
-                new ClientService().AddClient(currentClient);
+                clientService.AddClient(currentClient);
             }
 
             _clientStateList.Add(state);
-            Debug.Write(state.ClientGuid.ToString());
+            
             state._context.Response.Write(state.ClientGuid.ToString());
 
 
@@ -156,15 +157,18 @@ public class AsyncServer
             {
                 JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
 
-                var allWeb = new ClientService().GetAllWebs();
+                var allWeb = clientService.GetAllWebs();
                 string resultStr = myJavaScriptSerializer.Serialize(allWeb);
                 foreach (AsyncResult clientState in _clientStateList)
                 {
+                   
+                    
                     try
                     {
-                        var admin = new ClientService().GetAdmin(clientState.ClientGuid);
-                        if (admin != null)
+                        Debug.Write(clientState.ClientGuid);
+                        var admin = clientService.GetAdmin("0123");
                         {
+                          
                             if (clientState._context.Session != null)
                             {
                                 clientState._context.Response.Write(resultStr);
@@ -183,22 +187,24 @@ public class AsyncServer
     {
         lock (_lock)
         {
+            var clientService = new ClientService();
+
             Debug.Write(state.ClientGuid);
             if (type == "admin")
-                new ClientService().RemoveAdmin(state.ClientGuid);
+                clientService.RemoveAdmin(state.ClientGuid);
             else
-            { 
-                new ClientService().RemoveWeb(state.ClientGuid);
+            {
+                clientService.RemoveWeb(state.ClientGuid);
                 _clientStateList.Remove(state);
 
                 JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
-                var allWeb = new ClientService().GetAllWebs();
+                var allWeb = clientService.GetAllWebs();
                 string resultStr = myJavaScriptSerializer.Serialize(allWeb);
                 foreach (AsyncResult clientState in _clientStateList)
                 {
                     try
                     {
-                        var admin = new ClientService().GetAdmin(clientState.ClientGuid);
+                        var admin = clientService.GetAdmin(clientState.ClientGuid);
                         if (admin != null)
                         {
                             if (clientState._context.Session != null)

@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using System;
+using System.Collections.Generic;
 
 public class DatabaseService : IDatabaseService
 {
@@ -20,7 +21,12 @@ public class DatabaseService : IDatabaseService
 
     public readonly Meeting meetingA = new Meeting("123", "123", "meetingA", "A", DateTime.Today, "FreeText", new string[] { "AA", "BB" });
     public readonly Meeting meetingB = new Meeting("123", "123", "meetingB", "B", DateTime.Today, "FreeText", new string[] { "AA", "BB" });
-    
+   
+    public readonly MailMessage mailMessage = new MailMessage(new List<string> { "123", "karin" }, new List<string> { "123", "karin" }, "subject", "content", true, true, true);
+
+    public readonly News newsA = new News("NewsA", "FreeText");
+    public readonly News newsB = new News("NewsB", "FreeText");
+
     #endregion
 
     public void Initialize()
@@ -43,10 +49,14 @@ public class DatabaseService : IDatabaseService
 
         CreateCollection("MessageHistory");
 
+        CreateCollection("News");
+
         InitializeUserCollection();
         InitializeMeetingCollection();
         InitializeAssignmentCollection();
         InitializePatientCollection();
+        InitializeMailMessageCollection();
+        InitializeNewsCollection();
     }
 
     private void InitializeAssignmentCollection()
@@ -77,6 +87,19 @@ public class DatabaseService : IDatabaseService
         var meetingService = new MeetingService();
         meetingService.AddMeeting(meetingA);
         meetingService.AddMeeting(meetingB);
+    }
+
+    private void InitializeMailMessageCollection()
+    {
+        var mailMessageService = new MailMessageService();
+        mailMessageService.SendMailMessage(mailMessage);
+    }
+
+    private void InitializeNewsCollection()
+    {
+        var newsService = new NewsService();
+        newsService.AddNews(newsA);
+        newsService.AddNews(newsB);
     }
 
     private MongoDatabase GetDatabase()
