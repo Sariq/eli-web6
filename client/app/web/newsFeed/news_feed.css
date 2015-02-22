@@ -1,0 +1,98 @@
+  .centered {
+        text-align: center;
+    }
+
+    * news-feed */ #news-feed {
+        max-width: 620px;
+        margin: auto;
+    }
+
+    #news-feed-container {
+        text-align: center;
+       
+        max-width: 620px;
+        height: 300px;
+    }
+
+        #news-feed-container i {
+            font-size: 36px;
+            margin: 8px;
+            cursor: pointer;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -ms-transition: all 0.1s ease-in-out;
+            -o-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
+
+            #news-feed-container i:hover {
+                color: #333;
+            }
+
+    #news-feed li {
+        direction:rtl;
+        
+        color: #f2f2f2;
+        background: #765ECC;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 60px;
+        padding: 10px 16px 10px 16px;
+        line-height: 40px;
+        list-style: none;
+        font-size: 24px;
+        text-align: right;
+    }
+
+        #news-feed li .state {
+            font-size: inherit;
+            margin: 0;
+        }
+
+    #news-feed span.hour {
+        font-weight: 700;
+    }
+
+    #news-feed-infos-triangle {
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 0 15px 16px 15px;
+        border-color: transparent transparent #765ECC transparent;
+        margin: 6px auto 0;
+    }
+
+    #news-feed-infos {
+        direction:rtl;
+        text-align:right;
+        border-radius: 25px;
+        margin: auto;
+        padding: 12px;
+        color: #f2f2f2;
+        background: #765ECC;
+         font-size: 16px;
+    }
+
+    #news-feed-infos-containe {
+        padding-left: 40px;
+    }
+
+        #news-feed-infos .infos-hour {
+            font-size: 50px;
+            font-weight: 700;
+          
+        }
+
+        #news-feed-infos h4 {
+            color: #F2F2F2;
+            font-weight: 500;
+        }
+
+        #news-feed-infos .infos-text {
+            text-align: right;
+        }
+    .infos-pad {
+   display: block; 
+   padding-left: 40px;
+    }

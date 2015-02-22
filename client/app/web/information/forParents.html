@@ -1,176 +1,66 @@
-﻿                                                                                                    
-<style type="text/css">
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: #ebebeb;
-  }
-body, button {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
+﻿<style>
+   ul.button-group>li{
+        float: none;
+        display: inline-block;
+        padding-left:15px;
+        padding-right:15px;
+    }
+    ul.button-group{
+        text-align: center;
+    }
 
-h1 {
-    padding-top: 50px;
-}
-img {
-    max-width: 100%;
-}
-/*nav {
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: #fff;
-  background: rgba(255, 255, 255, 0.8);
-}
-nav li, nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: center
-}
-nav li, nav a {
-  display: inline-block;
-}*/
-/*nav li[data-slide="1"]{
-    background-color: #2f2f2f;
-}
-
-nav li[data-slide="2"] {
-    background-color: #1abc9c;
-}
-
-nav li[data-slide="3"] {
-    background-color: #e74c3c;
-}
-
-nav li[data-slide="4"] {
-    background-color: #34495e;
-}
-
-nav li[data-slide="5"] {
-    background-color: #e67e22;
-}*/
-/*nav a {
-  padding: 20px;
-  color: #333;
-  text-decoration: none;
-}
-a:hover {
-  background: #fff;
-}
-a.active {
-  background: #00AC7F;
-  color: #fff;
-}
-.wrap {
-  position: relative;
-  width: 100%;
-  height:100vh;
- 
-
-}*/
-section {
-    height:100vh;
-    border:solid;
-
-}
-footer {
-    text-align: center;
-}
-button {
-    font-size: 18px;
-    border: 0;
-    padding: 15px 30px;
-    background: #00AC7F;
-    color: #fff;
-    cursor: pointer;
-}
-
-
-section[data-slide="1"]{
-    background-color: #2f2f2f;
-}
-	
-section[data-slide="2"] {
-    background-color: #1abc9c;
-}
-	
-section[data-slide="3"] {
-    background-color: #e74c3c;
-}
-	
-section[data-slide="4"] {
-    background-color: #34495e;
-}
-	
-section[data-slide="5"] {
-    background-color: #e67e22;
-}
 </style>
 
+
+
+
 <div class="text-right" ng-controller="MyCtrl">
-<div  class="navbar navbar-fixed-top" data-activeslide="1">
-		<div class="container">
-	
-			
-			
-			<div class=" nav-collapse  navbar-responsive-collapse ">
-				<ul class=" nav row"  >
-      <li class="col-12 col-sm-3"><a data-slide="4" href="#/forParents#section-4" du-smooth-scroll du-scrollspy><span class="text" >Section 1<span class="icon icon-envelope" ></span></span></a></li>
-      <li class="col-12 col-sm-3"><a data-slide="3" href="#/forParents#section-3" du-smooth-scroll du-scrollspy><span class="text" >Section 2<span class="icon icon-envelope" ></span></span></a></li>
-      <li class="col-12 col-sm-3"><a data-slide="2" href="#/forParents#section-2" du-smooth-scroll du-scrollspy><span class="text" >Section 3<span class="icon icon-envelope" ></span></span></a></li>
-      <li class="col-12 col-sm-3"><a data-slide="1" href="#/forParents#section-1"du-smooth-scroll du-scrollspy><span class="text" >Project on Github<span class="icon icon-envelope" ></span></span></a></li>
-   </ul>
-				<div class=" row">
-					<div class=" col-sm-3 active-menu"></div>
-				</div>
-			</div><!-- /.nav-collapse -->
-		</div><!-- /.container -->
-	</div><!-- /.navbar -->
-	
-              <!-- === Arrows === -->
+
+    <!-- === navbar === -->
+    <div class="navbar navbar-fixed-top" data-activeslide="1">
+        <div class="" style="margin-left:auto;margin-right:auto; width:70%">
+            <div class=" nav-collapse  navbar-responsive-collapse ">
+                <ul class=" nav row button-group" >
+                    <li data-slide="5" class=""><a data-slide="5" href="#section-5" du-smooth-scroll du-scrollspy><span class="text">{{ 'about us' | translate }}&nbsp;<span class="icon icon-user"></span></span></a></li>
+                    <li data-slide="4" class=""><a data-slide="4" href="#section-4" du-smooth-scroll du-scrollspy><span class="text">{{ 'help us' | translate }}&nbsp;<span class="icon icon-briefcase"></span></span></a></li>
+                    <li data-slide="3" class=""><a data-slide="3" href="#section-3" du-smooth-scroll du-scrollspy><span class="text">{{ 'Information' | translate }}&nbsp;<span class="icon icon-info"></span></span></a></li>
+                    <li data-slide="2" class=""><a data-slide="2" href="#section-2" du-smooth-scroll du-scrollspy><span class="text">{{ 'Doing' | translate }}&nbsp;<span class="icon icon-heart"></span></span></a></li>
+                    <li data-slide="1" class=""><a data-slide="1" href="#section-1" du-smooth-scroll du-scrollspy><span class="text">{{ 'Home' | translate }}&nbsp;<span class="icon icon-home"></span></span></a></li>
+                </ul>
+                <div class=" row">
+                    <div class=" col-sm-3 active-menu"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- === navbar === -->
+
+
+
+    <!-- === Arrows === -->
     <div id="arrows">
         <div id="arrow-up" ng-click="arrowClick($event)" class="disabled"></div>
         <div id="arrow-down" ng-click="arrowClick($event)"></div>
         <div id="arrow-left" ng-click="arrowClick($event)" class="disabled visible-lg"></div>
         <div id="arrow-right" ng-click="arrowClick($event)" disabled="class visible-lg"></div>
     </div>
-    <!-- /.arrows -->
-  <section class="slide story" data-slide="1" id="section-1">
-    <br />
-      <br />
-      <h2><a href="#index">Section 1</a></h2>
-    <p>Bacon ipsum dolor sit amet sausage tail capicola ground round hamburger ham hock. Short ribs pig andouille meatball, pastrami tri-tip fatback ham hock shank kielbasa swine. Rump pancetta jerky kielbasa doner beef ribs tongue hamburger strip steak drumstick andouille shoulder shank flank. Swine drumstick meatball pig beef sausage strip steak.</p>
+    <!-- === Arrows === -->
 
-   
-  </section>
 
-  <section class="slide story" data-slide="2" id="section-2">
-    <h2><a href="#page-home">Section 2</a></h2>
-    <p>Bacon strip steak ground round, tongue pastrami short ribs pork chop venison turducken sausage sirloin. Flank chicken pork chop capicola turkey turducken cow pork loin biltong meatball drumstick pancetta filet mignon ground round fatback. Ham hock jerky short ribs brisket. Meatloaf shoulder pork chop capicola, sirloin swine pig pork. Jerky ribeye hamburger pork loin sirloin kevin bresaola boudin chuck flank. Ham hock pork belly chicken jerky rump bresaola.</p>
-  </section>
 
-  <section class="slide story" data-slide="3" id="section-3">
-    <h2>Section 3</h2>
-    <p>Shank fatback pastrami short loin, turkey jowl kielbasa ribeye chicken jerky drumstick flank ham. Swine shankle pork belly kielbasa shoulder flank jowl, sirloin doner. Kevin tri-tip bresaola leberkas. Swine ball tip cow strip steak. Ham filet mignon pork chop, pork fatback andouille pork loin shoulder jowl swine strip steak turducken prosciutto rump.</p>
+
+
+
+
+
+
+
 
     
 
-    <p>Tongue tri-tip pastrami, shoulder rump pork belly ground round. Ham hock chuck leberkas doner, strip steak corned beef tri-tip capicola. Rump turkey ham sausage shankle. Flank shankle pork chop ham hock. Shankle venison kielbasa, pancetta swine beef ball tip t-bone bacon hamburger ground round ribeye flank. Turducken bacon bresaola, chicken kevin boudin ball tip strip steak filet mignon pork turkey shank ground round. Kielbasa fatback prosciutto pork chop, jerky ground round leberkas boudin ball tip beef shankle shoulder swine brisket.</p>
-  </section>
-
-  <section class="slide story" data-slide="4" id="section-4">
-    <h2>Section 4</h2>
-   
-
-    <p>Shoulder cow tenderloin chuck, pork chop jerky doner leberkas. Chuck sausage hamburger, kevin beef pork chop pork shoulder ground round ball tip turducken flank. Bresaola tri-tip meatloaf, salami venison tail pig shank shankle jowl sausage brisket cow biltong turducken. Swine turducken hamburger ball tip short loin prosciutto kevin jowl tri-tip. Doner meatloaf pork brisket.</p>
-  </section>
-  <footer>
-    <button ng-click="toTheTop()">Take me back!</button> or <button ng-click="toSection2()">To section 2</button>
-  </footer>
-</div>
-
-   
-
+    <section ng-repeat="widget in widgets" class="slide story " data-slide="{{$index+1}}" id="section-{{$index+1}}">
+               
+          <div proxy="widget" proxy-value="{{widget}}"></div>
+     
+    </section>

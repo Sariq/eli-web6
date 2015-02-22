@@ -61,6 +61,8 @@
      
 
     }*/
+
+    @import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
     section {
         height: 100vh;
     }
@@ -79,7 +81,7 @@
     }*/
 
 
-        section[data-slide="1"] {
+        /*section[data-slide="1"] {
             background-color: #2f2f2f;
         }
 
@@ -88,7 +90,7 @@
         }
 
         section[data-slide="3"] {
-            background-color: #e74c3c;
+            background-color: #196B3E;
         }
 
         section[data-slide="4"] {
@@ -97,45 +99,17 @@
 
         section[data-slide="5"] {
             background-color: #e67e22;
-        }
+        }*/
 
 
     .section-container {
         padding-top: 20px;
     }
-
-    #section-6 {
-	background-color: #2f2f2f;
-	color: #e4e6e5;
-	padding-bottom: 350px;
-	padding-top: 90px;
-	 min-height: 1000px;
+.container {
+height:100vh;
 }
+  
 
-    	#section-6 .line-row .hr {
-		background-color: #4e4e4e;
-		color: #4e4e4e;
-	}
-
-	#section-6 a {
-		color: inherit;
-		outline: none;
-		text-decoration: none;
-	}
-
-    #section-6	i {
-		font-size: 80px;
-		color: white;
-	}
-
-    /*
- * Author: Carlos Alvarez
- * URL: http://alvarez.is
- *
- * Project Name: Munter - Free Bootstrap 3 Theme
- * Version: 1.0
- * URL: http://blacktie.co
- */
 
 .ng-cloak {
     display: none;
@@ -172,8 +146,11 @@ html, body {
 	width: 100%;
 }
 
+
+
+
 body {
-	background-color: #2f2f2f;
+	
 	font-family: "Titillium Web", sans-serif;
 	font-weight: normal;
 	overflow-x: hidden;
@@ -258,26 +235,13 @@ body {
 	z-index: 10;
 }
 
-#special-active-menu-1,
-#special-active-menu-6 {
-	background-color: #4e4e4e !important;
-}
 
-#special-active-menu-2 {
-	background-color: #1abc9c !important;
-}
 
-#special-active-menu-3 {
-	background-color: #e74c3c !important;
-}
 
-#special-active-menu-4 {
-	background-color: #34495e !important;
-}
 
-#special-active-menu-5 {
-	background-color: #e67e22 !important;
-}
+
+
+
 
 @media (min-width: 768px) and (max-width: 991px) {
 	#section-4 .content-row h2 {
@@ -353,43 +317,10 @@ body {
 	background-position: center center;
 	background-repeat: no-repeat;
 	padding-bottom: 5px;
-	padding-top: 5px;
+
 	text-align: center;
 }
 
-#section-1 {
-	background-image: url('/client/app/images/bg1.jpg');
-	color: #ffffff;
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 100%;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width: 100%;
-    min-height: 100%;
-	background-attachment: relative;
-	background-position: center center;
-}
-
-#section-1 h1 {
-	padding-top: 130px;
-}
-
-@media (max-width: 991px) {
-	#section-1 {
-		background-position: -70% 0, 170% 0;
-	}
-}
-
-@media (max-width: 767px) {
-	#section-1 {
-		background-image: none;
-	}
-}
 
 	#home-row-1,
 	#home-row-2 {
@@ -444,16 +375,11 @@ body {
 	}
 }
 
-#section-2 {
-	background-color: #348c9a;
-	color: #e4e6e5;
-	padding-top: 90px;
-	 min-height: 1000px;
-}
+
 
 	.title-row {
 		font-size: 45px;
-		padding-bottom: 50px;
+		padding-bottom: 10px;
 	}
 	
 	.line-row .hr {
@@ -482,7 +408,7 @@ body {
 	}
 	
 	.content-row h2 {
-		font-size: 28px;
+		font-size: 20px;
 		padding-bottom: 40px;
 	}
 	
@@ -579,25 +505,9 @@ body {
 	}
 }
 
-#section-4 {
-	background-color: #34495e;
-	color: #e4e6e5;
-	padding-top: 90px;
-	 min-height: 1000px;
-}
-
-#section-4 i {
-		font-size: 80px;
-		color: white;
-	}
 
 
-#section-5 {
-	background-color: #31587c;
-	color: #e4e6e5;
-	padding-top: 90px;
-	 min-height: 1000px;
-}
+
 
 #slide-6 {
 	background-color: #2f2f2f;
@@ -669,7 +579,7 @@ body {
 	display: none;
 }
 
-.zoom {
+/*.zoom {
 	background-image: url('/client/app/images/zoom.png');
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -679,7 +589,7 @@ body {
 	top: 0;
 	width: 100%;
 	z-index: 999;
-}
+}*/
 
 #arrows {
 	bottom: 10%;

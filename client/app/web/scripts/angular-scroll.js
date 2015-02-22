@@ -190,7 +190,7 @@ angular.module('duScroll.scrollHelpers', ['duScroll.requestAnimation'])
 }]);
 
 
-//Adapted from https://gist.github.com/paulirish/1579671
+
 angular.module('duScroll.polyfill', [])
 .factory('polyfill', ["$window", function ($window) {
     'use strict';
@@ -530,7 +530,7 @@ angular.module('duScroll.smoothScroll', ['duScroll.scrollHelpers', 'duScroll.scr
                 console.log(target)
                 container.duScrollToElement(
                   angular.element(target),
-                  isNaN(offset) ? 0 : offset,
+                  isNaN(offset) ? 0 : offset-30,
                   isNaN(duration) ? 0 : duration
                 );
             });

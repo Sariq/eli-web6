@@ -1,0 +1,32 @@
+﻿      
+                    <div id="news-feed-container">
+                        <ul id="news-feed" style="height: 60px; overflow: hidden;">
+
+                            
+                            <li  ng-repeat="item in newsFeed" data-infos="{{item.content}}" style="margin-top: 0px;">
+                               
+                                <i class="fa fa-fw state fa-pause"></i>
+                                <span class="hour">12:00</span> {{item.title}}
+                                   
+                            </li>
+
+                        </ul>
+                        <div id="news-feed-infos-container" class="infos-pad"  >
+                            <div id="news-feed-infos-triangle"></div>
+                            <div id="news-feed-infos" class="row " >
+                                     <div class="col-xs-8">
+                                    <div class="infos-text ">{{newsFeed[0].content}}</div>
+                                </div>
+                                <div class="col-xs-4 centered" >
+                                    <div class="infos-hour">12:00</div>
+                                    <i class="fa fa-arrow-right" id="news-feed-next"></i>
+                                    <i class="fa fa-arrow-left" id="news-feed-prev"></i>
+                                    
+                                </div>
+                           
+                            </div>
+                        </div>
+                    </div>
+        
+
+              

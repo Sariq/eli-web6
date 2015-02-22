@@ -1,0 +1,34 @@
+ 
+#section-1 {
+	background-image: url('/client/app/images/bg1.jpg');
+	color: #ffffff;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    min-height: 100%;
+	background-attachment: relative;
+	background-position: center center;
+}
+
+#section-1 h1 {
+	padding-top: 130px;
+}
+
+@media (max-width: 991px) {
+	#section-1 {
+		background-position: -70% 0, 170% 0;
+	}
+}
+
+@media (max-width: 767px) {
+	#section-1 {
+		background-image: none;
+	}
+}

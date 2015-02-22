@@ -8,7 +8,14 @@
        .state('forParents', {
            url: '/forParents',
            templateUrl: 'information/forParents.html',
-           controller: '',
+           resolve: {
+               fun: function ($rootScope) {
+                   $rootScope.widgets = []
+                 
+               }
+
+           },
+           controller: 'Parents',
            controllerAs: ''
 
        })
@@ -19,19 +26,26 @@
 
 
 
-
-    function Parents(ScrollService, $rootScope, $state) {
+    function Parents($scope, $rootScope, $state) {
         var self = this;
         var mytops = [];
        
-        ScrollService.scroll();
+        $scope.widgets = [
+     { component: 'indexSection' },
+     { component: 'weDoing' },
+     { component: 'professionalInfo' },
+     { component: 'helpUs' },
+     { component: 'aboutUs' }
+
+        ]
+  
         //self.nav = ScrollService.getNav($state.current.name);
     
         //alert("Parents")
         //alert($state.path());
         //alert($state.current.name)
     
-        ScrollService.setNav(self.nav);
+   
         self.getNav = function () {
 
             console.log($state.current.name)
@@ -43,6 +57,6 @@
 }
 
 angular.module('eliApp')
-  .controller('Parents', ['ScrollService', '$rootScope', '$state', Parents]);
+  .controller('Parents', ['$scope','$rootScope', '$state', Parents]);
 
 }());

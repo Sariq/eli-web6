@@ -23,7 +23,7 @@ angular.module('eliApp', [
           url: '/',
           //templateUrl: 'main/views/main.html',
           templateUrl: '/client/app/web/main/main.html',
-          controller: ''
+          controller: 'MainCtrl'
         , controllerAs: ''
       })
 
@@ -36,15 +36,20 @@ angular.module('eliApp', [
                controller: ''
         , controllerAs: ''
            })
+
+
+
+
+
     $urlRouterProvider.otherwise('/');
 
     $translateProvider.translations('he', {
         Home: 'בית',
-        Doing:'מה אנחנו עושים',
-        'help us':'איך תוכלי לעזור',
+        Doing: 'מה אנחנו עושים',
+        'help us': 'איך תוכלי לעזור',
         Information: 'מידע',
-        'about us':'אודיתנו',
-        'contact us' :'צור קשר'
+        'about us': 'אודיתנו',
+        'contact us': 'צור קשר'
 
     })
 .translations('ar', {
