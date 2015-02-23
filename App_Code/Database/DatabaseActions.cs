@@ -72,7 +72,7 @@ public class DatabaseActions
         return obj.ToList<ObjectType>();
     }
 
-    protected List<ObjectType> GetAllObject<ObjectType>(string fieldName, string fieldValue, string collectionName)
+    protected List<ObjectType> GetAllObject<ObjectType>(string fieldName, BsonValue fieldValue, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
 

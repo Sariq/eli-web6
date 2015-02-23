@@ -31,35 +31,17 @@ public class MailMessageService : DatabaseActions, IMailMessage
 
     public List<MailMessage> GetInboxMessages(string userId)
     {
-        List<MailMessage> inboxMessages = new List<MailMessage>();
-        foreach (MailMessage mailMessage in GetAllMessages())
-        {
-            if (mailMessage.toUser[0] == userId)
-                inboxMessages.Add(mailMessage);
-        }
-        return inboxMessages;
+        return GetAllObject<MailMessage>("toUser[0]", userId, "MailMessage");
     }
 
     public List<MailMessage> GetSentMessages(string userId)
     {
-        List<MailMessage> sentMessages = new List<MailMessage>();
-        foreach (MailMessage mailMessage in GetAllMessages())
-        {
-            if (mailMessage.fromUser[0] == userId)
-                sentMessages.Add(mailMessage);
-        }
-        return sentMessages;
+        return GetAllObject<MailMessage>("fromUser[0]", userId, "MailMessage");
     }
 
-    public List<MailMessage> GetDeleteMessages(string userId)
+    public List<MailMessage> GetDeleteMessages()
     {
-        List<MailMessage> deleteMessages = new List<MailMessage>();
-        foreach (MailMessage mailMessage in GetAllMessages())
-        {
-            if (mailMessage.isDelete)
-                deleteMessages.Add(mailMessage);
-        }
-        return deleteMessages;
+        return GetAllObject<MailMessage>("isDelete", true, "MailMessage");
     }
 
     public void UpdateMailMessage(MailMessage mailMessage)

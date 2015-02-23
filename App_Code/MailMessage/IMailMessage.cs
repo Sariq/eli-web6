@@ -55,7 +55,7 @@ public interface IMailMessage
          Method = "GET",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetDeleteMessages/{id}")
+         UriTemplate = "GetDeleteMessages")
     ]
-    List<MailMessage> GetDeleteMessages(string id);
+    List<MailMessage> GetDeleteMessages();
 }
