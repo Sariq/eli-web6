@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="MailMessageService" CodeBehind="~/App_Code/MailMessage/MailMessageService.cs"
+    Factory="System.ServiceModel.Activation.WebServiceHostFactory" %>

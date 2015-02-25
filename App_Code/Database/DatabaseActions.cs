@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -68,6 +69,15 @@ public class DatabaseActions
     {
         var collection = database.GetCollection(collectionName);
         var obj =  collection.FindAllAs<ObjectType>();    
+        return obj.ToList<ObjectType>();
+    }
+
+    protected List<ObjectType> GetAllObject<ObjectType>(string fieldName, BsonValue fieldValue, string collectionName)
+    {
+        var collection = database.GetCollection(collectionName);
+
+        var searchQuery = Query.EQ(fieldName, fieldValue);
+        var obj = collection.FindAs<ObjectType>(searchQuery);
         return obj.ToList<ObjectType>();
     }
 

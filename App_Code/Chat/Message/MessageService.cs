@@ -7,7 +7,6 @@ using System.Diagnostics;
 
 public class MessageService : DatabaseActions, IMessage
 {
-
     public void AddOnlineMessage(Message message)
     {
         InsertObjectNotAsync(message, "OnlineMessage");
@@ -28,18 +27,9 @@ public class MessageService : DatabaseActions, IMessage
         RemoveObject(message._id, "HistoryMessage");
     }
 
-    public List<Message> GetAllOnlineMessages()
-    {
-        return GetAllObject<Message>("OnlineMessage");
-    }
-
-    public List<Message> GetAllHistoryMessages()
-    {
-        return GetAllObject<Message>("HistoryMessage");
-    }
-
     public List<Message> GetAllOnlineMessagesOfClient(string clientId)
     {
+<<<<<<< HEAD
 
         var clientService = new ClientService();
 
@@ -59,22 +49,21 @@ public class MessageService : DatabaseActions, IMessage
         }
 
        
+=======
+        var onlineMessagesOfClientList = GetAllObject<Message>("clientId", clientId, "OnlineMessage");
+
+        var clientService = new ClientService();
+        var web = clientService.GetWeb(clientId);
+        web.isNewMessage = false;
+        clientService.UpdateWeb(web);
+>>>>>>> MailMessage
 
         return onlineMessagesOfClientList;
     }
 
     public List<Message> GetAllHistoryMessagesOfClient(string clientId)
     {
-        var historyMessagesOfClientList = new List<Message>();
-        var allMessage = GetAllHistoryMessages();
-
-        foreach (Message message in allMessage)
-        {
-            if (message.clientId == clientId)
-                historyMessagesOfClientList.Add(message);
-        }
-
-        return historyMessagesOfClientList;
+        return GetAllObject<Message>("clientId", clientId, "HistoryMessage");
     }
 
     public void SaveAllMessagesOfClient(string clientId)

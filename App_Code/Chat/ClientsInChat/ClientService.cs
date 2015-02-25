@@ -6,7 +6,6 @@ using MongoDB.Driver;
 
 public class ClientService : DatabaseActions, IClient
 { 
-
     public void AddClient(Client client)
     {
         var success = false;

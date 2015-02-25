@@ -6,7 +6,6 @@ using System.Web;
 
 public class ChatMessage
 {
-
     public string clientName;
     public string clientId;
     public string arrType;
