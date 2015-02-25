@@ -24,7 +24,7 @@
         //self.patient = PatientAdmin.patient;
        
         self.meetingId = $stateParams.meetingId;
-        self.patientId = $stateParams.patientId;
+        
         self.steps = [];
 
         self.addMeeting = function (meeting) {
@@ -38,15 +38,17 @@
        
         if (self.meetingId) {
             self.meeting = MeetingAdmin.get(self.meetingId);
+
             console.log(self.meeting);
             self.meeting.$promise.then(function (result) {
-              
+           
+               
                 $http({
                     url: '/AssignmentService.svc/getAssignmentsByIds',
                     method: 'POST',
                     data: result.assignments
                 }).then(function (response) {
-               
+           
                     self.assignments = response.data;
                   
                   
@@ -275,6 +277,48 @@
                 }
             });
         }
+
+
+        self.remove = function (idx, meeting) {
+            console.log(meeting);
+            console.log(meeting._id);
+
+        
+            $http({
+                url: '/MeetingService.svc/deleteMeeting',
+                method: 'POST',
+                data: meeting._id
+            }).then(function (response) {
+                PatientAdmin.deleteMeeting(self.patient, idx);
+                //self.patient.$update(function (response) {
+
+                //    self.getMeetingsByIds()
+
+                //});
+               // alert(angular.toJson(self.patien))
+                PatientAdmin.setPatientId(self.patient)
+                PatientAdmin.update().$promise.then(function () {
+                    $location.path('/patient/profile/' + self.patient._id);
+                })
+
+                //$http({
+                //    url: '/PatientService.svc/updatePatient',
+                //    method: 'POST',
+                //    data: self.patient._id
+                //}).then(function (response) {
+
+
+                //    //self.getMeetingsByIds()
+
+
+                //}, function () { alert("PatientService error") });
+
+            }, function () { alert("MeetingService error") });
+
+            //meeting.$remove({id: meeting._id}, function () {
+            //  self.meetings = MeetingAdmin.query();
+            //});
+        };
 
 
     }

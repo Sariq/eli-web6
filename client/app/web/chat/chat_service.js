@@ -52,7 +52,7 @@
         self.myClick = function (myMessage) {
             alert(self.GuID)
             var myObj = { clientId: "clientIdsar", messageContent: "messageContentsar",messageTime:"" };
-            var url = "/AsyncHandler.ashx?cmd=sendMessage&myText=" + encodeURIComponent(myMessage) + "&clientId=" + encodeURIComponent(self.GuID);
+            var url = "/AsyncHandler.ashx?cmd=sendMessage&myText=" + encodeURIComponent(myMessage) + "&clientId=" + encodeURIComponent(self.GuID) + "&type=" + "web";
 
             self.xmlHttp_OneTime.open("POST", url, true);
          

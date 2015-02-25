@@ -224,18 +224,17 @@
                         <!-- /.panel-body -->
                         <div class="panel-footer" style="width: 400px;">
                             <div class="input-group"  >
-                                <input ng-model="chat.myMessage" id="btn-input" type="text" class="form-control input-sm" style="direction:RTL;" placeholder="הכנס הודעה..." />
+                                <input ng-if="chat.GuID!=''" ng-model="chat.myMessage" id="btn-input" type="text" class="form-control input-sm" style="direction:RTL;" placeholder="הכנס הודעה..." />
                                 <span class="input-group-btn">
                                     <button ng-if="chat.GuID!=''" ng-click="chat.myClick()" class="btn btn-warning btn-sm" id="btn-chat">
                                         Send
                                     </button>
-                                    <button ng-if="chat.GuID==''" ng-click="chat.register()" class="btn btn-warning btn-sm" id="btn-chat">
+                                </span>
+                               
+                            </div>
+                                      <button ng-if="chat.GuID==''" ng-click="chat.register()" class="btn btn-info btn-block" id="Button1">
                                         Register
                                     </button>
-
-                                    register
-                                </span>
-                            </div>
                         </div>
                         <!-- /.panel-footer -->
                     </div>

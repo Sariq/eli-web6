@@ -33,8 +33,8 @@
           controllerAs: 'add'
 
       })
-                .state('meeting/item/:meetingId', {
-                    url: '/meeting/item/:meetingId',
+                .state('meeting/item/:meetingId/:index', {
+                    url: '/meeting/item/:meetingId/:index',
                     templateUrl: 'meeting/views/item/item.html',
                     controller: 'MeetingItemController',
                     controllerAs: 'item'

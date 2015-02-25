@@ -15,12 +15,12 @@
         });
 
         var self = this;
-        self.patient = PatientAdmin.get(PatientAdmin.patient._id);
+        //self.patient = PatientAdmin.get(PatientAdmin.patient._id);
         self.id = '';
         self.error = '';
         self.debug = '';
         self.isNew = false;
-        self.patient = PatientAdmin.patient;
+        self.patient = PatientAdmin.getPatientId();
         self.info = MeetingAdmin.info;
         self.assignments = '';
         self.meeting = MeetingAdmin.create();
@@ -29,6 +29,7 @@
         //self.patient = PatientAdmin.patient;
         
         self.meetingId = $stateParams.meetingId;
+        self.meetingIdx = $stateParams.index;
         self.patientId = $stateParams.patientId;
         self.steps = [];
        
@@ -42,20 +43,21 @@
         };
        
         if (self.meetingId) {
+       
             self.meeting = MeetingAdmin.get(self.meetingId);
             console.log(self.meeting);
             self.meeting.$promise.then(function (result) {
               
-                $http({
-                    url: '/AssignmentService.svc/getAssignmentsByIds',
-                    method: 'POST',
-                    data: result.assignments
-                }).then(function (response) {
+                //$http({
+                //    url: '/AssignmentService.svc/getAssignmentsByIds',
+                //    method: 'POST',
+                //    data: result.assignments
+                //}).then(function (response) {
                
-                    self.assignments = response.data;
+                //    self.assignments = response.data;
+                //      alert()
                   
-                  
-                }, function () { alert("getAssignmentsByIds edit error") });
+                //}, function () { alert("getAssignmentsByIds edit error") });
 
             });
 
@@ -78,56 +80,29 @@
             if (self.isNew) {
                 
                 console.log("self.meeting");
-                console.log(self.meeting);
                 self.meeting.$save(function (response) {
-                    console.log("response");
 
-
-
-               
-                    self.patient.$promise.then(function (result) {
-                        console.log(self.patient);
-                 
-
-                            PatientAdmin.addMeeting(self.patient, response._id);
-                           
-                            
-                            self.patient.$update(function (response) {
-                              
-                                $location.path('/meetings/'+self.patient._id);
-                                
-                            });
-                        
-
-                    });
-
-
-                 // alert(angular.toJson(response));
-                  
-                
-                     
-
-                        //})
-                      
-                    // $location.path('patient/add/' + self.patientId +'/'+ response._id)
-                
+                    PatientAdmin.addMeeting(self.patient, response._id);
                     
-                        
-               
+                    PatientAdmin.setPatientId(self.patient)
+                    PatientAdmin.update().$promise.then(function () { $location.path('/patient/profile/' + self.patient._id); })
+                   
+                   
                 });
-            } else {      
-                self.patient.$promise.then(function (result) {
+            } else {
+         
+             
                     self.meeting.$update(function (response) {
                         console.log(response);
                         //if (response.status == 0) {
                         //$location.path(success_url);
-                        $location.path('/meetings/'+self.patient._id);
+                        $location.path('/meeting/item/' + self.meeting._id + '/0');
                         //} else {
                         //    self.error = response.error;
                         //    self.debug = response.debug;
                         //}
                     });
-                })
+             
                 } 
         };
 
@@ -193,7 +168,7 @@
    
 
 
-    self.removeAssignment = function (assignment, idx) {
+        self.removeAssignment = function (assignment, meetingIdx) {
         $http({
             url: '/AssignmentService.svc/deleteAssignment',
             method: 'POST',
@@ -201,7 +176,7 @@
         }).then(function (response) {
 
 
-            MeetingAdmin.deleteAssignment(self.meeting, idx);
+            MeetingAdmin.deleteAssignment(self.meeting, meetingIdx);
             self.meeting.$update(function (response) {
 
                 self.getAssignmentsByIds()

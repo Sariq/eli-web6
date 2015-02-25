@@ -149,36 +149,36 @@ angular.module('eliApp').
 
 
 
-angular.module('eliApp').directive('proxy', ['$parse', '$injector', '$compile', '$http', function ($parse, $injector, $compile, $http) {
-    return {
-        replace: true,
-        link: function (scope, element, attrs) {
-            var nameGetter = $parse(attrs.proxy);
-            var name = nameGetter(scope);
-            var value = undefined;
+//angular.module('eliApp').directive('proxy', ['$parse', '$injector', '$compile', '$http', function ($parse, $injector, $compile, $http) {
+//    return {
+//        replace: true,
+//        link: function (scope, element, attrs) {
+//            var nameGetter = $parse(attrs.proxy);
+//            var name = nameGetter(scope);
+//            var value = undefined;
             
-            if (attrs.proxyValue) {
-                var valueGetter = $parse(attrs.proxyValue);
-                value = valueGetter(scope);
+//            if (attrs.proxyValue) {
+//                var valueGetter = $parse(attrs.proxyValue);
+//                value = valueGetter(scope);
                
-            }
-           // alert(angular.toJson(name.component))
-            var directive = $injector.get(name.component + 'Directive')[0];
+//            }
+//           // alert(angular.toJson(name.component))
+//            var directive = $injector.get(name.component + 'Directive')[0];
            
-            if (value !== undefined) {
-                attrs[name.component] = value;
+//            if (value !== undefined) {
+//                attrs[name.component] = value;
                 
-            }
-            //alert()
+//            }
+//            //alert()
           
-            $http.get(directive.templateUrl)
-        .then(function (response) {
-            var a = element.html($compile(response.data)(scope));
-        });
-            element.replaceWith(a);
-        }
-    }
-}])
+//            $http.get(directive.templateUrl)
+//        .then(function (response) {
+//            var a = element.html($compile(response.data)(scope));
+//        });
+//            element.replaceWith(a);
+//        }
+//    }
+//}])
 //    .directive('wg-title', function () {
 //    return {
 //        restrict: 'A',

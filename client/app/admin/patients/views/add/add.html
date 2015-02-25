@@ -12,13 +12,14 @@
 
         <div class="modal-header">
             <h1 class="text-center">מטופל חדש</h1>
-       </div>
+        </div>
 
         <div class="panel-body text-right">
             <div class="row">
                 <div class="col-md-12  col-xs-12">
                     <label class="label-text-size">
                         : שם
+                   
                     </label>
                 </div>
                 <div class="col-md-12 col-xs-12">
@@ -26,11 +27,12 @@
                 </div>
 
             </div>
-            <br/>
+            <br />
             <div class="row">
                 <div class="col-md-12  col-xs-12">
                     <label class="label-text-size">
                         : שם משפחה
+                   
                     </label>
                 </div>
                 <div class="col-md-12 col-xs-12">
@@ -39,11 +41,12 @@
 
             </div>
 
-            <br/>
+            <br />
             <div class="row">
                 <div class="col-md-12  col-xs-12">
                     <label class="label-text-size">
                         : ת.ז
+                   
                     </label>
                 </div>
                 <div class="col-md-12 col-xs-12">
@@ -51,11 +54,11 @@
                 </div>
 
             </div>
-       
 
 
-           
-        <!--  <br/>  <div class="row">
+
+
+            <!--  <br/>  <div class="row">
                 <div class="col-md-12  col-xs-12">
                     <label class="label-text-size">
                         : birth_date
@@ -66,13 +69,14 @@
                 </div>
 
             </div>-->
-        
 
-             <br/>
+
+            <br />
             <div class="row">
                 <div class="col-md-12  col-xs-12">
                     <label class="label-text-size">
                         : address
+                   
                     </label>
                 </div>
                 <div class="col-md-12 col-xs-12">
@@ -81,11 +85,12 @@
 
             </div>
 
-                  <br/>
+            <br />
             <div class="row">
                 <div class="col-md-12  col-xs-12">
                     <label class="label-text-size">
                         : email
+                   
                     </label>
                 </div>
                 <div class="col-md-12 col-xs-12">
@@ -95,8 +100,6 @@
             </div>
         </div>
 
-
-        
         <div class="panel-footer">
             <div class="form-group row">
                 <div class="col-md-6  ">
@@ -107,109 +110,12 @@
                         class="btn btn-info btn-block label-text-size"
                         translate>
                         שמור
+                   
                     </button>
                 </div>
             </div>
         </div>
-             
+
     </div>
 </div>
 
-
-<style>
-    .panel-footer {
-        padding-top:30px;
-        background-color: #005B7F;
-    }
-    .modal-content {
-        background-color: #005B7F;background-image:none;color:white
-    }
-.modal-header{
-    background-color:#005B7F;background-image:none;color:white}
-</style>
-<!--<div class="row" id="form_container">
-
-    <img id="top" src="imgs/top.png" alt="">
-    <br />
-    <form class="form-horizontal style-form" method="get">
-
-        <div class="form-group ">
-            <label for="first_name" class="col-md-2   control-label pull-right"><strong>: מטופל</strong></label>
-
-            <div class="col-sm-10 pull-right">
-                <input type="text" class="form-control text-right " name="first_name" ng-model="add.patient.first_name"
-                    id="Text5"
-                    placeholder="" required>
-            </div>
-        </div>
-
-        <div class="form-group ">
-            <label for="last_name" class="col-md-2  control-label pull-right"><strong>: Last Name</strong></label>
-
-            <div class="col-sm-10 pull-right">
-                <input type="text" class="form-control text-right " name="last_name" ng-model="add.patient.last_name"
-                    id="Text6"
-                    placeholder="" required>
-            </div>
-        </div>
-
-        <div class="form-group ">
-            <label for="identity_number" class="col-md-2 control-label pull-right"><strong>: ת.ז</strong></label>
-
-            <div class="col-sm-10 pull-right">
-                <input type="text" class="form-control text-right " name="identity_number" ng-model="add.patient.identity_number"
-                    id="Text1"
-                    placeholder="" required>
-            </div>
-        </div>
-
-        <!--<div  class="form-group ">
-                          <label for="birth_date"  class="col-md-2  control-label pull-right"><strong>: birth_date </strong></label>
-
-                          <div class="col-sm-10 pull-right">
-                           <input type="text" class="form-control text-right" name="birth_date" ng-model="add.patient.birth_date"
-                           id="Text7"
-                           placeholder="birth_date" required>
-                          </div>
-                 </div>
-
-        <div class="form-group ">
-            <label for="address" class="col-md-2 control-label pull-right"><strong>: address</strong></label>
-
-            <div class="col-sm-10 pull-right">
-                <input type="text" class="form-control text-right " name="address" ng-model="add.patient.address"
-                    id="Text8"
-                    placeholder="" required>
-            </div>
-        </div>
-
-        <div class="form-group ">
-            <label for="email" class="col-md-2 control-label pull-right"><strong>: email</strong></label>
-
-            <div class="col-sm-10 pull-right">
-                <input type="text" class="form-control text-right " name="email" ng-model="add.patient.email"
-                    id="Text9"
-                    placeholder="" required>
-            </div>
-        </div>
-    </form>
-    <div id="footer">
-    </div>
-
-    <img id="bottom" src="imgs/bottom.png" alt="">
-    
-    <br />
-    <div class="form-group row">
-        <div class="col-sm-2 control-label"></div>
-        <div class="col-sm-10">
-            <div class="btn-group col-sm-10">
-                <button style="width: 50%;" ng-click="add.save();"
-                    class="btn btn-info"
-                    translate>
-                    Save
-                </button>
-                <a style="width: 50%;" href="#/patients" class="btn btn-warning">Cancel</a>
-            </div>
-        </div>
-    </div>
-</div>-->

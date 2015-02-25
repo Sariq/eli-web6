@@ -1,6 +1,6 @@
 (function () {
   function TaskListController(TaskAdmin,$stateParams) {
-    
+   
       self.openModal = function () {
           //MeetingAdmin.addTask(self.meeting);
 

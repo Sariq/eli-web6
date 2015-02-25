@@ -12,6 +12,7 @@
         self.chatMessages = [];
         self.currentWebUser = '';
         self.flag = false;
+        self.flagAdminMsg = false;
 
        
 
@@ -38,25 +39,32 @@
                                   
            
         self.getResponse_Connect = function () {
+            
             if (self.xmlHttp_OneTime.readyState == 4) {
                 self.GuID = self.xmlHttp_OneTime.responseText;
-               
-                ChatService.GuID = self.GuID;
-                self.xmlHttp_OneTime = ChatService.FirstTimeFunction();
-                self.xmlHttp_OneTime.onreadystatechange = self.getResponse_FirstTime;
-                self.xmlHttp_OneTime.send();
+                ChatService.setadminChatId(self.xmlHttp_OneTime.responseText)
+                
+                self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Process;
+                self.xmlHttp_Process = ChatService.ProcessFunction();
+                self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
+                self.xmlHttp_Process.send();
 
             }
           
         }
 
         self.getResponse_FirstTime = function () {
+            
             if (self.xmlHttp_OneTime.readyState == 4) {
+               
                 var myJSON_Text = self.xmlHttp_OneTime.responseText;
+                alert(myJSON_Text)
                 myJsonObject = eval('(' + myJSON_Text + ')');
                 console.log(myJsonObject)
+                
                 self.chatMessages = myJsonObject;
                 $scope.$apply();
+                
                 self.xmlHttp_Process=ChatService.ProcessFunction();
                 self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
                 self.xmlHttp_Process.send();
@@ -65,24 +73,35 @@
         }
         
         self.getResponse_Process = function () {
-            alert()
+           
             self.flag = false;
             var temp_resultInMinutes = '';
             if (self.xmlHttp_Process.readyState == 4) {
                 var myJSON_Text = self.xmlHttp_Process.responseText;
                                    
                 var myJsonObject_Temp = eval('(' + myJSON_Text + ')');
-                console.log(self.myJsonObject_Temp)
-                if (myJsonObject_Temp[0].hasOwnProperty('messageContent')) {
+                console.log(myJsonObject_Temp)
+                if (myJsonObject_Temp.arrType == "messagesArr") {
                     //alert("message")
                      
                    
-                   
-                    console.log(myJsonObject_Temp[0].clientId + "=="+self.currentWebUser.clientId)
-                    if (myJsonObject_Temp[0].clientId == self.currentWebUser.clientId) {
-                        self.chatMessages = myJsonObject_Temp;
+                    
+                    //console.log(myJsonObject_TempclientName.clientName + "==" + self.currentWebUser.clientId)
+                    if (myJsonObject_Temp.clientId == self.currentWebUser.clientId) {
+                        self.chatMessages = myJsonObject_Temp.allMessage;
                         self.flag = true;
+                }
+
+                    console.log(self.chatWebs)
+                    if (!self.flagAdminMsg && myJsonObject_Temp.clientId != self.currentWebUser.clientId) {
+                        for (var i = 0; i < self.chatWebs.length; i++) {
+                            if (self.chatWebs[i].clientId == myJsonObject_Temp.clientId) {
+                                self.chatWebs[i].isNewMessage = true;
+                            }
+                        }
                     }
+                    self.flagAdminMsg = false;
+
                     //if (self.flag == false) {
                     //    for (var i = 0; i < self.chatWebs.length; i++) {
                     //        self.chatWebs[i].newMessage = false;
@@ -92,16 +111,16 @@
                     //    } 
                     //}
 
-                    for (var j = 0; j < self.chatMessages.length; j++) {
-                        self.chatMessages[j].messageUpdateT = self.updateMessageTme(myJsonObject_Temp[j].messageTime)
+                    //for (var j = 0; j < self.chatMessages.length; j++) {
+                    //    self.chatMessages[j].messageUpdateT = self.updateMessageTme(myJsonObject_Temp.allMessage[j].messageTime)
                         
-                    }
+                    //}
                     console.log(self.chatMessages)
                     
             } else {
                 // alert("webs")
                 // console.log(myJsonObject_Temp)
-                self.chatWebs = myJsonObject_Temp;
+                    self.chatWebs = myJsonObject_Temp.allwebs;
                 $scope.$apply();
 
             }
@@ -121,16 +140,19 @@
             }
         }, 20000);
   
-    self.myClick = function () {
-           
+        self.myClick = function () {
+            self.flagAdminMsg = true;
+        alert(self.currentWebUser.clientId)
         ChatService.myClick(self.myMessage, self.currentWebUser.clientId);
         self.myMessage = '';
      
     }
 
-    self.getWebUserChat = function (webUser,index) {
+    self.getWebUserChat = function (webUser, index) {
+
+        ChatService.setwebChatId(webUser.clientId)
         self.currentWebUser = webUser;
-        self.chatWebs[index].newMessage = false;
+        self.chatWebs[index].isNewMessage = false;
            
         $http({
             url: '/MessageService.svc/GetAllOnlineMessagesOfClient',
@@ -155,7 +177,7 @@
         var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
         var resultInMinutes = Math.round(difference / 60000);
         if (resultInMinutes > 60) {
-            return resultInMinutes + " more than 1h";
+            return "more than 1h";
         } else {
             return resultInMinutes + " mins ago";
         }

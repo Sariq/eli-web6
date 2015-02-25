@@ -63,8 +63,8 @@
               
                 self.user.$update(function (response) {
                     console.log(response);
-                   
-                        $location.path(success_url);
+                
+                    $location.path('user/profile/' + self.user._id);
                  
                 });
             }

@@ -40,7 +40,12 @@ public class MessageService : DatabaseActions, IMessage
 
     public List<Message> GetAllOnlineMessagesOfClient(string clientId)
     {
+
         var clientService = new ClientService();
+
+        var web = clientService.GetWeb(clientId);
+        web.isNewMessage = true;
+        clientService.UpdateWeb(web);
 
         var onlineMessagesOfClientList = new List<Message>();
         var allOnlineMessage = GetAllOnlineMessages();
@@ -53,9 +58,7 @@ public class MessageService : DatabaseActions, IMessage
                 onlineMessagesOfClientList.Add(message);
         }
 
-        var web = clientService.GetWeb(clientId);
-        web.isNewMessage = false;
-        clientService.UpdateWeb(web);
+       
 
         return onlineMessagesOfClientList;
     }

@@ -14,7 +14,7 @@
     self.op3 = false;
     self.patient = PatientAdmin.patient;
     self.getMeetingsByIds=function(){
-
+        console.log(self.patient.meetings);
         self.patient.$promise.then(function (result) {
             if (self.patient.meetings != null) {
                 $http({

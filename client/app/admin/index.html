@@ -12,6 +12,8 @@
     <link href="../bower_components/Font-Awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../bower_components/sweetalert/lib/sweet-alert.css">
 
+
+
     <!--form-->
     <link href="meeting/css/style.css" rel="stylesheet" />
     <link href="meeting/css/to-do.css" rel="stylesheet" />
@@ -39,6 +41,14 @@
 
     <!-- Morris Charts CSS -->
     <link rel="stylesheet" href="css/plugins/morris.css">
+
+    <!--news_feed-->
+    <link href="news_feed/news_feed.css" rel="stylesheet" />
+
+    <!--news_feed-->
+
+
+
 </head>
 <body ng-app="eli.admin" ng-controller="LogInCtrl">
     <div ng-controller="NavCtrl" ng-show="nav.show==true" ng-include='"templates/navigation.html"'></div>
@@ -127,18 +137,31 @@
         <script src="mail/routes.js"></script>
 
         <!--Inbox-->
-         <!--files-->
+        <!--files-->
         <script src="files/routes.js"></script>
-         <!--files-->
+        <!--files-->
 
         <!--table-->
         <script src="css/ng-table/ng-table.js"></script>
         <link href="css/ng-table/ng-table-edit.css" rel="stylesheet" />
         <!--table-->
-
+        <!--news_feed-->
+        <script src="news_feed/news_feed.js"></script>
+        <script src="news_feed/routes.js"></script>
+        <script src="news_feed/news_feed_service.js"></script>
+        <!--news_feed-->
         <!--directives-->
         <script src="../common/directives/auto-scroll.js"></script>
 
         <!--directives-->
+
+
+        <!--aninmate-->
+
+
+<!--        <link rel="stylesheet/less" type="text/css" href="../templates/animate/style.less">
+        <script src="../templates/animate/less.js"></script>-->
+
+        <!--aninmate-->
 </body>
 </html>

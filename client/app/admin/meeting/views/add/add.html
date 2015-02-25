@@ -1,22 +1,9 @@
 ﻿
 
-<div class="row form-header text-right">
-
-    <img id="Img2" src="imgs/top.png">
-    <h1 class="page-header" translate>Meetings</h1>
-      <ol class="breadcrumb">
-            <li class="active" translate>Add Meeting</li>
-            <li><a href="#/meetings" translate>Meetings</a></li>
-            <li><a href="#/patient/profile/{{add.patient._id}}" translate>{{add.patient.first_name}}</a></li>
-            <li><a href="#patients" translate>Patients</a></li>
-            <li><a href="#dashboard" translate>Dashboard</a></li>
-        </ol>
-</div>
-
 
     
 
-<script src="meeting/css/tasks.js"></script>
+<!--<script src="meeting/css/tasks.js"></script>-->
 
 
 <div class="modal-dialog add-form form_container">
@@ -96,7 +83,7 @@
         <div class="panel-footer">
             <div class="form-group row">
                 <div class="col-md-6  ">
-                    <a href="#/meetings" class="btn btn-warning btn-block label-text-size">בטל</a>
+                    <a href="#/patient/profile/{{add.patient._id}}" class="btn btn-warning btn-block label-text-size">בטל</a>
                 </div>
                 <div class="col-md-6  ">
                     <button ng-click="add.save();"
@@ -166,14 +153,3 @@
 </div>-->
 
 
-<style>
-    .panel-footer {
-        padding-top:30px;
-        background-color: #005B7F;
-    }
-    .modal-content {
-        background-color: #005B7F;background-image:none;color:white
-    }
-.modal-header{
-    background-color:#005B7F;background-image:none;color:white}
-</style>

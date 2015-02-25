@@ -18,7 +18,7 @@ public class AsyncServer
 
     }
 
-    public static void sendMessage(String message, String clientId)
+    public static void sendMessage(String message, String clientId,string type)
     {
         lock (_lock)
         {
@@ -26,6 +26,7 @@ public class AsyncServer
             new MessageService().AddOnlineMessage(currentMessage);
 
             var allMessages = new MessageService().GetAllOnlineMessagesOfClient(clientId);
+     
             var chatMessage = new ChatMessage(clientId, allMessages);
             //arrchatMessage[z] = new chatMessage();
             //arrchatMessage[z].content = message;
@@ -148,7 +149,7 @@ public class AsyncServer
             }
 
             _clientStateList.Add(state);
-            Debug.Write(state.ClientGuid.ToString());
+         
             state._context.Response.Write(state.ClientGuid.ToString());
 
 
@@ -157,7 +158,8 @@ public class AsyncServer
                 JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
 
                 var allWeb = new ClientService().GetAllWebs();
-                string resultStr = myJavaScriptSerializer.Serialize(allWeb);
+                var allWebArr = new websData(allWeb);
+                string resultStr = myJavaScriptSerializer.Serialize(allWebArr);
                 foreach (AsyncResult clientState in _clientStateList)
                 {
                     try
@@ -165,6 +167,7 @@ public class AsyncServer
                         var admin = new ClientService().GetAdmin(clientState.ClientGuid);
                         if (admin != null)
                         {
+                            Debug.Write(clientState.ClientGuid);
                             if (clientState._context.Session != null)
                             {
                                 clientState._context.Response.Write(resultStr);

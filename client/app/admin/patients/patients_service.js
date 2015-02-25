@@ -64,8 +64,18 @@
 
     self.setPatientId = function (patient) {
 
-        return localStorageService.set("patient", patient);
+            return localStorageService.set("patient", patient);
     };
+    self.remove = function () {
+        alert(self.getPatientId()._id)
+        self.patientResource.remove({ id: self.getPatientId()._id })
+
+    }
+    self.update = function () {
+        alert(self.getPatientId()._id)
+        return self.patientResource.update( self.getPatientId() )
+
+    }
     self.getPatientId = function () {
         return localStorageService.get("patient");
     };

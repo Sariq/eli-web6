@@ -1,10 +1,4 @@
-﻿  <div ui-view="profile"></div>
-
-
-
-<div class="row form-header text-right">
-
-
+﻿<div class="row form-header text-right">
 
     <ol class="breadcrumb">
         <li class="active"><a href="#" translate>{{profile.patient.first_name}}</a></li>
@@ -28,103 +22,75 @@
 
 <div class="row ">
 
-    <div class="col-md-9" > 
-     
+    <div class="col-md-9">
+
         <span ui-view></span>
 
     </div>
 
 
     <div class="col-md-3">
-      
-            <div class="modal-content">
-                <div class="modal-header text-right">
-                    <h3 >User</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-5 col-sm-12" style="direction: rtl">
-                            <h3>General Information</h3>
 
-                            <ul class="profile-details">
-                                <li>
-                                    <div><i class="fa fa-briefcase"></i>   first Name</div>
-                                    <strong>{{profile.patient.first_name}}</strong>
-                                </li><br />
-                                <li>
-                                    <div><i class="fa fa-building-o"></i>   Last Name</div>
-                                    <strong>{{profile.patient.last_name}}</strong>
-                                </li><br />
-                            </ul>
+        <div class="modal-content">
+            <div class="modal-header text-right">
+                <h3 class="text-center">User</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-5 col-sm-12" style="direction: rtl">
+                        <h3>General Information</h3>
 
-                            <h3>Contact Information</h3>
+                        <ul class="profile-details">
+                            <li>
+                                <div><i class="fa fa-briefcase"></i> first Name</div>
+                                <strong>{{profile.patient.first_name}}</strong>
+                            </li>
+                            <br />
+                            <li>
+                                <div><i class="fa fa-building-o"></i> Last Name</div>
+                                <strong>{{profile.patient.last_name}}</strong>
+                            </li>
+                            <br />
+                        </ul>
 
-                            <ul class="profile-details">
-                                <li>
-                                    <div><i class="fa fa-phone"></i>  טלפון</div>
-                                  <strong>  +48 123 456 789</strong>
-                                </li><br />
-                                <li>
-                                    <div><i class="fa fa-tablet"></i>  mobile phone</div>
-                                    <strong>+48 123 456 789</strong>
-                                </li><br />
-                                <li>
-                                    <div><i class="fa fa-envelope"></i>  e-mail</div>
-                                    <strong>lukasz@bootstrapmaster.com</strong>
-                                </li><br />
-                                <li>
-                                    <div><i class="fa fa-map-marker"></i>  address</div>
-                                   <strong> Konopnickiej 42</strong><br>
-                                    <strong>43-190 Mikolow</strong><br>
-                                    <strong>Slask, Poland</strong>
-                                </li><br />
-                            </ul>
-                        </div>
+                        <h3>Contact Information</h3>
+
+                        <ul class="profile-details">
+                            <li>
+                                <div><i class="fa fa-phone"></i> טלפון</div>
+                                <strong>+48 123 456 789</strong>
+                            </li>
+                            <br />
+                            <li>
+                                <div><i class="fa fa-tablet"></i> mobile phone</div>
+                                <strong>+48 123 456 789</strong>
+                            </li>
+                            <br />
+                            <li>
+                                <div><i class="fa fa-envelope"></i> e-mail</div>
+                                <strong>lukasz@bootstrapmaster.com</strong>
+                            </li>
+                            <br />
+                            <li>
+                                <div><i class="fa fa-map-marker"></i> address</div>
+                                <strong>Konopnickiej 42</strong><br>
+                                <strong>43-190 Mikolow</strong><br>
+                                <strong>Slask, Poland</strong>
+                            </li>
+                            <br />
+                        </ul>
                     </div>
                 </div>
-                <div class="modal-footer ">
-                    <a ui-sref=".meetings({ patientId: profile.patient._id})"  class="btn btn-primary">טיפולים</a>
-                    <a ui-sref=".inbox" class="btn btn-primary">הערות</a>
-                    <span class="pull-right">
-                        <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                    </span>
-                </div>
             </div>
+            <div class="modal-footer ">
+                <a ui-sref=".meetings({ patientId: profile.patient._id})" class="btn btn-primary">טיפולים</a>
+                <a ui-sref=".inbox" class="btn btn-primary">הערות</a>
+                <span class="pull-right">
+                    <a href="#/patient/edit/{{profile.patient._id}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+<span ng-click="profile.remove(profile.patient)"  data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></span>
 
-
- 
+                </span>
+            </div>
+        </div>
     </div>
-
-
 </div>
-
-
-<style>
-    .nav-tabs > li {
-    float: right;
- 
-}
-    .modal-header {
-      padding-top: 15px;
-        padding-bottom: 0px;
-    }
-
-    .nav-tabs  {
-           padding-right: 0px;
-    }
-    .panel-heading {
-        background-color: #005B7F;
-        background-image: none;
-        color: white;
-    }
-</style>
-
-
-<!--                                <tabset  style="direction:rtl">
-    <tab heading="Static title">Static content</tab>
-    <tab ng-repeat="tab in profile.tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled" ng-click="alert(tab.title)">
-      {{tab.content}}
-    </tab>
-   
-  </tabset>-->

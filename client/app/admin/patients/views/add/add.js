@@ -71,8 +71,8 @@
               
                 self.patient.$update(function (response) {
                     console.log(response);
-                   
-                        $location.path(success_url);
+                    PatientAdmin.setPatientId(self.patient)
+                    $location.path('/patient/profile/' + self.patient._id);
                  
                 });
             }
