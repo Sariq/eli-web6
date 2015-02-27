@@ -12,7 +12,7 @@
                             <div id="news-feed-infos-triangle"></div>
                             <div id="news-feed-infos" class="row " >
                                      <div class="col-xs-8">
-                                    <div class="infos-text ">{{newsFeed[0].content}}</div>
+                                    <div class="infos-text " ng-bind-html="newsFeed[0].content"></div>
                                 </div>
                                 <div class="col-xs-4 centered" >
                                     <div class="infos-hour">12:00</div>
@@ -26,4 +26,4 @@
                     </div>
         
 
-              
+

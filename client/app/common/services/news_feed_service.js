@@ -8,14 +8,18 @@
                   { update: { method: 'PUT' } }
                   );
 
+
         self.get = function (news_id) {
 
             return self.newsResource.get({ id: news_id });
         };
+        self.remove = function (news_id) {
 
-
+            return self.newsResource.remove({ id: news_id });
+        };
         self.getNews = function () {
-            return self.mailResource.query();
+            //alert()
+            return self.newsResource.query();
         }
 
         self.create = function () {
@@ -24,13 +28,13 @@
                 title: "",
                 content: "",
             }
-            self.news = new self.mailResource(news)
+            self.news = new self.newsResource(news)
             return self.news;
         };
 
 
     }
 
-    angular.module('eli.admin')
+    angular.module('eli.common')
     .service('NewsFeedService', ['$resource', NewsFeedService])
 }());

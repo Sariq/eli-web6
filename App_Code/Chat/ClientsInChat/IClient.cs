@@ -32,23 +32,23 @@ public interface IClient
     ]
     void RemoveAdmin(string id);
 
-    [OperationContract]
-    [WebInvoke(
-         Method = "GET",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
-    ]
-    Web GetWeb(string id);
+    //[OperationContract]
+    //[WebInvoke(
+    //     Method = "GET",
+    //     ResponseFormat = WebMessageFormat.Json,
+    //     BodyStyle = WebMessageBodyStyle.Bare,
+    //     UriTemplate = "api/{id}")
+    //]
+    //Web GetWeb(string id);
 
-    [OperationContract]
-    [WebInvoke(
-         Method = "GET",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
-    ]
-    Admin GetAdmin(string id);
+    //[OperationContract]
+    //[WebInvoke(
+    //     Method = "GET",
+    //     ResponseFormat = WebMessageFormat.Json,
+    //     BodyStyle = WebMessageBodyStyle.Bare,
+    //     UriTemplate = "api/{id}")
+    //]
+    //Admin GetAdmin(string id);
 
     [OperationContract]
     [WebInvoke(

@@ -14,14 +14,24 @@ public interface INews
     ]
     News AddNews(News news);
 
-    [OperationContract]
+
+        [OperationContract]
     [WebInvoke(
-         Method = "POST",
+         Method = "DELETE",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "DeleteNews")
+         UriTemplate = "api/{id}")
     ]
     void RemoveNews(string id);
+
+    //[OperationContract]
+    //[WebInvoke(
+    //     Method = "DELETE",
+    //     ResponseFormat = WebMessageFormat.Json,
+    //     BodyStyle = WebMessageBodyStyle.Bare,
+    //     UriTemplate = "api")
+    //]
+    //void RemoveNews(string id);
 
     [OperationContract]
     [WebInvoke(

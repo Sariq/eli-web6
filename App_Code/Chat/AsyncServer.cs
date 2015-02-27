@@ -150,11 +150,7 @@ public class AsyncServer
             }
 
             _clientStateList.Add(state);
-<<<<<<< HEAD
-         
-=======
-            
->>>>>>> MailMessage
+            Debug.Write(state.ClientGuid.ToString());
             state._context.Response.Write(state.ClientGuid.ToString());
 
 
@@ -162,34 +158,41 @@ public class AsyncServer
             {
                 JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
 
-<<<<<<< HEAD
-                var allWeb = new ClientService().GetAllWebs();
+
+                var allWeb = clientService.GetAllWebs();
                 var allWebArr = new websData(allWeb);
                 string resultStr = myJavaScriptSerializer.Serialize(allWebArr);
-=======
-                var allWeb = clientService.GetAllWebs();
-                string resultStr = myJavaScriptSerializer.Serialize(allWeb);
->>>>>>> MailMessage
+
+                //var allWeb = clientService.GetAllWebs();
+                //string resultStr = myJavaScriptSerializer.Serialize(allWeb);
+
                 foreach (AsyncResult clientState in _clientStateList)
                 {
                    
                     
                     try
                     {
-                        Debug.Write(clientState.ClientGuid);
-                        var admin = clientService.GetAdmin("0123");
+
+                        var admin = clientService.GetAdmin(clientState.ClientGuid);
+                        if (admin != null)
                         {
-<<<<<<< HEAD
-                            Debug.Write(clientState.ClientGuid);
-=======
-                          
->>>>>>> MailMessage
                             if (clientState._context.Session != null)
                             {
                                 clientState._context.Response.Write(resultStr);
                                 clientState.CompleteRequest();
                             }
                         }
+
+                        //Debug.Write(clientState.ClientGuid);
+                       
+                        //{
+
+                        //    if (clientState._context.Session != null)
+                        //    {
+                        //        clientState._context.Response.Write(resultStr);
+                        //        clientState.CompleteRequest();
+                        //    }
+                        //}
                     }
                     catch { }
                 }
@@ -198,18 +201,19 @@ public class AsyncServer
         }
     }
 
-    public static void UnregisterClient(AsyncResult state, string type)
+    public static void UnregisterClient(AsyncResult state, string type, String clientId)
     {
         lock (_lock)
         {
             var clientService = new ClientService();
-
-            Debug.Write(state.ClientGuid);
+           
             if (type == "admin")
-                clientService.RemoveAdmin(state.ClientGuid);
-            else
             {
-                clientService.RemoveWeb(state.ClientGuid);
+
+                clientService.RemoveAdmin(clientId);
+            }else{
+                Debug.Write(type);
+                clientService.RemoveWeb(clientId);
                 _clientStateList.Remove(state);
 
                 JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();

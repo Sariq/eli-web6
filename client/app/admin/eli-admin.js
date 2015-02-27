@@ -4,6 +4,8 @@
 angular.module('eli.admin', [ 
   'ngResource',
   'eli.common',
+
+  'textAngular',
   'ui.router',
   'ui.bootstrap',
   'LocalStorageModule',

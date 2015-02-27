@@ -11,7 +11,7 @@
         text-align: center;
        
         max-width: 620px;
-        height: 300px;
+        max-height: 300px;
     }
 
         #news-feed-container i {
@@ -72,10 +72,13 @@
         color: #f2f2f2;
         background: #765ECC;
          font-size: 16px;
+         text-overflow: ellipsis;
     }
 
-    #news-feed-infos-containe {
+    #news-feed-infos-container {
         padding-left: 40px;
+        text-overflow: ellipsis;
+    
     }
 
         #news-feed-infos .infos-hour {

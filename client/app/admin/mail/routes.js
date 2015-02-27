@@ -14,16 +14,16 @@
 
           .state('#/mail.mail_compose', {
               url: '/mail_compose',
-              templateUrl: 'mail/views/mail_compose.html',
-              controller: '',
-              controllerAs: ''
+              templateUrl: 'mail/views/mail_compose/mail_compose.html',
+              controller: 'MailComposeCtrl',
+              controllerAs: 'compose'
 
           })
          .state('#/mail.inbox', {
              url: '/inbox',
-             templateUrl: 'mail/views/inbox.html',
-             controller: '',
-             controllerAs: ''
+             templateUrl: 'mail/views/inbox/inbox.html',
+             controller: 'InboxCtrl',
+             controllerAs: 'inbox'
 
          })
               

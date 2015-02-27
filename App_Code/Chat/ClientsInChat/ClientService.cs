@@ -3,6 +3,7 @@ using System.Net;
 using System.ServiceModel.Web;
 using System;
 using MongoDB.Driver;
+using System.Diagnostics;
 
 public class ClientService : DatabaseActions, IClient
 { 
@@ -25,6 +26,7 @@ public class ClientService : DatabaseActions, IClient
 
     public void RemoveWeb(string clientId)
     {
+        Debug.Write(clientId);
         RemoveObject(clientId, "Web");
     }
 

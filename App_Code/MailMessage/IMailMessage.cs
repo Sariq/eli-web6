@@ -10,7 +10,7 @@ public interface IMailMessage
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "SendMailMessage")
+         UriTemplate = "api")
     ]
     MailMessage SendMailMessage(MailMessage mailMessage);
 
@@ -34,10 +34,10 @@ public interface IMailMessage
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetInboxMessages/{id}")
+         UriTemplate = "GetInboxMessages")
     ]
     List<MailMessage> GetInboxMessages(string id);
 

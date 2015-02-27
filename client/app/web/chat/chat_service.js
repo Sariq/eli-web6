@@ -36,7 +36,8 @@
         }
 
         self.myUnLoad = function () {
-            var url = "/AsyncHandler.ashx?cmd=unregister";
+           
+            var url = "/AsyncHandler.ashx?cmd=unregister&type=web&clientId=" + self.GuID;
             self.xmlHttp_OneTime.open("POST", url, true);
             self.xmlHttp_OneTime.send();
         }
@@ -50,7 +51,7 @@
 
 
         self.myClick = function (myMessage) {
-            alert(self.GuID)
+            //alert(self.GuID)
             var myObj = { clientId: "clientIdsar", messageContent: "messageContentsar",messageTime:"" };
             var url = "/AsyncHandler.ashx?cmd=sendMessage&myText=" + encodeURIComponent(myMessage) + "&clientId=" + encodeURIComponent(self.GuID) + "&type=" + "web";
 

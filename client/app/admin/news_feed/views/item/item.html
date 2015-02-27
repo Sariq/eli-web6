@@ -1,0 +1,58 @@
+﻿<div class="row form-header text-right">
+
+    <ol class="breadcrumb">
+         <li class="active">item</li>
+      <li class="active"><a href="#news" translate>news</a></li>
+        <li><a href="#dashboard" translate>Dashboard</a></li>
+    </ol>
+</div>
+
+
+<div class="modal-dialog add-form form_container">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h1 class="text-center">Add News</h1>
+        </div>
+
+        <div class="panel-body text-right">
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : כותרת
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <p>{{item.news.title}}</p>
+                </div>
+
+            </div>
+            <br />
+
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : תוכן
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <p ng-bind-html="item.news.content"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="panel-footer">
+            <div class="form-group row">
+                <a href="#/news/edit/{{item.news._id}}" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                <span ng-click="item.remove()" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

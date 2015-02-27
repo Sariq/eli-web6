@@ -75,7 +75,7 @@ public class DatabaseActions
     protected List<ObjectType> GetAllObject<ObjectType>(string fieldName, BsonValue fieldValue, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
-
+        Debug.Write(fieldValue);
         var searchQuery = Query.EQ(fieldName, fieldValue);
         var obj = collection.FindAs<ObjectType>(searchQuery);
         return obj.ToList<ObjectType>();

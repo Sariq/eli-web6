@@ -127,8 +127,13 @@ background-image:linear-gradient(to bottom,#fff 0,#F8F8F9 100%);
 
 
 
-   .sidebar ul{background-color:#09192a;}
-     .navbar  ul{background-color:#09192a;}
+   .sidebar ul{background-color:#09192a;
+               font-size:16px;
+   }
+     .navbar  ul{background-color:#09192a;
+
+            font-size:16px;
+     }
 .navbar-top-links li a:hover{
      background-color: #09192a !important;
      cursor:pointer;

@@ -31,7 +31,7 @@ public class MailMessageService : DatabaseActions, IMailMessage
 
     public List<MailMessage> GetInboxMessages(string userId)
     {
-        return GetAllObject<MailMessage>("toUser[0]", userId, "MailMessage");
+        return GetAllObject<MailMessage>("toUser", userId, "MailMessage");
     }
 
     public List<MailMessage> GetSentMessages(string userId)

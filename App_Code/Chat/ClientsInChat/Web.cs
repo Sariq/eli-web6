@@ -15,6 +15,6 @@ public class Web : Client
         : base(clientId)
     {
         webName = "User" + chatWebCounter;
-        isNewMessage = true;
+        isNewMessage = false;
     }
 }

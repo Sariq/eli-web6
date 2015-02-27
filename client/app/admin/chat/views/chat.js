@@ -13,6 +13,7 @@
         self.currentWebUser = '';
         self.flag = false;
         self.flagAdminMsg = false;
+        self.isAdminOnline = false;
 
        
 
@@ -44,7 +45,7 @@
                 self.GuID = self.xmlHttp_OneTime.responseText;
                 ChatService.setadminChatId(self.xmlHttp_OneTime.responseText)
                 
-                self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Process;
+                //self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Process;
                 self.xmlHttp_Process = ChatService.ProcessFunction();
                 self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
                 self.xmlHttp_Process.send();
@@ -111,10 +112,10 @@
                     //    } 
                     //}
 
-                    //for (var j = 0; j < self.chatMessages.length; j++) {
-                    //    self.chatMessages[j].messageUpdateT = self.updateMessageTme(myJsonObject_Temp.allMessage[j].messageTime)
+                    for (var j = 0; j < self.chatMessages.length; j++) {
+                        self.chatMessages[j].messageUpdateT = self.updateMessageTme(myJsonObject_Temp.allMessage[j].messageTime)
                         
-                    //}
+                    }
                     console.log(self.chatMessages)
                     
             } else {
@@ -185,13 +186,13 @@
     }
 
     self.register = function () {
-       
+        self.isAdminOnline = true;
         self.myLoad();
 
     }
 
     self.myUnLoad = function () {
-        alert("myUnLoad")
+        self.isAdminOnline = false;
         var url = "/AsyncHandler.ashx?cmd=unregister&type=" + "admin";
         self.xmlHttp_OneTime.open("POST", url, true);
         self.xmlHttp_OneTime.send();

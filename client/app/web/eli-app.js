@@ -4,6 +4,7 @@
 angular.module('eliApp', [
 'ngCookies',
 'eli.common',
+
 'duScroll',
 
 
@@ -12,7 +13,9 @@ angular.module('eliApp', [
 
 'ngAnimate',
 'pascalprecht.translate',
-'LocalStorageModule'
+'LocalStorageModule',
+'ngSanitize'
+
 ])
 .config(function ($stateProvider, $urlRouterProvider, $resourceProvider, $translateProvider, $animateProvider) {
     //delete $httpProvider.defaults.headers.common['X-Requested-With'];

@@ -44,10 +44,11 @@ public class AsyncHandler : IHttpAsyncHandler, System.Web.SessionState.IReadOnly
         string command = myAsyncResult._context.Request.QueryString["cmd"];
         string guid = myAsyncResult._context.Request.QueryString["guid"];
            String type;
+           String myText, clientId;
         switch (command)
         {
             case "sendMessage":
-                String myText,clientId;
+               
                  if (myAsyncResult._context.Request.QueryString["myText"] != null)
                 {
                     clientId = (myAsyncResult._context.Request.QueryString["clientId"]);
@@ -74,8 +75,9 @@ public class AsyncHandler : IHttpAsyncHandler, System.Web.SessionState.IReadOnly
                   if (myAsyncResult._context.Request.QueryString["type"] != null)
                 {
                     unregisterType = (myAsyncResult._context.Request.QueryString["type"]);
-
-                    AsyncServer.UnregisterClient(myAsyncResult, unregisterType);
+                    clientId = (myAsyncResult._context.Request.QueryString["clientId"]);
+                    Debug.Write(clientId);
+                    AsyncServer.UnregisterClient(myAsyncResult, unregisterType, clientId);
                  myAsyncResult.CompleteRequest();
                 }
             

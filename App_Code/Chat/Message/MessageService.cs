@@ -29,34 +29,34 @@ public class MessageService : DatabaseActions, IMessage
 
     public List<Message> GetAllOnlineMessagesOfClient(string clientId)
     {
-<<<<<<< HEAD
 
-        var clientService = new ClientService();
 
-        var web = clientService.GetWeb(clientId);
-        web.isNewMessage = true;
-        clientService.UpdateWeb(web);
+        //var clientService = new ClientService();
 
-        var onlineMessagesOfClientList = new List<Message>();
-        var allOnlineMessage = GetAllOnlineMessages();
+        //var web = clientService.GetWeb(clientId);
+        //web.isNewMessage = true;
+        //clientService.UpdateWeb(web);
 
-        List<Message> messagesOfClientList = new List<Message>();
+        //var onlineMessagesOfClientList = new List<Message>();
+        //var allOnlineMessage = GetAllOnlineMessages();
 
-        foreach (Message message in allOnlineMessage)
-        {
-            if (message.clientId == clientId)
-                onlineMessagesOfClientList.Add(message);
-        }
+        //List<Message> messagesOfClientList = new List<Message>();
+
+        //foreach (Message message in allOnlineMessage)
+        //{
+        //    if (message.clientId == clientId)
+        //        onlineMessagesOfClientList.Add(message);
+        //}
 
        
-=======
+
         var onlineMessagesOfClientList = GetAllObject<Message>("clientId", clientId, "OnlineMessage");
 
         var clientService = new ClientService();
         var web = clientService.GetWeb(clientId);
         web.isNewMessage = false;
         clientService.UpdateWeb(web);
->>>>>>> MailMessage
+
 
         return onlineMessagesOfClientList;
     }

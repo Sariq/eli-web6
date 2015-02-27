@@ -13,7 +13,9 @@
     <link rel="stylesheet" type="text/css" href="../bower_components/sweetalert/lib/sweet-alert.css">
 
 
-
+    <!--mail-->
+    <link href="mail/mail.css" rel="stylesheet" />
+    <!--mail-->
     <!--form-->
     <link href="meeting/css/style.css" rel="stylesheet" />
     <link href="meeting/css/to-do.css" rel="stylesheet" />
@@ -46,8 +48,9 @@
     <link href="news_feed/news_feed.css" rel="stylesheet" />
 
     <!--news_feed-->
-
-
+    <!--text_angular-->
+    <link rel='stylesheet' href='../bower_components/textAngular/src/textAngular.css'>
+    <!--text_angular-->
 
 </head>
 <body ng-app="eli.admin" ng-controller="LogInCtrl">
@@ -76,7 +79,12 @@
         <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
         <script src="css/sb-admin-2.js"></script>
         <!--common-->
-
+               <!--text_angular-->
+       
+        <script src='../bower_components/textAngular/dist/textAngular-rangy.min.js'></script>
+        <script src='../bower_components/textAngular/dist/textAngular-sanitize.min.js'></script>
+        <script src='../bower_components/textAngular/dist/textAngular.min.js'></script>
+        <!--text_angular-->
         <script src="../common/common_module.js"></script>
         <script src="../common/services/task_modal.js"></script>
         <!--Task Modal-->
@@ -133,10 +141,17 @@
         <script src="chat/chat_service.js"></script>
         <script src="chat/routes.js"></script>
         <!--Chat-->
-        <!--Inbox-->
+        <!--mail-->
         <script src="mail/routes.js"></script>
+        <script src="mail/mail_compose.js"></script>
+        <!--inbox-->
+        <script src="mail/views/inbox/inbox.js"></script>
+        <!--inbox-->
+        <!--mail_compose-->
+        <script src="mail/views/mail_compose/mail_compose.js"></script>
+        <!--mail_compose-->
 
-        <!--Inbox-->
+        <!--mail-->
         <!--files-->
         <script src="files/routes.js"></script>
         <!--files-->
@@ -146,20 +161,23 @@
         <link href="css/ng-table/ng-table-edit.css" rel="stylesheet" />
         <!--table-->
         <!--news_feed-->
-        <script src="news_feed/news_feed.js"></script>
+        <script src="news_feed/views/add/add.js"></script>
+        <script src="news_feed/views/list/list.js"></script>
+        <script src="news_feed/views/item/item.js"></script>
         <script src="news_feed/routes.js"></script>
-        <script src="news_feed/news_feed_service.js"></script>
+        <script src="../common/services/news_feed_service.js"></script>
         <!--news_feed-->
         <!--directives-->
         <script src="../common/directives/auto-scroll.js"></script>
-
         <!--directives-->
+
+ 
 
 
         <!--aninmate-->
 
 
-<!--        <link rel="stylesheet/less" type="text/css" href="../templates/animate/style.less">
+        <!--        <link rel="stylesheet/less" type="text/css" href="../templates/animate/style.less">
         <script src="../templates/animate/less.js"></script>-->
 
         <!--aninmate-->

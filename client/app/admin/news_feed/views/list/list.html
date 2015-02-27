@@ -1,0 +1,38 @@
+﻿<div class="row form-header text-right">
+
+    <ol class="breadcrumb">
+        <li class="active">news</li>
+        <li><a href="#dashboard" translate>Dashboard</a></li>
+    </ol>
+</div>
+
+
+
+<div class="modal-content" style="margin-bottom: 30px">
+    <div class="modal-header text-right">
+        <h3 class="text-center">טבלת משימות</h3>
+    </div>
+    <div class="panel-body" style="width: 100%">
+        <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
+            <tr ng-repeat="news in $data" class="text-right">
+
+                <td data-title="'Title'" sortable="'title'">
+                    <a href="#/news/item/{{news._id}}" >{{news.title}}</a>
+                </td>
+
+                <td data-title="'Content'" sortable="'content'">
+                    <a href="#/news/item/{{news._id}}" ng-bind-html="news.content"></a>
+                </td>
+
+
+           <!--     <td data-title="'Time'" sortable="'time'">
+                    <a href="#/news/item/{{news._id}}/{{$index}}">{{news.time}}</a>
+                </td>-->
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <span class="pull-left"><a class="btn btn-info" href="#/news/add"><span class="fa fa-plus"></span>{{'Add news'|translate}}</a></span>
+</div>

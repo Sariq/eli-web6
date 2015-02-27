@@ -13,7 +13,7 @@ public class MailMessage : DatabaseObject
     public string subject { get; set; }    
     [DataMember]
     public string content { get; set; }
-    [DataMember]
+    
     public DateTime time { get; set; }
     [DataMember]
     public bool isRead { get; set; }

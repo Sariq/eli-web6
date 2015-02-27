@@ -57,7 +57,7 @@
                             Chat
                             <div class="btn-group pull-right">
                                 <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <i   class="fa fa-square text-green"></i> <i class="fa fa-chevron-down"></i>
+                                    <i  ng-class="{'text-green':chat.isAdminOnline,'text-red':!chat.isAdminOnline}" class="fa fa-square "></i> <i class="fa fa-chevron-down"></i>
                                 </button>
                                 <ul class="dropdown-menu slidedown">
                                  
@@ -132,9 +132,15 @@
     </div>
 
 
-<style>.text-green {
+<style>
+    
+    .text-green {
 color: #00a65a !important;
 }
+    .text-red {
+color: red !important;
+}
+
 .panel-heading >.fa {
 
 }</style>
