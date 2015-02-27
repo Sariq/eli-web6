@@ -1,9 +1,4 @@
 using System.Collections.Generic;
-using System.Net;
-using System.ServiceModel.Web;
-using System;
-using MongoDB.Driver;
-using System.Diagnostics;
 
 public class MessageService : DatabaseActions, IMessage
 {

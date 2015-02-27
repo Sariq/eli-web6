@@ -1,16 +1,11 @@
-
-
-
 using System.Collections.Generic;
 using System.Net;
 using System.ServiceModel.Web;
-
-
-using System;
 using MongoDB.Driver;
+
+
 public class PatientService : DatabaseActions, IPatient
 { 
-
     public void AddPatient(Patient patient)
     {
         try

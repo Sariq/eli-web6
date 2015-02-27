@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net;
 using System.ServiceModel.Web;
 
-
 public class MeetingService : DatabaseActions, IMeeting
 {
     public Meeting AddMeeting(Meeting meeting)

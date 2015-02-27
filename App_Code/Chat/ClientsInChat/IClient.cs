@@ -10,9 +10,18 @@ public interface IClient
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api")
+         UriTemplate = "AddWeb")
     ]
-    void AddClient(Client Client);
+    void AddWeb(Web web);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "AddAdmin")
+    ]
+    void AddAdmin(Admin admin);
 
     [OperationContract]
     [WebInvoke(

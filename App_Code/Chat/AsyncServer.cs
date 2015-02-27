@@ -6,7 +6,7 @@ using System.Web.Script.Serialization;
 
 public class AsyncServer
 {
-        private static Object _lock = new Object();
+    private static Object _lock = new Object();
     private static List<AsyncResult> _clientStateList = new List<AsyncResult>();
     private static int z = 0;
     private static int chatWebCounter = 0;
@@ -139,13 +139,13 @@ public class AsyncServer
                 chatWebCounter++;
                 state.ClientGuid = state.ClientGuid + 123;
                 var currentAdmin = new Admin((state.ClientGuid));
-                clientService.AddClient(currentAdmin);
+                clientService.AddAdmin(currentAdmin);
             }
             else
             {
                 chatWebCounter++;
                 var currentClient = new Web(state.ClientGuid, chatWebCounter);
-                clientService.AddClient(currentClient);
+                clientService.AddWeb(currentClient);
             }
 
             _clientStateList.Add(state);

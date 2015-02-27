@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 public class DatabaseService : IDatabaseService
 {
-
     #region Properties
 
     public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "K", DateTime.Today, "role", true);
@@ -101,6 +100,7 @@ public class DatabaseService : IDatabaseService
         newsService.AddNews(newsA);
         newsService.AddNews(newsB);
     }
+
 
     private MongoDatabase GetDatabase()
     {

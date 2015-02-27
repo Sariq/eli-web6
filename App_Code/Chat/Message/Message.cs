@@ -20,4 +20,12 @@ public class Message : DatabaseObject
         this.messageContent = messageContent;
         this.messageTime = DateTime.Now.ToString();
     }
+
+    public Message(Message message)
+        : base()
+    {
+        this.clientId = message.clientId;
+        this.messageContent = message.messageContent;
+        this.messageTime = message.messageTime;
+    }
 }
