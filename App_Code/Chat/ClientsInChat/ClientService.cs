@@ -6,48 +6,43 @@ using MongoDB.Driver;
 using System.Diagnostics;
 
 public class ClientService : DatabaseActions, IClient
-{ 
-    public void AddClient(Client client)
+{
+
+    public void AddWeb(Web web)
     {
-        var success = false;
-        while (!success)
-        {
-            try
-            {
-                if (client.GetType() ==  new Admin("").GetType())
-                    InsertObjectNotAsync(client, "Admin");
-                else
-                    InsertObjectNotAsync(client, "Web");
-                success = true;
-            }
-            catch (MongoDuplicateKeyException) { }
-        }
+        InsertObjectNotAsync(web, "Web");
     }
 
-    public void RemoveWeb(string clientId)
+    public void AddAdmin(Admin admin)
     {
-        Debug.Write(clientId);
-        RemoveObject(clientId, "Web");
+        InsertObjectNotAsync(admin, "Admin");
     }
 
-    public void RemoveAdmin(string clientId)
+
+
+    public void RemoveAdmin(string adminId)
     {
-        RemoveAdmin(clientId, "Admin");
+        RemoveObject("clientId", adminId, "Admin");
     }
-    
-    public void UpdateWeb(Client client)
+    public void RemoveWeb(string webId)
     {
-        UpdateObject(client, "Web");
+        Debug.Write(webId);
+        RemoveObject("clientId", webId, "Web");
     }
 
-    public Web GetWeb(string clientId)
+    public void UpdateWeb(Web web)
     {
-        return GetObject<Web>("clientId", clientId, "Web").Result;
+        UpdateObject(web, "Web");
     }
 
-    public Admin GetAdmin(string clientId)
+    public Web GetWeb(string webId)
     {
-        return GetObject<Admin>("clientId", clientId, "Admin").Result;
+        return GetObject<Web>("clientId", webId, "Web").Result;
+    }
+
+    public Admin GetAdmin(string adminId)
+    {
+        return GetObject<Admin>("clientId", adminId, "Admin").Result;
     }
 
     public List<Web> GetAllWebs()
@@ -65,9 +60,9 @@ public class ClientService : DatabaseActions, IClient
         return (GetAllAdmins().Count > 0);
     }
 
-    public void SetNoNewMessage(string clientId)
+    public void SetNoNewMessage(string webId)
     {
-        var web = GetWeb(clientId);
+        var web = GetWeb(webId);
         web.isNewMessage = false;
     }
 

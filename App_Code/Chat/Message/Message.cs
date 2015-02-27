@@ -11,7 +11,7 @@ public class Message : DatabaseObject
     [DataMember]
     public string messageContent { get; set; }
     [DataMember]
-    public string messageTime { get; set; }  
+    public string messageTime { get; set; }
 
     public Message(string clientId, string messageContent)
         : base()
@@ -19,5 +19,13 @@ public class Message : DatabaseObject
         this.clientId = clientId;
         this.messageContent = messageContent;
         this.messageTime = DateTime.Now.ToString();
+    }
+
+    public Message(Message message)
+        : base()
+    {
+        this.clientId = message.clientId;
+        this.messageContent = message.messageContent;
+        this.messageTime = message.messageTime;
     }
 }

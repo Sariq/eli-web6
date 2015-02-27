@@ -10,8 +10,9 @@
         self.xmlHttp_OneTime;
         self.xmlHttp_Process;
         self.chatMessages = [];
-        self.GuID=''
-   
+        self.GuID = ChatService.getChatUserId();
+
+      
         //self.isAdminOnline = function () {
             $http({
                 url: '/ClientService.svc/isAdminOnline',
@@ -39,12 +40,16 @@
            
         self.getResponse_Connect = function () {
             if (self.xmlHttp_OneTime.readyState == 4) {
-                self.GuID = self.xmlHttp_OneTime.responseText;
+              
+                if (ChatService.getChatUserId() == null) {
+                    ChatService.setChatUserId(self.xmlHttp_OneTime.responseText)
+                }
+                
                 //alert(self.xmlHttp_OneTime.responseText)
-                ChatService.GuID = self.GuID;
+                self.GuID = ChatService.getChatUserId();
                 $scope.$apply();
           
-                self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Process;
+                //self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Process;
                 self.xmlHttp_Process = ChatService.ProcessFunction();
                 self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
                 self.xmlHttp_Process.send();
@@ -69,7 +74,7 @@
         }
         
         self.getResponse_Process = function () {
-          
+           
             if (self.xmlHttp_Process.readyState == 4) {
                 var myJSON_Text = self.xmlHttp_Process.responseText;
          
@@ -94,12 +99,15 @@
      
         }
         self.register = function () {
-           
+   
             self.myLoad();
 
         }
+
+
         self.myUnLoad = function () {
-           
+       
+            ChatService.clearWebUserChat();
             ChatService.myUnLoad();
             //var url = "AsyncHandler.ashx?cmd=unregister&type=" + "web";
             //xmlHttp_OneTime.open("POST", url, true);
@@ -110,9 +118,31 @@
         //window.onload = self.myLoad;
 
    
-        return self;
+         //Get Chat ByID
+        self.getWebUserChat = function () {
+      
+            var clinetId = ChatService.getChatUserId()
+            alert(clinetId);
+            $http({
+                url: '/MessageService.svc/GetAllOnlineMessagesOfClient',
+                method: 'POST',
+                data: clinetId
+            }).then(function (response) {
+                console.log(response)
+                self.chatMessages = response.data;
+            
 
 
+            }, function () { alert("GetAllOnlineMessagesOfClient error") });
+        }
+
+        if (ChatService.getChatUserId() != null) {
+           
+            self.xmlHttp_Process = ChatService.ProcessFunction();
+            self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
+            self.xmlHttp_Process.send();
+            self.getWebUserChat()
+        }
 
 
 

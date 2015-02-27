@@ -1,16 +1,11 @@
-
-
-
 using System.Collections.Generic;
 using System.Net;
 using System.ServiceModel.Web;
-
-
-using System;
 using MongoDB.Driver;
-public class PatientService : DatabaseActions, IPatient
-{ 
 
+
+public class PatientService : DatabaseActions, IPatient
+{
     public void AddPatient(Patient patient)
     {
         try
@@ -36,7 +31,7 @@ public class PatientService : DatabaseActions, IPatient
 
     public Patient GetPatient(string patientId)
     {
-        return GetObject<Patient>(patientId, "Patient").Result; 
+        return GetObject<Patient>(patientId, "Patient").Result;
     }
 
     public List<Patient> GetAllPatients()

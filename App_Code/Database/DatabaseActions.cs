@@ -41,10 +41,10 @@ public class DatabaseActions
         await collection.RemoveAsync(new QueryDocument("_id", objId));
     }
 
-    protected async void RemoveAdmin(string objId, string collectionName)
+    protected async void RemoveObject(string fieldName, string fieldValue, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
-        await collection.RemoveAsync(new QueryDocument("clientId", objId));
+        await collection.RemoveAsync(new QueryDocument(fieldName, fieldValue));
     }
 
     protected async void UpdateObject(DatabaseObject obj, string collectionName)
@@ -68,14 +68,14 @@ public class DatabaseActions
     protected List<ObjectType> GetAllObject<ObjectType>(string collectionName)
     {
         var collection = database.GetCollection(collectionName);
-        var obj =  collection.FindAllAs<ObjectType>();    
+        var obj = collection.FindAllAs<ObjectType>();
         return obj.ToList<ObjectType>();
     }
 
     protected List<ObjectType> GetAllObject<ObjectType>(string fieldName, BsonValue fieldValue, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
-        Debug.Write(fieldValue);
+
         var searchQuery = Query.EQ(fieldName, fieldValue);
         var obj = collection.FindAs<ObjectType>(searchQuery);
         return obj.ToList<ObjectType>();

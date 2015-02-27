@@ -40,12 +40,12 @@
                                   
            
         self.getResponse_Connect = function () {
-            
+           
             if (self.xmlHttp_OneTime.readyState == 4) {
                 self.GuID = self.xmlHttp_OneTime.responseText;
                 ChatService.setadminChatId(self.xmlHttp_OneTime.responseText)
                 
-                //self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Process;
+               // self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Process;
                 self.xmlHttp_Process = ChatService.ProcessFunction();
                 self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
                 self.xmlHttp_Process.send();

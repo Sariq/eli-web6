@@ -140,13 +140,13 @@ public class AsyncServer
                 chatWebCounter++;
                 state.ClientGuid = state.ClientGuid + 123;
                 var currentAdmin = new Admin((state.ClientGuid));
-                clientService.AddClient(currentAdmin);
+                clientService.AddAdmin(currentAdmin);
             }
             else
             {
                 chatWebCounter++;
                 var currentClient = new Web(state.ClientGuid, chatWebCounter);
-                clientService.AddClient(currentClient);
+                clientService.AddWeb(currentClient);
             }
 
             _clientStateList.Add(state);
@@ -218,7 +218,8 @@ public class AsyncServer
 
                 JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
                 var allWeb = clientService.GetAllWebs();
-                string resultStr = myJavaScriptSerializer.Serialize(allWeb);
+                var allWebArr = new websData(allWeb);
+                string resultStr = myJavaScriptSerializer.Serialize(allWebArr);
                 foreach (AsyncResult clientState in _clientStateList)
                 {
                     try

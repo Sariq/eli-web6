@@ -1,9 +1,4 @@
 using System.Collections.Generic;
-using System.Net;
-using System.ServiceModel.Web;
-using System;
-using MongoDB.Driver;
-using System.Diagnostics;
 
 public class MessageService : DatabaseActions, IMessage
 {
@@ -29,34 +24,12 @@ public class MessageService : DatabaseActions, IMessage
 
     public List<Message> GetAllOnlineMessagesOfClient(string clientId)
     {
-
-
-        //var clientService = new ClientService();
-
-        //var web = clientService.GetWeb(clientId);
-        //web.isNewMessage = true;
-        //clientService.UpdateWeb(web);
-
-        //var onlineMessagesOfClientList = new List<Message>();
-        //var allOnlineMessage = GetAllOnlineMessages();
-
-        //List<Message> messagesOfClientList = new List<Message>();
-
-        //foreach (Message message in allOnlineMessage)
-        //{
-        //    if (message.clientId == clientId)
-        //        onlineMessagesOfClientList.Add(message);
-        //}
-
-       
-
         var onlineMessagesOfClientList = GetAllObject<Message>("clientId", clientId, "OnlineMessage");
 
         var clientService = new ClientService();
         var web = clientService.GetWeb(clientId);
         web.isNewMessage = false;
         clientService.UpdateWeb(web);
-
 
         return onlineMessagesOfClientList;
     }
@@ -76,5 +49,5 @@ public class MessageService : DatabaseActions, IMessage
             RemoveOnlineMessage(message);
         }
     }
-  
+
 }

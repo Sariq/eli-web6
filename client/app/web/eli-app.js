@@ -65,3 +65,10 @@ angular.module('eliApp', [
 
 
 
+angular.module('eliApp').config(function (localStorageServiceProvider) {
+
+    localStorageServiceProvider
+      .setPrefix('')
+
+      .setStorageCookie('/');
+});
