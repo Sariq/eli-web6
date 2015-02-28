@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 [DataContract]
@@ -20,10 +21,11 @@ public class User : DatabaseObject
     public string role { get; set; }
     [DataMember]
     public Boolean isRememberMe { get; set; }
+    [DataMember]
+    public List<string> assignments { get; set; }
 
-
-    public User(string userId, string password, string name, string email, string address, string birthDate, 
-        string role, bool isRememberMe)
+    public User(string userId, string password, string name, string email, string address, string birthDate,
+        string role, bool isRememberMe, List<string> assignment)
         : base()
     {
         this.userId = userId;
@@ -34,6 +36,7 @@ public class User : DatabaseObject
         this.birthDate = birthDate;
         this.role = role;
         this.isRememberMe = isRememberMe;
+        this.assignments = assignments;
     }
 
     public User(string userId, string password)
@@ -55,6 +58,7 @@ public class User : DatabaseObject
         this.birthDate = user.birthDate;
         this.role = user.role;
         this.isRememberMe = user.isRememberMe;
+        this.assignments = user.assignments;
     }
  
 }

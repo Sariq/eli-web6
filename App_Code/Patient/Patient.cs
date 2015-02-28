@@ -23,11 +23,9 @@ public class Patient : DatabaseObject
     public string workplace { get; set; }
     [DataMember]
     public List<Person> contacts { get; set; }
-    [DataMember]
-    public string[] meetings { get; set; }
 
     public Patient(string identityNumber, string name, string email, string address, DateTime birthDate,
-        string education, string workplace, List<Person> contacts, string[] meetings)
+        string education, string workplace, List<Person> contacts)
         : base()
     {
         this.identityNumber = identityNumber;
@@ -38,7 +36,6 @@ public class Patient : DatabaseObject
         this.education = education;
         this.workplace = workplace;
         this.contacts = contacts;
-        this.meetings = meetings;
     }
 
     public Patient(Patient patient)
@@ -53,7 +50,6 @@ public class Patient : DatabaseObject
         this.education = patient.education;
         this.workplace = patient.workplace;
         this.contacts = patient.contacts;
-        this.meetings = patient.meetings;
     }
  
 }

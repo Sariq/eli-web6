@@ -81,7 +81,7 @@ public class DatabaseActions
         return obj.ToList<ObjectType>();
     }
 
-    protected List<ObjectType> GetAllObject<ObjectType>(string[] objectsId, string collectionName)
+    protected List<ObjectType> GetAllObject<ObjectType>(List<string> objectsId, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
         var objList = new List<ObjectType>();

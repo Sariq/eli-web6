@@ -33,14 +33,4 @@ public class AssignmentService : DatabaseActions, IAssignment
         return GetAllObject<Assignment>("Assignment");
     }
 
-    public List<Assignment> GetAssignmentsByIds(string[] tmpAssignments)
-    {
-        return GetAllObject<Assignment>(tmpAssignments, "Assignment");
-    }
-
-    public List<Assignment> GetAllNotDoneAssignments()
-    {
-        return GetAllObject<Assignment>("isDone", false, "Assignment");
-    }
-
 }

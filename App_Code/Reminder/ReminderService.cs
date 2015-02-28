@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.ServiceModel.Web;
+using System.Timers;
 
 public class ReminderService : DatabaseActions, IReminder
 {
@@ -33,15 +34,39 @@ public class ReminderService : DatabaseActions, IReminder
         return GetAllObject<Reminder>("Reminder");
     }
 
-    public List<Reminder> GetAllFutureReminders()
-    {
-        var remindersList = new List<Reminder>();
+    //public List<Reminder> GetAllFutureReminders()
+    //{
+    //    var remindersList = new List<Reminder>();
 
-        foreach (Reminder reminder in GetAllReminders())
-            if (reminder.reminderTime > DateTime.Now)
-                remindersList.Add(reminder);
+    //    foreach (Reminder reminder in GetAllReminders())
+    //        if (reminder.reminderTime > DateTime.Now)
+    //            remindersList.Add(reminder);
 
-        return remindersList;
-    }
+    //    return remindersList;
+    //}
+
+    //private Timer _timer;
+    //private Int32 _hours = 0;
+    //private Int32 _runAt = 3;
+
+    //protected override void OnStart(string[] args)
+    //{
+    //    _hours = (24 - (DateTime.Now.Hour + 1)) + _runAt;
+    //    _timer = new Timer();
+    //    _timer.Interval = _hours * 60 * 60 * 1000;
+    //    _timer.Elapsed += new ElapsedEventHandler(Tick);
+    //    _timer.Start();
+    //}
+
+    //void Tick(object sender, ElapsedEventArgs e)
+    //{
+    //    if (_hours != 24)
+    //    {
+    //        _hours = 24;
+    //        _timer.Interval = _hours * 60 * 60 * 1000;
+    //    }
+
+    //    RunImport();
+    //}
 
 }

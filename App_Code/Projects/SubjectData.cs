@@ -1,17 +1,18 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 [DataContract]
 public class SubjectData
 {
     [DataMember] 
-    public Assignment assignment { get; set; }
-    [DataMember] 
-    public string[] toUsers { get; set; }
+    public string assignmentId { get; set; }
+    [DataMember]
+    public List<string> toUsers { get; set; }
 
 
-    public SubjectData(Assignment assignment, string[] toUsers)
+    public SubjectData(string assignmentId, List<string> toUsers)
     {
-        this.assignment = assignment;
+        this.assignmentId = assignmentId;
         this.toUsers = toUsers;
     }
  

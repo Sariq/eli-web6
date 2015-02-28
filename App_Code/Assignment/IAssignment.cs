@@ -50,13 +50,4 @@ public interface IAssignment
     ]
     List<Assignment> GetAllAssignments();
 
-    [OperationContract]
-    [WebInvoke(
-         Method = "POST",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "getAssignmentsByIds")
-    ]
-    List<Assignment> GetAssignmentsByIds(string[] assignments);
-
 }

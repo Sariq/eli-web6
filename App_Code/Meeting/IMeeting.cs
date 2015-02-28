@@ -57,5 +57,5 @@ public interface IMeeting
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "GetMeetingsByIds")
     ]
-    List<Meeting> GetMeetingsByIds(string[] meetings);
+    List<Meeting> GetMeetingsByIds(List<string> meetings);
 }

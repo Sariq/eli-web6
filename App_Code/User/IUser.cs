@@ -73,7 +73,7 @@ public interface IUser
          Method = "GET",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetAllAssignmentOfUser/{id}")
+         UriTemplate = "GetAllMeetingAssignmentsOfUser/{id}")
     ]
-    List<Assignment> GetAllAssignmentOfUser(string id);
+    List<Assignment> GetAllMeetingAssignmentsOfUser(string id);
 }

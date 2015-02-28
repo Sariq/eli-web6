@@ -33,15 +33,9 @@ public class MeetingService : DatabaseActions, IMeeting
         return GetAllObject<Meeting>("Meeting");
     }
 
-    public List<Meeting> GetMeetingsByIds(string[] tmpMeetings)
+    public List<Meeting> GetMeetingsByIds(List<string> tmpMeetings)
     {
-        List<Meeting> meetings = new List<Meeting> { };
-        foreach (string meetingId in tmpMeetings)
-        {
-            Meeting meeting = GetMeeting(meetingId);
-            meetings.Add(meeting);
-        }
-        return meetings;
+        return GetAllObject<Meeting>(tmpMeetings, "Meeting");
     }
 
 }

@@ -8,20 +8,20 @@ public class DatabaseService : IDatabaseService
 
     #region Properties
 
-    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "K", "role", true);
-    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", "role", true);
-    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K","role", true);
+    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "K", "role", true,  new List<string> {"1","2"});
+    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", "role", true, new List<string> { "1", "2" });
+    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K", "role", true, new List<string> { "1", "2" });
     public readonly User userD = new User("User", "123");
 
-    public readonly Assignment assignmentA = new Assignment("123", "AssignmentA", "FreeText", false);
-    public readonly Assignment assignmentB = new Assignment("123", "AssignmentB", "FreeText", false);
-    
-    public readonly Patient patientA = new Patient("111", "A", "a@gmail.com", "A", DateTime.Today, "AA", "AA", new List<Person> { new Person("A", "A", "2", true), new Person("B", "A", "1", true) }, new string[] { "AA", "BB" });
-    public readonly Patient patientB = new Patient("222", "A", "a@gmail.com", "A", DateTime.Today, "AA", "AA", new List<Person> { new Person("A", "A", "3", true), new Person("B", "A", "2", true) }, new string[] { "AA", "BB" });
+    public readonly Assignment assignmentA = new Assignment("AssignmentA", "FreeText", false, true);
+    public readonly Assignment assignmentB = new Assignment("AssignmentB", "FreeText", false, false);
+
+    public readonly Patient patientA = new Patient("111", "A", "a@gmail.com", "A", DateTime.Today, "AA", "AA", new List<Person> { new Person("A", "A", "2", true), new Person("B", "A", "1", true) });
+    public readonly Patient patientB = new Patient("222", "A", "a@gmail.com", "A", DateTime.Today, "AA", "AA", new List<Person> { new Person("A", "A", "3", true), new Person("B", "A", "2", true) });
 
 
-    public readonly Meeting meetingA = new Meeting("123", "123", "meetingA", "A",  "FreeText", new string[] { "AA", "BB" });
-    public readonly Meeting meetingB = new Meeting("123", "123", "meetingB", "B", "FreeText", new string[] { "AA", "BB" });
+    public readonly Meeting meetingA = new Meeting("123", "123", "meetingA", "A", "FreeText", new List<string> { "1", "2" });
+    public readonly Meeting meetingB = new Meeting("123", "123", "meetingB", "B", "FreeText", new List<string> {"1","2"});
    
     public readonly MailMessage mailMessage = new MailMessage(new List<string> { "123", "karin" }, new List<string> { "123", "karin" }, "subject", "content", true, true, true);
 

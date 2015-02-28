@@ -6,7 +6,7 @@ using System.Web.Script.Serialization;
 
 public class AsyncServer
 {
-        private static Object _lock = new Object();
+    private static Object _lock = new Object();
     private static List<AsyncResult> _clientStateList = new List<AsyncResult>();
     private static int z = 0;
     private static int chatWebCounter = 0;
@@ -134,11 +134,9 @@ public class AsyncServer
         {
             var clientService = new ClientService();
 
-            state.ClientGuid = chatWebCounter.ToString();
+            state.ClientGuid = Guid.NewGuid().ToString("N").Substring(0, 5);
             if (type == "admin")
             {
-                chatWebCounter++;
-                state.ClientGuid = state.ClientGuid + 123;
                 var currentAdmin = new Admin((state.ClientGuid));
                 clientService.AddAdmin(currentAdmin);
             }
@@ -157,8 +155,7 @@ public class AsyncServer
             if (type == "web")
             {
                 JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();
-
-
+                
                 var allWeb = clientService.GetAllWebs();
                 var allWebArr = new websData(allWeb);
                 string resultStr = myJavaScriptSerializer.Serialize(allWebArr);
@@ -167,12 +164,9 @@ public class AsyncServer
                 //string resultStr = myJavaScriptSerializer.Serialize(allWeb);
 
                 foreach (AsyncResult clientState in _clientStateList)
-                {
-                   
-                    
+                {  
                     try
                     {
-
                         var admin = clientService.GetAdmin(clientState.ClientGuid);
                         if (admin != null)
                         {
@@ -182,11 +176,6 @@ public class AsyncServer
                                 clientState.CompleteRequest();
                             }
                         }
-
-                        //Debug.Write(clientState.ClientGuid);
-                       
-                        //{
-
                         //    if (clientState._context.Session != null)
                         //    {
                         //        clientState._context.Response.Write(resultStr);
