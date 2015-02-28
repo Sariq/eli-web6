@@ -21,7 +21,8 @@
 	"font-awesome":"*",
 	"angular-local-storage":"*",
 	"angular-chart":"*"	,
-	"textAngular":"*"
+	"textAngular":"*" ,
+	"angular-validation":"*"
 
 	
   },

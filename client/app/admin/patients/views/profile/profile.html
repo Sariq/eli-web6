@@ -42,13 +42,13 @@
 
                         <ul class="profile-details">
                             <li>
-                                <div><i class="fa fa-briefcase"></i> first Name</div>
-                                <strong>{{profile.patient.first_name}}</strong>
+                                <div><i class="fa fa-briefcase"></i> Name</div>
+                                <strong>{{profile.patient.name}}</strong>
                             </li>
                             <br />
                             <li>
-                                <div><i class="fa fa-building-o"></i> Last Name</div>
-                                <strong>{{profile.patient.last_name}}</strong>
+                                <div><i class="fa fa-building-o"></i> identityNumber</div>
+                                <strong>{{profile.patient.identityNumber}}</strong>
                             </li>
                             <br />
                         </ul>
@@ -56,26 +56,33 @@
                         <h3>Contact Information</h3>
 
                         <ul class="profile-details">
+                               <li>
+                                <div><i class="fa fa-phone"></i> Birht Date</div>
+                                <strong>{{profile.patient.birthDate}}</strong>
+                            </li>
                             <li>
-                                <div><i class="fa fa-phone"></i> טלפון</div>
+                                <div><i class="fa fa-phone"></i> work Place</div>
+                                <strong>{{profile.patient.workplace}}</strong>
+                            </li>
+                            <li>
+                                <div><i class="fa fa-phone"></i> contacts</div>
                                 <strong>+48 123 456 789</strong>
                             </li>
                             <br />
-                            <li>
+                          <!--  <li>
                                 <div><i class="fa fa-tablet"></i> mobile phone</div>
                                 <strong>+48 123 456 789</strong>
                             </li>
-                            <br />
+                            <br />-->
                             <li>
                                 <div><i class="fa fa-envelope"></i> e-mail</div>
-                                <strong>lukasz@bootstrapmaster.com</strong>
+                                <strong>{{profile.patient.email}}</strong>
                             </li>
                             <br />
                             <li>
                                 <div><i class="fa fa-map-marker"></i> address</div>
-                                <strong>Konopnickiej 42</strong><br>
-                                <strong>43-190 Mikolow</strong><br>
-                                <strong>Slask, Poland</strong>
+                                <strong>{{profile.patient.address}}</strong><br>
+                            
                             </li>
                             <br />
                         </ul>

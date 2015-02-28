@@ -47,7 +47,9 @@
         }
 
       
-       
+        self.addContact = function () {
+            return PatientAdmin.addContact(self.patient);
+        }
 
         self.save = function () {
            
@@ -57,12 +59,14 @@
 
             }
             if (self.isNew) {
-
+              
                 console.log(self.patient);
+                self.patient.birthDate = '/Date(' + self.patient.birthDate.getTime() + ')/'
+                alert()
                 self.patient.$save(function (response) {
                     console.log(response);
                    
-                        $location.path(success_url);
+                      $location.path(success_url);
                    
                         
                    
@@ -82,7 +86,33 @@
 
 
 
+        $scope.today = function () {
+            self.patient.birthDate = '';
+        };
+        $scope.today();
 
+        $scope.clear = function () {
+            $scope.dt = null;
+        };
+
+
+
+        $scope.toggleMin = function () {
+            $scope.minDate = $scope.minDate ? null : new Date();
+        };
+        $scope.toggleMin();
+
+        $scope.open = function ($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.opened = true;
+        };
+
+  
+
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.format = 'dd/MM/yyyy';
 
 
 

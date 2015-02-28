@@ -137,8 +137,8 @@ public class AsyncServer
             state.ClientGuid = chatWebCounter.ToString();
             if (type == "admin")
             {
-                chatWebCounter++;
-                state.ClientGuid = state.ClientGuid + 123;
+               // chatWebCounter++;
+               // state.ClientGuid = state.ClientGuid + 123;
                 var currentAdmin = new Admin((state.ClientGuid));
                 clientService.AddAdmin(currentAdmin);
             }

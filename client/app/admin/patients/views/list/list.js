@@ -19,7 +19,7 @@
             page: 1,            // show first page
             count: 10,          // count per page
             sorting: {
-                first_name: 'asc'     // initial sorting
+                name: 'asc'     // initial sorting
             }
         }, {
             total: self.data.length, // length of self.data
@@ -51,8 +51,6 @@
   angular.module('eli.admin')
     .controller('PatientListController', ['PatientAdmin', '$stateParams','$scope', '$filter', 'ngTableParams', PatientListController]);
 }());
-
-
 
 
 

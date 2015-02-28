@@ -18,6 +18,8 @@ angular.module('eli.admin', [
   'pascalprecht.translate',
   'angularTranslateApp',
   'ngTable',
+  'validation',
+  'validation.rule'
 
 ])
   .config(function ($stateProvider, $urlRouterProvider, $resourceProvider, jwtInterceptorProvider, $httpProvider) {
@@ -87,3 +89,27 @@ angular.module('eli.admin', [
 
 
 
+  angular.module('eli.admin').filter("jsDate", function () {
+      return function (x) {
+          return new Date(parseInt(x.substr(6)));
+      };
+  });
+
+  angular.module('eli.admin').config(['$validationProvider', function ($validationProvider) {
+      $validationProvider.showSuccessMessage = false; // or true(default)
+
+      var expression = {
+          string: /^.{3,20}$/,
+          identity: /^.[0-9]{8}$/,
+      };
+
+      var validMsg = {
+          string: { error: 'הכנס שם באורך גדול מ-3' },
+          identity: { error: 'הכנס ת.ז' },
+          email: { error: 'הכנס אימייל' },
+                  };
+
+      $validationProvider.setExpression(expression) // set expression
+                        .setDefaultMsg(validMsg);
+    
+  }]);

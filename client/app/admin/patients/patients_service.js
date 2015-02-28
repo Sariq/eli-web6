@@ -22,7 +22,7 @@
     self.save = function (patient) {
       return self.patientResource.save();
     };
-
+        //'/Date('+new Date().getTime()+')/'
     self.create = function(){
         var patient = {
         identityNumber:'',
@@ -30,26 +30,30 @@
         
         education: '',
             workplace :'',
-            //birthDate : '',
+            birthDate:'' ,
         address: '',
         email:'',
         meetings: [],
        
-        contacts: [{ name: 'test', phoneNumber: 'test', age: 'test', isContact: true },
-            { name: 'test', phoneNumber: 'test', age: 'test', isContact: true }
-            , { name: 'test', phoneNumber: 'test', age: 'test', isContact: true }]
-
+        contacts: []
+          //{ name: 'name', phoneNumber: 'phoneNumber', age: 'age', isContact: true }
         };
         self.patient = new self.patientResource(patient)
         return self.patient;
     };
-
+    
       self.deleteTask = function (idx,patient) {
 
         patient.configurations.splice(idx,1);
         console.log(patient)
 
-    };
+      };
+
+      self.addContact = function (patient) {
+          console.log(patient)
+          
+          patient.contacts.push({ name: '', phoneNumber: '', age: '', isContact: false });
+      }
 
       self.addMeeting = function (patient, meetingId) {
           console.log(patient)
