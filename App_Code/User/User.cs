@@ -9,32 +9,29 @@ public class User : DatabaseObject
     [DataMember]
     public string password { get; set; }
     [DataMember]
-    public string first_name { get; set; }
-    [DataMember]
-    public string last_name { get; set; }
+    public string name { get; set; }
     [DataMember]
     public string email { get; set; }
     [DataMember]
     public string address { get; set; }
     [DataMember]
-    public DateTime birth_date { get; set; }
+    public string birthDate { get; set; }
     [DataMember]
     public string role { get; set; }
     [DataMember]
     public Boolean isRememberMe { get; set; }
 
 
-    public User(string userId, string password, string firstName, string lastName, string email, string address, 
-        DateTime birth_date, string role, bool isRememberMe)
+    public User(string userId, string password, string name, string email, string address, string birthDate, 
+        string role, bool isRememberMe)
         : base()
     {
         this.userId = userId;
         this.password = password;
-        this.first_name = firstName;
-        this.last_name = lastName;
+        this.name = name;
         this.email = email;
         this.address = address;
-        this.birth_date = birth_date;
+        this.birthDate = birthDate;
         this.role = role;
         this.isRememberMe = isRememberMe;
     }
@@ -49,13 +46,13 @@ public class User : DatabaseObject
     public User(User user)
     {
         this._id = user._id;
+        this._date = user._date;
         this.userId = user.userId;
         this.password = user.password;
-        this.first_name = user.first_name;
-        this.last_name = user.last_name;
+        this.name = user.name;
         this.email = user.email;
         this.address = user.address;
-        this.birth_date = user.birth_date;
+        this.birthDate = user.birthDate;
         this.role = user.role;
         this.isRememberMe = user.isRememberMe;
     }

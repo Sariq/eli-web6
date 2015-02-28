@@ -3,26 +3,8 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 
 [ServiceContract]
-public interface IUser
+public interface IProject
 {
-    [OperationContract]
-    [WebInvoke(
-        Method = "POST",
-        ResponseFormat = WebMessageFormat.Json,
-        BodyStyle = WebMessageBodyStyle.Bare,
-        UriTemplate = "SignIn")
-    ]
-    User SignIn(User user);
-
-    [OperationContract]
-    [WebInvoke(
-        Method = "POST",
-        ResponseFormat = WebMessageFormat.Json,
-        BodyStyle = WebMessageBodyStyle.Bare,
-        UriTemplate = "SignOut")
-    ]
-    void SignOut();
-
     [OperationContract]
     [WebInvoke(
          Method = "POST",
@@ -30,7 +12,8 @@ public interface IUser
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    void AddUser(User user);
+    Project AddProject(Project project);
+
 
     [OperationContract]
     [WebInvoke(
@@ -39,7 +22,7 @@ public interface IUser
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api/{id}")
     ]
-    void RemoveUser(string id);
+    void RemoveProject(string id);
 
     [OperationContract]
     [WebInvoke(
@@ -48,7 +31,7 @@ public interface IUser
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    void UpdateUser(User user);
+    void UpdateProject(Project project);
 
     [OperationContract]
     [WebInvoke(
@@ -57,7 +40,7 @@ public interface IUser
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api/{id}")
     ]
-    User GetUser(string id);
+    Project GetProject(string id);
 
     [OperationContract]
     [WebInvoke(
@@ -66,14 +49,5 @@ public interface IUser
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    List<User> GetAllUsers();
-
-    [OperationContract]
-    [WebInvoke(
-         Method = "GET",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetAllAssignmentOfUser/{id}")
-    ]
-    List<Assignment> GetAllAssignmentOfUser(string id);
+    List<Project> GetAllProjects();
 }

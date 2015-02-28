@@ -13,8 +13,6 @@ public class MailMessage : DatabaseObject
     public string subject { get; set; }    
     [DataMember]
     public string content { get; set; }
-    
-    public DateTime time { get; set; }
     [DataMember]
     public bool isRead { get; set; }
     [DataMember]
@@ -34,17 +32,17 @@ public class MailMessage : DatabaseObject
         this.isRead = isRead;
         this.isStar = isStar;
         this.isDelete = isDelete;
-        this.time = DateTime.Today;
     }
 
     public MailMessage(MailMessage mailMessage)
         : base()
     {
+        this._id = mailMessage._id;
+        this._date = mailMessage._date;
         this.fromUser = mailMessage.fromUser;
         this.toUser = mailMessage.toUser;
         this.subject = mailMessage.subject;
         this.content = mailMessage.content;
-        this.time = mailMessage.time;
         this.isRead = mailMessage.isRead;
         this.isStar = mailMessage.isStar;
         this.isDelete = mailMessage.isDelete;

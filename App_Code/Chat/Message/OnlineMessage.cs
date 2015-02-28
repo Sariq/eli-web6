@@ -3,8 +3,8 @@
 [DataContract]
 public class OnlineMessage : Message
 {
-    public OnlineMessage(string clientId, string messageContent)
-        : base(clientId, messageContent)
+    public OnlineMessage(string clientId, string messageContent, string type)
+        : base(clientId, messageContent, type)
     {
     }
 }
