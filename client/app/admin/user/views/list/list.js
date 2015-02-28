@@ -7,6 +7,10 @@
     self.users.$promise.then(function (result) {
         console.log(result);
         self.data = result;
+        var endTime = new Date()
+        var difference = endTime.getTime() - new Date((parseInt(self.data[0].birth_date.substr(6))));
+        var resultInMinutes = Math.round(difference / 60000);
+        alert(resultInMinutes)
         self.myFun();
     });
 

@@ -4,7 +4,8 @@
 angular.module('eli.admin', [ 
   'ngResource',
   'eli.common',
-
+      'angularBootstrapNavTree',
+      'AbnTest', 
   'textAngular',
   'ui.router',
   'ui.bootstrap',
@@ -16,7 +17,8 @@ angular.module('eli.admin', [
   'ui.bootstrap.datetimepicker',
   'pascalprecht.translate',
   'angularTranslateApp',
-  'ngTable'
+  'ngTable',
+
 ])
   .config(function ($stateProvider, $urlRouterProvider, $resourceProvider, jwtInterceptorProvider, $httpProvider) {
       //delete $httpProvider.defaults.headers.common['X-Requested-With'];

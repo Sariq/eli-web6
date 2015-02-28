@@ -5,7 +5,7 @@
      * @param PatientAdmin: Service
      * @constructor
      */
-    function PatientProfileController($location, $scope, PatientAdmin, $stateParams) {
+    function ProjectTaskController($location, $scope, PatientAdmin, $stateParams, ProjectService) {
         var self = this;
        // self.patient = $stateParams.patientId;
         //self.patient = PatientAdmin.get($stateParams.patientId);
@@ -19,15 +19,8 @@
 
         }
 
-
-        self.tabs = [
-  { title: 'Dynamic Title 1', content: 'Dynamic content 1' },
-  { title: 'Dynamic Title 2', content: 'Dynamic content 2' }
-        ];
-
-
-
-
+        self.task=ProjectService.getTask();
+        console.log(self.task)
         self.remove = function (patient) {
             console.log(patient);
    
@@ -40,7 +33,7 @@
 
     }
     angular.module('eli.admin')
-        .controller('PatientProfileController', ['$location', '$scope', 'PatientAdmin', '$stateParams', PatientProfileController]);
+        .controller('ProjectTaskController', ['$location', '$scope', 'PatientAdmin', '$stateParams','ProjectService', ProjectTaskController]);
 }());
 
 
