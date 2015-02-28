@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Net;
 using System.ServiceModel.Web;
 using System.Web;
+using System.Linq;
 
 public class UserService : DatabaseActions, IUser
 {
@@ -126,6 +127,13 @@ public class UserService : DatabaseActions, IUser
     public List<User> GetAllUsers()
     {
         return GetAllObject<User>("User");
+    }
+
+    public List<Assignment> GetAllAssignmentOfUser(string userId)
+    {
+        var allAssinmentsOfUSer = GetAllObject<Assignment>("userId", userId, "Assignment");
+        List<Assignment> sortedList = allAssinmentsOfUSer.OrderBy(o => o._date).ToList();
+        return sortedList;
     }
 
 }

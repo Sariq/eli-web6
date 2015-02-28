@@ -25,13 +25,20 @@
 
     self.create = function(){
         var patient = {
-        identity_number:'',
-        first_name: '',
-        last_name: '',
-        //birth_date: '',
+        identityNumber:'',
+        name: '',
+        
+        education: '',
+            workplace :'',
+            //birthDate : '',
         address: '',
         email:'',
-        meetings: []
+        meetings: [],
+       
+        contacts: [{ name: 'test', phoneNumber: 'test', age: 'test', isContact: true },
+            { name: 'test', phoneNumber: 'test', age: 'test', isContact: true }
+            , { name: 'test', phoneNumber: 'test', age: 'test', isContact: true }]
+
         };
         self.patient = new self.patientResource(patient)
         return self.patient;

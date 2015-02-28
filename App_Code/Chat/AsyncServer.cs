@@ -21,7 +21,7 @@ public class AsyncServer
         {
             var clientService = new ClientService();
 
-            Message currentMessage = new Message(clientId, message);
+            Message currentMessage = new Message(clientId, message, type);
             new MessageService().AddOnlineMessage(currentMessage);
 
             var allMessages = new MessageService().GetAllOnlineMessagesOfClient(clientId);

@@ -1,2 +1,2 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="AssignmentService" CodeBehind="~/App_Code/Assignment/AssignmentService.cs"
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="AssignmentInProjectService" CodeBehind="~/App_Code/Assignment/AssignmentInProjectService.cs"
     Factory="System.ServiceModel.Activation.WebServiceHostFactory" %>
