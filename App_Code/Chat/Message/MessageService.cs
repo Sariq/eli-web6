@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public class MessageService : DatabaseActions, IMessage
 {
@@ -24,6 +25,7 @@ public class MessageService : DatabaseActions, IMessage
 
     public List<Message> GetAllOnlineMessagesOfClient(string clientId)
     {
+        Debug.Write(clientId);
         var onlineMessagesOfClientList = GetAllObject<Message>("clientId", clientId, "OnlineMessage");
 
         var clientService = new ClientService();

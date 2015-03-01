@@ -27,10 +27,10 @@
         var user = {
             userId:'',
             password: '',
-            first_name: '',
-            last_name: '',
+            name: '',
+
         address: '',
-        //role:''
+            //birthDate:''
         };
 
 

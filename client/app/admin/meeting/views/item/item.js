@@ -42,7 +42,7 @@
             console.log(self.meeting);
             self.meeting.$promise.then(function (result) {
            
-               
+                console.log(result)
                 $http({
                     url: '/AssignmentService.svc/getAssignmentsByIds',
                     method: 'POST',

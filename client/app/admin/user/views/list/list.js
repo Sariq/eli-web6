@@ -7,10 +7,10 @@
     self.users.$promise.then(function (result) {
         console.log(result);
         self.data = result;
-        var endTime = new Date()
-        var difference = endTime.getTime() - new Date((parseInt(self.data[0].birth_date.substr(6))));
-        var resultInMinutes = Math.round(difference / 60000);
-        alert(resultInMinutes)
+        //var endTime = new Date()
+        //var difference = endTime.getTime() - new Date((parseInt(self.data[0].birth_date.substr(6))));
+        //var resultInMinutes = Math.round(difference / 60000);
+        //alert(resultInMinutes)
         self.myFun();
     });
 
@@ -20,7 +20,7 @@
             page: 1,            // show first page
             count: 10,          // count per page
             sorting: {
-                first_name: 'asc'     // initial sorting
+                name: 'asc'     // initial sorting
             }
         }, {
             total: self.data.length, // length of self.data

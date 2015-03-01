@@ -24,10 +24,13 @@
                     <tr ng-repeat="user in $data" class="text-right">
 
                         <td data-title="'First_name'" sortable="'first_name'">
-                            <a ng-click="list.setPatientId(user)" href="#/user/profile/{{user._id}}">{{user.first_name}}</a>
+                            <a ng-click="list.setPatientId(user)" href="#/user/profile/{{user._id}}">{{user.name}}</a>
                         </td>
-                        <td data-title="'last_name'" sortable="'last_name'">
-                            <a href="#/user/profile/{{user._id}}">{{user.last_name}}</a>
+                        <td data-title="'userId'" sortable="'userId'">
+                            <a href="#/user/profile/{{user._id}}">{{user.userId}}</a>
+                        </td>
+                        <td data-title="'role'" sortable="'role'">
+                            <a href="#/user/profile/{{user._id}}">{{user.role}}</a>
                         </td>
 
 

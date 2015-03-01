@@ -51,8 +51,35 @@
             <div class="modal-header text-right">
                 <h3 class="text-center">{{project.task.label}}</h3>
             </div>
+                  <div class="panel-body">
+
+
+                      	<datetimepicker ng-change="task.validatmpeventDuedate()"  min-date="task.minDate"
+			show-weeks="showWeeks" hour-step="task.hourStep" minute-step="task.minuteStep"
+			ng-model="task.tmpeventDuedate" show-meridian="task.showMeridian"
+			date-format="dd/MM/yyyy" date-options="task.dateOptions"
+			date-disabled="task.disabled(date, mode)" readonly-time="false"></datetimepicker>
+
+
+     <!--                  <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : birthDate
+              
+                    </label>
+                </div>
+               <div class="date-input col-md-12  col-xs-12" >
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="add.patient.birthDate" is-open="opened" datepicker-options="dateOptions" 
+               close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+
+            </div>-->
+                        </div>
 
        </div>
     </div>
-        </div>
+  
 

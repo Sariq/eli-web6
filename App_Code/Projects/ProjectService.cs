@@ -29,9 +29,19 @@ public class ProjectService : DatabaseActions, IProject
         return GetAllObject<Project>("Project");
     }
 
-    public List<User> GetAllToUsers(string[] usersId)
+    public List<User> GetAllToUsers(List<string> usersId)
     {
         return GetAllObject<User>(usersId, "User");
+    }
+
+    public void ForwordAssignmentToUsers(string assignmentId, List<string> usersId)
+    {
+        //var assignment = new AssignmentService().GetAssignment(assignmentId);
+        //foreach (string id in usersId)
+        //{
+
+        //}
+        //GetAllObject<User>(usersId, "User");
     }
 
 }

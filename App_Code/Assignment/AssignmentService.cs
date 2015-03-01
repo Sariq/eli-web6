@@ -33,14 +33,15 @@ public class AssignmentService : DatabaseActions, IAssignment
         return GetAllObject<Assignment>("Assignment");
     }
 
-    public List<Assignment> GetAssignmentsByIds(string[] tmpAssignments)
+    public List<Assignment> GetAssignmentsByIds(List<string> tmpAssignments)
     {
-        return GetAllObject<Assignment>(tmpAssignments, "Assignment");
-    }
-
-    public List<Assignment> GetAllNotDoneAssignments()
-    {
-        return GetAllObject<Assignment>("isDone", false, "Assignment");
+        List<Assignment> assignments = new List<Assignment> { };
+        foreach (string assignmentId in tmpAssignments)
+        {
+            Assignment assignment = GetAssignment(assignmentId);
+            assignments.Add(assignment);
+        }
+        return assignments;
     }
 
 }

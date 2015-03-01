@@ -24,10 +24,10 @@ public class Patient : DatabaseObject
     [DataMember]
     public List<Person> contacts { get; set; }
     [DataMember]
-    public string[] meetings { get; set; }
+    public List<string> meetings { get; set; }
 
     public Patient(string identityNumber, string name, string email, string address, DateTime birthDate,
-        string education, string workplace, List<Person> contacts, string[] meetings)
+        string education, string workplace, List<Person> contacts, List<string> meetings)
         : base()
     {
         this.identityNumber = identityNumber;

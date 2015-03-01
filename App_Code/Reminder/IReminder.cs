@@ -52,12 +52,12 @@ public interface IReminder
     ]
     List<Reminder> GetAllReminders();
 
-    [OperationContract]
-    [WebInvoke(
-         Method = "GET",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetAllFutureReminders")
-    ]
-    List<Reminder> GetAllFutureReminders();
+    //[OperationContract]
+    //[WebInvoke(
+    //     Method = "GET",
+    //     ResponseFormat = WebMessageFormat.Json,
+    //     BodyStyle = WebMessageBodyStyle.Bare,
+    //     UriTemplate = "GetAllFutureReminders")
+    //]
+    //List<Reminder> GetAllFutureReminders();
 }

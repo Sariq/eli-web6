@@ -18,18 +18,28 @@
     self.save = function (project) {
       return self.projectResource.save();
     };
-
+    
     //self.addChildren = function (children) {
     //    return self.projectResource.save();
     //};
     self.create = function(){
-        var project = {
-            label: '',
-            children: []
- 
-        };
+        var project = [{
+            label: 'prj1', children: [{
+                label: 'Dog',
+                data: {
+                    description: "man's best friend", to: []
+                }
+            },
+            {
+                label: 'Dog2',
+                data: {
+                    description: "man's best friend2", to: []
+                }
+            }
+            ]
+        }];
         self.project = new self.projectResource(project)
-        return self.project;
+        return project;
     };
 
       self.deleteTask = function (idx,project) {

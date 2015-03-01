@@ -1,7 +1,7 @@
 (function () {
 
     function routes($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.when('/projects', '/projects/task');
+        //$urlRouterProvider.when('/projects', '/projects/task/:taskId');
         $stateProvider
 
             .state('projects', {
@@ -12,10 +12,10 @@
 
             })
          .state('projects.task', {
-             url: '/task',
+             url: '/task/:taskId',
              templateUrl: 'project/views/task.html',
              controller: 'ProjectTaskController',
-             controllerAs: 'project'
+             controllerAs: 'task'
 
          })
 

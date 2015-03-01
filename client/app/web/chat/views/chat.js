@@ -10,6 +10,7 @@
         self.xmlHttp_OneTime;
         self.xmlHttp_Process;
         self.chatMessages = [];
+        self.data = {};
         self.GuID = ChatService.getChatUserId();
 
       
@@ -80,6 +81,7 @@
          
                 var myJsonObject_Temp = eval('(' + myJSON_Text + ')');
                 console.log(myJsonObject_Temp)
+                self.data = myJsonObject_Temp;
                 self.chatMessages = myJsonObject_Temp.allMessage;
                 $scope.$apply();
                 self.xmlHttp_Process = ChatService.ProcessFunction();
@@ -103,7 +105,11 @@
             self.myLoad();
 
         }
+        self.unRegister = function () {
 
+            self.myUnLoad();
+
+        }
 
         self.myUnLoad = function () {
        
@@ -114,7 +120,9 @@
             //xmlHttp_OneTime.send();
         }
 
-        window.onunload = self.myUnLoad;
+
+
+        //window.onunload = self.myUnLoad;
         //window.onload = self.myLoad;
 
    
@@ -122,7 +130,7 @@
         self.getWebUserChat = function () {
       
             var clinetId = ChatService.getChatUserId()
-            alert(clinetId);
+       
             $http({
                 url: '/MessageService.svc/GetAllOnlineMessagesOfClient',
                 method: 'POST',

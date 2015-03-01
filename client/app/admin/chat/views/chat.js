@@ -152,6 +152,7 @@
     self.getWebUserChat = function (webUser, index) {
 
         ChatService.setwebChatId(webUser.clientId)
+        alert(webUser.clientId)
         self.currentWebUser = webUser;
         self.chatWebs[index].isNewMessage = false;
            
@@ -203,8 +204,9 @@
         self.myUnLoad();
 
     }
+
     
-    window.onunload = self.myUnLoad;
+    //window.onunload = self.myUnLoad;
     // window.onload = self.myLoad;
     //self.myLoad();
    

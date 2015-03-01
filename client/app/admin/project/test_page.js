@@ -9,24 +9,44 @@
 
   app = angular.module('AbnTest', deps);
 
-  app.controller('AbnTestController', function ($scope, $timeout, ProjectService) {
-      $scope.projectArr = [{
-          label: 'prj1', children: [{
-              label: 'Dog',
-              data: {
-                  description: "man's best friend", to: []
-              }
-          }]
-      }, { label: 'prj1', children: [] }];
+  app.controller('AbnTestController', function ($scope, $timeout, ProjectService, $location, $http) {
+      $scope.projectArr = ProjectService.create();
+
+
+      $http({
+          url: '/ProjectService.svc/api',
+          method: 'POST',
+          data: $scope.projectArr
+      }).then(function (response) {
+
+          self.assignments = response.data;
+
+
+      }, function () { alert("getAssignmentsByIds edit error") });
+
+
+
+      console.log($scope.projectArr)
+      //, { label: 'prj1', children: [] }
     var apple_selected, tree, treedata_avm, treedata_geography;
     $scope.my_tree_handler = function(branch) {
       var _ref;
       $scope.output = "You selected: " + branch.label;
         //alert(branch.data.description)
-      ProjectService.setTask(branch);
+     
+      console.log(branch)
+      //if (branch.level == 1) {
+      //    if (branch.children.length == 0) {
+
+      //    }
+      //}
       if ((_ref = branch.data) != null ? _ref.description : void 0) {
-        return $scope.output += '(' + branch.data.description + ')';
+          ProjectService.setTask(branch);
+          $scope.output += '(' + branch.data.description + ')';
+          $location.path('/projects/task/' + branch.label);
       }
+   
+   
     };
     apple_selected = function(branch) {
       return $scope.output = "APPLE! : " + branch.label;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 [DataContract]
@@ -15,10 +16,10 @@ public class Meeting : DatabaseObject
     [DataMember]
     public string note { get; set; }
     [DataMember]
-    public string[] assignments { get; set; }
+    public List<string> assignments { get; set; }
 
 
-    public Meeting(string therapistId, string patientId, string title, string address, string note, string[] assignments)
+    public Meeting(string therapistId, string patientId, string title, string address, string note, List<string> assignments)
         : base()
     {
         this.therapistId = therapistId;

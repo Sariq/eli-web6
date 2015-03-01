@@ -50,6 +50,7 @@ public interface IAssignment
     ]
     List<Assignment> GetAllAssignments();
 
+    
     [OperationContract]
     [WebInvoke(
          Method = "POST",
@@ -57,6 +58,6 @@ public interface IAssignment
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "getAssignmentsByIds")
     ]
-    List<Assignment> GetAssignmentsByIds(string[] assignments);
+    List<Assignment> GetAssignmentsByIds(List<string> assignments);
 
 }

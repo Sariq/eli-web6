@@ -59,8 +59,21 @@
                 <h3 class="text-center">User</h3>
             </div>
             <div class="panel-body" style=" background:#0094ff; direction:rtl">
-                 <abn-tree tree-data="projectArr" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="2" initial-selection="Granny Smith"></abn-tree>
+                 <abn-tree tree-data="projectArr" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="1" initial-selection="Granny Smith"></abn-tree>
        </div>
+
+                            <div class="modal-footer ">
+     
+                    <span class="pull-left">
+
+                                branch lable <input ng-model="lable"/><br />
+                       branch description  <input ng-model="description"/>
+                        <button ng-click="try_adding_a_branch()" class="btn btn-default btn-sm">Add Branch</button>
+                        <br />
+                     projec lable <input ng-model="projectLable"/><br />
+                    <button ng-click="addProject()" class="btn btn-default btn-sm">Add Project</button>
+                         </span>
+                </div>
     </div>
         </div>
     </div>
