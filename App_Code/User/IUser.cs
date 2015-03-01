@@ -76,4 +76,13 @@ public interface IUser
          UriTemplate = "GetAllMeetingAssignmentsOfUser/{id}")
     ]
     List<Assignment> GetAllMeetingAssignmentsOfUser(string id);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "GET",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetAllNotApprovedRemindersOfUser/{id}")
+    ]
+    List<Reminder> GetAllNotApprovedRemindersOfUser(string id);
 }

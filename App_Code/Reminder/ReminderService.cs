@@ -24,14 +24,26 @@ public class ReminderService : DatabaseActions, IReminder
         UpdateObject(reminder, "Reminder");
     }
 
-    public Reminder GetReminder(string newsId)
+    public Reminder GetReminder(string reminderId)
     {
-        return GetObject<Reminder>(newsId, "Reminder").Result;
+        return GetObject<Reminder>(reminderId, "Reminder").Result;
     }
 
     public List<Reminder> GetAllReminders()
     {
         return GetAllObject<Reminder>("Reminder");
+    }
+
+    public List<Reminder> GetRemindersByIds(List<string> tmpReminders)
+    {
+        return GetAllObject<Reminder>(tmpReminders, "Reminder");
+    }
+
+    public void ApproveReminder(string reminderId)
+    {
+        var reminder = GetReminder(reminderId);
+        reminder.isApproved = true;
+        UpdateReminder(reminder);
     }
 
     //public List<Reminder> GetAllFutureReminders()
