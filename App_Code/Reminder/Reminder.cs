@@ -10,7 +10,9 @@ public class Reminder : DatabaseObject
     public string dataId { get; set; }
     [DataMember]
     public string dataType { get; set; }
-   
+    [DataMember]
+    public bool isApproved { get; set; }
+
 
     public Reminder(DateTime reminderTime, string dataId, string dataType)
         : base()
@@ -18,6 +20,7 @@ public class Reminder : DatabaseObject
         this.reminderTime = reminderTime;
         this.dataId = dataId;
         this.dataType = dataType;
+        this.isApproved = false;
     }
 
     public Reminder(Reminder reminder)
@@ -28,6 +31,7 @@ public class Reminder : DatabaseObject
         this.reminderTime = reminder.reminderTime;
         this.dataId = reminder.dataId;
         this.dataType = reminder.dataType;
+        this.isApproved = reminder.isApproved;
     }
 
 }

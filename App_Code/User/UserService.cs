@@ -144,10 +144,16 @@ public class UserService : DatabaseActions, IUser
 
     private List<Assignment> GetAllAssignmentsOfUser(string userId, Predicate<Assignment> p)
     {
-        var allAssinmentsOfUSer = GetAllObject<Assignment>(GetUser(userId).assignments, "Assignment");
+        var allAssinmentsOfUSer = new AssignmentService().GetAssignmentsByIds(GetUser(userId).assignments);
         var allMeetingAssignmentOfUser = allAssinmentsOfUSer.FindAll(p);
         List<Assignment> sortedList = allMeetingAssignmentOfUser.OrderBy(assignment => assignment._date).ToList();
         return sortedList;
     }
 
+    public List<Reminder> GetAllNotApprovedRemindersOfUser(string userId)
+    {
+        var allRemindersOfUser = new ReminderService().GetRemindersByIds(GetUser(userId).reminders);
+        var allNotApprovedRemindersOfUser = allRemindersOfUser.FindAll(reminder => !reminder.isApproved);
+        return allNotApprovedRemindersOfUser;
+    }
 }

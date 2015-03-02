@@ -35,13 +35,7 @@ public class AssignmentService : DatabaseActions, IAssignment
 
     public List<Assignment> GetAssignmentsByIds(List<string> tmpAssignments)
     {
-        List<Assignment> assignments = new List<Assignment> { };
-        foreach (string assignmentId in tmpAssignments)
-        {
-            Assignment assignment = GetAssignment(assignmentId);
-            assignments.Add(assignment);
-        }
-        return assignments;
+        return GetAllObject<Assignment>(tmpAssignments, "Assignment");
     }
 
 }
