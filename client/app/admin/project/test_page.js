@@ -13,16 +13,16 @@
       $scope.projectArr = ProjectService.create();
 
 
-      $http({
-          url: '/ProjectService.svc/api',
-          method: 'POST',
-          data: $scope.projectArr
-      }).then(function (response) {
+      //$http({
+      //    url: '/ProjectService.svc/api',
+      //    method: 'POST',
+      //    data: $scope.projectArr
+      //}).then(function (response) {
 
-          self.assignments = response.data;
+      //    self.assignments = response.data;
 
 
-      }, function () { alert("getAssignmentsByIds edit error") });
+      //}, function () { alert("getAssignmentsByIds edit error") });
 
 
 

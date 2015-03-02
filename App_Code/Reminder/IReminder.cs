@@ -36,10 +36,10 @@ public interface IReminder
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
+         UriTemplate = "getReminderList")
     ]
     Reminder GetReminder(string id);
 

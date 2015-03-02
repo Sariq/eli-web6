@@ -1,5 +1,5 @@
 (function () {
-    function LogInCtrl(AuthService, $scope, $location, $rootScope, localStorageService, jwtHelper, ipCookie) {
+    function LogInCtrl(AuthService, $scope, $location, $rootScope, localStorageService, jwtHelper, ipCookie, $http, $timeout) {
         var self = this;
         console.log("LogInCtrl")
         
@@ -20,7 +20,24 @@
             console.log( $scope.userInfo) 
 
         });
-    
+        //$scope.getReminders = function () {
+            $http({
+                url: '/ReminderService.svc/getReminderList',
+                method: 'POST',
+                data: '54f383ab3f21d31510b71e8f'
+            }).then(function (response) {
+                console.log('getReminderList')
+                console.log(response.data)
+                var endTime = new Date()
+              
+                var difference = new Date((parseInt(response.data.reminderTime.substr(6)))) - endTime.getTime();
+                $timeout(function () {
+                    alert('My First Reminder:)))')
+                }, difference)
+                alert(difference)
+
+            }, function () { alert("getReminderList error") });
+        //}
       //  alert(jwtHelper.getTokenExpirationDate((localStorageService.cookie.get('id_token'))))
 
         //jwt
@@ -136,5 +153,5 @@ loadAuth();
   }
 
   angular.module('eli.admin')
-    .controller('LogInCtrl', ['AuthService', '$scope', '$location', '$rootScope', 'localStorageService','jwtHelper','ipCookie', LogInCtrl]);
+    .controller('LogInCtrl', ['AuthService', '$scope', '$location', '$rootScope', 'localStorageService','jwtHelper','ipCookie','$http','$timeout', LogInCtrl]);
 }());
