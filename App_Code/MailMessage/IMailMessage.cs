@@ -16,6 +16,15 @@ public interface IMailMessage
 
     [OperationContract]
     [WebInvoke(
+         Method = "PUT",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "api")
+    ]
+    void UpdateMailMessage(MailMessage mailMessage);
+
+    [OperationContract]
+    [WebInvoke(
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
