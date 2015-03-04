@@ -1,4 +1,5 @@
 ﻿
+{{mail.inboxMessages}}
 <section class="modal-dialog " style="width:auto; margin-top:0px;">
                       
         <div class="modal-content">
@@ -46,7 +47,7 @@
                                     <li><a href="#"><i class="fa fa-pencil"></i> Mark as Read</a></li>
                                     <li><a href="#"><i class="fa fa-ban"></i> Spam</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
+                                    <li><a ng-click="mail.deleteMail()" href="#"><i class="fa fa-trash-o"></i> Delete</a></li>
                                 </ul>
                             </div>
                             <div class="btn-group">
@@ -63,12 +64,12 @@
                             </div>
 
                             <ul class="unstyled inbox-pagination">
-                                <li><span>1-50 of 99</span></li>
+                                <li><span>{{mail.pageIdx+1}}-{{mail.pageIdx+50}} of {{mail.inboxMessages.length}}</span></li>
                                 <li>
-                                    <a class="np-btn" href="#"><i class="fa fa-angle-left  pagination-left"></i></a>
+                                    <a ng-click="mail.pageIdx=mail.pageIdx-1" class="np-btn" ><i class="fa fa-angle-left  pagination-left"></i></a>
                                 </li>
                                 <li>
-                                    <a class="np-btn" href="#"><i class="fa fa-angle-right pagination-right"></i></a>
+                                    <a ng-click="mail.pageIdx=mail.pageIdx+1" class="np-btn"><i class="fa fa-angle-right pagination-right"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -76,15 +77,15 @@
                             <table class="table table-inbox table-hover">
                         <tbody>
                             
-                         <tr ng-repeat="message in inbox.inboxMessages" class="unread">
+                         <tr ng-repeat="message in mail.inboxMessages| startFrom:mail.pageIdx*50 | limitTo:50" ng-if="!message.isDelete" ng-class="{'unread':!message.isRead}">
                             <td class="inbox-small-cells">
-                                <input type="checkbox" class="mail-checkbox">
+                                <input ng-init="message.isChecked=false" ng-model="message.isChecked"  type="checkbox" class="mail-checkbox">
                             </td>
-                            <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                            <td class="view-message  dont-show"><a href="mail_view.html">{{message.subject}}</a></td>
-                            <td class="view-message "><a href="mail_view.html">{{message.content}}</a></td>
+                            <td class="inbox-small-cells" ng-click="message.isStar=!message.isStar"><i class="fa fa-star" ng-class="{'inbox-started':message.isStar}"></i></td>
+                            <td ng-click="message.isRead=true" class="view-message  dont-show"><a ui-sref=".inbox_item">{{message.subject}}</a></td>
+                            <td ng-click="message.isRead=true" class="view-message "><a ui-sref=".inbox_item">{{message.content}}</a></td>
                             <td class="view-message  inbox-small-cells"></td>
-                            <td class="view-message  text-right">08:10 AM</td>
+                            <td class="view-message  text-right">{{message._date | inboxDate }}</td>
                         </tr>
                         
 

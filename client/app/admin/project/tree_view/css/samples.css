@@ -1,0 +1,189 @@
+﻿
+.head-separator
+{
+    background-color: #c60d0d;
+	
+    height: 3px;
+}
+.header-content
+{
+    margin: 0 auto;
+    padding: 7px 20px;
+    width: 950px;
+}
+.content
+{
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 950px;
+}
+
+span.product-name
+{
+	color: #c60d0d;
+}
+span.product-platform
+{
+	font-size: 0.75em;
+	font-style: italic;
+}
+.feature-title
+{
+    font-size: 1.1em;
+	padding: 15px 0 25px 0;
+}
+.feature-content
+{
+	color: black;
+	font-size: 0.75em;
+	margin: 0 auto 0 0;
+	position: relative;
+	width: 700px;
+}
+.feature-help
+{
+	margin-top: 20px;
+}
+.feature-help p
+{
+	text-align:justify;
+}
+.feature-help span.initial-space
+{
+	display: inline-block;
+	width: 20px
+}
+.feature-points li
+{
+	margin: 5px 0;
+}
+.widget, .directive
+{
+
+	height: 400px;
+	
+}
+.control-panel
+{
+	float: left;
+	margin-left: 20px;
+	width: 200px;
+}
+.control-panel table
+{
+	text-align:right;
+}
+.control-panel table td.align-left
+{
+	text-align:left;
+}
+.feature-list
+{
+	color: #c60d0d;
+	line-height: 1.5em;
+	list-style-type: square;
+	margin: 0 0 0 15px;
+	padding: 5px 0 5px 20px;
+}
+.feature-list li a
+{
+	color: #c60d0d;
+	text-decoration: none;
+}
+.feature-list li a:hover
+{
+	text-decoration: underline;
+}
+.feature-list li a:visited
+{
+	color: #cc6600;
+}
+#eventLog
+{
+    list-style:none;
+    margin:0;
+    padding:0 10px;
+    overflow:auto;
+    width: 330px;
+    height: 370px;
+}
+#eventLog li
+{
+    margin: 3px;
+  
+}
+.icons
+{
+    background-image: url(../resources/icons.png);
+    background-repeat: no-repeat;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0 !important;
+    margin: 0 1px 0 0;
+    width: 16px;
+    height: 16px;
+}
+.empty
+{
+    background-position: 0px 0px;
+}
+.document
+{
+    background-position: -64px -48px;
+}
+.health
+{
+    background-position: -128px -48px;
+}
+.business
+{
+    background-position: -192px -48px;
+}
+.science
+{
+    background-position: 0 -64px;
+}
+.books
+{
+    background-position: -16px -64px;
+}
+.music
+{
+    background-position: -32px -64px;
+}
+.time
+{
+    background-position: -48px -64px;
+}
+.app
+{
+    background-position: -80px -64px;
+}
+.chart
+{
+    background-position: -96px -64px;
+}
+.exclamation
+{
+    background-position: 0px -32px;
+}
+.question
+{
+    background-position: -16px -32px;
+}
+.check
+{
+    background-position: -32px -32px;
+}
+.up
+{
+    background-position: -64px -32px;
+}
+.down
+{
+    background-position: -80px -32px;
+}
+.home
+{
+    background-position: -192px -64px;
+}

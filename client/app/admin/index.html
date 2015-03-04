@@ -54,7 +54,14 @@
     <!--project-->
     <link href="project/abn_tree.css" rel="stylesheet" />
     <!--project-->
+          <!--tag-input-->
+        <link href="tag-input/ng-tags-input.min.css" rel="stylesheet" />
+         <!--tag-input-->
 
+       <!--tree_view-->
+    <link href="project/tree_view/css/samples.css" rel="stylesheet" />
+    <link href="project/tree_view/css/integralui.treeview.css" rel="stylesheet" />
+         <!--tree_view-->
 </head>
 <body ng-app="eli.admin" ng-controller="LogInCtrl">
     <div ng-controller="NavCtrl" ng-show="nav.show==true" ng-include='"templates/navigation.html"'></div>
@@ -97,6 +104,13 @@
         <script src="partials/task_modal/routes.js"></script>
         <script src="partials/task_modal/task_service.js"></script>
         <!--Task Modal-->
+
+
+  
+          <!--tag-input-->
+         <script src="tag-input/ng-tags-input.min.js"></script>
+         <!--tag-input-->
+       
         <!--common-->
 
         <!-- Our Website Javascripts -->
@@ -110,6 +124,12 @@
         <script src="auth/routes.js"></script>
         <!--auth-->
         <script src="templates/navigation.js"></script>
+             <!--user-->
+        <script src="user/routes.js"></script>
+        <script src="user/user_service.js"></script>
+        <script src="user/views/list/list.js"></script>
+        <script src="user/views/profile/profile.js"></script>
+        <script src="user/views/add/add.js"></script>
         <!--patient-->
         <script src="patients/patients_service.js"></script>
         <script src="patients/routes.js"></script>
@@ -127,12 +147,7 @@
         <script src="meeting/views/list/list.js"></script>
         <script src="meeting/views/add/add.js"></script>
         <script src="meeting/views/item/item.js"></script>
-        <!--user-->
-        <script src="user/routes.js"></script>
-        <script src="user/user_service.js"></script>
-        <script src="user/views/list/list.js"></script>
-        <script src="user/views/profile/profile.js"></script>
-        <script src="user/views/add/add.js"></script>
+   
         <!--date_time_picker-->
     <script src="../common/datetimepicker/datetimepicker-tpls-0.11.js"></script>
     
@@ -150,6 +165,7 @@
         <!--mail-->
         <script src="mail/routes.js"></script>
         <script src="mail/mail_compose.js"></script>
+        <script src="mail/views/mail/mail.js"></script>
         <!--inbox-->
         <script src="mail/views/inbox/inbox.js"></script>
         <!--inbox-->
@@ -187,7 +203,17 @@
         <script src="project/views/task.js"></script>
       
     <!--project-->
+        <!--reminder-->
+        <script src="services/reminder_service.js"></script>
+          <!--reminder-->
 
+
+        <!--tree_view-->
+      
+        <script src="project/tree_view/js/angular.integralui.min.js"></script>
+        <script src="project/tree_view/js/angular.integralui.treeview.min.js"></script>
+          <script src="project/tree_view/tree_view.js"></script>
+         <!--tree_view-->
 
         <!--aninmate-->
 

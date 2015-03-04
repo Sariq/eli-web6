@@ -72,7 +72,7 @@ angular.module('ui.bootstrap.datetimepicker', ["ui.bootstrap"])
             return previousAttrs + createAttr.apply(null, attr)
           }
           var tmpl = "<div  class=\"datetimepicker-wrapper\">" +
-            "<input class=\"form-control\" type=\"text\" ng-click=\"open($event)\" is-open=\"opened\" ng-model=\"ngModel\" " + [
+            "<span class=\"btn pull-right\" ng-click=\"open($event)\"><i class=\"fa fa-calendar\"></i></span><input class=\"form-control\" type=\"text\" ng-click=\"open($event)\" is-open=\"opened\" ng-model=\"ngModel\" " + [
               ["minDate"],
               ["maxDate"],
               ["dayFormat"],
@@ -106,7 +106,7 @@ angular.module('ui.bootstrap.datetimepicker', ["ui.bootstrap"])
           function($scope) {
             $scope.time_change = function() {
               if (angular.isDefined($scope.ngModel) && angular.isDefined($scope.time)) {
-                //$scope.ngModel.setHours($scope.time.getHours(), $scope.time.getMinutes());
+                $scope.ngModel.setHours($scope.time.getHours(), $scope.time.getMinutes());
                 //alert($scope.time.getHours()+','+ $scope.time.getMinutes())
               }
             }

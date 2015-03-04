@@ -30,14 +30,17 @@
                     description: "man's best friend", to: []
                 }
             },
-            {
-                label: 'Dog2',
-                data: {
-                    description: "man's best friend2", to: []
-                }
-            }
+    {
+        label: 'Dog2',
+        data: {
+            description: "man's best friend2", to: []
+        }
+    }
             ]
         }];
+
+
+
         self.project = new self.projectResource(project)
         return project;
     };

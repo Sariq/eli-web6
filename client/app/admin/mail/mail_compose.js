@@ -2,33 +2,41 @@
 
     function MailComposeService($resource, localStorageService) {
         var self = this;
-
+        self.userList = [];
       
 
         self.mailResource = $resource('/MailMessageService.svc/api/:id', {},
           { update: { method: 'PUT' } }
         );
-
-      
-
+        self.setInboxMessages = function (inboxMessages) {
+            
+            self.inboxMessages = inboxMessages;
+        }
+        self.getInboxMessages = function () {
+            return self.inboxMessages;
+        }
+        self.setUserList = function (userList) {
+            self.userList = userList;
+        }
+        self.getUserList = function () {
+            return self.userList;
+        }
         self.create = function () {
             var mailMessage = {
                 
     
                 fromUser: [
-                    "123",
-                    "karin"
+             
                 ],
                 toUser: [
-                    "123",
-                    "54f221f73f21e50c9c969240"
+                  
                 ],
-                subject: "subject",
-                content: "content",
+                subject: "",
+                content: "",
             
-                isRead: true,
-                isStar: true,
-                isDelete: true
+                isRead: false,
+                isStar: false,
+                isDelete: false
             }
             self.mailMessage = new self.mailResource(mailMessage)
             return self.mailMessage;

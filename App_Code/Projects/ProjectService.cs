@@ -2,11 +2,11 @@
 
 public class ProjectService : DatabaseActions, IProject
 {
-    public Project AddProject(Project project)
+    public void AddProject(List<Project> project)
     {
-        var projectId = InsertObjectAndReturnId(project, "Project").Result;
-        var dbProject = GetProject(projectId);
-        return dbProject;
+        //var projectId = InsertObjectAndReturnId(project, "Project").Result;
+       // var dbProject = GetProject(projectId);
+       // return dbProject;
     }
 
     public void RemoveProject(string projectId)

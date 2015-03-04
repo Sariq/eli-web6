@@ -12,7 +12,7 @@ public interface IProject
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    Project AddProject(Project project);
+    void AddProject(List<Project> project);
 
 
     [OperationContract]

@@ -1,71 +1,54 @@
-﻿<!--<table>
-    <tr>
-
-        <td style="vertical-align: top">
-
-            <table>
-                <tr>
-                    <td style="vertical-align: top">
-
-                        <hr>
-                         branch lable <input ng-model="lable"/><br />
-                       branch description  <input ng-model="description"/>
-                        <button ng-click="try_adding_a_branch()" class="btn btn-default btn-sm">Add Branch</button>
-                    </td>
-                    <td style="vertical-align: top">
-                        <div style="width: 250px; margin-left: 100px; background: red; border: 1px solid lightgray; border-radius: 5px;">
-                            <span ng-if="doing_async">...loading...</span>
-                            <abn-tree tree-data="projectArr" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="2" initial-selection="Granny Smith"></abn-tree>
-                        </div>
-                    </td>
-                    <td style="padding: 20px; vertical-align: top;">
-                        <div style="width: 300px" class="alert alert-warning">{{ output }}</div>
-                    </td>
-                    <td style="padding: 20px; vertical-align: top;">
-                      
-
-              </td>
-                    
-             
-                    
-                </tr>
-                <tr>       <td style="padding: 20px; vertical-align: top;">
-                        {{projectArr}}
-                    projec lable <input ng-model="projectLable"/><br />
-                    <button ng-click="addProject()" class="btn btn-default btn-sm">Add Project</button>
-                       
-
-
-              </td></tr>
-            </table>
-        </td>
-    </tr>
-</table>-->
-
-
-
+﻿
 <div class="row ">
 
 
-              <div class="modal-content">
-            <div class="modal-header text-right">
-                <h3 class="text-center">{{task.task.label}}</h3>
-            </div>
-                  {{task.task}}
+    <div class="modal-content">
+        <div class="modal-header text-right">
+            <h3 class="text-center">{{task.task.text}}</h3>
+        </div>
+        {{task.task}}
                   <div class="panel-body">
 
+                      <div class="row">
+                          <div class="col-md-12  col-xs-12">
+                              <label class="label-text-size pull-right">
+                                  : כותרת
+                              </label>
+                          </div>
+                          <div class="col-md-12 col-xs-12">
+                              <input class="form-control input-md" ng-model="task.task.title" placeholder="">
+                          </div>
 
-                      	<datetimepicker ng-change="task.validateDate()"  min-date="task.minDate"
-			show-weeks="showWeeks" hour-step="task.hourStep" minute-step="task.minuteStep"
-			ng-model="task.reminder.reminderTime" show-meridian="task.showMeridian"
-			date-format="dd/MM/yyyy" date-options="task.dateOptions"
-			date-disabled="task.disabled(date, mode)" readonly-time="false"></datetimepicker>
-       <button class="btn btn-info" ng-click="task.saveReminder()">Remind Me</button>
-        {{task.reminder}}
-   
-                        </div>
+                      </div>
+                      <br />
 
-       </div>
+                      <div class="row">
+                          <div class="form-group">
+                              <div class="col-md-12 col-xs-12 ">
+                                  <label class="pull-right" for="content">: תוכן</label>
+                                  <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
+                                  <text-angular style="direction: rtl" ng-model="task.task.body"></text-angular>
+                              </div>
+                          </div>
+                      </div>
+                      <br />
+                      <div class="row">
+
+                          <div class="col-md-4 col-xs-4 pull-right">
+                              <datetimepicker ng-change="task.validateDate()"
+                                  min-date="task.tmpDate"
+                                  hour-step="task.hourStep" minute-step="task.minuteStep"
+                                  ng-model="task.reminder.reminderTime" show-meridian="task.showMeridian"
+                                  date-format="dd/MM/yyyy" 
+                                  date-disabled="task.disabled(date, mode)" readonly-time="false"></datetimepicker>
+                     
+                          </div>
+                      </div>
+ <button class="btn btn-info" ng-click="task.saveReminder()">Remind Me</button>
+
+
+                  </div>
     </div>
-  
+</div>
+
 

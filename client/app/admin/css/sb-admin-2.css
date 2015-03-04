@@ -63,7 +63,7 @@ background-image:linear-gradient(to bottom,#fff 0,#F8F8F9 100%);
     min-height: 50px;
 }
 
-.navbar-top-links .dropdown-menu li {
+.navbar-top-links .dropdown-menu  li {
     display: block;
 }
 
@@ -79,6 +79,12 @@ background-image:linear-gradient(to bottom,#fff 0,#F8F8F9 100%);
 .navbar-top-links .dropdown-menu li a div {
     white-space: normal;
 }
+
+
+
+
+
+
 
 .navbar-top-links .dropdown-messages,
 .navbar-top-links .dropdown-tasks,

@@ -51,29 +51,48 @@
         <span ui-view></span>
 
     </div>
-       
+
 
     <div class="col-md-3">
-              <div class="modal-content">
+        <div class="modal-content">
             <div class="modal-header text-right">
-                <h3 class="text-center">User</h3>
+                <h3 class="text-center">User - {{currItem}}</h3>
             </div>
-            <div class="panel-body" style=" background:#0094ff; direction:rtl">
-                 <abn-tree tree-data="projectArr" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="1" initial-selection="Granny Smith"></abn-tree>
-       </div>
+            <div class="panel-body" style="background: #5E5250; direction: rtl">
 
-                            <div class="modal-footer ">
-     
-                    <span class="pull-left">
 
-                                branch lable <input ng-model="lable"/><br />
-                       branch description  <input ng-model="description"/>
-                        <button ng-click="try_adding_a_branch()" class="btn btn-default btn-sm">Add Branch</button>
-                        <br />
-                     projec lable <input ng-model="projectLable"/><br />
+ <iui-treeview name="{{treeName}}" class="directive" items="localData" allow-drag="true" allow-drop="true"  rtl="showRTL" label-edit="true" events="treeEvents" 
+     show-icons="false" tabindex="0"></iui-treeview>
+
+
+
+
+            </div>
+
+            <div class="modal-footer ">
+
+
+                
+            <button ng-click="addRoot()">Add Root</button><br />
+					<button ng-click="addChild()" >Add Child</button><br />
+            <input ng-model="itemName" /><br />
+            <button ng-click="remove()" >Remove</button><br />
+            <button ng-click="clear()">Clear</button>
+
+         <!--       <span class="pull-left">branch lable
+                    <input ng-model="lable" /><br />
+                    branch description 
+                    <input ng-model="description" />
+                    <button ng-click="try_adding_a_branch()" class="btn btn-default btn-sm">Add Branch</button>
+                    <br />
+                    projec lable
+                    <input ng-model="projectLable" /><br />
                     <button ng-click="addProject()" class="btn btn-default btn-sm">Add Project</button>
-                         </span>
-                </div>
-    </div>
+                    <br>
+                </span>-->
+            </div>
         </div>
     </div>
+</div>
+<!--  <abn-tree tree-data="projectArr" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="1" initial-selection="Granny Smith"></abn-tree>-->
+{{localData}}

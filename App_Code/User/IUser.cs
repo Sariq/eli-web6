@@ -79,10 +79,10 @@ public interface IUser
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetAllNotApprovedRemindersOfUser/{id}")
+         UriTemplate = "GetAllNotApprovedRemindersOfUser")
     ]
     List<Reminder> GetAllNotApprovedRemindersOfUser(string id);
 }

@@ -5,7 +5,9 @@ angular.module('eli.admin', [
   'ngResource',
   'eli.common',
       'angularBootstrapNavTree',
-      'AbnTest', 
+      'AbnTest',
+      'integralui',
+      'ngTagsInput',
   'textAngular',
   'ui.router',
   'ui.bootstrap',
@@ -94,8 +96,37 @@ angular.module('eli.admin', [
           return new Date(parseInt(x.substr(6)));
       };
   });
+  angular.module('eli.admin').filter("inboxDate", function ($filter) {
+      return function (x) {
+          var first = new Date(parseInt(x.substr(6)));
+          var second = new Date();
+          var diff = first - second;
 
-  angular.module('eli.admin').config(['$validationProvider', function ($validationProvider) {
+          // | date:'a h:mm'
+          if (diff == 0) {
+              return $filter('date')(first, 'd MMM')
+          } else {
+              return $filter('date')(first, 'd MMM')
+          }
+          
+          //return Math.floor(diff / 86400000);
+      };
+  });
+
+  angular.module('eli.admin').filter("startFrom", function () {
+      return function (items, start) {
+          if (items != undefined) {
+           
+              start = +start; //parse to int
+              var tmpItems = [];
+              tmpItems = items.slice(start);
+             
+              return tmpItems;
+          }
+      }
+  });
+
+  angular.module('eli.admin').config(['$validationProvider','tagsInputConfigProvider', function ($validationProvider, tagsInputConfigProvider) {
       $validationProvider.showSuccessMessage = false; // or true(default)
 
       var expression = {
@@ -111,5 +142,17 @@ angular.module('eli.admin', [
 
       $validationProvider.setExpression(expression) // set expression
                         .setDefaultMsg(validMsg);
+
+      tagsInputConfigProvider
+       .setDefaults('tagsInput', {
+           placeholder: ''
+          
+       })
+      .setActiveInterpolation('tagsInput', {
+          placeholder: false
+    
+      })
+
+
     
   }]);

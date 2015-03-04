@@ -1,8 +1,8 @@
 (function () {
-    function LogInCtrl(AuthService, $scope, $location, $rootScope, localStorageService, jwtHelper, ipCookie, $http, $timeout) {
+    function LogInCtrl(AuthService, $scope, $location, $rootScope, localStorageService, jwtHelper, ipCookie, $http, $timeout, UserAdmin, MailComposeService) {
         var self = this;
         console.log("LogInCtrl")
-        
+        self.user = AuthService.getUserInfo();
         $scope.obj={}
         $scope.obj.user = AuthService.create();
         $scope.ob={};
@@ -21,22 +21,7 @@
 
         });
         //$scope.getReminders = function () {
-            $http({
-                url: '/ReminderService.svc/getReminderList',
-                method: 'POST',
-                data: '54f383ab3f21d31510b71e8f'
-            }).then(function (response) {
-                console.log('getReminderList')
-                console.log(response.data)
-                var endTime = new Date()
-              
-                var difference = new Date((parseInt(response.data.reminderTime.substr(6)))) - endTime.getTime();
-                $timeout(function () {
-                    alert('My First Reminder:)))')
-                }, difference)
-                alert(difference)
-
-            }, function () { alert("getReminderList error") });
+      
         //}
       //  alert(jwtHelper.getTokenExpirationDate((localStorageService.cookie.get('id_token'))))
 
@@ -149,9 +134,16 @@
               });*/
     }
 
-loadAuth();
+        loadAuth();
+
+        self.userList = UserAdmin.query();
+        self.userList.$promise.then(function (result) {
+            console.log(result);
+            MailComposeService.setUserList(result)
+        });
+
   }
 
   angular.module('eli.admin')
-    .controller('LogInCtrl', ['AuthService', '$scope', '$location', '$rootScope', 'localStorageService','jwtHelper','ipCookie','$http','$timeout', LogInCtrl]);
+    .controller('LogInCtrl', ['AuthService', '$scope', '$location', '$rootScope', 'localStorageService','jwtHelper','ipCookie','$http','$timeout','UserAdmin','MailComposeService', LogInCtrl]);
 }());

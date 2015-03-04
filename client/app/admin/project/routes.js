@@ -7,7 +7,7 @@
             .state('projects', {
                 url: '/projects',
                 templateUrl: 'project/project.html',
-                controller: 'AbnTestController',
+                controller: 'TreeViewController',
                 controllerAs: ''
 
             })
