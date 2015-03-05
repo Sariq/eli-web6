@@ -5,18 +5,29 @@
      * @param UserAdmin: Service
      * @constructor
      */
-    function InboxCtrl($location, $scope, MailComposeService, $stateParams, $http, AuthService, MailComposeService, UserAdmin) {
+    function InboxCtrl($location, $scope,  $stateParams, $http, AuthService, MailService, UserAdmin) {
         var self = this;
-        
-        
-        //self.mailMessage.$save(function (response) {
-        //    console.log(response);
+        self.allIsChecked = false;
+        self.pageIdx = 0;
+        self.inboxCounter = 0;
+        $scope.$on('CatMailMessages', function () {
 
-        //});
-       // console.log(self.user._id)
+            self.messages = MailService.getInboxMessages(); 
+       
+                angular.forEach(self.messages, function (value, key) {
+                    if(!value.isRead){
+                        self.inboxCounter++;
+                    }
+                })
+        });
+        self.messages = MailService.getInboxMessages();
 
 
-
+        self.selectAll = function () {
+            angular.forEach(self.messages, function (value, key) {
+                value.isChecked = self.allIsChecked;
+            })
+        }
 
 
 
@@ -26,7 +37,7 @@
     }
 
     angular.module('eli.admin')
-        .controller('InboxCtrl', ['$location', '$scope', 'MailComposeService', '$stateParams', '$http', 'AuthService','MailComposeService','UserAdmin', InboxCtrl]);
+        .controller('InboxCtrl', ['$location', '$scope',  '$stateParams', '$http', 'AuthService','MailService','UserAdmin', InboxCtrl]);
 }());
 
 

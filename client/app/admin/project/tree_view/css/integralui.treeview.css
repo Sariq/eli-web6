@@ -59,7 +59,7 @@
 }
 .iui-treeview-item-content
 {
-	border-radius: 3px;
+
 	margin: 0;
 	vertical-align: middle;
 }
@@ -131,8 +131,7 @@ background-color:#3798D3;
     background :         linear-gradient(white, #F1EFEC);
 
     background-color: #F1EFEC;
-	border: thin solid black;
-	border-radius: 3px;
+
 	font-size: 16px;
 	margin:0;
 	padding:0;
@@ -153,7 +152,7 @@ background-color:#3798D3;
 {
     background-image: url(../resources/move-in.png);
     background-repeat: no-repeat;
-	border-right: thin solid #c5c5c5;
+
 	display: inline-block;
 	padding: 0 2px 0 0;
 	margin: 2px 2px 3px 2px;
@@ -165,7 +164,7 @@ background-color:#3798D3;
 {
     background-image: url(../resources/move-up.png);
     background-repeat: no-repeat;
-	border-right: thin solid #c5c5c5;
+
 	display: inline-block;
 	padding: 0 2px 0 0;
 	margin: 2px 2px 3px 2px;
@@ -177,7 +176,7 @@ background-color:#3798D3;
 {
     background-image: url(../resources/move-right.png);
     background-repeat: no-repeat;
-	border-right: thin solid #c5c5c5;
+
 	display: inline-block;
 	padding: 0 2px 0 0;
 	margin: 2px 2px 3px 2px;
@@ -189,7 +188,7 @@ background-color:#3798D3;
 {
     background-image: url(../resources/move-down.png);
     background-repeat: no-repeat;
-	border-right: thin solid #c5c5c5;
+
 	display: inline-block;
 	padding: 0 2px 0 0;
 	margin: 2px 2px 3px 2px;
@@ -201,7 +200,7 @@ background-color:#3798D3;
 {
     background-image: url(../resources/move-left.png);
     background-repeat: no-repeat;
-	border-right: thin solid #c5c5c5;
+
 	display: inline-block;
 	padding: 0 2px 0 0;
 	margin: 2px 2px 3px 2px;
@@ -213,7 +212,7 @@ background-color:#3798D3;
 {
     background-image: url(../resources/move-end.png);
     background-repeat: no-repeat;
-	border-right: thin solid #c5c5c5;
+	
 	display: inline-block;
 	padding: 0 2px 0 0;
 	margin: 2px 2px 3px 2px;

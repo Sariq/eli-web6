@@ -3,12 +3,12 @@
 
     <div class="modal-content">
         <header class="panel-heading wht-bg">
-            <h4 class="gen-case">Inbox ({{inbox.inboxCounter}})
-                        <form action="#" class="pull-right mail-src-position">
-                            <div class="input-append">
-                                <input ng-model="query['subject']" type="text" class="form-control " placeholder="Search Mail">
-                            </div>
-                        </form>
+            <h4 class="gen-case">Trash
+                                         <form action="#" class="pull-right mail-src-position">
+                                             <div class="input-append">
+                                                 <input ng-model="query['subject']" type="text" class="form-control " placeholder="Search Mail">
+                                             </div>
+                                         </form>
             </h4>
         </header>
         <div class="panel-body minimal">
@@ -17,7 +17,7 @@
                 <div class="chk-all">
                     <div class="pull-left mail-checkbox">
 
-                        <input type="checkbox" ng-model="inbox.allIsChecked" ng-change="inbox.selectAll()" />
+                        <input type="checkbox" ng-model="trash.allIsChecked" ng-change="trash.selectAll()" />
                     </div>
 
                     <div class="btn-group">
@@ -25,8 +25,8 @@
                                         <i class="fa fa-angle-down "></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a ng-click="mail.toRead(sent.messages)">Read</a></li>
-                            <li><a ng-click="mail.toUnRead(sent.messages)">Unread</a></li>
+                            <li><a ng-click="mail.toRead(trash.messages)">Read</a></li>
+                            <li><a ng-click="mail.toUnRead(trash.messages)">Unread</a></li>
                         </ul>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     </a>
                 </div>
                 <div class="btn-group hidden-phone">
-                    <a ng-click="mail.deleteMail(sent.messages)" href="#" class="btn mini blue">
+                    <a ng-click="mail.deleteMail(trash.messages)" href="#" class="btn mini blue">
                         <i class="fa fa-trash-o"></i>Delete
                     </a>
 
@@ -45,12 +45,12 @@
 
 
                 <ul class="unstyled inbox-pagination">
-                    <li><span>{{inbox.pageIdx*50+1}}-{{(inbox.pageIdx+1)*50}} of {{inbox.messages.length}}</span></li>
+                    <li><span>{{trash.pageIdx*50+1}}-{{(trash.pageIdx+1)*50}} of {{trash.messages.length}}</span></li>
                     <li>
-                        <a ng-click="inbox.pageIdx=inbox.pageIdx-1" class="np-btn"><i class="fa fa-angle-left  pagination-left"></i></a>
+                        <a ng-click="trash.pageIdx=trash.pageIdx-1" class="np-btn"><i class="fa fa-angle-left  pagination-left"></i></a>
                     </li>
                     <li>
-                        <a ng-click="inbox.pageIdx=inbox.pageIdx+1" class="np-btn"><i class="fa fa-angle-right pagination-right"></i></a>
+                        <a ng-click="trash.pageIdx=trash.pageIdx+1" class="np-btn"><i class="fa fa-angle-right pagination-right"></i></a>
                     </li>
                 </ul>
             </div>
@@ -58,7 +58,7 @@
                 <table class="table table-inbox table-hover">
                     <tbody>
 
-                        <tr ng-repeat="message in inbox.messages.slice().reverse() | startFrom:inbox.pageIdx*50 | limitTo:50 | filter:query" ng-class="{'unread':!message.isRead}">
+                        <tr ng-repeat="message in trash.messages.slice().reverse() | startFrom:trash.pageIdx*50 | limitTo:50 | filter:query" ng-class="{'unread':!message.isRead}">
                             <td class="inbox-small-cells">
                                 <input ng-init="message.isChecked=false" ng-model="message.isChecked" type="checkbox" class="mail-checkbox">
                             </td>
@@ -68,7 +68,6 @@
                             <td class="view-message  inbox-small-cells"></td>
                             <td class="view-message  text-right">{{message._date | inboxDate }}</td>
                         </tr>
-
 
                         <tr class="unread">
                             <td class="inbox-small-cells">

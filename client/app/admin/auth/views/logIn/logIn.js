@@ -1,5 +1,5 @@
 (function () {
-    function LogInCtrl(AuthService, $scope, $location, $rootScope, localStorageService, jwtHelper, ipCookie, $http, $timeout, UserAdmin, MailComposeService) {
+    function LogInCtrl(AuthService, $scope, $location, $rootScope, localStorageService, jwtHelper, ipCookie, $http, $timeout, UserAdmin, MailService) {
         var self = this;
         console.log("LogInCtrl")
         self.user = AuthService.getUserInfo();
@@ -139,11 +139,11 @@
         self.userList = UserAdmin.query();
         self.userList.$promise.then(function (result) {
             console.log(result);
-            MailComposeService.setUserList(result)
+            MailService.setUserList(result)
         });
 
   }
 
   angular.module('eli.admin')
-    .controller('LogInCtrl', ['AuthService', '$scope', '$location', '$rootScope', 'localStorageService','jwtHelper','ipCookie','$http','$timeout','UserAdmin','MailComposeService', LogInCtrl]);
+    .controller('LogInCtrl', ['AuthService', '$scope', '$location', '$rootScope', 'localStorageService','jwtHelper','ipCookie','$http','$timeout','UserAdmin','MailService', LogInCtrl]);
 }());

@@ -1,7 +1,7 @@
 (function () {
 
     function routes($stateProvider, $urlRouterProvider) {
-      // $urlRouterProvider.when('/mail', '/mail/inbox');
+       $urlRouterProvider.when('/mail', '/mail/inbox');
         $stateProvider
       .state('mail', {
           url: '/mail',
@@ -16,7 +16,7 @@
               url: '/mail_compose',
               templateUrl: 'mail/views/mail_compose/mail_compose.html',
               controller: 'MailComposeCtrl',
-              controllerAs: ''
+              controllerAs: 'compose'
 
           })
          .state('mail.inbox', {
@@ -26,14 +26,36 @@
              controllerAs: 'inbox'
 
          })    
-            .state('mail.inbox.inbox_item', {
-                url: '/inbox_item',
-                templateUrl: 'mail/views/inbox_item/inbox_item.html',
-                controller: '',
-                controllerAs: ''
+            .state('mail.mail_message', {
+                url: '/mail_message',
+                templateUrl: 'mail/views/mail_message/mail_message.html',
+                controller: 'MailMessageCtrl',
+                controllerAs: 'mailMessage'
 
-            })   
-         
+            })
+
+         .state('mail.sent', {
+             url: '/sent',
+             templateUrl: 'mail/views/sent/sent.html',
+             controller: 'SentCtrl',
+             controllerAs: 'sent'
+
+         })
+          .state('mail.trash', {
+              url: '/trash',
+              templateUrl: 'mail/views/trash/trash.html',
+              controller: 'TrashCtrl',
+              controllerAs: 'trash'
+
+          })
+             .state('mail.important', {
+                 url: '/important',
+                 templateUrl: 'mail/views/important/important.html',
+                 controller: 'ImportantCtrl',
+                 controllerAs: 'important'
+
+             })
+
      
   }
   angular.module('eli.admin')

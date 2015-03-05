@@ -34,7 +34,7 @@
 
 
             <a class=" dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                <span class="nav-lable label-success">4</span>
+                <span ng-if="inboxCounter!=0" class="nav-lable label-success">{{inboxCounter}}</span>
                 <i class="fa fa-envelope fa-fw"></i><i class="fa fa-caret-down"></i>
 
             </a>

@@ -3,19 +3,11 @@
 
     <header class="panel-heading wht-bg">
         <h4 class="gen-case">Compose Mail
-                           <form action="#" class="pull-right mail-src-position">
-                               <div class="input-append">
-                                   <input type="text" class="form-control " placeholder="Search Mail">
-                               </div>
-                           </form>
+                    
         </h4>
     </header>
     <div class="panel-body">
-        <div class="compose-btn pull-right">
-            <button class="btn btn-theme btn-sm"><i class="fa fa-check"></i>Send</button>
-            <button class="btn btn-sm"><i class="fa fa-times"></i>Discard</button>
-            <button class="btn btn-sm">Draft</button>
-        </div>
+
         <div class="compose-mail">
             <form role="form-horizontal" method="post">
                 <div class="form-group ">
@@ -52,12 +44,16 @@
                         <text-angular style="direction: rtl" ng-model="mailMessage.content"></text-angular>
                     </div>
                 </div>
-                <input type="file" class="default">
+                
         </div>
+         <br /> <br />
+
+        <input type="file" class="default">
+        <br />
         <div class="compose-btn">
-            <button ng-click="sendMessage()" class="btn btn-theme btn-sm"><i class="fa fa-check"></i>Send</button>
-            <button class="btn btn-sm"><i class="fa fa-times"></i>Discard</button>
-            <button class="btn btn-sm">Draft</button>
+            <button ng-click="compose.sendMessage()" class="btn btn-theme btn-sm"><i class="fa fa-check"></i>Send</button>
+            <a href="#mail"><button class="btn btn-sm"><i class="fa fa-times"></i>Discard</button></a>
+ 
         </div>
 
 
