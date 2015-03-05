@@ -13,24 +13,26 @@
       $scope.projectArr = ProjectService.create();
 
 
-      $http({
-          url: '/ProjectService.svc/api',
-          method: 'POST',
-          data: $scope.projectArr
-      }).then(function (response) {
+      //$http({
+      //    url: '/ProjectService.svc/api',
+      //    method: 'POST',
+      //    data: $scope.projectArr
+      //}).then(function (response) {
 
-          self.assignments = response.data;
+      //    self.assignments = response.data;
 
 
-      }, function () { alert("getAssignmentsByIds edit error") });
+      //}, function () { alert("getAssignmentsByIds edit error") });
 
 
 
       console.log($scope.projectArr)
       //, { label: 'prj1', children: [] }
-    var apple_selected, tree, treedata_avm, treedata_geography;
+      var apple_selected, tree, treedata_avm, treedata_geography;
+    //  $scope.currentBrunch = ProjectService.getTask();
     $scope.my_tree_handler = function(branch) {
-      var _ref;
+        var _ref;
+        $scope.currentBrunch = branch;
       $scope.output = "You selected: " + branch.label;
         //alert(branch.data.description)
      

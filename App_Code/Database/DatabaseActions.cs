@@ -69,7 +69,7 @@ public class DatabaseActions
     {
         var collection = database.GetCollection(collectionName);
         var obj = collection.FindAllAs<ObjectType>();
-        return obj.ToList<ObjectType>();
+         return obj.ToList<ObjectType>();
     }
 
     protected List<ObjectType> GetAllObject<ObjectType>(string fieldName, BsonValue fieldValue, string collectionName)
@@ -92,17 +92,6 @@ public class DatabaseActions
             objList.Add(obj);
         }
         return objList;
-    }
-    protected List<ObjectType> GetAllObject<ObjectType>(string[] objectsId, string collectionName)
-    {
-        var collection = database.GetCollection(collectionName);
-        var objList = new List<ObjectType>();
-        foreach (string id in objectsId)
-        {
-            var obj = GetObject<ObjectType>(id, collectionName).Result;
-            objList.Add(obj);
-        }
-        return objList;
-    }
+    }  
 
 }

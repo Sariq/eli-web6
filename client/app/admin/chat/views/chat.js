@@ -113,7 +113,7 @@
                     //}
 
                     for (var j = 0; j < self.chatMessages.length; j++) {
-                        self.chatMessages[j].messageUpdateT = self.updateMessageTme(myJsonObject_Temp.allMessage[j].messageTime)
+                        self.chatMessages[j].messageUpdateT = self.updateMessageTme(myJsonObject_Temp.allMessage[j]._date)
                         
                     }
                     console.log(self.chatMessages)
@@ -137,7 +137,7 @@
         $interval(function() {
      
             for (var j = 0; j < self.chatMessages.length; j++) {
-                self.chatMessages[j].messageUpdateT = self.updateMessageTme(self.chatMessages[j].messageTime)
+                self.chatMessages[j].messageUpdateT = self.updateMessageTme(self.chatMessages[j]._date)
             }
         }, 20000);
   
@@ -164,7 +164,7 @@
             console.log(response)
             self.chatMessages = response.data;
             for (var j = 0; j < self.chatMessages.length; j++) {
-                self.chatMessages[j].messageUpdateT = self.updateMessageTme(self.chatMessages[j].messageTime)
+                self.chatMessages[j].messageUpdateT = self.updateMessageTme(self.chatMessages[j]._date)
 
             }
 
@@ -174,13 +174,17 @@
 
 
     self.updateMessageTme = function (messageTime) {
-        var startTime = new Date(messageTime)
+        
+        var startTime = new Date(parseInt(messageTime.substr(6)))
+        console.log(startTime)
         var endTime = new Date()
         var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
+      
         var resultInMinutes = Math.round(difference / 60000);
         if (resultInMinutes > 60) {
             return "more than 1h";
         } else {
+           
             return resultInMinutes + " mins ago";
         }
         

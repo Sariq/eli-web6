@@ -1,8 +1,8 @@
 (function () {
-    function LogInCtrl(AuthService, $scope, $location, $rootScope, localStorageService, jwtHelper, ipCookie) {
+    function LogInCtrl(AuthService, $scope, $location, $rootScope, localStorageService, jwtHelper, ipCookie, $http, $timeout, UserAdmin, MailService) {
         var self = this;
         console.log("LogInCtrl")
-        
+        self.user = AuthService.getUserInfo();
         $scope.obj={}
         $scope.obj.user = AuthService.create();
         $scope.ob={};
@@ -20,7 +20,9 @@
             console.log( $scope.userInfo) 
 
         });
-    
+        //$scope.getReminders = function () {
+      
+        //}
       //  alert(jwtHelper.getTokenExpirationDate((localStorageService.cookie.get('id_token'))))
 
         //jwt
@@ -132,9 +134,17 @@
               });*/
     }
 
-loadAuth();
+        loadAuth();
+
+        self.userList = UserAdmin.query();
+        self.userList.$promise.then(function (result) {
+            console.log(result);
+            UserAdmin.setUserList(result)
+           
+        });
+
   }
 
   angular.module('eli.admin')
-    .controller('LogInCtrl', ['AuthService', '$scope', '$location', '$rootScope', 'localStorageService','jwtHelper','ipCookie', LogInCtrl]);
+    .controller('LogInCtrl', ['AuthService', '$scope', '$location', '$rootScope', 'localStorageService','jwtHelper','ipCookie','$http','$timeout','UserAdmin','MailService', LogInCtrl]);
 }());

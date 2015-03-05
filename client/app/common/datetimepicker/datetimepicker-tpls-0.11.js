@@ -72,7 +72,7 @@ angular.module('ui.bootstrap.datetimepicker', ["ui.bootstrap"])
             return previousAttrs + createAttr.apply(null, attr)
           }
           var tmpl = "<div  class=\"datetimepicker-wrapper\">" +
-            "<input class=\"form-control\" type=\"text\" ng-click=\"open($event)\" is-open=\"opened\" ng-model=\"ngModel\" " + [
+            "<span class=\"btn pull-right\" ng-click=\"open($event)\"><i class=\"fa fa-calendar\"></i></span><input class=\"form-control\" type=\"text\" ng-click=\"open($event)\" is-open=\"opened\" ng-model=\"ngModel\" " + [
               ["minDate"],
               ["maxDate"],
               ["dayFormat"],

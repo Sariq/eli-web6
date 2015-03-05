@@ -34,20 +34,20 @@
 
 
             <a class=" dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                <span class="nav-lable label-success">4</span>
+                <span ng-if="inboxCounter!=0" class="nav-lable label-success">{{inboxCounter}}</span>
                 <i class="fa fa-envelope fa-fw"></i><i class="fa fa-caret-down"></i>
 
             </a>
             <ul class="dropdown-menu dropdown-messages" role="menu">
-                <li>
-                    <a href="#">
+                <li ng-repeat="message in inBoxMessages  | idToUserName" ng-if="!message.isRead">
+                    <a  ng-click="setIsReadMailMessage(message)" href="#">
                         <div>
-                            <strong>John Smith</strong>
+                            <strong>{{message.fromUser[0]}}</strong>
                             <span class="pull-right text-muted">
                                 <em>Yesterday</em>
                             </span>
                         </div>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                        <div>{{message.subject}}</div>
                     </a>
                 </li>
 
@@ -83,18 +83,22 @@
         <!-- /.dropdown-alerts -->
         <li class="btn-group" dropdown>
             <a class=" dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                <span class="nav-lable label-info">6</span>
+                <span ng-if="reminderCounter!=0" class="nav-lable label-info">{{reminderCounter}}</span>
                 <i class="fa fa-bell fa-fw"></i><i class="fa fa-caret-down"></i></a>
 
             <ul class="dropdown-menu dropdown-alerts" role="menu">
-                <li>
+    
+                 <li ng-repeat="reminder in reminderList" ng-if="!reminder.isApproved" style="border-bottom:solid;border-bottom-width:1px">
                     <a href="#">
-                        <div>
-                            <i class="fa fa-comment fa-fw"></i>New Comment
+                        <div ng-click="setIsReadReminder(reminder)">
+                            <i class="fa fa-comment fa-fw"></i>{{reminder.title}}
                                 <span class="pull-right text-muted small">4 minutes ago</span>
                         </div>
                     </a>
+                    
                 </li>
+
+           
             </ul>
         </li>
         <!-- /.dropdown-alerts -->
@@ -129,7 +133,7 @@
                     <a href="#/users">Users <i class="fa fa-user fa-fw"></i></a>
                 </li>
                 <li>
-                    <a href="#/mail">Inbox <i class="fa fa-envelope fa-fw"></i></a>
+                    <a href="#mail">Inbox <i class="fa fa-envelope fa-fw"></i></a>
                 </li>
                 <li data-toggle="collapse" data-target="#products2" class="collapsed">
 
@@ -164,6 +168,9 @@
                 </li>
                  <li>
                     <a href="#projects">{{"Projects" | translate}} <i class="fa fa-folder fa-fw"></i></a>
+                </li>
+                      <li>
+                    <a href="#private">{{"Private" | translate}} <i class="fa fa-folder fa-fw"></i></a>
                 </li>
 
 

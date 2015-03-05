@@ -289,6 +289,7 @@
                   b = tree.get_selected_branch();
                 }
                 if (b != null) {
+                    console.log(b)
                   p = tree.get_parent_branch(b);
                   if (p != null) {
                     tree.select_branch(p);

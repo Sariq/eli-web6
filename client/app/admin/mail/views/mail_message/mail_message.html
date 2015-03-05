@@ -1,0 +1,44 @@
+﻿
+
+<section class="modal-content">
+
+    <header class="panel-heading wht-bg">
+        <h4 class="gen-case">Message
+                    
+        </h4>
+    </header>
+    <div class="panel-body">
+
+        <div class="compose-mailMessage">
+       
+                <div class="form-group ">
+                    <label for="to" class="">From:</label>
+    
+
+                    <ul>
+                        <li ng-repeat="user in mailMessage| idToUserName">{{user.fromUser[0]}}</li>
+                    </ul>
+    
+
+
+                <div class="form-group">
+                    <label for="subject" class="">Subject:</label>
+                     <label>{{mailMessage.message.subject}}</label>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-12 col-xs-12 ">
+
+
+                        <text-area ng-readonly="true" style="direction: rtl"  ng-bind-html="mailMessage.message.content"></text-area>
+                    </div>
+                </div>
+                
+        </div>
+         <br /> <br />
+
+    </div>
+
+</section>

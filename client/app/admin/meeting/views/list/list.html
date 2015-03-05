@@ -10,8 +10,8 @@
                     <a href="#/meeting/item/{{meeting._id}}/{{$index}}">{{meeting.title}}</a>
                 </td>
 
-                <td data-title="'Time'" sortable="'time'">
-                    <a href="#/meeting/item/{{meeting._id}}/{{$index}}">{{meeting.time}}</a>
+                <td data-title="'date'" sortable="'date'">
+                    <a href="#/meeting/item/{{meeting._id}}/{{$index}}">{{meeting._date | jsDate  | date:'dd/MM/yyyy'}}</a>
                 </td>
             </tr>
         </table>

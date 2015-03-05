@@ -38,10 +38,11 @@
         }
 
         self.myUnLoad = function () {
-           
-            var url = "/AsyncHandler.ashx?cmd=unregister&type=web&clientId=" + self.getChatUserId();;
+            alert(self.getChatUserId())
+            var url = "/AsyncHandler.ashx?cmd=unregister&type=web&clientId=" + self.getChatUserId();
             self.xmlHttp_OneTime.open("POST", url, true);
             self.xmlHttp_OneTime.send();
+            self.clearChatUserId();
         }
 
         self.ProcessFunction = function () {
@@ -53,10 +54,10 @@
 
 
         self.myClick = function (myMessage) {
-            //alert(self.getChatUserId();)
+        
             var myObj = { clientId: "clientIdsar", messageContent: "messageContentsar",messageTime:"" };
             var url = "/AsyncHandler.ashx?cmd=sendMessage&myText=" + encodeURIComponent(myMessage) + "&clientId=" + encodeURIComponent(self.getChatUserId()) + "&type=" + "web";
-
+          
             self.xmlHttp_OneTime.open("POST", url, true);
             self.xmlHttp_OneTime.onreadystatechange = self.getResponse_Process;
             self.xmlHttp_OneTime.send();
@@ -70,7 +71,7 @@
             return localStorageService.get("ChatUserId");
         };
         self.clearChatUserId = function () {
-                alert()
+            
             return localStorageService.remove("ChatUserId");
         }
 

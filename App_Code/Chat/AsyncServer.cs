@@ -203,7 +203,10 @@ public class AsyncServer
                 clientService.RemoveAdmin(clientId);
             }else{
                 Debug.Write(type);
-                clientService.RemoveWeb(clientId);
+                Web web=clientService.GetWeb(clientId);
+                web.isOnline =false;
+                clientService.UpdateWeb(web);
+               // clientService.RemoveWeb(clientId);
                 _clientStateList.Remove(state);
 
                 JavaScriptSerializer myJavaScriptSerializer = new JavaScriptSerializer();

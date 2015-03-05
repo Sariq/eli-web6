@@ -23,6 +23,16 @@ public class MailMessageService : DatabaseActions, IMailMessage
         }
     }
 
+    public void UpdateMailMessages(List<MailMessage> mailMessages)
+    {
+        foreach (MailMessage message in mailMessages)
+        {
+
+            UpdateMailMessage(message);
+        }
+    }
+
+
     public void DeleteMailMessageFromTrash(string[] mailMessagesId)
     {
         foreach (string mailMessageId in mailMessagesId)
