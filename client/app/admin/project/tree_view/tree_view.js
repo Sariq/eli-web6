@@ -1,5 +1,5 @@
 ﻿(function () {
-    function TreeViewController(PatientAdmin, $stateParams, $scope, $filter, $location, $treeService, ProjectService, ReminderService, $rootScope, $timeout) {
+    function TreeViewController(PatientAdmin, $stateParams, $scope, $filter, $location, $treeService, ProjectService, ReminderService, $rootScope, $timeout, AuthService,$http) {
         var self = this;
 
         $scope.treeName = "treeSample";
@@ -7,81 +7,11 @@
         $scope.showRTL = true;
         $scope.showIcons = true;
         $scope.currnetItem = '';
-        $scope.localData = [
-            {
-                id: 1,
-                text: "Books",
-                icon: "icons books",
-
-                items: [
-                    { id: 11, pid: 1, text: "Art" },
-                    {
-                        id: 12,
-                        pid: 1,
-
-                        text: "Business",
-
-                        icon: "icons business",
-                        items: [
-                            { id: 121, pid: 12, text: "Economics", body: "zzzzzzzzzzzzzzzzz" },
-                            {
-                                id: 122,
-                                pid: 12,
-                                text: "Investing",
-
-                                icon: "icons chart",
-                                items: [
-                                    { id: 1221, pid: 122, text: "Bonds" },
-                                    { id: 1222, pid: 122, text: "Options" },
-                                    { id: 1223, pid: 122, text: "Stocks" }
-                                ]
-                            },
-                            { id: 123, pid: 12, text: "Management" },
-                            { id: 124, pid: 12, text: "Small Business" }
-                        ]
-                    },
-                    { id: 13, pid: 1, text: "Health", icon: "icons health" },
-                    { id: 14, pid: 1, text: "Literature" },
-                    {
-                        id: 15,
-                        pid: 1,
-                        text: "Science",
-
-                        icon: "icons science",
-                        items: [
-                            { id: 151, pid: 15, text: "Astronomy" },
-                            { id: 152, pid: 15, text: "Mathematics" },
-                            { id: 153, pid: 15, text: "Evolution" },
-                            { id: 154, pid: 15, text: "Nature" }
-                        ]
-                    }
-                ]
-            },
-            { id: 2, text: "Computers" },
-            {
-                id: 3,
-                text: "Electronics",
-
-                items: [
-                    { id: 31, pid: 3, text: "Camera" },
-                    { id: 32, pid: 3, text: "Cell Phones" },
-                    { id: 33, pid: 3, text: "Video Game Consoles" }
-                ]
-            },
-            {
-                id: 4,
-                text: "Music",
-
-                icon: "icons music",
-                items: [
-                    { id: 41, pid: 4, text: "Blues" },
-                    { id: 42, pid: 4, text: "Classic Rock" },
-                    { id: 43, pid: 4, text: "Pop" },
-                    { id: 44, pid: 4, text: "Jazz" }
-                ]
-            },
-            { id: 5, text: "Watches", icon: "icons time" }
-        ];
+        $scope.userInfo = AuthService.getUserInfo()
+        $scope.localData =
+          [
+              { "id": "1", "items": [{ "id": "11", "items": null, "pId": null, "text": "Art" }, { "id": "12", "items": [{ "id": "121", "items": null, "pId": null, "text": "Economics" }, { "id": "122", "items": [{ "id": "1221", "items": null, "pId": null, "text": "Bonds" }, { "id": "1222", "items": null, "pId": null, "text": "Options" }, { "id": "1223", "items": null, "pId": null, "text": "Stocks" }], "pId": null, "text": "Investing" }, { "id": "123", "items": null, "pId": null, "text": "Management" }, { "id": "124", "items": null, "pId": null, "text": "Small Business" }], "pId": null, "text": "Business" }, { "id": "13", "items": null, "pId": null, "text": "Health" }, { "id": "14", "items": null, "pId": null, "text": "Literature" }, { "id": "15", "items": [{ "id": "151", "items": null, "pId": null, "text": "Astronomy" }, { "id": "152", "items": null, "pId": null, "text": "Mathematics" }, { "id": "153", "items": null, "pId": null, "text": "Evolution" }, { "id": "154", "items": null, "pId": null, "text": "Nature" }], "pId": null, "text": "Science" }], "pId": null, "text": "Books" }, { "id": "2", "items": null, "pId": null, "text": "Computers" }, { "id": "3", "items": [{ "id": "31", "items": null, "pId": null, "text": "Camera" }, { "id": "32", "items": null, "pId": null, "text": "Cell Phones" }, { "id": "33", "items": null, "pId": null, "text": "Video Game Consoles" }], "pId": null, "text": "Electronics" }, { "id": "4", "items": [{ "id": "41", "items": null, "pId": null, "text": "Blues" }, { "id": "42", "items": null, "pId": null, "text": "Classic Rock" }, { "id": "43", "items": null, "pId": null, "text": "Pop" }, { "id": "44", "items": null, "pId": null, "text": "Jazz" }], "pId": null, "text": "Music" }, { "id": "5", "items": null, "pId": null, "text": "Watches" }
+          ]
 
 
 
@@ -157,26 +87,33 @@
 
         $scope.treeEvents = {
 
-            itemClick: function (e) {
-                return $scope.onItemClick(e);
-            }
+            //itemClick: function (e) {
+            //    return $scope.onItemClick(e);
+            //} ,
+            afterLabelEdit: function (e) {
+                return $scope.onAfterLabelEdit(e);
+        }
 
         }
 
+        $scope.onAfterLabelEdit = function (e) {
+          alert()
+        }
+
         $scope.onItemClick = function (e) {
-        
+            
             $scope.currItem = e.item;
             $scope.currItems = e.item;
-            $scope.$watch('currItems', function (newVal, oldVal) {
+            $scope.listener = $scope.$watch('currItems', function (newVal, oldVal) {
                
                 if (($scope.currItems != undefined) && newVal.text != undefined && oldVal.text != undefined && newVal.text != oldVal.text) {
                     ProjectService.setTask(e.item);
                     $rootScope.$broadcast("prjEdit");
                     alert("edit "+newVal.text + '-' + oldVal.text);
-                    $scope.currItems = '';
+                   
                     return
                 }
-                
+               
                
             }, true);
            
@@ -206,11 +143,47 @@
         $rootScope.$on('taskReminder', function () {
             alert(ReminderService.getTaskId())
         });
+        $scope.save = function () {
+            var project = { userId: $scope.userInfo._id, items: $scope.localData };
+            $http.post('/ProjectService.svc/api', project).
+       success(function (data, status, headers, config) {
+          
+       }).error(function (data, status, headers, config) { });
+                alert("Project Add")
+        }
+
+        $scope.get = function () {
+          //  var project = { userId: $scope.userInfo._id, items: $scope.localData };
+            $http.post('/ProjectService.svc/getProject', $scope.userInfo._id).
+       success(function (data, status, headers, config) {
+           $scope.localData = data;
+           console.log(data)
+       }).error(function (data, status, headers, config) { });
+            alert("Project Get")
+        }
+        $scope.update = function () {
+            var project = { userId: $scope.userInfo._id, items: $scope.localData ,_id:'54f8a3b53f21cc0dbc645dac'};
+            $http.post('/ProjectService.svc/update', project).
+       success(function (data, status, headers, config) {
+
+       }).error(function (data, status, headers, config) { });
+            alert("Project Add")
+        }
+        $scope.update = function () {
+            var project = { userId: $scope.userInfo._id, items: $scope.localData, _id: '54f8a3b53f21cc0dbc645dac' };
+            $http.post('/ProjectService.svc/update', project).
+       success(function (data, status, headers, config) {
+
+       }).error(function (data, status, headers, config) { });
+            alert("Project Add")
+        }
+
+       
 
     }
 
     angular.module('eli.admin')
-      .controller('TreeViewController', ['PatientAdmin', '$stateParams', '$scope', '$filter', '$location', 'IntegralUITreeViewService', 'ProjectService', 'ReminderService', '$rootScope', '$timeout', TreeViewController]);
+      .controller('TreeViewController', ['PatientAdmin', '$stateParams', '$scope', '$filter', '$location', 'IntegralUITreeViewService', 'ProjectService', 'ReminderService', '$rootScope', '$timeout','AuthService','$http', TreeViewController]);
 }());
 
 

@@ -5,7 +5,7 @@
      * @param UserAdmin: Service
      * @constructor
      */
-    function MailComposeCtrl($location, $scope, MailService, $stateParams, $http, AuthService, $q, UserAdmin, $rootScope) {
+    function MailComposeCtrl($location, $scope, MailService, $stateParams, $http, AuthService, $q, UserAdmin, $rootScope, UserAdmin) {
         var self = this;
         self.tagArr = [];
         $scope.mailMessage = MailService.create();
@@ -22,7 +22,7 @@
         });
         }
  
-        self.tagArrs = MailService.getUserList();
+        self.tagArrs = UserAdmin.getUserList();
         for (var i = 0; i < self.tagArrs.length; i++) {
             self.tagArr.push({ userId: self.tagArrs[i]._id, text: self.tagArrs[i].userId })
         }
@@ -66,7 +66,7 @@
     }
 
     angular.module('eli.admin')
-        .controller('MailComposeCtrl', ['$location', '$scope', 'MailService', '$stateParams', '$http', 'AuthService','$q','UserAdmin','$rootScope', MailComposeCtrl]);
+        .controller('MailComposeCtrl', ['$location', '$scope', 'MailService', '$stateParams', '$http', 'AuthService','$q','UserAdmin','$rootScope','UserAdmin', MailComposeCtrl]);
 }());
 
 

@@ -13,6 +13,6 @@ public class DatabaseObject
     public DatabaseObject()
     {
         _id = Convert.ToString((ObjectId.GenerateNewId()));
-        _date = DateTime.Now;
+        _date = DateTime.UtcNow;
     }
 }

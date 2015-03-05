@@ -56,7 +56,7 @@
     <div class="col-md-3">
         <div class="modal-content">
             <div class="modal-header text-right">
-                <h3 class="text-center">User - {{currItem}}</h3>
+                <h3 class="text-center">User - {{currItems}}</h3>
             </div>
             <div class="panel-body" style="background: #5E5250; direction: rtl">
 
@@ -78,7 +78,9 @@
             <input ng-model="itemName" /><br />
             <button ng-click="remove()" >Remove</button><br />
             <button ng-click="clear()">Clear</button>
-
+            <button ng-click="save()">Save</button>
+                <button ng-click="get()">get</button>
+                <button ng-click="update()">update</button>
          <!--       <span class="pull-left">branch lable
                     <input ng-model="lable" /><br />
                     branch description 

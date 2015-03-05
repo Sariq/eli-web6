@@ -50,7 +50,7 @@
 
             });
         }
-        $scope.getMailMessages();
+       // $scope.getMailMessages();
         $interval(function () {
             $scope.getMailMessages();
 

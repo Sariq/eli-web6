@@ -12,8 +12,7 @@ public interface IProject
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    void AddProject(List<Project> project);
-
+    void AddProject(Project project);
 
     [OperationContract]
     [WebInvoke(
@@ -26,19 +25,19 @@ public interface IProject
 
     [OperationContract]
     [WebInvoke(
-         Method = "PUT",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api")
+         UriTemplate = "update")
     ]
     void UpdateProject(Project project);
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
+         UriTemplate = "getProject")
     ]
     Project GetProject(string id);
 
@@ -50,4 +49,5 @@ public interface IProject
          UriTemplate = "api")
     ]
     List<Project> GetAllProjects();
+
 }
