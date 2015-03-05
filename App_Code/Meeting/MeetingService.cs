@@ -38,4 +38,11 @@ public class MeetingService : DatabaseActions, IMeeting
         return GetAllObject<Meeting>(tmpMeetings, "Meeting");
     }
 
+    public List<Assignment> GetAssignmentOfMeeting(string meetingId)
+    {
+        var meeting = GetMeeting(meetingId);
+        var allAssignment = new AssignmentService().GetAssignmentsByIds(meeting.assignments);
+        return allAssignment;
+    }
+
 }

@@ -6,6 +6,8 @@ using MongoDB.Driver;
 
 public class PatientService : DatabaseActions, IPatient
 {
+    MeetingService meetingService = new MeetingService();
+
     public void AddPatient(Patient patient)
     {
         try
@@ -39,4 +41,27 @@ public class PatientService : DatabaseActions, IPatient
         return GetAllObject<Patient>("Patient");
     }
 
+    public List<Patient> GetPatientsByIds(List<string> tmpPatients)
+    {
+        return GetAllObject<Patient>(tmpPatients, "Patient");
+    }
+
+    public List<Meeting> GetMeetingsOfPatient(string patientId)
+    {
+        var patient = GetPatient(patientId);
+        var allMeetings = meetingService.GetMeetingsByIds(patient.meetings);
+        return allMeetings;
+    }
+
+    public List<Assignment> GetAssignmentsOfPatient(string patientId)
+    {
+        var allAssignmentOfPatient = new List<Assignment>();
+        var allMeetingsOfPatient = GetMeetingsOfPatient(patientId);
+        foreach (Meeting meeting in allMeetingsOfPatient)
+        {
+            var allAssignmentOfMeeting = meetingService.GetAssignmentOfMeeting(meeting._id);
+            allAssignmentOfPatient.AddRange(allAssignmentOfMeeting);
+        }
+        return allAssignmentOfPatient;
+    }
 }

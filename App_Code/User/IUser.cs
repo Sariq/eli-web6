@@ -73,9 +73,45 @@ public interface IUser
          Method = "GET",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetAllMeetingAssignmentsOfUser/{id}")
+         UriTemplate = "GetUsersByIds")
     ]
-    List<Assignment> GetAllMeetingAssignmentsOfUser(string id);
+    List<User> GetUsersByIds(List<string> userId);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "GET",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetPatientsOfUser")
+    ]
+    List<Patient> GetPatientsOfUser(string id);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "GET",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetMeetingsOfUser")
+    ]
+    List<Meeting> GetMeetingsOfUser(string id);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "GET",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetAssignmentsOfUser")
+    ]
+    List<Assignment> GetAssignmentsOfUser(string id);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetAllApprovedRemindersOfUser")
+    ]
+    List<Reminder> GetAllApprovedRemindersOfUser(string id);
 
     [OperationContract]
     [WebInvoke(

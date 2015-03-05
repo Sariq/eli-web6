@@ -28,24 +28,6 @@ public interface IMailMessage
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "UpdateMailMessage")
-    ]
-    void UpdateMailMessage(MailMessage mailMessage);
-
-    [OperationContract]
-    [WebInvoke(
-         Method = "POST",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "UpdateMailMessages")
-    ]
-    void UpdateMailMessages(List<MailMessage> mailMessages);
-
-    [OperationContract]
-    [WebInvoke(
-         Method = "POST",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "DeleteMailMessagesFromInbox")
     ]
     void DeleteMailMessagesFromInbox(string[] mailMessagesId);
