@@ -39,15 +39,15 @@
 
             </a>
             <ul class="dropdown-menu dropdown-messages" role="menu">
-                <li>
-                    <a href="#">
+                <li ng-repeat="message in inBoxMessages  | idToUserName" ng-if="!message.isRead">
+                    <a  ng-click="setIsReadMailMessage(message)" href="#">
                         <div>
-                            <strong>John Smith</strong>
+                            <strong>{{message.fromUser[0]}}</strong>
                             <span class="pull-right text-muted">
                                 <em>Yesterday</em>
                             </span>
                         </div>
-                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                        <div>{{message.subject}}</div>
                     </a>
                 </li>
 
@@ -90,7 +90,7 @@
     
                  <li ng-repeat="reminder in reminderList" ng-if="!reminder.isApproved" style="border-bottom:solid;border-bottom-width:1px">
                     <a href="#">
-                        <div ng-click="setIsRead(reminder)">
+                        <div ng-click="setIsReadReminder(reminder)">
                             <i class="fa fa-comment fa-fw"></i>{{reminder.title}}
                                 <span class="pull-right text-muted small">4 minutes ago</span>
                         </div>

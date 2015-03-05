@@ -16,7 +16,7 @@
     
 
                     <ul>
-                        <li ng-repeat="user in mailMessage.message.fromUser">{{user}}</li>
+                        <li ng-repeat="user in mailMessage| idToUserName">{{user.fromUser[0]}}</li>
                     </ul>
     
 

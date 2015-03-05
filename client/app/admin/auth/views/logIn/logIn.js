@@ -139,7 +139,8 @@
         self.userList = UserAdmin.query();
         self.userList.$promise.then(function (result) {
             console.log(result);
-            MailService.setUserList(result)
+            UserAdmin.setUserList(result)
+           
         });
 
   }

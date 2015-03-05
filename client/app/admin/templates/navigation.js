@@ -4,6 +4,7 @@
         console.log("nav2");
         $scope.inboxCounter = 0;
         $scope.reminderCounter = 0;
+        $scope.inBoxMessages = [];
         self.user = AuthService.getUserInfo();
         $scope.userInfo = AuthService.getUserInfo()
         $scope.$on('authLoaded', function () {
@@ -15,28 +16,31 @@
             $rootScope.$broadcast("logOut");
 
         }
-        $scope.setIsRead = function (reminder) {
+        $scope.setIsReadReminder = function (reminder) {
             //reminder.isApproved = true;
             ReminderService.update(reminder);
             $scope.reminderCounter--;
             ReminderService.setTaskId(reminder.dataId)
 
             $location.path('/projects/task/' + reminder.title);
-
-
         }
 
-
+        $scope.setIsReadMailMessage = function (message) {
+   
+            MailService.setCurMessage(message);
+            $location.path('/mail/mail_message');
+        }
         $scope.getMailMessages = function () {
             $scope.mailMessagesPromise = MailService.getMailMessagesHttp($scope.userInfo._id);
             $scope.mailMessagesPromise.then(function (response) {
-                MailService.setMailMessages(response.data)
+                MailService.setMailMessages(response.data);
+                $scope.inBoxMessages = response.data;
                 angular.forEach(response.data, function (value, key) {
 
                     if (!value.isDelete && value.fromUser[0] != $scope.userInfo._id) {
                         if (!value.isRead)
                             $scope.inboxCounter++;
-                        
+
                     }
                 });
 
@@ -48,7 +52,7 @@
         }
         $scope.getMailMessages();
         $interval(function () {
-              $scope.getMailMessages();
+            $scope.getMailMessages();
 
         }, 60000)
 
@@ -59,6 +63,7 @@
             $scope.reminderListPromise = ReminderService.getRemindersByIds(AuthService.getUserInfo().reminders);
             $scope.reminderListPromise.then(function (response) {
                 console.log('getReminderList')
+                console.log(response.data)
                 $scope.reminderList = response.data;
                 $scope.reminderCounter = 0;
                 var endTime = new Date()
@@ -75,7 +80,7 @@
                         }
                     }
                 }
-                console.log(response.data)
+             
 
             });
         }

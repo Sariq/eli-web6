@@ -90,7 +90,27 @@ angular.module('eli.admin', [
 
 
 
-
+  angular.module('eli.admin').filter("idToUserName", function (UserAdmin) {
+      return function (items) {
+          
+          var userList = UserAdmin.getUserList();
+         
+     
+          for (var i = 0; i < items.length; i++) {
+             
+              for (var j = 0; j < userList.length; j++) {
+                 
+                  if (items[i].fromUser[0] == userList[j]._id) {
+                      
+                      items[i].fromUser[0] = userList[j].userId;
+                  }
+              }
+          }
+          var tmpItems = items;
+        
+          return tmpItems;
+      };
+  });
   angular.module('eli.admin').filter("jsDate", function () {
       return function (x) {
           return new Date(parseInt(x.substr(6)));

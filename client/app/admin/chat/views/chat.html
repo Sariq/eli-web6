@@ -1,9 +1,7 @@
-﻿
-<style>
+﻿<style>
     .chatRowBackground {
-    background-color: blue;
+        background-color: blue;
     }
-
 </style>
 
 <div class="row form-header text-right">
@@ -17,130 +15,119 @@
 
 
 <div class="row">
-    <div class="col-md-8" style="direction:rtl">
+    <div class="col-md-8" style="direction: rtl">
         <div class="modal-content panel-default">
-                        <div class="panel-heading">
-                            Striped Rows
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped" >
-                                    <thead>
-                                        <tr >
-                                            <td>#</td>
-                                            <td>First Name</td>
-                                            <td></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="webUser in chat.chatWebs"  >
-                                            <td>{{$index}}</td>
-                                            <td ng-click="chat.getWebUserChat(webUser,$index)">{{webUser.webName}}-{{webUser.isNewMessage}}</td>
-                                            <td><span ng-if="webUser.isNewMessage" class="badge bg-info">הודעה חדשה</span></td>
+            <div class="panel-heading">
+                Striped Rows
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <td>#</td>
+                                <td>First Name</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="webUser in chat.chatWebs">
+                                <td>{{$index}}</td>
+                                <td ng-click="chat.getWebUserChat(webUser,$index)">{{webUser.webName}}</td>
+                                <td><span ng-if="webUser.isNewMessage" class="badge bg-info">הודעה חדשה</span></td>
+                                <td><span ng-if="!webUser.isOnline" class="badge bg-danger">השיחה הסתיימה</span></td>
 
-                                        </tr>
-                                       
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
 
     </div>
-<div class="col-md-4">    
-<div class="modal-content  chat-panel  panel-default ">
-                        <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i>
-                            Chat
+    <div class="col-md-4">
+        <div class="modal-content  chat-panel  panel-default ">
+            <div class="panel-heading">
+                <i class="fa fa-comments fa-fw"></i>
+                Chat
                             <div class="btn-group pull-right">
                                 <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <i  ng-class="{'text-green':chat.isAdminOnline,'text-red':!chat.isAdminOnline}" class="fa fa-square "></i> <i class="fa fa-chevron-down"></i>
+                                    <i ng-class="{'text-green':chat.isAdminOnline,'text-red':!chat.isAdminOnline}" class="fa fa-square "></i><i class="fa fa-chevron-down"></i>
                                 </button>
                                 <ul class="dropdown-menu slidedown">
-                                 
+
                                     <li>
                                         <a ng-click="chat.register()" href="#">
-                                            <i  class="fa fa-check-circle fa-fw"></i> OnLine
+                                            <i class="fa fa-check-circle fa-fw"></i>OnLine
                                         </a>
                                     </li>
-                                   
-                             
+
+
                                     <li class="divider"></li>
                                     <li>
                                         <a ng-click="chat.unRegister()" href="#">
 
-                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
+                                            <i class="fa fa-sign-out fa-fw"></i>Sign Out
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body" scroll-glue>
-                            <ul class="chat">
-                                                         <li  ng-repeat="message in chat.chatMessages" >
-                                    <span ng-if="$even" class="left clearfix">
-                                    
-                                    <div class="chat-body clearfix">
-                                 
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> {{message.messageUpdateT}}</small>
-                                            <strong class="pull-right primary-font" style="color:blue">{{chat.currentWebUser.webName}}</strong>
-                                        </div>
-                                        <p class="text-right">
-                                        
-                                            {{message.messageContent}}-{{$index}}
-                                        </p>
-                                    </div>
-                                        </span>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body" scroll-glue>
+                <ul class="chat">
+                    <li ng-repeat="message in chat.chatMessages">
+                        <span  class="left clearfix">
 
-                                                  <span ng-if="$odd" class="left clearfix">
-                                  
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> {{message.messageUpdateT}}</small>
-                                            <strong class="pull-right primary-font" style="color:orange">{{chat.userInfo.userId}}</strong>
-                                        </div>
-                                        <p class="text-right">
-                                            {{message.messageContent}}-{{$index}}
-                                        </p>
-                                    </div>
-                                        </span>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.panel-body -->
-                   
-                          <div class="panel-footer">
-                            <div class="input-group">
-                                <input ng-model="chat.myMessage" id="btn-input" type="text" class="form-control input-sm" placeholder="הכנס הודעה..."/>
-                                <span class="input-group-btn">
-                                    <button ng-click="chat.myClick()" class="btn btn-warning btn-sm" id="Button1">
-                                        Send
-                                    </button>
-                                </span>
+                            <div class="chat-body clearfix">
+
+                                <div class="header">
+                                    <small class=" text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i>{{message.messageUpdateT}}</small>
+                                    <span ng-if="message.type=='web'"><strong class="pull-right primary-font" style="color: blue">{{chat.currentWebUser.webName}}</strong></span>
+                                    <span ng-if="message.type=='admin'"><strong class="pull-right primary-font" style="color: orange">{{chat.userInfo.userId}}</strong></span>
+                                </div>
+                                <p class="text-right">
+                                    {{message.messageContent}}-{{$index}}
+                                </p>
                             </div>
-                        </div>
-                        <!-- /.panel-footer -->
-                    </div>
-     </div>
+                        </span>
+
+           
+                    </li>
+                </ul>
+            </div>
+            <!-- /.panel-body -->
+
+            <div class="panel-footer">
+                <div class="input-group">
+                    <input ng-model="chat.myMessage" id="btn-input" type="text" class="form-control input-sm" placeholder="הכנס הודעה..." />
+                    <span class="input-group-btn">
+                        <button ng-click="chat.myClick()" class="btn btn-warning btn-sm" id="Button1">
+                            Send
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <!-- /.panel-footer -->
+        </div>
     </div>
+</div>
 
 
 <style>
-    
     .text-green {
-color: #00a65a !important;
-}
+        color: #00a65a !important;
+    }
+
     .text-red {
-color: red !important;
-}
+        color: red !important;
+    }
 
-.panel-heading >.fa {
-
-}</style>
+    .panel-heading > .fa {
+    }
+</style>

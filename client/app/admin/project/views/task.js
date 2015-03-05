@@ -48,7 +48,8 @@
         self.saveReminder = function () {
 
             self.reminder.reminderTime = '/Date(' + self.reminder.reminderTime.getTime() + ')/';
-            
+            self.reminder.title = self.task.title;
+            self.reminder.dataType = "projectReminder";
             $http({
                 url: '/ReminderService.svc/api',
                 method: 'POST',

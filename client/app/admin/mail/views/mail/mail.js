@@ -8,7 +8,7 @@
     function MailCtrl($location, $scope, MailService, $stateParams, $http, AuthService, MailService, UserAdmin, $rootScope, $anchorScroll) {
         var self = this;
         self.inoxCounter = 0;
-        self.userList = MailService.getUserList();
+        self.userList = UserAdmin.getUserList();
         self.user = AuthService.getUserInfo();
         self.curMessage = '';
         self.pageIdx = 0;
@@ -43,7 +43,7 @@
                 if (!value.isDelete && value.fromUser[0] != self.user._id) {
                     if (!value.isRead)
                         self.inoxCounter++;
-                    alert(value.isDelete);
+                  //  alert(value.isDelete);
                     self.inboxMessages.push(value);
                 }
 

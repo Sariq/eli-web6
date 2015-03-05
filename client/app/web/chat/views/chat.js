@@ -112,9 +112,9 @@
         }
 
         self.myUnLoad = function () {
-       
-            ChatService.clearChatUserId();
-            ChatService.myUnLoad();
+      
+          
+           ChatService.myUnLoad();
             //var url = "AsyncHandler.ashx?cmd=unregister&type=" + "web";
             //xmlHttp_OneTime.open("POST", url, true);
             //xmlHttp_OneTime.send();
@@ -122,7 +122,7 @@
 
 
 
-        //window.onunload = self.myUnLoad;
+       // window.onunload = self.myUnLoad;
         //window.onload = self.myLoad;
 
    
