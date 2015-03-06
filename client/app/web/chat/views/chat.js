@@ -5,7 +5,7 @@
      * @param ChatService: Service
      * @constructor
      */
-    function ChatController($http,$location, $scope, $stateParams, ChatService) {
+    function ChatController($http, $location, $scope, $stateParams, ChatService, $interval) {
         var self = this;
         self.xmlHttp_OneTime;
         self.xmlHttp_Process;
@@ -82,8 +82,14 @@
                 var myJsonObject_Temp = eval('(' + myJSON_Text + ')');
                 console.log(myJsonObject_Temp)
                 self.data = myJsonObject_Temp;
+
                 self.chatMessages = myJsonObject_Temp.allMessage;
+                for (var j = 0; j < self.chatMessages.length; j++) {
+                    self.chatMessages[j].messageUpdateT = self.updateMessageTme(myJsonObject_Temp.allMessage[j]._date)
+
+                }
                 $scope.$apply();
+             
                 self.xmlHttp_Process = ChatService.ProcessFunction();
                 self.xmlHttp_Process.onreadystatechange = self.getResponse_Process;
                 self.xmlHttp_Process.send();
@@ -92,7 +98,22 @@
         }
 
       
+        self.updateMessageTme = function (messageTime) {
 
+            var startTime = new Date(parseInt(messageTime.substr(6)))
+            console.log(startTime)
+            var endTime = new Date()
+            var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
+
+            var resultInMinutes = Math.round(difference / 60000);
+            if (resultInMinutes > 60) {
+                return "more than 1h";
+            } else {
+
+                return resultInMinutes + " mins ago";
+            }
+
+        }
   
         self.myClick = function () {
            
@@ -125,7 +146,11 @@
        // window.onunload = self.myUnLoad;
         //window.onload = self.myLoad;
 
-   
+        $interval(function () {
+            for (var j = 0; j < self.chatMessages.length; j++) {
+                self.chatMessages[j].messageUpdateT = self.updateMessageTme(self.chatMessages[j]._date)
+            }
+        }, 20000);
          //Get Chat ByID
         self.getWebUserChat = function () {
       
@@ -139,7 +164,10 @@
                 console.log(response)
                 self.chatMessages = response.data;
             
+                for (var j = 0; j < self.chatMessages.length; j++) {
+                    self.chatMessages[j].messageUpdateT = self.updateMessageTme(self.chatMessages[j]._date)
 
+                }
 
             }, function () { alert("GetAllOnlineMessagesOfClient error") });
         }
@@ -157,7 +185,7 @@
     }
 
     angular.module('eliApp')
-        .controller('ChatController', ['$http','$location', '$scope',  '$stateParams','ChatService', ChatController]);
+        .controller('ChatController', ['$http','$location', '$scope',  '$stateParams','ChatService','$interval', ChatController]);
 }());
 
 

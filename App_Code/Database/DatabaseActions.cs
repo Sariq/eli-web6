@@ -50,6 +50,7 @@ public class DatabaseActions
     protected async void UpdateObject(DatabaseObject obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
+        Debug.Write(obj._id);
         await collection.UpdateAsync(new QueryDocument("_id", obj._id), new UpdateDocument(new BsonDocument(obj.ToBsonDocument())));
     }
 

@@ -61,7 +61,7 @@
             <div class="panel-body" style="background: #5E5250; direction: rtl">
 
 
- <iui-treeview name="{{treeName}}" class="directive" items="localData" allow-drag="true" allow-drop="true"  rtl="showRTL" label-edit="true" events="treeEvents" 
+ <iui-treeview name="{{treeName}}" class="directive" items="remoteData" allow-drag="true" allow-drop="true" drag-drop="onDragDrop(e)" item-click="onItemClick(e)" rtl="showRTL" label-edit="true" events="treeEvents" 
      show-icons="false" tabindex="0"></iui-treeview>
 
 

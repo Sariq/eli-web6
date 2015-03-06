@@ -150,20 +150,21 @@
                         <div class="panel-heading fixedHeader" >
                             <i class="fa fa-comments fa-fw"></i>
                             Chat 
-                           <span class="pull-right"><button ng-click="chat.myUnLoad()">aa</button></span>
+                           <span class="pull-right"><button class="btn btn-danger" ng-if="chat.GuID!=null" ng-click="chat.myUnLoad()">End Chat</button></span>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body fixedContent" scroll-glue>
                             <ul class="chat">
                                 <li  ng-repeat="message in chat.chatMessages" >
-                                    <span ng-if="$even" class="left clearfix">
+                                    <span class="left clearfix">
                                     
                                     <div class="chat-body clearfix">
                                  
                                         <div class="header">
                                             <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago</small>
-                                            <strong class="pull-right primary-font" style="color:blue">Jack Sparrow</strong>
+                                                <i class="fa fa-clock-o fa-fw"></i> {{message.messageUpdateT}}</small>
+                                              <span ng-if="message.type=='web'"><strong class="pull-right primary-font" style="color: blue">User</strong></span>
+                                    <span ng-if="message.type=='admin'"><strong class="pull-right primary-font" style="color: orange">Admin</strong></span>
                                         </div>
                                         <p class="text-right">
                                             {{message.messageContent}}-{{$index}}
@@ -171,19 +172,6 @@
                                     </div>
                                         </span>
 
-                                                  <span ng-if="$odd" class="left clearfix">
-                                  
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
-                                            <strong class="pull-right primary-font" style="color:orange">Bhaumik Patel</strong>
-                                        </div>
-                                        <p class="text-right">
-                                            {{message.messageContent}}-{{$index}}
-                                        </p>
-                                    </div>
-                                        </span>
                                 </li>
  
                             </ul>

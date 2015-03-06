@@ -135,7 +135,6 @@
     }
 
         $interval(function() {
-     
             for (var j = 0; j < self.chatMessages.length; j++) {
                 self.chatMessages[j].messageUpdateT = self.updateMessageTme(self.chatMessages[j]._date)
             }
