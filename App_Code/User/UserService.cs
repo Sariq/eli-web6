@@ -8,6 +8,8 @@ using System.Linq;
 public class UserService : DatabaseActions, IUser
 {
     ClientServerCommunicationActions communication = new ClientServerCommunicationActions();
+    PatientService patientService = new PatientService();
+    ReminderService reminderService = new ReminderService();
 
     public User SignIn(User user)
     {
@@ -127,33 +129,53 @@ public class UserService : DatabaseActions, IUser
         return GetAllObject<User>("User");
     }
 
-    public List<Meeting> GetAllMeetingsOfUser(string userId)
+    public List<User> GetUsersByIds(List<string> tmpUsers)
     {
-        return GetAllObject<Meeting>("therapistId", userId, "Meeting");
+        return GetAllObject<User>(tmpUsers, "User");
     }
 
-    public List<Assignment> GetAllMeetingAssignmentsOfUser(string userId)
+    public List<Patient> GetPatientsOfUser(string userId)
     {
-        return GetAllAssignmentsOfUser(userId, assignment => !assignment.isProject);
+        var user = GetUser(userId);
+        var allPatients = patientService.GetPatientsByIds(user.patients);
+        return allPatients;
     }
 
-    public List<Assignment> GetAllProjectAssignmentsOfUser(string userId)
+    public List<Meeting> GetMeetingsOfUser(string userId)
     {
-        return GetAllAssignmentsOfUser(userId, assignment => assignment.isProject);
+        var allMeetingsOfUser = new List<Meeting>();
+        var allPatientsOfUser = GetPatientsOfUser(userId);
+        foreach (Patient patient in allPatientsOfUser)
+        {
+            var allMeetingsOfPatient = patientService.GetMeetingsOfPatient(patient._id);
+            allMeetingsOfUser.AddRange(allMeetingsOfPatient);
+        }
+        return allMeetingsOfUser.OrderBy(meeting => meeting._date).ToList();
     }
 
-    private List<Assignment> GetAllAssignmentsOfUser(string userId, Predicate<Assignment> p)
+    public List<Assignment> GetAssignmentsOfUser(string userId)
     {
-        var allAssinmentsOfUSer = new AssignmentService().GetAssignmentsByIds(GetUser(userId).assignments);
-        var allMeetingAssignmentOfUser = allAssinmentsOfUSer.FindAll(p);
-        List<Assignment> sortedList = allMeetingAssignmentOfUser.OrderBy(assignment => assignment._date).ToList();
-        return sortedList;
+        var allAssignmentsOfUser = new List<Assignment>();
+        var allPatientsOfUser = GetPatientsOfUser(userId);
+        foreach (Patient patient in allPatientsOfUser)
+        {
+            var allAssignmentOfPatient = patientService.GetAssignmentsOfPatient(patient._id);
+            allAssignmentsOfUser.AddRange(allAssignmentOfPatient);
+        }
+        return allAssignmentsOfUser.OrderBy(assignment => assignment._date).ToList();
+    }
+
+    public List<Reminder> GetAllApprovedRemindersOfUser(string userId)
+    {
+        var user = GetUser(userId);
+        var allNotApprovedRemindersOfUser = reminderService.GetRemindersByIds(user.reminders);
+        return allNotApprovedRemindersOfUser.OrderBy(reminder => reminder.reminderTime).ToList();
     }
 
     public List<Reminder> GetAllNotApprovedRemindersOfUser(string userId)
     {
-        var allRemindersOfUser = new ReminderService().GetRemindersByIds(GetUser(userId).reminders);
-        var allNotApprovedRemindersOfUser = allRemindersOfUser.FindAll(reminder => !reminder.isApproved);
-        return allNotApprovedRemindersOfUser;
+        var user = GetUser(userId);
+        var allNotApprovedRemindersOfUser = reminderService.GetAllNotApprovedReminders(user.reminders);
+        return allNotApprovedRemindersOfUser.OrderBy(reminder => reminder.reminderTime).ToList();
     }
 }

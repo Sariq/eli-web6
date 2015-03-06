@@ -50,4 +50,31 @@ public interface IPatient
     ]
     List<Patient> GetAllPatients();
 
+    [OperationContract]
+    [WebInvoke(
+         Method = "GET",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetPatientsByIds")
+    ]
+    List<Patient> GetPatientsByIds(List<string> patients);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "GET",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetMeetingsOfPatient")
+    ]
+    List<Meeting> GetMeetingsOfPatient(string patientId);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "GET",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetAssignmentsOfPatient")
+    ]
+    List<Assignment> GetAssignmentsOfPatient(string patientId);
+
 }

@@ -39,6 +39,12 @@ public class ReminderService : DatabaseActions, IReminder
         return GetAllObject<Reminder>(tmpReminders, "Reminder");
     }
 
+    public List<Reminder> GetAllNotApprovedReminders(List<string> tmpReminders)
+    {
+        return GetAllObject<Reminder>("isApproved", false, "Reminder");
+    }
+
+
     public void ApproveReminder(string reminderId)
     {
         var reminder = GetReminder(reminderId);

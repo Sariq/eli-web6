@@ -25,9 +25,11 @@ public class User : DatabaseObject
     public List<string> assignments { get; set; }
     [DataMember]
     public List<string> reminders { get; set; }
+    [DataMember]
+    public List<string> patients { get; set; }
 
     public User(string userId, string password, string name, string email, string address, string birthDate,
-        string role, bool isRememberMe, List<string> assignment, List<string> reminders)
+        string role, bool isRememberMe, List<string> assignment, List<string> reminders, List<string> patients)
         : base()
     {
         this.userId = userId;
@@ -40,6 +42,7 @@ public class User : DatabaseObject
         this.isRememberMe = isRememberMe;
         this.reminders = reminders;
         this.assignments = assignments;
+        this.patients = patients;
     }
 
     public User(string userId, string password)
@@ -62,7 +65,8 @@ public class User : DatabaseObject
         this.role = user.role;
         this.isRememberMe = user.isRememberMe;
         this.assignments = user.assignments;
-        this.reminders = reminders;
+        this.reminders = user.reminders;
+        this.patients = user.patients;
     }
  
 }

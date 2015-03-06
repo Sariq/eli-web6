@@ -58,4 +58,13 @@ public interface IMeeting
          UriTemplate = "GetMeetingsByIds")
     ]
     List<Meeting> GetMeetingsByIds(List<string> meetings);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetAssignmentOfMeeting")
+    ]
+    List<Assignment> GetAssignmentOfMeeting(string meetingId);
 }
