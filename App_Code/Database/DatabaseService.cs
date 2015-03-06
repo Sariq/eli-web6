@@ -8,13 +8,12 @@ public class DatabaseService : IDatabaseService
 
     #region Properties
 
-    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "K", "role", true, new List<string> { "1", "2" }, new List<string> { "1", "2" }, new List<string> { "1", "2" });
-    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", "role", true, new List<string> { "1", "2" }, new List<string> { "1", "2" }, new List<string> { "1", "2" });
-    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K", "role", true, new List<string> { "1", "2" }, new List<string> { "1", "2" }, new List<string> { "1", "2" });
-    public readonly User userD = new User("User", "123");
+    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "K", "role", true, new List<string> { "1", "2" }, new List<string> { "1", "2" });
+    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", "role", true, new List<string> { "1", "2" }, new List<string> { "1", "2" });
+    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K", "role", true, new List<string> { "1", "2" }, new List<string> { "1", "2" });
 
-    public readonly Assignment assignmentA = new Assignment("AssignmentA", "FreeText", false, true, "1");
-    public readonly Assignment assignmentB = new Assignment("AssignmentB", "FreeText", false, false, "1");
+    public readonly Assignment assignmentA = new Assignment("AssignmentA", "FreeText", false, true, "1", "1");
+    public readonly Assignment assignmentB = new Assignment("AssignmentB", "FreeText", false, false, "1", "1");
 
     //public readonly Patient patientA = new Patient("111", "A", "a@gmail.com", "A", DateTime.Today, "AA", "AA", new List<Person> { new Person("A", "A", "2", true), new Person("B", "A", "1", true) }, new List<Meeting> { new Meeting("1", "2", "3", "4", "s", new List<string> { "123", "karin" }) });
     //public readonly Patient patientB = new Patient("222", "A", "a@gmail.com", "A", DateTime.Today, "AA", "AA", new List<Person> { new Person("A", "A", "3", true), new Person("B", "A", "2", true) });
@@ -71,8 +70,8 @@ public class DatabaseService : IDatabaseService
     private void InitializeAssignmentCollection()
     {
         var assignmentService = new AssignmentService();
-        //assignmentService.AddAssignment(assignmentA);
-        //assignmentService.AddAssignment(assignmentB);
+        assignmentService.AddAssignment(assignmentA);
+        assignmentService.AddAssignment(assignmentB);
     }
 
     private void InitializeReminderCollection()
@@ -95,7 +94,7 @@ public class DatabaseService : IDatabaseService
         userService.AddUser(userA);
         userService.AddUser(userB);
         userService.AddUser(userC);
-        userService.AddUser(userD);
+   
     }
 
     private void InitializeMeetingCollection()

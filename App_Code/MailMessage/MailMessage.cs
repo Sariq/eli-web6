@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
@@ -23,8 +24,10 @@ public class MailMessage : DatabaseObject
 
     public MailMessage(List<string> fromUser, List<string> toUser, string subject, string content, bool isRead, 
         bool isStar, bool isDelete)
-        : base()
+        
     {
+        this._id = Convert.ToString((ObjectId.GenerateNewId()));
+        this._date = Convert.ToDateTime(DateTime.Now.ToString());
         this.fromUser = fromUser;
         this.toUser = toUser;
         this.subject = subject;

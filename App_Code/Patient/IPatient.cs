@@ -12,7 +12,7 @@ public interface IPatient
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    void AddPatient(Patient patient);
+    Patient AddPatient(Patient patient);
 
     [OperationContract]
     [WebInvoke(
@@ -52,7 +52,7 @@ public interface IPatient
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "GetPatientsByIds")
@@ -61,7 +61,7 @@ public interface IPatient
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "GetMeetingsOfPatient")
@@ -70,7 +70,7 @@ public interface IPatient
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "GetAssignmentsOfPatient")

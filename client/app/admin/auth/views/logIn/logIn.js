@@ -138,6 +138,7 @@
 
         self.userList = UserAdmin.query();
         self.userList.$promise.then(function (result) {
+         
             console.log(result);
             UserAdmin.setUserList(result)
            

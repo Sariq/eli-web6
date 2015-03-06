@@ -4,6 +4,7 @@
         console.log("nav2");
         $scope.inboxCounter = 0;
         $scope.reminderCounter = 0;
+        $scope.taskCounter = 0;
         $scope.inBoxMessages = [];
         self.user = AuthService.getUserInfo();
         $scope.userInfo = AuthService.getUserInfo()
@@ -21,32 +22,39 @@
             ReminderService.update(reminder);
             $scope.reminderCounter--;
             ReminderService.setTaskId(reminder.dataId)
-
             $location.path('/projects/task/' + reminder.title);
         }
 
+        $scope.setIsReadTask = function (task) {
+
+            $scope.taskCounter--;
+            ReminderService.setTaskId(task.idInProject)
+            $location.path('/projects/task/' + task.title);
+        }
+
         $scope.setIsReadMailMessage = function (message) {
-   
             MailService.setCurMessage(message);
             $location.path('/mail/mail_message');
         }
+
+        //Get MailMeesages
         $scope.getMailMessages = function () {
+            $scope.inBoxMessages = [];
+            $scope.inboxCounter = 0;
             $scope.mailMessagesPromise = MailService.getMailMessagesHttp($scope.userInfo._id);
             $scope.mailMessagesPromise.then(function (response) {
                 MailService.setMailMessages(response.data);
                 $scope.inBoxMessages = response.data;
-                angular.forEach(response.data, function (value, key) {
-
+                angular.forEach($scope.inBoxMessages, function (value, key) {
                     if (!value.isDelete && value.fromUser[0] != $scope.userInfo._id) {
                         if (!value.isRead)
                             $scope.inboxCounter++;
-
                     }
                 });
-
-                $timeout(function () {
+              
+                $timeout(function () {                      
                     $rootScope.$broadcast("mailMessagesFromService");
-                }, 1000)
+                }, 60000)
 
             });
         }
@@ -54,11 +62,25 @@
         $interval(function () {
             $scope.getMailMessages();
 
-        }, 60000)
+        }, 9000)
+        //60000
+        //Get Tasks
+        $scope.getTasks = function () {
+            console.log($scope.userInfo)
+            $http({
+                url: '/AssignmentService.svc/getAssignmentsByIds',
+                method: 'POST',
+                data: $scope.userInfo.assignments
+            }).then(function (response) {
 
+                $scope.taskList = response.data;
+                console.log($scope.taskList)
 
+            }, function () { alert("getAssignmentsByIds edit error") });
+        }
+        $scope.getTasks();
 
-
+        //Get Reminders
         $scope.getReminders = function () {
             $scope.reminderListPromise = ReminderService.getRemindersByIds(AuthService.getUserInfo().reminders);
             $scope.reminderListPromise.then(function (response) {

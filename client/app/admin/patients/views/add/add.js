@@ -5,13 +5,13 @@
      * @param PatientAdmin: Service
      * @constructor
      */
-    function PatientAddController($location, $scope, PatientAdmin, $stateParams) {
+    function PatientAddController($location, $scope, PatientAdmin, $stateParams, UserAdmin, AuthService) {
         var self = this;
         self.error = '';
         self.debug = '';
         self.isNew = false;
         self.info = PatientAdmin.info;
- 
+        self.userInfo = AuthService.getUserInfo();
   
    
         self.patientId = $stateParams.patientId;
@@ -66,7 +66,10 @@
                 self.patient.$save(function (response) {
                     console.log(response);
                    
-                      $location.path(success_url);
+                    UserAdmin.addPatient(self.userInfo,response._id)
+                    UserAdmin.updateUser(self.userInfo);
+                    console.log(self.userInfo);
+                    $location.path(success_url);
                    
                         
                    
@@ -120,7 +123,7 @@
     }
 
     angular.module('eli.admin')
-        .controller('PatientAddController', ['$location', '$scope', 'PatientAdmin', '$stateParams', PatientAddController]);
+        .controller('PatientAddController', ['$location', '$scope', 'PatientAdmin', '$stateParams','UserAdmin','AuthService', PatientAddController]);
 }());
 
 

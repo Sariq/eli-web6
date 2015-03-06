@@ -30,7 +30,7 @@
 
         self.messagesByCat = function () {
 
-
+            self.inoxCounter = 0;
             self.inboxMessages = [];
             self.sentMessages = [];
             self.trashMessages = [];
@@ -39,11 +39,11 @@
             console.log(self.mailMessages)
 
             angular.forEach(self.mailMessages, function (value, key) {
-
+                console.log(value)
                 if (!value.isDelete && value.fromUser[0] != self.user._id) {
                     if (!value.isRead)
                         self.inoxCounter++;
-                  //  alert(value.isDelete);
+             
                     self.inboxMessages.push(value);
                 }
 
@@ -83,7 +83,7 @@
         });
 
 
-        self.getInboxFromService();
+        self.getInboxFromHttp();
 
         //Delete Email
         self.deleteMail = function () {
@@ -109,6 +109,13 @@
 
         //set Current Meesage
         self.setCurMessage = function (message) {
+            if (!message.isRead) {
+                message.isRead = !message.isRead;
+                $http.post('/MailMessageService.svc/UpdateMailMessage', message).
+                          success(function (data, status, headers, config) {
+                              $rootScope.$broadcast("mailMessagesFromHttp");
+                          }).error(function (data, status, headers, config) { });
+            }
             MailService.setCurMessage(message);
             $anchorScroll();
         }
@@ -153,6 +160,11 @@
                       success(function (data, status, headers, config) {
                           $rootScope.$broadcast("mailMessagesFromHttp");
                       }).error(function (data, status, headers, config) { });
+        }
+
+        //Update isRead
+        self.changeisRead = function (message) {
+
         }
 
         //Refresh

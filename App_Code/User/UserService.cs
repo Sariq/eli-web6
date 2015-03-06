@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.ServiceModel.Web;
 using System.Linq;
+using System.Diagnostics;
 
 public class UserService : DatabaseActions, IUser
 {
@@ -13,6 +14,7 @@ public class UserService : DatabaseActions, IUser
 
     public User SignIn(User user)
     {
+        Debug.Write("user");
         var dbUser = GetUserForSignIn(user.userId);
 
         if (dbUser == null)
@@ -177,5 +179,18 @@ public class UserService : DatabaseActions, IUser
         var user = GetUser(userId);
         var allNotApprovedRemindersOfUser = reminderService.GetAllNotApprovedReminders(user.reminders);
         return allNotApprovedRemindersOfUser.OrderBy(reminder => reminder.reminderTime).ToList();
+    }
+
+    public void AddAssignmentOfProjectToUsers(List<string> list)
+    {
+        string assignmentId = list.LastOrDefault();
+        list.RemoveAt(list.Count - 1);
+        
+        foreach (string id in list)
+        {
+            var user = GetUser(id);
+            user.assignments.Add(assignmentId);
+            UpdateUser(user);
+        }
     }
 }

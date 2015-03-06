@@ -158,6 +158,9 @@
         $rootScope.$on('taskReminder', function () {
             alert(ReminderService.getTaskId())
         });
+        $rootScope.$on('taskShared', function () {
+            alert(ReminderService.getTaskId())
+        });
         $scope.save = function () {
             var project = { userId: $scope.userInfo._id, items: $scope.localData };
             $http.post('/ProjectService.svc/api', project).

@@ -92,23 +92,25 @@ angular.module('eli.admin', [
 
   angular.module('eli.admin').filter("idToUserName", function (UserAdmin) {
       return function (items) {
-          
+          var myfunc = function (x, y) {
+              x = y;
+          }
           var userList = UserAdmin.getUserList();
-         
-     
-          for (var i = 0; i < items.length; i++) {
-             
+          var tmpItems = items;
+          for (var i = 0; i < tmpItems.length; i++) {
+
               for (var j = 0; j < userList.length; j++) {
-                 
-                  if (items[i].fromUser[0] == userList[j]._id) {
-                      
-                      items[i].fromUser[0] = userList[j].userId;
+
+                  if (tmpItems[i].fromUser[0] == userList[j]._id) {
+
+                      myfunc(tmpItems[i].fromUser[0], userList[j]._id)
                   }
               }
           }
-          var tmpItems = items;
-        
-          return tmpItems;
+         
+      
+    
+          return ;
       };
   });
   angular.module('eli.admin').filter("jsDate", function () {
@@ -120,16 +122,18 @@ angular.module('eli.admin', [
       return function (x) {
           var first = new Date(parseInt(x.substr(6)));
           var second = new Date();
-          var diff = first - second;
-
-          // | date:'a h:mm'
-          if (diff == 0) {
-              return $filter('date')(first, 'd MMM')
+         
+          var diff = second - first ;
+          var inDays=Math.floor(diff / 86400000)
+         
+          
+          if (inDays == 0) {
+              return $filter('date')(first, 'a h:mm')
           } else {
               return $filter('date')(first, 'd MMM')
           }
           
-          //return Math.floor(diff / 86400000);
+        
       };
   });
 

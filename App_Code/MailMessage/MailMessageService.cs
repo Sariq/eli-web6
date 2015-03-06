@@ -33,6 +33,8 @@ public class MailMessageService : DatabaseActions, IMailMessage
     }
 
 
+
+
     public void DeleteMailMessageFromTrash(string[] mailMessagesId)
     {
         foreach (string mailMessageId in mailMessagesId)

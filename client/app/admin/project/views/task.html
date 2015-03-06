@@ -27,13 +27,22 @@
                               <div class="col-md-12 col-xs-12 ">
                                   <label class="pull-right" for="content">: תוכן</label>
                                   <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
-                                  <text-angular style="direction: rtl" ng-model="task.task.contnet"></text-angular>
+                                  <text-angular style="direction: rtl" ng-model="task.task.content"></text-angular>
                               </div>
                           </div>
                       </div>
                       <br />
+                        <div class="row">
+                               <tags-input ng-model="tags" min-length="0"
+                        replace-spaces-with-dashes="false"
+                        add-from-autocomplete-only="true"
+                        on-tag-added="tagAdded($tag)"
+                        on-tag-removed="tagRemoved($tag)" style="direction: ltr"> <auto-complete
+											source="loadTags($query)" min-length="0" debounce-delay="0"
+											max-results-to-show="10" ></auto-complete> </tags-input>
+                          </div>
                       <div class="row">
-
+                        
                           <div class="col-md-4 col-xs-4 pull-right">
                               <datetimepicker ng-change="task.validateDate()"
                                   min-date="task.tmpDate"
@@ -45,7 +54,7 @@
                           </div>
                       </div>
  <button class="btn btn-info" ng-click="task.saveReminder()">Remind Me</button>
-
+ <button class="btn btn-info" ng-click="task.saveTask()">Save</button>
 
                   </div>
     </div>

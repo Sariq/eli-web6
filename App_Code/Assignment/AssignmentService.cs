@@ -10,9 +10,9 @@ public class AssignmentService : DatabaseActions, IAssignment
     {
         var assignmentId = InsertObjectAndReturnId(assignment, "Assignment").Result;
         var dbAssignment = GetAssignment(assignmentId);
-        var user = new UserService().GetUser(dbAssignment.parentId);
-        user.assignments.Add(assignment._id);
-        new UserService().UpdateUser(user);
+        //var user = new UserService().GetUser(dbAssignment.parentId);
+        //user.assignments.Add(assignment._id);
+        //new UserService().UpdateUser(user);
         return dbAssignment;
     }
 

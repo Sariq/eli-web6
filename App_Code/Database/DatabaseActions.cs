@@ -17,6 +17,7 @@ public class DatabaseActions
     {
         var collection = database.GetCollection(collectionName);
         obj._id = Convert.ToString((ObjectId.GenerateNewId()));
+        
         await collection.InsertAsync(obj);
     }
 
@@ -30,9 +31,18 @@ public class DatabaseActions
     protected async Task<string> InsertObjectAndReturnId(DatabaseObject obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
+        obj._date = Convert.ToDateTime(DateTime.Now.ToString());
         obj._id = Convert.ToString((ObjectId.GenerateNewId()));
         await collection.InsertAsync(obj);
         return obj._id;
+    }
+
+    protected async Task<Object> InsertObjectAndReturnTheObject<ObjectType>(DatabaseObject obj, string collectionName)
+    {
+        var collection = database.GetCollection(collectionName);
+        obj._id = Convert.ToString((ObjectId.GenerateNewId()));
+        await collection.InsertAsync(obj);
+        return GetObject<ObjectType>(obj._id, collectionName).Result;
     }
 
     protected async void RemoveObject(string objId, string collectionName)

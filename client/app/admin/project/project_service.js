@@ -99,7 +99,13 @@
         return localStorageService.get("projectTask");
     }
 
- 
+
+    self.setUserPrjId = function (UserPrjId) {
+        return localStorageService.set("UserPrjId", UserPrjId);
+    }
+    self.getUserPrjId = function () {
+        return localStorageService.get("UserPrjId");
+    }
 
 
   }

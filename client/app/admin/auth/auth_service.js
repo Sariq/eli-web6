@@ -48,6 +48,7 @@
             return localStorageService.set("userInfo", userInfo);
         };
         self.getUserInfo = function (userInfo) {
+            console.log(localStorageService.get("userInfo"))
             return localStorageService.get("userInfo");
         };
         self.clearUserInfo = function () {

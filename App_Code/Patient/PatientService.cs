@@ -8,17 +8,19 @@ public class PatientService : DatabaseActions, IPatient
 {
     MeetingService meetingService = new MeetingService();
 
-    public void AddPatient(Patient patient)
+    public Patient AddPatient(Patient patient)
     {
+        Patient dbPatient = null;
         try
         {
-            InsertObjectNotAsync(patient, "Patient");
+            dbPatient = (Patient)(InsertObjectAndReturnTheObject<Patient>(patient, "Patient").Result);
         }
         catch (MongoDuplicateKeyException)
         {
             var error = new Error(Error.ErrorType.PatientIsAlreadyExist);
             throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);
         }
+        return dbPatient;
     }
 
     public void RemovePatient(string patientIdentityNumber)

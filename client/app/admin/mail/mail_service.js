@@ -111,7 +111,9 @@
         }
 
         self.setMailMessages = function (MailMessages) {
-
+            console.log("ServiceTTTTTTTTTTTTTT")
+            console.log(MailMessages)
+           // alert(angular.toJson(MailMessages))
             self.MailMessages = MailMessages;
         }
         self.getMailMessages = function () {

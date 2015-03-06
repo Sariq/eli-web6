@@ -13,16 +13,19 @@ public class Assignment : DatabaseObject
     [DataMember]
     public bool isProject { get; set; }
     [DataMember]
-    public string parentId { get; set; }
+    public string projectId { get; set; }
+    [DataMember]
+    public string idInProject { get; set; }
 
-    public Assignment(string title, string content, bool isDone, bool isProject, string parentId)
+    public Assignment(string title, string content, bool isDone, bool isProject, string projectId, string idInProject)
         : base()
     {
         this.title = title;
         this.content = content;
         this.isDone = isDone;
         this.isProject = isProject;
-        this.parentId = parentId;
+        this.projectId = projectId;
+        this.idInProject = idInProject;
     }
 
     public Assignment(Assignment assignment)
@@ -34,7 +37,8 @@ public class Assignment : DatabaseObject
         this.content = assignment.content;
         this.isDone = assignment.isDone;
         this.isProject = assignment.isProject;
-        this.parentId = assignment.parentId;
+        this.projectId = assignment.projectId;
+        this.idInProject = assignment.idInProject;
     }
 
 }

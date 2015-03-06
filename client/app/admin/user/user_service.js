@@ -53,6 +53,15 @@
          return user.meetings.splice(idx, 1);
       };
 
+      self.addPatient = function (user, patientId) {
+          console.log(user)
+          user.patients.push(patientId);
+      }
+      self.deletePatient = function (user, idx) {
+          return user.patients.splice(idx, 1);
+      };
+
+
       //reminder add/delete
       self.addReminder = function (reminderId) {
           console.log(reminderId)
@@ -91,6 +100,11 @@
     self.update = function () {
         
         return self.userResource.update(AuthService.getUserInfo())
+
+    }
+    self.updateUser = function (user) {
+
+        return self.userResource.update(user)
 
     }
 

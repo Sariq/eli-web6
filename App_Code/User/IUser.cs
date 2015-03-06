@@ -70,7 +70,7 @@ public interface IUser
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "GetUsersByIds")
@@ -79,7 +79,7 @@ public interface IUser
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "GetPatientsOfUser")
@@ -88,7 +88,7 @@ public interface IUser
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "GetMeetingsOfUser")
@@ -97,7 +97,7 @@ public interface IUser
 
     [OperationContract]
     [WebInvoke(
-         Method = "GET",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "GetAssignmentsOfUser")
@@ -121,4 +121,15 @@ public interface IUser
          UriTemplate = "GetAllNotApprovedRemindersOfUser")
     ]
     List<Reminder> GetAllNotApprovedRemindersOfUser(string id);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "AddAssignmentOfProjectToUsers")
+    ]
+    void AddAssignmentOfProjectToUsers(List<string> list);
+
 }
+

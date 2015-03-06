@@ -23,8 +23,8 @@
     self.create = function(){
         var task = {
             title: '',
-            content: '',
-            done: false
+            content: ''
+            
       };
       return new self.taskResource(task);
     };

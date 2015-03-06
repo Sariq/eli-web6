@@ -11,7 +11,7 @@
         self.pageIdx = 0;
         self.inboxCounter = 0;
         $scope.$on('CatMailMessages', function () {
-
+            self.inboxCounter = 0;
             self.messages = MailService.getInboxMessages(); 
        
                 angular.forEach(self.messages, function (value, key) {
