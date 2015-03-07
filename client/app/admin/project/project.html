@@ -61,7 +61,8 @@
             <div class="panel-body" style="background: #5E5250; direction: rtl">
 
 
- <iui-treeview name="{{treeName}}" class="directive" items="remoteData" allow-drag="true" allow-drop="true" drag-drop="onDragDrop(e)" item-click="onItemClick(e)" rtl="showRTL" label-edit="true" events="treeEvents" 
+ <iui-treeview name="{{treeName}}" class="directive" items="remoteData"  allow-drag="true" allow-drop="true" drag-drop="onDragDrop(e)"  rtl="showRTL" 
+     label-edit="true" events="treeEvents" item-added="onItemAdded(e)"
      show-icons="false" tabindex="0"></iui-treeview>
 
 
@@ -81,6 +82,7 @@
             <button ng-click="save()">Save</button>
                 <button ng-click="get()">get</button>
                 <button ng-click="update()">update</button>
+                 <button ng-click="test()">test</button>
          <!--       <span class="pull-left">branch lable
                     <input ng-model="lable" /><br />
                     branch description 
@@ -97,4 +99,4 @@
     </div>
 </div>
 <!--  <abn-tree tree-data="projectArr" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="1" initial-selection="Granny Smith"></abn-tree>-->
-{{localData}}
+{{remoteData}}

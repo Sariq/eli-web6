@@ -65,9 +65,11 @@
         };
         self.saveToken = function (key, val) {
             //change with paylod instead of (self.userInfo._isRememberMe)
-            if (!self.userInfo._isRememberMe) {
+          
+            if (!self.getUserInfo().isRememberMe) {
                 ipCookie(key, val, { expires: '' });
             } else {
+                ipCookie.remove('id_token');
                 ipCookie(key, val, { expires: 30 })
             }
         }

@@ -64,7 +64,7 @@
          <!--tree_view-->
 </head>
 <body ng-app="eli.admin" ng-controller="LogInCtrl">
-    <div ng-controller="NavCtrl" ng-show="nav.show==true" ng-include='"templates/navigation.html"'></div>
+    <div ng-controller="NavCtrl" ng-if="nav.show==true" ng-include='"templates/navigation.html"'></div>
 
 
     <div id="page-wrapper">

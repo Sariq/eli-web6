@@ -8,7 +8,7 @@
                 url: '/projects',
                 templateUrl: 'project/project.html',
                 controller: 'TreeViewController',
-                controllerAs: ''
+                controllerAs: 'tree'
 
             })
          .state('projects.task', {

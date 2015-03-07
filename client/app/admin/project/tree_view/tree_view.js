@@ -4,6 +4,7 @@
 
         $scope.treeName = "treeSample";
         $scope.itemIcon = "icons empty";
+        self.userInfo = AuthService.getUserInfo();
         $scope.showRTL = true;
         $scope.showIcons = true;
         $scope.currnetItem = '';
@@ -93,13 +94,17 @@
                 $scope.update()
         }
         $scope.onItemClick = function (e) {
+
             if (e.item) {
 
-                        if (!e.item.items!=null) {
-                            ProjectService.setTask(e.item);
+                if (e.item.items == null) {
+                    self.item = e.item;
+                    console.log(self.item)
+                   // ProjectService.setTask(e.item);
+                
                             $timeout(function () {
-                                $location.path('/projects/task/' + e.item.text);
-                            }, 1000)
+                    $location.path('/projects/task/' + e.item.text);
+                            }, 0)
                         }
                     }
         }
@@ -117,21 +122,26 @@
             itemCount = 0;
         }
 
+        //treeEvents
         $scope.treeEvents = {
 
-            //itemClick: function (e) {
-            //    return $scope.onItemClick(e);
-            //} ,
+            itemClick: function (e) {
+                return $scope.onItemClick(e);
+            } ,
             afterLabelEdit: function (e) {
                 return $scope.onAfterLabelEdit(e);
             }
-
         }
+
 
         $scope.onAfterLabelEdit = function (e) {
             $scope.update();
         }
-        
+
+
+        $scope.onItemAdded = function (e) {
+            alert("itemadded event was fired after is added");
+        }
 
         //$scope.onItemClick = function (e) {
         //    if (e.item) {
@@ -173,7 +183,8 @@
         $scope.get = function () {
             $http.post('/ProjectService.svc/getProject', $scope.userInfo._id).
                  success(function (data, status, headers, config) {
-           $scope.treeId = data._id;
+                     $scope.treeId = data._id;
+        
            $treeService.loadData($scope.treeName, data.items);
            $treeService.collapse($scope.treeName);
                  }).error(function (data, status, headers, config) { alert("Project Get") });
@@ -188,8 +199,33 @@
          
         }
 
+        self.saveTask = function (task, sendToUser) {
+            console.log(self.item.idOfAssignments)
+            if (self.item.id == undefined) {
+                alert("please click on task")
+            }
+            task.isProject = true;
+            task.projecId = self.userInfo._id;
+            task.idInProject = self.item.id;
+            task.title = self.item.text;
+            $http.post('/AssignmentService.svc/api', task).
+       success(function (data, status, headers, config) {
+           self.item.idOfAssignments = [];
+           self.item.idOfAssignments.push(data._id);
+         
+           //SendToUSers
+           sendToUser.push(data._id)
+           $http.post('/UserService.svc/AddAssignmentOfProjectToUsers', sendToUser).
+    success(function (data, status, headers, config) {
+        console.log(data._id)
+        $scope.update
+    }).error(function (data, status, headers, config) { alert("Project Add") });
 
 
+
+       }).error(function (data, status, headers, config) { alert("Project Add") });
+
+        }
 
     }
 

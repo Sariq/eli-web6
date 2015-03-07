@@ -68,10 +68,8 @@
         //localStorageService.cookie.set('test', 'sariTest')
         $scope.logIn = function () {
 
-           
             AuthService.setUserInfo($scope.obj.user);
-           
-            
+            console.log($scope.obj.user)
             $scope.obj.user.$save(function (d, getResponseHeaders) {
                 
                 $scope.id_token = getResponseHeaders()['id_token'];

@@ -1,15 +1,15 @@
 ﻿
-<div class="row ">
+<div class="row " ng-if="tree.item.text">
 
 
     <div class="modal-content">
         <div class="modal-header text-right">
-            <h3 class="text-center">{{task.task.text}}</h3>
+            <h3 class="text-center">{{tree.item.text}}</h3>
         </div>
-        {{task.task}}
+        {{task.task}} 
                   <div class="panel-body">
 
-                      <div class="row">
+<!--                      <div class="row">
                           <div class="col-md-12  col-xs-12">
                               <label class="label-text-size pull-right">
                                   : כותרת
@@ -19,7 +19,7 @@
                               <input class="form-control input-md" ng-model="task.task.title" placeholder="">
                           </div>
 
-                      </div>
+                      </div>-->
                       <br />
 
                       <div class="row">
@@ -54,7 +54,7 @@
                           </div>
                       </div>
  <button class="btn btn-info" ng-click="task.saveReminder()">Remind Me</button>
- <button class="btn btn-info" ng-click="task.saveTask()">Save</button>
+ <button class="btn btn-info" ng-click="tree.saveTask(task.task,task.sendToUser)">Save</button>
 
                   </div>
     </div>

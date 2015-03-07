@@ -10,19 +10,19 @@
         self.tagArr = [];
         self.sendToUser = [];
         self.userInfo = AuthService.getUserInfo();
-       
+
         self.task = TaskAdmin.create();
         //  $rootScope.$broadcast("taskReminder");
-        $rootScope.$on('prjEdit', function () {
-            alert("prjEdit")
-            self.temp_task = ProjectService.getTask();
-            self.task.title = self.temp_task.text;
-            //self.task.parentId = self.temp_task.id;
+        //$rootScope.$on('prjEdit', function () {
+        //    alert("prjEdit")
+        //    self.temp_task = ProjectService.getTask();
+        //    self.task.title = self.temp_task.text;
+        //    //self.task.parentId = self.temp_task.id;
 
-        });
-        self.temp_task = ProjectService.getTask();
-        console.log(self.temp_task)
-        self.task.title = self.temp_task.text;
+        //});
+        //self.temp_task = ProjectService.getTask();
+        //console.log(self.temp_task)
+        //self.task.title = self.temp_task.text;
         //self.task.parentId = self.temp_task.id;
 
         self.reminder = { reminderTime: '', dataId: '', dataType: '', title: '' };
@@ -54,7 +54,7 @@
 
         }
 
-        self.reminder.dataId = self.temp_task.id;
+       // self.reminder.dataId = self.temp_task.id;
         self.saveReminder = function () {
 
             self.reminder.reminderTime = '/Date(' + self.reminder.reminderTime.getTime() + ')/';
@@ -123,25 +123,7 @@
 
         //Tags
         //Add task
-        self.saveTask = function () {
-            self.task.isProject = true;
-            self.task.projectId = self.userInfo._id;
-            self.task.idInProject = self.temp_task.id;
-            $http.post('/AssignmentService.svc/api', self.task).
-       success(function (data, status, headers, config) {
 
-           //SendToUSers
-           self.sendToUser.push(data._id)
-           $http.post('/UserService.svc/AddAssignmentOfProjectToUsers', self.sendToUser).
-    success(function (data, status, headers, config) {
-        console.log(data._id)
-    }).error(function (data, status, headers, config) { alert("Project Add") });
-
-
-
-       }).error(function (data, status, headers, config) { alert("Project Add") });
-
-        }
 
 
 

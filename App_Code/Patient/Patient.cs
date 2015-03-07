@@ -1,8 +1,6 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Web;
 
 [DataContract]
 public class Patient : DatabaseObject
@@ -26,8 +24,8 @@ public class Patient : DatabaseObject
     [DataMember]
     public List<string> meetings { get; set; }
 
-    public Patient(string identityNumber, string name, string email, string address, DateTime birthDate,
-        string education, string workplace, List<Person> contacts, List<string> meetings)
+    public Patient (string identityNumber, string name, string email, string address, DateTime birthDate, string education, string workplace,
+        List<Person> contacts, List<string> meetings)
         : base()
     {
         this.identityNumber = identityNumber;
