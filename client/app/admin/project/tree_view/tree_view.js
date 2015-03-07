@@ -172,29 +172,30 @@
             alert(ReminderService.getTaskId())
         });
         $scope.save = function () {
-            var project = { userId: $scope.userInfo._id, items: $scope.localData };
+            var project = {items: $scope.localData };
             $http.post('/ProjectService.svc/api', project).
        success(function (data, status, headers, config) {
-
-       }).error(function (data, status, headers, config) { });
-            alert("Project Add")
+           $scope.prjId = data;
+       }).error(function (data, status, headers, config) { alert("Project Add") });
+           
         }
 
         $scope.get = function () {
-            $http.post('/ProjectService.svc/getProject', $scope.userInfo._id).
+            $http.post('/ProjectService.svc/getProject', $scope.prjId).
                  success(function (data, status, headers, config) {
-                     $scope.treeId = data._id;
+                     $scope.prjId = data._id;
         
            $treeService.loadData($scope.treeName, data.items);
            $treeService.collapse($scope.treeName);
                  }).error(function (data, status, headers, config) { alert("Project Get") });
         }
+        // 
         $scope.get();
         $scope.update = function () {
-            var project = { userId: $scope.userInfo._id, items: $scope.remoteData, _id: $scope.treeId };
+            var project = {items: $scope.remoteData,_id: $scope.prjId };
             $http.post('/ProjectService.svc/update', project).
        success(function (data, status, headers, config) {
-
+           alert(data.data)
        }).error(function (data, status, headers, config) { alert("Project update") });
          
         }

@@ -18,7 +18,7 @@ public class ChatMessageService : DatabaseActions, IChatMessage
         Debug.Write(clientId);
         var onlineMessagesOfClientList = GetAllObject<ChatMessage>("clientId", clientId, "ChatMessage");
 
-        UpdateObjects("clientId", clientId, "Web", "isNewMessage", false);
+       // UpdateObjects("clientId", clientId, "Web", "isNewMessage", false);
 
 
         return onlineMessagesOfClientList;
@@ -63,5 +63,7 @@ public class ChatMessageService : DatabaseActions, IChatMessage
     //        RemoveOnlineMessage(message);
     //    }
     //}
+
+
 
 }

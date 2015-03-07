@@ -19,7 +19,7 @@ public interface IClient
          Method = "DELETE",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
+         UriTemplate = "RemoveWeb")
     ]
     void RemoveWeb(string id);
 

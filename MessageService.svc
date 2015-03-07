@@ -1,2 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="MessageService" CodeBehind="~/App_Code/Chat/Message/MessageService.cs"
-    Factory="System.ServiceModel.Activation.WebServiceHostFactory" %>

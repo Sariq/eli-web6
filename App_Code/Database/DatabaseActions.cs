@@ -66,16 +66,23 @@ public class DatabaseActions
     }
 
     //Update some objects by query
-    protected void UpdateObjects(string fieldName, BsonValue fieldValue, string collectionName, string fieldNameToUpdate, BsonValue fieldValueToUpdate)
-    {
-        var collection = database.GetCollection(collectionName);
-        collection.Update(new QueryDocument(fieldName, fieldValue), new UpdateDocument(fieldNameToUpdate, fieldValueToUpdate));
-    }
+    //protected void UpdateObjects(string fieldName, BsonValue fieldValue, string collectionName, string fieldNameToUpdate, BsonValue fieldValueToUpdate)
+    //{
+    //    var collection = database.GetCollection(collectionName);
+    //    collection.Update(new QueryDocument(fieldName, fieldValue), new UpdateDocument(fieldNameToUpdate, fieldValueToUpdate));
+    //}
 
     protected void UpdateObjects(string fieldName, BsonValue fieldValue, string collectionName, string fieldNameToUpdate, BsonValue fieldValueToUpdate)
     {
+        //var collection = database.GetCollection(collectionName);
+        //var query = Query<Web>.EQ(w => w.clientId, fieldValue);
+        //var update=Update<Web>.Set(w=>w.isNewMessage,false);
+        //collection.Update(query, update);
+       
+       // collection.Update(new QueryDocument(fieldName, fieldValue), new UpdateDocument(fieldNameToUpdate, fieldValueToUpdate));
+
         var collection = database.GetCollection(collectionName);
-        collection.Update(new QueryDocument(fieldName, fieldValue), new UpdateDocument(fieldNameToUpdate, fieldValueToUpdate));
+        collection.Update(new QueryDocument(fieldName, fieldValue), Update.Set(fieldNameToUpdate, fieldValueToUpdate));
     }
 
     protected void UpdateObjectNotAsync(DatabaseObject obj, string collectionName)
@@ -99,6 +106,7 @@ public class DatabaseActions
 
     protected List<ObjectType> GetAllObject<ObjectType>(string collectionName)
     {
+      
         var collection = database.GetCollection(collectionName);
         var obj = collection.FindAllAs<ObjectType>();
          return obj.ToList<ObjectType>();
@@ -107,7 +115,7 @@ public class DatabaseActions
     protected List<ObjectType> GetAllObject<ObjectType>(string fieldName, BsonValue fieldValue, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
-
+      
         var searchQuery = Query.EQ(fieldName, fieldValue);
         var obj = collection.FindAs<ObjectType>(searchQuery);
         return obj.ToList<ObjectType>();

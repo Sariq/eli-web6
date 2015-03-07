@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ReportService" CodeBehind="~/App_Code/Report/ReportService.cs"
+    Factory="System.ServiceModel.Activation.WebServiceHostFactory" %>

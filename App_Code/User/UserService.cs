@@ -189,7 +189,7 @@ public class UserService : DatabaseActions, IUser
         foreach (string id in list)
         {
             var user = GetUser(id);
-            user.assignments.Add(assignmentId);
+            user.projectAassignments.Add(assignmentId);
             UpdateUser(user);
         }
     }

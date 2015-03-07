@@ -14,25 +14,12 @@
         self.flag = false;
         self.flagAdminMsg = false;
         self.isAdminOnline = false;
-        self.userInfo = AuthService.getUserInfo()
-        self.report = {title:'',content:'',chatId:'',adminId:''}
+
        
 
-        self.saveReport = function () {
-       
-            self.report.chatId = ChatService.getwebChatId();
-            self.report.adminId = self.userInfo._id;
-           
-            $http.post('/ReportService.svc/addReport',self.report).
-     success(function (data, status, headers, config) {
-
-     }).error(function (data, status, headers, config) { });
-            alert("Project Add")
-        }
-     
        
         self.chatWebs = ChatService.query()
-        
+        self.userInfo = AuthService.getUserInfo()
         
         self.chatWebs.$promise.then(function (result) {
             console.log(result);

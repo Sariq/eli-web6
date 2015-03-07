@@ -3,8 +3,17 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 
 [ServiceContract]
-public interface IProject
+public interface IReport
 {
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "addReport")
+    ]
+    Report AddReport(Report report);
+
     [OperationContract]
     [WebInvoke(
          Method = "POST",
@@ -12,34 +21,25 @@ public interface IProject
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    string AddProject(Project project);
+    void RemoveReport(string id);
 
     [OperationContract]
     [WebInvoke(
-         Method = "DELETE",
+         Method = "PUT",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "api")
+    ]
+    void UpdateReport(Report report);
+
+    [OperationContract]
+    [WebInvoke(
+         Method = "GET",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api/{id}")
     ]
-    void RemoveProject(string id);
-
-    [OperationContract]
-    [WebInvoke(
-         Method = "POST",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "update")
-    ]
-    void UpdateProject(Project project);
-
-    [OperationContract]
-    [WebInvoke(
-         Method = "POST",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "getProject")
-    ]
-    Project GetProject(string id);
+    Report GetReport(string id);
 
     [OperationContract]
     [WebInvoke(
@@ -48,6 +48,8 @@ public interface IProject
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    List<Project> GetAllProjects();
+    List<Report> GetAllReports();
 
+    
+  
 }

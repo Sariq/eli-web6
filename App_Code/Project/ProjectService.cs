@@ -7,9 +7,9 @@ using System.Diagnostics;
 
 public class ProjectService : DatabaseActions, IProject
 {
-    public void AddProject(Project project)
+    public string AddProject(Project project)
     {
-        InsertObject(project, "Project");
+        return InsertObjectAndReturnId(project, "Project").Result;
     }
 
     public void RemoveProject(string projectId)
@@ -22,10 +22,10 @@ public class ProjectService : DatabaseActions, IProject
         UpdateObject(project, "Project");
     }
 
-    public Project GetProject(string userId)
+    public Project GetProject(string projectId)
     {
-        Debug.Write(userId);
-        return GetObject<Project>("userId", userId, "Project").Result;
+        Debug.Write(projectId);
+        return GetObject<Project>("_id", projectId, "Project").Result;
     }
 
     public List<Project> GetAllProjects()

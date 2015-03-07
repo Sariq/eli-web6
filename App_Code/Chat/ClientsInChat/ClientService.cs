@@ -51,6 +51,7 @@ public class ClientService : DatabaseActions, IClient
 
     public List<Web> GetAllWebs()
     {
+        
         return GetAllObject<Web>("Web");
     }
 

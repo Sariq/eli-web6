@@ -9,7 +9,7 @@
         self.chatWebResource = $resource('/ClientService.svc/GetAllWebs/:id', {},
           { update: { method: 'PUT' } }
         );
-        self.chatMessagesResource = $resource('/MessageService.svc/GetAllOnlineMessagesOfClient/:id', {},
+        self.chatMessagesResource = $resource('/ChatMessageService.svc/GetAllOnlineMessagesOfClient/:id', {},
         { update: { method: 'PUT' } }
       );
         self.getMessages = function (clientId) {
