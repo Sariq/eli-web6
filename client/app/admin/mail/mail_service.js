@@ -101,13 +101,14 @@
         };
 
         self.getMailMessagesHttp = function (userId) {
-            
-            var promise = $http({
-                url: '/MailMessageService.svc/GetInboxMessages',
-                method: 'POST',
-                data: userId
-            });
-            return promise;
+            if (userId != null) {
+                var promise = $http({
+                    url: '/MailMessageService.svc/GetInboxMessages',
+                    method: 'POST',
+                    data: userId
+                });
+                return promise;
+            }
         }
 
         self.setMailMessages = function (MailMessages) {

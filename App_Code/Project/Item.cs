@@ -15,13 +15,14 @@ public class Item
     [DataMember]
     public List<Item> items { get; set; }
 
-    public Item(string text, string pId, string id, List<string> idOfAssignmentd, List<Item> items)
+    public Item(string text, string pId, string id, List<Item> items)
     {
         this.text = text;
         this.pId = pId;
         this.id = id;
-        this.idOfAssignments = idOfAssignments;
+        this.idOfAssignments = new List<string> { };
         this.items = items;
+ 
     }
 
     public Item(Item item)

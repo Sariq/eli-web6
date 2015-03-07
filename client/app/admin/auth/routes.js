@@ -1,26 +1,26 @@
 (function () {
 
-
-  function routes($stateProvider, $urlRouterProvider,$resourceProvider) {
-        
-      $stateProvider
-      .state('/about', {
-        templateUrl: 'views/about.html',
-        controller: ''
-
-
+    function routes($stateProvider, $urlRouterProvider) {
+        $stateProvider
+       .state('navigation', {
+           url: '/navigation',
+           templateUrl: 'templates/navigation.html',
+           controller: 'NavCtrl',
+           controllerAs: 'NavCtrl'
+       })
+     .state('dashboard', {
+         url: '/',
+         templateUrl: 'partials/dashboard.html',
+     })
+      .state('logIn', {
+          url: '/logIn',
+          templateUrl: 'auth/views/logIn/logIn.html',
+          controllerAs: 'logIn'
       })
-   
-     .state('navigation', {
-         url: '/navigation',
-        templateUrl: 'templates/navigation.html',
-        controller: 'NavCtrl',
-        controllerAs: 'NavCtrl'
 
-      })
-$urlRouterProvider.otherwise('/');
-  }
-  angular.module('eli.admin')
-    .config(['$stateProvider','$urlRouterProvider','$resourceProvider',routes])
+        $urlRouterProvider.otherwise('/');
 
+    }
+    angular.module('eli.admin')
+      .config(['$stateProvider', '$urlRouterProvider', routes])
 }());

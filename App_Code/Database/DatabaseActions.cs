@@ -57,11 +57,32 @@ public class DatabaseActions
         await collection.RemoveAsync(new QueryDocument(fieldName, fieldValue));
     }
 
+    //Update one object
     protected async void UpdateObject(DatabaseObject obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
         Debug.Write(obj._id);
         await collection.UpdateAsync(new QueryDocument("_id", obj._id), new UpdateDocument(new BsonDocument(obj.ToBsonDocument())));
+    }
+
+    //Update some objects by query
+    protected void UpdateObjects(string fieldName, BsonValue fieldValue, string collectionName, string fieldNameToUpdate, BsonValue fieldValueToUpdate)
+    {
+        var collection = database.GetCollection(collectionName);
+        collection.Update(new QueryDocument(fieldName, fieldValue), new UpdateDocument(fieldNameToUpdate, fieldValueToUpdate));
+    }
+
+    protected void UpdateObjects(string fieldName, BsonValue fieldValue, string collectionName, string fieldNameToUpdate, BsonValue fieldValueToUpdate)
+    {
+        var collection = database.GetCollection(collectionName);
+        collection.Update(new QueryDocument(fieldName, fieldValue), new UpdateDocument(fieldNameToUpdate, fieldValueToUpdate));
+    }
+
+    protected void UpdateObjectNotAsync(DatabaseObject obj, string collectionName)
+    {
+        var collection = database.GetCollection(collectionName);
+        Debug.Write(obj._id);
+        collection.Update(new QueryDocument("_id", obj._id), new UpdateDocument(new BsonDocument(obj.ToBsonDocument())));
     }
 
     protected async Task<ObjectType> GetObject<ObjectType>(string id, string collectionName)
@@ -94,6 +115,7 @@ public class DatabaseActions
 
     protected List<ObjectType> GetAllObject<ObjectType>(List<string> objectsId, string collectionName)
     {
+        Debug.Write(collectionName);
         var collection = database.GetCollection(collectionName);
         var objList = new List<ObjectType>();
         foreach (string id in objectsId)

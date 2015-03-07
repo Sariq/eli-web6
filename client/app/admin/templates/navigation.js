@@ -1,5 +1,5 @@
 (function () {
-    function NavCtrl(AuthService, $scope, $rootScope, $http, $timeout, ReminderService, $location, MailService, $interval) {
+    function NavCtrl(AuthService, $scope, $rootScope, $http, $timeout, ReminderService, $location, MailService, $interval, UserAdmin) {
         var self = this;
         console.log("nav2");
         $scope.inboxCounter = 0;
@@ -12,6 +12,11 @@
             $scope.userInfo = AuthService.getUserInfo()
         });
 
+        self.userList = UserAdmin.query();
+        self.userList.$promise.then(function (result) {
+            console.log(result);
+            UserAdmin.setUserList(result)
+        });
 
         $scope.logOut = function () {
             $rootScope.$broadcast("logOut");
@@ -42,21 +47,23 @@
             $scope.inBoxMessages = [];
             $scope.inboxCounter = 0;
             $scope.mailMessagesPromise = MailService.getMailMessagesHttp($scope.userInfo._id);
-            $scope.mailMessagesPromise.then(function (response) {
-                MailService.setMailMessages(response.data);
-                $scope.inBoxMessages = response.data;
-                angular.forEach($scope.inBoxMessages, function (value, key) {
-                    if (!value.isDelete && value.fromUser[0] != $scope.userInfo._id) {
-                        if (!value.isRead)
-                            $scope.inboxCounter++;
-                    }
-                });
-              
-                $timeout(function () {                      
-                    $rootScope.$broadcast("mailMessagesFromService");
-                }, 60000)
+            if ($scope.mailMessagesPromise) {
+                $scope.mailMessagesPromise.then(function (response) {
+                    MailService.setMailMessages(response.data);
+                    $scope.inBoxMessages = response.data;
+                    angular.forEach($scope.inBoxMessages, function (value, key) {
+                        if (!value.isDelete && value.fromUser[0] != $scope.userInfo._id) {
+                            if (!value.isRead)
+                                $scope.inboxCounter++;
+                        }
+                    });
 
-            });
+                    $timeout(function () {
+                        $rootScope.$broadcast("mailMessagesFromService");
+                    }, 60000)
+
+                });
+            }
         }
        // $scope.getMailMessages();
         $interval(function () {
@@ -78,8 +85,9 @@
 
             }, function () { alert("getAssignmentsByIds edit error") });
         }
-        $scope.getTasks();
-
+        if ($scope.userInfo.assignments != null) {
+            $scope.getTasks();
+        };
         //Get Reminders
         $scope.getReminders = function () {
             $scope.reminderListPromise = ReminderService.getRemindersByIds(AuthService.getUserInfo().reminders);
@@ -160,5 +168,5 @@
     }
 
     angular.module('eli.admin')
-      .controller('NavCtrl', ['AuthService', '$scope', '$rootScope', '$http', '$timeout', 'ReminderService', '$location', 'MailService', '$interval', NavCtrl]);
+      .controller('NavCtrl', ['AuthService', '$scope', '$rootScope', '$http', '$timeout', 'ReminderService', '$location', 'MailService', '$interval','UserAdmin', NavCtrl]);
 }());

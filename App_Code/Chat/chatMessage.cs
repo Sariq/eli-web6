@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 
 
-public class ChatMessage
+public class ChatMessageArr
 {
     public string clientName;
     public string clientId;
     public string arrType;
-    public List<Message> allMessage;
+    public List<ChatMessage> allMessage;
 
-    public ChatMessage(string clientId, List<Message> allMessage)
+    public ChatMessageArr(string clientId, List<ChatMessage> allMessage)
 	{
         this.allMessage = allMessage;
         this.clientName = new ClientService().GetWeb(clientId).webName;

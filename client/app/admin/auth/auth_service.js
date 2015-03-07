@@ -1,71 +1,56 @@
 (function () {
 
     function AuthService($resource, $http, localStorageService, jwtHelper, ipCookie) {
-                                               
-
-
         var self = this;
-        var count = 0;
-        self.userInfo = {};
-        self.count = 1;
         self.authResource = $resource('/UserService.svc/SignIn/:id', {}, [{ update: { method: 'PUT' } }]);
-        //self.authResource = $resource('/DatabaseService.svc/Initialize', {}, [{ update: { method: 'PUT' } }]);
-        //self.tokenRefreshResource = $resource('http://localhost:83\:83/TokenService.svc/RefreshToken/:id', {}, { update: { method: 'PUT' } });
+        // self.authResource = $resource('/DatabaseService.svc/Initialize', {}, [{ update: { method: 'PUT' } }]);
+    
         self.getTokenId = function () {
-            if (localStorageService.cookie.get('id_token') != null) {
-                var tokenPayload = jwtHelper.decodeToken(localStorageService.cookie.get('id_token'));
-                var bool = jwtHelper.isTokenExpired(localStorageService.cookie.get('id_token'));
-                console.log("AuthService FUNCTION")
+            if (self.TokenId() != null) {
+                var tokenPayload = jwtHelper.decodeToken(self.TokenId());
+                var bool = jwtHelper.isTokenExpired(self.TokenId());
                 if (bool) {
                     $http({
                         url: '/TokenService.svc/RefreshToken',
                         headers: {
-                            'Authorization': localStorageService.cookie.get('id_token')
+                            'Authorization': self.TokenId()
                         },
                         skipAuthorization: true,
                         method: 'POST'
                     }).then(function (response) {
-                        alert("re")
                         var id_token = response.headers("id_token");
                         self.saveToken('id_token', id_token);
-                    }, function () { alert("rssse") });
+                    }, function () { alert("refresh token error") });
                 };
-                return localStorageService.cookie.get('id_token');
+                return self.TokenId();
             } else {
                 return false;
             }
         }
-        self.TokenId = function () { if (localStorageService.cookie.get('id_token') != null) { return true } else { return false } }
-        self.get = function (auth_id) {
+        self.TokenId = function () {
+            return localStorageService.cookie.get('id_token');
+        }
 
-            return self.authResource.get({ id: auth_id }, function (d) {
-                self.w = d;
-            });
-        };
 
         self.setUserInfo = function (userInfo) {
-          
             return localStorageService.set("userInfo", userInfo);
         };
         self.getUserInfo = function (userInfo) {
-            console.log(localStorageService.get("userInfo"))
             return localStorageService.get("userInfo");
         };
         self.clearUserInfo = function () {
-
             return localStorageService.remove("userInfo");
         }
+
         self.create = function () {
             var user = {
                 userId: '',
-                password: ''
-               
+                password: '',
+                isRememberMe: false
             };
             return new self.authResource(user);
         };
         self.saveToken = function (key, val) {
-            //change with paylod instead of (self.userInfo._isRememberMe)
-          
             if (!self.getUserInfo().isRememberMe) {
                 ipCookie(key, val, { expires: '' });
             } else {
@@ -74,7 +59,7 @@
             }
         }
 
-        return self;
+    
     }
 
     angular.module('eli.admin')

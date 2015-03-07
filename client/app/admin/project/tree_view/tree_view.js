@@ -78,7 +78,7 @@
 
         var createNewItem = function () {
             itemCount++;
-            return { text: $scope.itemName };
+            return { text: $scope.itemName ,idOfAssignments:[]};
         }
 
         $scope.addRoot = function () {

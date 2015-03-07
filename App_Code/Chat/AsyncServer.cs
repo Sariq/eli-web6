@@ -21,12 +21,12 @@ public class AsyncServer
         {
             var clientService = new ClientService();
 
-            Message currentMessage = new Message(clientId, message, type);
-            new MessageService().AddOnlineMessage(currentMessage);
+            ChatMessage currentMessage = new ChatMessage(clientId, message, type);
+            new ChatMessageService().AddOnlineMessage(currentMessage);
 
-            var allMessages = new MessageService().GetAllOnlineMessagesOfClient(clientId);
+            var allMessages = new ChatMessageService().GetAllOnlineMessagesOfClient(clientId);
      
-            var chatMessage = new ChatMessage(clientId, allMessages);
+            var chatMessage = new ChatMessageArr(clientId, allMessages);
             //arrchatMessage[z] = new chatMessage();
             //arrchatMessage[z].content = message;
             //z++;
@@ -205,7 +205,7 @@ public class AsyncServer
                 Debug.Write(type);
                 Web web=clientService.GetWeb(clientId);
                 web.isOnline =false;
-                clientService.UpdateWeb(web);
+                clientService.UpdateWebNotAsync(web);
                // clientService.RemoveWeb(clientId);
                 _clientStateList.Remove(state);
 

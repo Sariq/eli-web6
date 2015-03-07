@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using System.Web;
 
 [DataContract]
-public class Message : DatabaseObject
+public class ChatMessage : DatabaseObject
 {
     [DataMember]
     public string clientId { get; set; }
@@ -12,16 +12,19 @@ public class Message : DatabaseObject
     public string messageContent { get; set; }
     [DataMember]
     public string type { get; set; }
+    [DataMember]
+    public bool isHistory { get; set; }
 
-    public Message(string clientId, string messageContent, string type)
+    public ChatMessage(string clientId, string messageContent, string type)
         : base()
     {
         this.clientId = clientId;
         this.messageContent = messageContent;
         this.type = type;
+        this.isHistory = false;
     }
 
-    public Message(Message message)
+    public ChatMessage(ChatMessage message)
         : base()
     {
         this._id = message._id;
@@ -29,5 +32,6 @@ public class Message : DatabaseObject
         this.clientId = message.clientId;
         this.messageContent = message.messageContent;
         this.type = message.type;
+        this.isHistory = message.isHistory;
     }
 }

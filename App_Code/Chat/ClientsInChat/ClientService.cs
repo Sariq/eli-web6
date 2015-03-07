@@ -34,6 +34,10 @@ public class ClientService : DatabaseActions, IClient
     {
         UpdateObject(web, "Web");
     }
+    public void UpdateWebNotAsync(Web web)
+    {
+        UpdateObjectNotAsync(web, "Web");
+    }
 
     public Web GetWeb(string webId)
     {

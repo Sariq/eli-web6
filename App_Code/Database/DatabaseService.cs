@@ -48,9 +48,9 @@ public class DatabaseService : IDatabaseService
 
         CreateCollection("Admin");
 
-        CreateCollection("OnlineMessage");
+        CreateCollection("ChatMessage");
 
-        CreateCollection("MessageHistory");
+        CreateCollection("MailMessage");
 
         CreateCollection("News");
 
@@ -59,12 +59,12 @@ public class DatabaseService : IDatabaseService
         CreateCollection("Project");
 
         InitializeUserCollection();
-        InitializeMeetingCollection();
-        InitializeAssignmentCollection();
-        InitializePatientCollection();
-        InitializeMailMessageCollection();
-        InitializeNewsCollection();
-        InitializeReminderCollection();
+        //InitializeMeetingCollection();
+        //InitializeAssignmentCollection();
+        //InitializePatientCollection();
+        //InitializeMailMessageCollection();
+        //InitializeNewsCollection();
+        //InitializeReminderCollection();
     }
 
     private void InitializeAssignmentCollection()
@@ -106,8 +106,8 @@ public class DatabaseService : IDatabaseService
 
     private void InitializeMailMessageCollection()
     {
-        var mailMessageService = new MailMessageService();
-        mailMessageService.SendMailMessage(mailMessage);
+       // var mailMessageService = new MailMessageService();
+        //mailMessageService.SendMailMessage(mailMessage);
     }
 
     private void InitializeNewsCollection()
