@@ -7,9 +7,11 @@ using System.Diagnostics;
 
 public class ProjectService : DatabaseActions, IProject
 {
-    public string AddProject(Project project)
+
+    public Project AddProject(Project project)
     {
-        return InsertObjectAndReturnId(project, "Project").Result;
+        return (Project)InsertObjectAndReturnTheObject<Project>(project, "Project").Result;
+
     }
 
     public void RemoveProject(string projectId)

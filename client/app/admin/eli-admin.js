@@ -4,6 +4,8 @@
 angular.module('eli.admin', [
   'ngResource',
   'eli.common',
+          'ngMaterial',
+          'tc.chartjs',
       'angularBootstrapNavTree',
       'AbnTest',
       'integralui',
@@ -65,22 +67,26 @@ angular.module('eli.admin')
  //TO CHECK
 angular.module('eli.admin').filter("idToUserName", function (UserAdmin) {
     return function (items) {
-        var myfunc = function (x, y) {
-            x = y;
-        }
+        console.log("IN")
+        console.log(items)
         var userList = UserAdmin.getUserList();
-        var tmpItems = items;
-        for (var i = 0; i < tmpItems.length; i++) {
+
+
+
+        for (var i = 0; i < items.length; i++) {
 
             for (var j = 0; j < userList.length; j++) {
 
-                if (tmpItems[i].fromUser[0] == userList[j]._id) {
-                    tmpItems[i].fromUser[0] = userList[j].userId;
-                    //myfunc(tmpItems[i].fromUser[0], userList[j].userId)
+                if (items[i].fromUser[0] == userList[j]._id) {
+                    items[i].fromUser[0] = userList[j].userId;
+                    
                 }
             }
         }
-        return tmpItems;
+
+        console.log("OUT")
+        console.log(items)
+        return items;
     };
 });
 angular.module('eli.admin').filter("jsDate", function () {
@@ -150,4 +156,12 @@ angular.module('eli.admin').config(['$validationProvider', 'tagsInputConfigProvi
 
 }]);
 
-
+angular.module('eli.admin').config(function ($provide) {
+    $provide.decorator('$uiViewScroll', function ($delegate) {
+        return function (uiViewElement) {
+             var top = uiViewElement.getBoundingClientRect().top;
+             window.scrollTo(0, (top - 30));
+            // Or some other custom behaviour...
+        };
+    });
+});

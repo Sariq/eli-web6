@@ -66,7 +66,8 @@
                 self.patient.$save(function (response) {
                     console.log(response);
                    
-                    UserAdmin.addPatient(self.userInfo,response._id)
+                    UserAdmin.addPatient(self.userInfo, response._id)
+                    AuthService.setUserInfo(self.userInfo);
                     UserAdmin.updateUser(self.userInfo);
                     console.log(self.userInfo);
                     $location.path(success_url);

@@ -1,0 +1,52 @@
+﻿
+<div class="row " ng-if="tree.item.text">
+
+
+    <div class="modal-content">
+        <div class="modal-header text-right">
+            <h3 class="text-center">{{tree.item.text}}</h3>
+        </div>
+        {{task.task}} 
+                  <div class="panel-body">
+
+
+                      <br />
+
+                      <div class="row">
+                          <div class="form-group">
+                              <div class="col-md-12 col-xs-12 ">
+                                  <label class="pull-right" for="content">: תוכן</label>
+                                  <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
+                                  <label style="direction: rtl" >{{tree.taskItem.content}}</label>
+                              </div>
+                          </div>
+                      </div>
+                      <br />
+<!--                        <div class="row">
+                               <tags-input ng-model="tags" min-length="0"
+                        replace-spaces-with-dashes="false"
+                        add-from-autocomplete-only="true"
+                        on-tag-added="tagAdded($tag)"
+                        on-tag-removed="tagRemoved($tag)" style="direction: ltr"> <auto-complete
+											source="loadTags($query)" min-length="0" debounce-delay="0"
+											max-results-to-show="10" ></auto-complete> </tags-input>
+                          </div>
+                      <div class="row">
+                        
+                          <div class="col-md-4 col-xs-4 pull-right">
+                              <datetimepicker ng-change="task.validateDate()"
+                                  min-date="task.tmpDate"
+                                  hour-step="task.hourStep" minute-step="task.minuteStep"
+                                  ng-model="task.reminder.reminderTime" show-meridian="task.showMeridian"
+                                  date-format="dd/MM/yyyy" 
+                                  date-disabled="task.disabled(date, mode)" readonly-time="false"></datetimepicker>
+                     
+                          </div>
+                      </div>-->
+
+                        <a href="#/item/{{tree.projectId}}/edit/{{tree.item.idOfAssignments[0]}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                  </div>
+    </div>
+</div>
+
+

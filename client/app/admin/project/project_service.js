@@ -21,29 +21,34 @@
     
     //self.addChildren = function (children) {
     //    return self.projectResource.save();
-    //};
+        //};
     self.create = function(){
-        var project = [{
-            label: 'prj1', children: [{
-                label: 'Dog',
-                data: {
-                    description: "man's best friend", to: []
-                }
-            },
-    {
-        label: 'Dog2',
-        data: {
-            description: "man's best friend2", to: []
-        }
-    }
-            ]
-        }];
-
-
-
+        var project = { name: '', items: [] };
         self.project = new self.projectResource(project)
-        return project;
+        return self.project;
     };
+    //self.create = function(){
+    //    var project = [{
+    //        label: 'prj1', children: [{
+    //            label: 'Dog',
+    //            data: {
+    //                description: "man's best friend", to: []
+    //            }
+    //        },
+    //{
+    //    label: 'Dog2',
+    //    data: {
+    //        description: "man's best friend2", to: []
+    //    }
+    //}
+    //        ]
+    //    }];
+
+
+
+    //    self.project = new self.projectResource(project)
+    //    return project;
+    //};
 
       self.deleteTask = function (idx,project) {
 
@@ -70,9 +75,12 @@
     };
 
 
-    self.setProjectId = function (project) {
+    self.setProjectId = function (projectId) {
 
-            return localStorageService.set("project", project);
+        return localStorageService.set("projectId", projectId);
+    };
+    self.getProjectId = function () {
+        return localStorageService.get("projectId");
     };
     self.remove = function () {
         alert(self.getProjectId()._id)
@@ -84,9 +92,7 @@
         return self.projectResource.update( self.getProjectId() )
 
     }
-    self.getProjectId = function () {
-        return localStorageService.get("project");
-    };
+
     self.clearProjectId = function () {
 
         return localStorageService.remove("project");

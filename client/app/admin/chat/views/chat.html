@@ -2,6 +2,44 @@
     .chatRowBackground {
         background-color: blue;
     }
+
+    /*buttondemoBasicUsage {
+  /** From vulcanized demo **/ }
+
+    .buttondemoBasicUsage section {
+        background: #00a65a;
+        border-radius: 3px;
+        text-align: center;
+        margin: 1em;
+        position: relative !important;
+        padding-bottom: 10px;
+    }
+
+    .buttondemoBasicUsage md-content {
+        margin-right: 7px;
+    }
+
+    .buttondemoBasicUsage section .md-button:not(.md-fab) {
+        min-width: 10em;
+    }
+
+    .buttondemoBasicUsage section .md-button {
+        display: block;
+        margin: 1em;
+        line-height: 25px;
+    }
+
+    .buttondemoBasicUsage .label {
+        position: absolute;
+        bottom: 5px;
+        left: 7px;
+        color: #ccc;
+        font-size: 14px;
+    }
+
+    .mygreen {
+        background-color: #00a65a;
+    }
 </style>
 
 <div class="row form-header text-right">
@@ -16,14 +54,14 @@
 
 <div class="row">
     <div class="col-md-8" style="direction: rtl">
-        <div class="modal-content panel-default">
+        <div class="modal-content panel-primary">
             <div class="panel-heading">
-                Striped Rows
+                Users Table
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-hover">
                         <thead>
                             <tr>
                                 <td>#</td>
@@ -32,12 +70,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="webUser in chat.chatWebs">
+                            
+                            <tr ng-click="chat.getWebUserChat(webUser,$index)" ng-repeat="webUser in chat.chatWebs" ng-class="{'success':webUser.isOnline,'danger':!webUser.isOnline}">
                                 <td>{{$index}}</td>
-                                <td ng-click="chat.getWebUserChat(webUser,$index)">{{webUser.webName}}</td>
+                                <td>{{webUser.webName}}</td>
                                 <td><span ng-if="webUser.isNewMessage" class="badge bg-info">הודעה חדשה</span></td>
-                                <td><span ng-click="chat.createReport()" ng-if="!webUser.isOnline" class="badge bg-danger">השיחה הסתיימה</span></td>
 
+                                <td><span ng-click="chat.createReport()" ng-if="!webUser.isOnline" class="badge bg-danger" style="font-size:16px">השיחה הסתיימה</span></td>
+                                 <td><span ng-click="chat.createReport()" ng-if="!webUser.isOnline" class="btn btn-warning pull-left">create report</span></td>
+                                <td><span ng-click="chat.remove(webUser._id)" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger pull-left"><i class="glyphicon glyphicon-trash"></i></span></td>
                             </tr>
 
                         </tbody>
@@ -50,7 +91,7 @@
 
     </div>
     <div class="col-md-4">
-        <div class="modal-content  chat-panel  panel-default ">
+        <div class="modal-content  chat-panel  panel-primary ">
             <div class="panel-heading">
                 <i class="fa fa-comments fa-fw"></i>
                 Chat
@@ -79,12 +120,15 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body" scroll-glue>
+                <div class=" bg-info badge " style="height: 20%;margin-top: 10%;display:block" ng-if="chat.isAdminOnline && chat.currentWebUser==''">
+                  <h2> בחר במשתמש על מנת להתחיל בשיחה</h2> 
+                </div>
                 <ul class="chat">
                     <li ng-repeat="message in chat.chatMessages">
-                        <span  class="left clearfix">
-
+                        <span class="left clearfix">
+                           
                             <div class="chat-body clearfix">
-
+                                 
                                 <div class="header">
                                     <small class=" text-muted">
                                         <i class="fa fa-clock-o fa-fw"></i>{{message.messageUpdateT}}</small>
@@ -97,15 +141,17 @@
                             </div>
                         </span>
 
-           
+
                     </li>
                 </ul>
             </div>
             <!-- /.panel-body -->
 
             <div class="panel-footer">
-                <div class="input-group">
-                    <input ng-model="chat.myMessage" id="btn-input" type="text" class="form-control input-sm" placeholder="הכנס הודעה..." />
+                <div ng-if="chat.isAdminOnline && chat.currentWebUser!=''" class="input-group">
+                    <input ng-keypress="($event.which === 13)?chat.myClick():0" style="direction: RTL;" ng-model="chat.myMessage" id="btn-input" type="text" class="form-control input-sm" placeholder="הכנס הודעה..." />
+
+
                     <span class="input-group-btn">
                         <button ng-click="chat.myClick()" class="btn btn-warning btn-sm" id="Button1">
                             Send
@@ -121,66 +167,74 @@
 
 
 
-
+<!--
 <div class="row">
 
-<div class="modal-dialog add-form form_container">
-    <div class="modal-content">
+    <div class="modal-dialog add-form form_container">
+        <div class="modal-content">
 
-        <div class="modal-header">
-            <h1 class="text-center">Report</h1>
-       </div>
-
-        <div class="panel-body text-right">
-            <div class="row">
-                <div class="col-md-12  col-xs-12">
-                    <label class="label-text-size">
-                        : כותרת
-                    </label>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                    <input class="form-control input-md" ng-model="chat.report.title" placeholder="">
-                </div>
-
+            <div class="modal-header">
+                <h1 class="text-center">Report</h1>
             </div>
-            <br/>
+
+            <div class="panel-body text-right">
+                <div class="row">
+                    <div class="col-md-12  col-xs-12">
+                        <label class="label-text-size">
+                            : כותרת
+                        </label>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <input class="form-control input-md" ng-model="chat.report.title" placeholder="">
+                    </div>
+
+                </div>
+                <br />
 
 
                 <div class="form-group">
-          <div class="col-md-12 col-xs-12 " >
-                <label class="pull-right" for="content">: תוכן</label>
-     <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
-              <text-angular style="direction:rtl" ng-model="chat.report.content"></text-angular>
-              </div>
-    </div>
-
-       
-        </div>
-
-
-        
-        <div class="panel-footer">
-            <div class="form-group row">
-                <div class="col-md-6  ">
-                    <a href="#/patients" class="btn btn-warning btn-block label-text-size">בטל</a>
+                    <div class="col-md-12 col-xs-12 ">
+                        <label class="pull-right" for="content">: תוכן</label>
+                   
+                        <text-angular style="direction: rtl" ng-model="chat.report.content"></text-angular>
+                    </div>
                 </div>
-                <div class="col-md-6  ">
-                    <button ng-click="chat.saveReport();"
-                        class="btn btn-info btn-block label-text-size"
-                        translate>
-                        שמור
-                    </button>
+
+
+            </div>
+
+
+
+            <div class="panel-footer">
+                <div class="form-group row">
+                    <div class="col-md-6  ">
+                        <a href="#/patients" class="btn btn-warning btn-block label-text-size">בטל</a>
+                    </div>
+                    <div class="col-md-6  ">
+                        <button ng-click="chat.saveReport();"
+                            class="btn btn-info btn-block label-text-size"
+                            translate>
+                            Save
+                        </button>
+
+                    </div>
                 </div>
             </div>
+
         </div>
-             
     </div>
-</div>
-</div>
+</div>-->
+<!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
+<!--    <md-button  class="md-raised md-primary  btn-block " style="" >שמור</md-button>    -->
 
-
-
-
+<!--                 
+                       <md-button class="md-fab md-primary" aria-label="Use Android">
+        <md-icon md-svg-src="img/icons/ic_android_24px.svg"></md-icon>
+      </md-button>
+                       <md-button class="md-fab "  style="background-color:#00a65a;">
+                           התחבר
+          
+        </md-button>-->
 
 
 
@@ -204,4 +258,3 @@
     .panel-heading > .fa {
     }
 </style>
-3:31 PM 07-Mar-15

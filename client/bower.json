@@ -22,9 +22,11 @@
 	"angular-local-storage":"*",
 	"angular-chart":"*"	,
 	"textAngular":"*" ,
-	"angular-validation":"*"
-
-	
+	"angular-validation":"*"  ,
+	 "angular-material":"*",
+	 "angular-aria":"*"	,
+	 "material-design-icons":"*" ,
+	 "tc-angular-chartjs" :"*"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",

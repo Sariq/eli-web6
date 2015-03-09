@@ -44,23 +44,27 @@
         console.log(user)
 
     };
-       //meeting add/delete
-      self.addMeeting = function (user, meetingId) {
-          console.log(user)
-          user.meetings.push(meetingId);
-      }
-      self.deleteMeeting = function (user, idx) {
-         return user.meetings.splice(idx, 1);
-      };
+
 
       self.addPatient = function (user, patientId) {
-          console.log(user)
+         
+   
           user.patients.push(patientId);
+         
+     
       }
       self.deletePatient = function (user, idx) {
           return user.patients.splice(idx, 1);
       };
+      self.addProject = function (user, projectId) {
+          console.log(user)
+          user.projects.push(projectId);
+      }
+      self.deleteProject = function (user, idx) {
+          return user.projects.splice(idx, 1);
+      };
 
+      
 
       //reminder add/delete
       self.addReminder = function (reminderId) {

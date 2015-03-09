@@ -4,20 +4,50 @@
         //$urlRouterProvider.when('/projects', '/projects/task/:taskId');
         $stateProvider
 
-            .state('projects', {
-                url: '/projects',
-                templateUrl: 'project/project.html',
+            .state('item/:projectId', {
+                url: '/item/:projectId',
+                templateUrl: 'project/views/project/project.html',
                 controller: 'TreeViewController',
                 controllerAs: 'tree'
 
             })
-         .state('projects.task', {
-             url: '/task/:taskId',
-             templateUrl: 'project/views/task.html',
+         .state('item/:projectId.edit', {
+             url: '/edit/:taskId',
+             templateUrl: 'project/views/task/views/add/add.html',
              controller: 'ProjectTaskController',
              controllerAs: 'task'
 
          })
+                .state('item/:projectId.add', {
+                    url: '/add',
+                    templateUrl: 'project/views/task/views/add/add.html',
+                    controller: 'ProjectTaskController',
+                    controllerAs: 'task'
+
+                })
+
+                   .state('item/:projectId.item', {
+                       url: '/item/:taskId',
+                       templateUrl: 'project/views/task/views/item/item.html',
+                       controller: 'ProjectTaskController',
+                       controllerAs: 'task'
+
+                   })
+                .state('project/list', {
+                    url: '/project/list',
+                    templateUrl: 'project/views/list/list.html',
+                    controller: 'ProjectListController',
+                    controllerAs: 'list'
+
+                })
+            .state('project/add', {
+                url: '/project/add',
+                templateUrl: 'project/views/add/add.html',
+                controller: 'ProjectAddController',
+                controllerAs: 'add'
+
+            })
+   
 
             
 

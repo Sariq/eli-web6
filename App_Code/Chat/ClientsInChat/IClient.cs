@@ -16,7 +16,7 @@ public interface IClient
 
     [OperationContract]
     [WebInvoke(
-         Method = "DELETE",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "RemoveWeb")

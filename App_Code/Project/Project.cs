@@ -6,11 +6,13 @@ public class Project : DatabaseObject
 {
     [DataMember]
     public List<Item> items { get; set; }
-
-    public Project(string userId, List<Item> items)
+    [DataMember]
+    public string name { get; set; }
+    public Project(List<Item> items,string name)
         : base()
     {
         this.items = items;
+        this.name = name;
     }
 
     public Project(Project project)
@@ -18,6 +20,7 @@ public class Project : DatabaseObject
         this._id = project._id;
         this._date = project._date;
         this.items = project.items;
+        this.name = project.name;
     }
  
 }

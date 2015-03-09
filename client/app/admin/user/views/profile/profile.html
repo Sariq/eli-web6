@@ -1,80 +1,80 @@
-﻿
+﻿<div class="text-right">
 
-
-
-<div class="text-right">
-   
-    <div class="form-header " style="padding-top:5px" > 
-<ol class="breadcrumb">
-<li class="active" translate>{{user.profile.first_name}}</li>
-  <li><a href="#users" translate>Users</a></li>
-  <li  ><a href="#dashboard" translate>Dashboard</a></li>
-</ol>
+    <div class="form-header " style="padding-top: 5px">
+        <ol class="breadcrumb">
+            <li class="active" translate>{{user.profile.name}}</li>
+            <li><a href="#users" translate>Users</a></li>
+            <li><a href="#dashboard" translate>Dashboard</a></li>
+        </ol>
+    </div>
 </div>
-    </div>
 
-<div class="container">
-      <div class="row">
-  
-        <div class="col-xs-12 col-sm-12   " >
-   
-   
-          <div class="modal-dialog">
-              <div class="modal-content">
-            <div class="modal-header text-right">
-              <h3 class="panel-title">{{user.profile.first_name}} {{user.profile.last_name}}</h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
-                
-  
-                <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-user-information">
-                    <tbody class="text-right">
-                  
-                      <tr>
-                        
-                        <td>{{user.profile.email}}</td>
-                          <td>Email</td>
-                      </tr>
-                      <tr>
-                          <td>{{user.profile.identity_number}}</td>
-                        <td>ID</td>
-                        
-                      </tr>
-                   
-                         <tr>
-                   <td>{{user.profile.address}}</td>
-                        <td>Address</td>
-                    
-                      </tr>
-                        <tr>
-                        <td>{{user.profile.birth_date}}</td>
-                        <td>birth date</td>
-                      </tr>
-                
-                     
-                    </tbody>
-                  </table>
-                  <div class="pull-left">
-                
-                      </div>
-                </div>
-              </div>
-            </div>
-                 <div class="panel-footer ">
-         <!--                <a href="#meetings/{{user.profile._id}}" class="btn btn-primary">טיפולים</a>
-                  <a  class="btn btn-primary">הערות</a>-->
-                       
-                            <a href="#/user/edit/{{user.profile._id}}" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a object-name="user" confirm-action="user.remove(user.profile)" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
-                           
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-12   ">
+
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-right">
+                        <h3 class="panel-title">{{user.profile.name}}</h3>
                     </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3 col-lg-3 " align="center">
+                                <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle">
+                            </div>
+
+
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information">
+                                    <tbody class="text-right">
+
+                                        <tr>
+                                            <td>Role</td>
+                                            <td>{{user.profile.role}}</td>
+
+                                        </tr>
+
+                                        <tr>
+                                             <td>Email</td>
+                                            <td>{{user.profile.email}}</td>
+                                           
+                                        </tr>
+                                <!--        <tr>
+                                                  <td>Birth Date</td>
+                                            <td>{{user.profile.birhDate}}</td>
+                                      
+
+                                        </tr>-->
+
+                                        <tr>
+                                               <td>Address</td>
+                                            <td>{{user.profile.address}}</td>
+                                         
+
+                                        </tr>
+
+
+
+                                    </tbody>
+                                </table>
+                                <div class="pull-left">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer ">
+                        <!--                <a href="#meetings/{{user.profile._id}}" class="btn btn-primary">טיפולים</a>
+                  <a  class="btn btn-primary">הערות</a>-->
+
+                        <a href="#/user/edit/{{user.profile._id}}" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                        <a object-name="user" confirm-action="user.remove(user.profile)" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
 
-  
+

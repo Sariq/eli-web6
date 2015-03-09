@@ -1,5 +1,5 @@
 (function () {
-    function NavCtrl(AuthService, $scope, $rootScope, $http, $timeout, ReminderService, $location, MailService, $interval, UserAdmin) {
+    function NavCtrl(AuthService, $scope, $rootScope, $http, $timeout, ReminderService, $location, MailService, $interval, UserAdmin, TaskgAdmin, $modal) {
         var self = this;
         console.log("nav2");
         $scope.inboxCounter = 0;
@@ -24,17 +24,37 @@
         }
         $scope.setIsReadReminder = function (reminder) {
             //reminder.isApproved = true;
+
             ReminderService.update(reminder);
             $scope.reminderCounter--;
-            ReminderService.setTaskId(reminder.dataId)
-            $location.path('/projects/task/' + reminder.title);
+            ReminderService.setTaskId(reminder.dataId);
+            self.taskItem = TaskgAdmin.get(reminder.dataId);
+            self.showTask(self.taskItem)
+          //  $location.path('/projects/task/' + reminder.title);
+        }
+
+        self.showTask = function (assignment) {
+            //MeetingAdmin.addTask(self.meeting);
+
+            console.log('TaskModalService.openModal');
+            var modalInstance = $modal.open({
+                templateUrl: '../admin/partials/task_modal/views/content/content.html',
+                controller: 'TaskModalInstanceCtrl',
+                size: 'lg',
+                resolve: {
+                    data: function () {
+                        return { data: assignment };
+                    }
+                }
+            });
         }
 
         $scope.setIsReadTask = function (task) {
 
-            $scope.taskCounter--;
+            //$scope.taskCounter--;
             ReminderService.setTaskId(task.idInProject)
-            $location.path('/projects/task/' + task.title);
+            self.showTask(task)
+            //$location.path('/projects/task/' + task.title);
         }
 
         $scope.setIsReadMailMessage = function (message) {
@@ -42,6 +62,9 @@
             $location.path('/mail/mail_message');
         }
 
+        self.setNavMailMessages = function (data) {
+            $scope.inBoxMessages = data;
+        }
         //Get MailMeesages
         $scope.getMailMessages = function () {
             $scope.inBoxMessages = [];
@@ -49,8 +72,15 @@
             $scope.mailMessagesPromise = MailService.getMailMessagesHttp($scope.userInfo._id);
             if ($scope.mailMessagesPromise) {
                 $scope.mailMessagesPromise.then(function (response) {
-                    MailService.setMailMessages(response.data);
+                  
+                    //console.log("Service before IN-Response")
+                    //console.log(response.data)
+                    //console.log("IN-Response")
+                    //console.log(response.data)
+                
+                   // MailService.setMailMessages(response.data);
                     $scope.inBoxMessages = response.data;
+                    
                     angular.forEach($scope.inBoxMessages, function (value, key) {
                         if (!value.isDelete && value.fromUser[0] != $scope.userInfo._id) {
                             if (!value.isRead)
@@ -58,18 +88,22 @@
                         }
                     });
 
-                    $timeout(function () {
-                        $rootScope.$broadcast("mailMessagesFromService");
-                    }, 60000)
+                    //$timeout(function () {
+                    //    $rootScope.$broadcast("mailMessagesFromService");
+                    //}, 60000)
 
                 });
             }
         }
-       // $scope.getMailMessages();
-        $interval(function () {
+        $scope.myTest = function () {
             $scope.getMailMessages();
 
-        }, 9000)
+        }
+        $scope.getMailMessages();
+        //$interval(function () {
+        //    $scope.getMailMessages();
+
+        //}, 9000)
         //60000
         //Get Tasks
         $scope.getTasks = function () {
@@ -77,15 +111,18 @@
             $http({
                 url: '/AssignmentService.svc/getAssignmentsByIds',
                 method: 'POST',
-                data: $scope.userInfo.assignments
+                data: $scope.userInfo.projectAassignments
             }).then(function (response) {
 
                 $scope.taskList = response.data;
+                $scope.tasksCounter = $scope.taskList.length;
+                console.log("$scope.taskList")
                 console.log($scope.taskList)
 
             }, function () { alert("getAssignmentsByIds edit error") });
         }
-        if ($scope.userInfo.assignments != null) {
+        if ($scope.userInfo.projectAassignments != null) {
+            console.log($scope.userInfo.projectAassignments)
             $scope.getTasks();
         };
         //Get Reminders
@@ -114,7 +151,7 @@
 
             });
         }
-        // $scope.getReminders();
+        $scope.getReminders();
         $scope.$on('newReminder', function () {
             $scope.getReminders();
 
@@ -168,5 +205,5 @@
     }
 
     angular.module('eli.admin')
-      .controller('NavCtrl', ['AuthService', '$scope', '$rootScope', '$http', '$timeout', 'ReminderService', '$location', 'MailService', '$interval','UserAdmin', NavCtrl]);
+      .controller('NavCtrl', ['AuthService', '$scope', '$rootScope', '$http', '$timeout', 'ReminderService', '$location', 'MailService', '$interval','UserAdmin','TaskgAdmin','$modal', NavCtrl]);
 }());

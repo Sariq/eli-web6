@@ -10,7 +10,9 @@
        })
      .state('dashboard', {
          url: '/',
-         templateUrl: 'partials/dashboard.html',
+         templateUrl: 'dashboard/dashboard.html',
+         controller: 'DashboardCtrl',
+         controllerAs: 'dashboard'
      })
       .state('logIn', {
           url: '/logIn',

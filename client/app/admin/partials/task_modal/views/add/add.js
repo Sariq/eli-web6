@@ -16,22 +16,13 @@
         $scope.ok = function () {
             //add the task to assiement DB and return the id of the object
             $scope.task.$save(function (response) {
-                alert(response._id)
+                //alert(response._id)
                 $modalInstance.close(response._id);
             });
            
         };
 
-        $scope.formatCell = function (cell, last) {
-            if (!last) {
-                return cell;
-            }
-        };
-        $scope.getCss = function (cell, last) {
-            if (!last) {
-                return cell;
-            }
-        };
+    
 
     });
 }());

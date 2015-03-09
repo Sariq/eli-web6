@@ -1,0 +1,90 @@
+﻿<style>
+
+    .date-input{
+    display:table;
+    }
+    .contact-li {
+/* display: block; */
+/* width: 100%; */
+height: 34px;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+color: #555;
+background-color: #fff;
+background-image: none;
+border: 1px solid #ccc;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+
+
+
+</style>
+
+
+<div class="row form-header text-right">
+
+    <ol class="breadcrumb">
+        <li class="active"><a href="#projects" translate>Projects</a></li>
+        <li><a href="#dashboard" translate>Dashboard</a></li>
+    </ol>
+</div>
+
+
+<div class="modal-dialog add-form form_container">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h1 class="text-center">מטופל חדש</h1>
+        </div>
+        <form name="Form">
+        <div class="panel-body text-right">
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : שם
+                   
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md"   ng-model="add.project.name" validator="string" required-error-message="הכנס שם" valid-method="blur">
+                </div>
+
+            </div>
+            <br />
+           
+        </div>
+
+        <div class="panel-footer">
+            <div class="form-group row">
+                <div class="col-md-6  ">
+                    <a href="#/project/list" class="btn btn-warning btn-block label-text-size">בטל</a>
+                </div>
+                <div class="col-md-6  ">
+                    <button validation-submit="Form" ng-click="add.save();"
+                        class="btn btn-info btn-block label-text-size"
+                        translate>
+                        שמור
+                  
+                    </button>
+                </div>
+            </div>
+        </div>
+            </form>
+    </div>
+</div>
+
+   <div class="row">
+        <div class="col-md-6">
+           
+        </div>
+    </div>
+
+ 
+

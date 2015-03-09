@@ -5,7 +5,7 @@
      * @param UserAdmin: Service
      * @constructor
      */
-    function MailCtrl($location, $scope, MailService, $stateParams, $http, AuthService, MailService, UserAdmin, $rootScope, $anchorScroll) {
+    function MailCtrl($location, $scope, MailService, $stateParams, $http, AuthService, MailService, UserAdmin, $rootScope, $anchorScroll, $interval) {
         var self = this;
         self.inoxCounter = 0;
         self.userList = UserAdmin.getUserList();
@@ -51,7 +51,7 @@
                     console.log(value)
                     self.trashMessages.push(value)
                 }
-
+                console.log(value.fromUser[0]+'-'+self.user.userId)
                 if (value.fromUser[0] == self.user._id && !value.isDelete) {
                     self.sentMessages.push(value)
                 }
@@ -79,10 +79,13 @@
 
         $scope.$on('mailMessagesFromHttp', function () {
 
-            self.getInboxFromHttp()
+            
         });
 
+        $interval(function () {
+            self.getInboxFromHttp()
 
+        }, 60000)
         self.getInboxFromHttp();
 
         //Delete Email
@@ -183,7 +186,7 @@
     }
 
     angular.module('eli.admin')
-        .controller('MailCtrl', ['$location', '$scope', 'MailService', '$stateParams', '$http', 'AuthService', 'MailService', 'UserAdmin','$rootScope','$anchorScroll', MailCtrl]);
+        .controller('MailCtrl', ['$location', '$scope', 'MailService', '$stateParams', '$http', 'AuthService', 'MailService', 'UserAdmin','$rootScope','$anchorScroll','$interval', MailCtrl]);
 }());
 
 

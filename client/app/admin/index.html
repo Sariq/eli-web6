@@ -12,7 +12,9 @@
     <link href="../bower_components/Font-Awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../bower_components/sweetalert/lib/sweet-alert.css">
 
-
+    <!--metrial-->
+    <link href="../bower_components/angular-material/angular-material.css" rel="stylesheet" />
+    <!--metrial-->
     <!--mail-->
     <link href="mail/mail.css" rel="stylesheet" />
     <!--mail-->
@@ -54,29 +56,31 @@
     <!--project-->
     <link href="project/abn_tree.css" rel="stylesheet" />
     <!--project-->
-          <!--tag-input-->
-        <link href="tag-input/ng-tags-input.min.css" rel="stylesheet" />
-         <!--tag-input-->
+    <!--tag-input-->
+    <link href="tag-input/ng-tags-input.min.css" rel="stylesheet" />
+    <!--tag-input-->
 
-       <!--tree_view-->
+    <!--tree_view-->
     <link href="project/tree_view/css/samples.css" rel="stylesheet" />
     <link href="project/tree_view/css/integralui.treeview.css" rel="stylesheet" />
-         <!--tree_view-->
+    <!--tree_view-->
 </head>
-<body ng-app="eli.admin" ng-controller="LogInCtrl">
+<body ng-app="eli.admin" ng-controller="LogInCtrl" autoscroll="true" autoscroll="false">
     <div ng-controller="NavCtrl" ng-if="nav.show==true" ng-include='"templates/navigation.html"'></div>
 
 
     <div id="page-wrapper">
         <div id="page-inner">
 
-            <div ui-view="" ></div>
+            <div ui-view=""></div>
 
         </div>
-
+        <script src="../bower_components/Chart.js/Chart.min.js"></script>
         <script src="../bower_components/jquery/dist/jquery.js"></script>
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script src="../bower_components/angular/angular.js"></script>
+        <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
         <script src="../bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
         <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -90,10 +94,11 @@
         <script src="css/sb-admin-2.js"></script>
         <script src="../bower_components/angular-validation/dist/angular-validation.min.js"></script>
         <script src="../bower_components/angular-validation/dist/angular-validation-rule.min.js"></script>
-       
+       <script src="../bower_components/angular-material/angular-material.js"></script>
+        <script src="../bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.min.js"></script>
         <!--common-->
-               <!--text_angular-->
-       
+        <!--text_angular-->
+
         <script src='../bower_components/textAngular/dist/textAngular-rangy.min.js'></script>
         <script src='../bower_components/textAngular/dist/textAngular-sanitize.min.js'></script>
         <script src='../bower_components/textAngular/dist/textAngular.min.js'></script>
@@ -107,26 +112,29 @@
         <!--Task Modal-->
 
 
-  
-          <!--tag-input-->
-         <script src="tag-input/ng-tags-input.min.js"></script>
-         <!--tag-input-->
-       
+
+        <!--tag-input-->
+        <script src="tag-input/ng-tags-input.min.js"></script>
+        <!--tag-input-->
+
         <!--common-->
 
         <!-- Our Website Javascripts -->
         <script src="eli-admin.js"></script>
-         <script src="filters/filters.js"></script>
+        <script src="filters/filters.js"></script>
         <script src="directives/sweetAlert.js"></script>
         <!--auth-->
         <!--LogIn-->
         <script src="auth/views/logIn/logIn.js"></script>
         <!--LogIn-->
+        <!--dashboard-->
+        <script src="dashboard/dashboard.js"></script>
+        <!--dashboard-->
         <script src="auth/auth_service.js"></script>
         <script src="auth/routes.js"></script>
         <!--auth-->
         <script src="templates/navigation.js"></script>
-             <!--user-->
+        <!--user-->
         <script src="user/routes.js"></script>
         <script src="user/user_service.js"></script>
         <script src="user/views/list/list.js"></script>
@@ -149,10 +157,10 @@
         <script src="meeting/views/list/list.js"></script>
         <script src="meeting/views/add/add.js"></script>
         <script src="meeting/views/item/item.js"></script>
-   
+
         <!--date_time_picker-->
-    <script src="../common/datetimepicker/datetimepicker-tpls-0.11.js"></script>
-    
+        <script src="../common/datetimepicker/datetimepicker-tpls-0.11.js"></script>
+
         <!--translation-->
         <script src="../bower_components/angular-translate/angular-translate.min.js"></script>
         <script src="../bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
@@ -198,31 +206,34 @@
         <script src="../common/directives/auto-scroll.js"></script>
         <!--directives-->
 
-         <!--project-->
-    
+        <!--project-->
+        <script src="project/views/list/list.js"></script>
+        <script src="project/views/add/add.js"></script>
         <script src="project/test_page.js"></script>
         <script src="project/abn_tree_directive.js"></script>
         <script src="project/routes.js"></script>
-        <script src="project/list.js"></script>
-              <script src="project/project_service.js"></script>
-        <script src="project/views/task.js"></script>
-      
-    <!--project-->
+
+        <script src="project/project_service.js"></script>
+        <script src="project/views/task/views/add/add.js"></script>
+
+        <!--project-->
         <!--reminder-->
         <script src="services/reminder_service.js"></script>
-          <!--reminder-->
+        <!--reminder-->
 
-          <!--private-->
+        <!--private-->
         <script src="private/routes.js"></script>
         <script src="private/list.js"></script>
         <!--private-->
         <!--tree_view-->
-      
+
         <script src="project/tree_view/js/angular.integralui.min.js"></script>
         <script src="project/tree_view/js/angular.integralui.treeview.min.js"></script>
-          <script src="project/tree_view/tree_view.js"></script>
-         <!--tree_view-->
-
+        <script src="project/tree_view/tree_view.js"></script>
+        <!--tree_view-->
+         <!--report-->
+        <script src="report/report.js"></script>
+         <!--report-->
         <!--aninmate-->
 
 

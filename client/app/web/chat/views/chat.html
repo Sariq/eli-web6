@@ -167,7 +167,7 @@
                                     <span ng-if="message.type=='admin'"><strong class="pull-right primary-font" style="color: orange">Admin</strong></span>
                                         </div>
                                         <p class="text-right">
-                                            {{message.messageContent}}-{{$index}}
+                                            {{message.messageContent}}
                                         </p>
                                     </div>
                                         </span>
@@ -179,7 +179,7 @@
                         <!-- /.panel-body -->
                         <div class="panel-footer" style="width: 400px;">
                             <div class="input-group"  >
-                                <input ng-if="chat.GuID!=null" ng-model="chat.myMessage" id="btn-input" type="text" class="form-control input-sm" style="direction:RTL;" placeholder="הכנס הודעה..." />
+                                <input  ng-keypress="($event.which === 13)?chat.myClick():0" ng-if="chat.GuID!=null" ng-model="chat.myMessage" id="btn-input" type="text" class="form-control input-sm" style="direction:RTL;" placeholder="הכנס הודעה..." />
                                 <span class="input-group-btn">
                                     <button ng-if="chat.GuID!=null" ng-click="chat.myClick()" class="btn btn-warning btn-sm" id="btn-chat">
                                         Send

@@ -8,9 +8,9 @@ public class DatabaseService : IDatabaseService
 
     #region Properties
 
-    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "K", "role", true, new List<string> { "1", "2" }, new List<string> { "1", "2" }, new List<string> { "1", "2" }, new List<string> { "1", "2" });
-    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", "role", true, new List<string> { "1", "2" }, new List<string> { "1", "2" }, new List<string> { "1", "2" }, new List<string> { "1", "2" });
-    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K", "role", true, new List<string> { "1", "2" }, new List<string> { "1", "2" }, new List<string> { "1", "2" }, new List<string> { "1", "2" });
+    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "K", "role", true, new List<string> {}, new List<string> {}, new List<string> { }, new List<string> {  });
+    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", "role", true, new List<string> {  }, new List<string> { }, new List<string> {  }, new List<string> { });
+    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K", "role", true, new List<string> { }, new List<string> { }, new List<string> {  }, new List<string> {  });
 
     public readonly Assignment assignmentA = new Assignment("AssignmentA", "FreeText", false, true, "1", "1");
     public readonly Assignment assignmentB = new Assignment("AssignmentB", "FreeText", false, false, "1", "1");

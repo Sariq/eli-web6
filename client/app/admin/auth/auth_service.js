@@ -2,8 +2,8 @@
 
     function AuthService($resource, $http, localStorageService, jwtHelper, ipCookie) {
         var self = this;
-        self.authResource = $resource('/UserService.svc/SignIn/:id', {}, [{ update: { method: 'PUT' } }]);
-        // self.authResource = $resource('/DatabaseService.svc/Initialize', {}, [{ update: { method: 'PUT' } }]);
+         self.authResource = $resource('/UserService.svc/SignIn/:id', {}, [{ update: { method: 'PUT' } }]);
+        //self.authResource = $resource('/DatabaseService.svc/Initialize', {}, [{ update: { method: 'PUT' } }]);
     
         self.getTokenId = function () {
             if (self.TokenId() != null) {
@@ -46,7 +46,11 @@
             var user = {
                 userId: '',
                 password: '',
-                isRememberMe: false
+                isRememberMe: false,
+                projectAassignments: [],
+                projects: [],
+                reminders: [],
+                patients:[]
             };
             return new self.authResource(user);
         };

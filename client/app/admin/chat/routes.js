@@ -8,7 +8,14 @@
         controller: 'ChatController',
         controllerAs: 'chat'
 
-      })  
+      })
+            .state('report', {
+                url: '/report/report.html',
+                templateUrl: 'report/report.html',
+                controller: '',
+                controllerAs: ''
+
+            })
      
   }
   angular.module('eli.admin')

@@ -66,7 +66,7 @@
                             <td  class="view-message  dont-show"><a ng-click="mail.setCurMessage(message)" href="#/mail/mail_message">{{message.subject}}</a></td>
                             <td  class="view-message "><a ng-click="mail.setCurMessage(message)" href="#/mail/mail_message" ng-bind-html="message.content"></a></td>
                             <td class="view-message  inbox-small-cells"></td>
-                            <td class="view-message  text-right">{{message._date}}</td>
+                            <td class="view-message  text-right">{{message._date | inboxDate}}</td>
                         </tr>
 
 

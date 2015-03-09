@@ -27,7 +27,7 @@ public class ClientService : DatabaseActions, IClient
     public void RemoveWeb(string webId)
     {
         Debug.Write(webId);
-        RemoveObject("clientId", webId, "Web");
+        RemoveObject("_id", webId, "Web");
     }
 
     public void UpdateWeb(Web web)
