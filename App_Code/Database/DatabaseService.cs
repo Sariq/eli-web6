@@ -8,27 +8,29 @@ public class DatabaseService : IDatabaseService
 
     #region Properties
 
-    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "K", "role", true, new List<string> {}, new List<string> {}, new List<string> { }, new List<string> {  });
-    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", "role", true, new List<string> {  }, new List<string> { }, new List<string> {  }, new List<string> { });
-    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K", "role", true, new List<string> { }, new List<string> { }, new List<string> {  }, new List<string> {  });
+    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "A", "role", true, new List<string> {}, new List<string> {}, new List<string> {}, new List<string> {});
+    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", "role", true, new List<string> {}, new List<string> {}, new List<string> {}, new List<string> {});
+    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K", "role", true, new List<string> {}, new List<string> {}, new List<string> {}, new List<string> {});
 
-    public readonly Assignment assignmentA = new Assignment("AssignmentA", "FreeText", false, true, "1", "1");
-    public readonly Assignment assignmentB = new Assignment("AssignmentB", "FreeText", false, false, "1", "1");
+    public readonly Assignment assignmentA = new Assignment("AssignmentA", "FreeText", false, true, "123", "123");
+    public readonly Assignment assignmentB = new Assignment("AssignmentB", "FreeText", false, false, "123", "123");
 
-    //public readonly Patient patientA = new Patient("111", "A", "a@gmail.com", "A", DateTime.Today, "AA", "AA", new List<Person> { new Person("A", "A", "2", true), new Person("B", "A", "1", true) }, new List<Meeting> { new Meeting("1", "2", "3", "4", "s", new List<string> { "123", "karin" }) });
-    //public readonly Patient patientB = new Patient("222", "A", "a@gmail.com", "A", DateTime.Today, "AA", "AA", new List<Person> { new Person("A", "A", "3", true), new Person("B", "A", "2", true) });
-    public readonly Patient patientA = new Patient("111", "A", "a@gmail.com", "A", DateTime.Today, "AA", "AA", new List<Person> { new Person("A", "A", "2", true), new Person("B", "A", "1", true) }, new List<string> { "1", "2" });
+    public readonly Patient patientA = new Patient("12345", "Ariel Ariel", "alon@gmail.com", "Tel-Aviv", DateTime.Today, "PatiantEducation", "PatienWorkPlace", new List<Person> { new Person("PersonA", "PersonAPhoneNumber", "PersonAAge", true), new Person("PersonB", "PersonBPhoneNumber", "PersonBAge", true) }, new List<string> { "MeetingA", "MeetingB" });
+    public readonly Patient patientB = new Patient("12346", "Amit Amit", "amit@gmail.com", "Tel-Aviv", DateTime.Today, "PatiantEducation", "PatienWorkPlace", new List<Person> { new Person("PersonA", "PersonAPhoneNumber", "PersonAAge", true), new Person("PersonB", "PersonBPhoneNumber", "PersonBAge", true) }, new List<string> { "MeetingA", "MeetingB" });
+    public readonly Patient patientC = new Patient("12347", "Tal Tal", "tal@gmail.com", "Tel-Aviv", DateTime.Today, "School", "AA", new List<Person> { new Person("A", "A", "2", true), new Person("B", "A", "1", true) }, new List<string> { "1", "2" });
 
-    public readonly Meeting meetingA = new Meeting("123", "123", "meetingA", "A", "FreeText", new List<string> { "1", "2" });
-    public readonly Meeting meetingB = new Meeting("123", "123", "meetingB", "B", "FreeText", new List<string> {"1","2"});
-   
-    public readonly MailMessage mailMessage = new MailMessage(new List<string> { "123", "karin" }, new List<string> { "123", "karin" }, "subject", "content", true, true, true);
+    public readonly Meeting meetingA = new Meeting("12345", "MeetingTitle", "MeetingAdress", "A", "FreeText", new List<string> { "AssignmentA", "AssignmentB" });
+    public readonly Meeting meetingB = new Meeting("12346", "MeetingTitle", "MeetingAdress", "A", "FreeText", new List<string> { "AssignmentA", "AssignmentB" });
+    public readonly Meeting meetingC = new Meeting("12347", "MeetingTitle", "MeetingAdress", "A", "FreeText", new List<string> { "AssignmentA", "AssignmentB" });
+
+    public readonly MailMessage mailMessageA = new MailMessage(new List<string> { "Karin", "Karin" }, new List<string> { "Sari", "Sari" }, "MailSubject", "MailContent", true, true, true);
+    public readonly MailMessage mailMessageB = new MailMessage(new List<string> { "Sari", "Sari" }, new List<string> { "Karin", "Karin" }, "MailSubject", "MailContent", true, true, true);
 
     public readonly News newsA = new News("NewsA", "FreeText");
     public readonly News newsB = new News("NewsB", "FreeText");
 
-    public readonly Reminder reminderA = new Reminder(DateTime.Today, "ReminderA", "Assignment", "22");
-    public readonly Reminder reminderB = new Reminder(DateTime.Today, "ReminderB", "Meeting", "22");
+    public readonly Reminder reminderA = new Reminder(DateTime.Today, "ReminderA", "Assignment", "ReminderTitle");
+    public readonly Reminder reminderB = new Reminder(DateTime.Today, "ReminderB", "Meeting", "ReminderTitle");
 
     #endregion
 
@@ -59,12 +61,12 @@ public class DatabaseService : IDatabaseService
         CreateCollection("Project");
 
         InitializeUserCollection();
-        //InitializeMeetingCollection();
-        //InitializeAssignmentCollection();
-        //InitializePatientCollection();
-        //InitializeMailMessageCollection();
-        //InitializeNewsCollection();
-        //InitializeReminderCollection();
+        InitializeMeetingCollection();
+        InitializeAssignmentCollection();
+        InitializePatientCollection();
+        InitializeMailMessageCollection();
+        InitializeNewsCollection();
+        InitializeReminderCollection();
     }
 
     private void InitializeAssignmentCollection()
@@ -85,7 +87,7 @@ public class DatabaseService : IDatabaseService
     {
         var patientService = new PatientService();
         patientService.AddPatient(patientA);
-        //patientService.AddPatient(patientB);
+        patientService.AddPatient(patientB);
     }
 
     private void InitializeUserCollection()
@@ -93,8 +95,7 @@ public class DatabaseService : IDatabaseService
         var userService = new UserService();
         userService.AddUser(userA);
         userService.AddUser(userB);
-        userService.AddUser(userC);
-   
+        userService.AddUser(userC); 
     }
 
     private void InitializeMeetingCollection()
@@ -106,8 +107,9 @@ public class DatabaseService : IDatabaseService
 
     private void InitializeMailMessageCollection()
     {
-       // var mailMessageService = new MailMessageService();
-        //mailMessageService.SendMailMessage(mailMessage);
+        var mailMessageService = new MailMessageService();
+        mailMessageService.SendMailMessage(mailMessageA);
+        mailMessageService.SendMailMessage(mailMessageB);
     }
 
     private void InitializeNewsCollection()

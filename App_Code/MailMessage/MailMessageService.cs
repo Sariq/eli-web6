@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net;
-using System.ServiceModel.Web;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
-
+[DataContract]
 public class MailMessageService : DatabaseActions, IMailMessage
 {
     public MailMessage SendMailMessage(MailMessage mailMessage)
@@ -11,6 +9,23 @@ public class MailMessageService : DatabaseActions, IMailMessage
         var mailMessageId = InsertObjectAndReturnId(mailMessage, "MailMessage").Result;
         MailMessage dbMailMessage = GetMailMessage(mailMessageId);
         return dbMailMessage;
+    }
+
+    public void UpdateMailMessages(List<MailMessage> mailMessages)
+    {
+        foreach (MailMessage message in mailMessages)
+            UpdateMailMessage(message);
+    }
+
+    public void UpdateMailMessage(MailMessage mailMessage)
+    {
+        UpdateObject(mailMessage, "MailMessage");
+    }
+
+    public void DeleteMailMessageFromTrash(string[] mailMessagesId)
+    {
+        foreach (string mailMessageId in mailMessagesId)
+            RemoveObject(mailMessageId, "MailMessage");
     }
 
     public void DeleteMailMessagesFromInbox(string[] mailMessagesId)
@@ -21,24 +36,6 @@ public class MailMessageService : DatabaseActions, IMailMessage
             dbMailMessage.isDelete = true;
             UpdateMailMessage(dbMailMessage);
         }
-    }
-
-    public void UpdateMailMessages(List<MailMessage> mailMessages)
-    {
-        foreach (MailMessage message in mailMessages)
-        {
-
-            UpdateMailMessage(message);
-        }
-    }
-
-
-
-
-    public void DeleteMailMessageFromTrash(string[] mailMessagesId)
-    {
-        foreach (string mailMessageId in mailMessagesId)
-            RemoveObject(mailMessageId, "MailMessage");
     }
 
     public List<MailMessage> GetInboxMessages(string userId)
@@ -54,11 +51,6 @@ public class MailMessageService : DatabaseActions, IMailMessage
     public List<MailMessage> GetDeleteMessages()
     {
         return GetAllObject<MailMessage>("isDelete", true, "MailMessage");
-    }
-
-    public void UpdateMailMessage(MailMessage mailMessage)
-    {
-        UpdateObject(mailMessage, "MailMessage");
     }
 
     public MailMessage GetMailMessage(string mailMessageId)

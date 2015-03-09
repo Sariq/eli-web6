@@ -22,7 +22,6 @@ public class Item
         this.id = id;
         this.idOfAssignments = new List<string> { };
         this.items = items;
- 
     }
 
     public Item(Item item)

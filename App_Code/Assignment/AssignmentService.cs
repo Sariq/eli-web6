@@ -1,8 +1,4 @@
-﻿using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.ServiceModel.Web;
+﻿using System.Collections.Generic;
 
 public class AssignmentService : DatabaseActions, IAssignment
 {
@@ -10,9 +6,6 @@ public class AssignmentService : DatabaseActions, IAssignment
     {
         var assignmentId = InsertObjectAndReturnId(assignment, "Assignment").Result;
         var dbAssignment = GetAssignment(assignmentId);
-        //var user = new UserService().GetUser(dbAssignment.parentId);
-        //user.assignments.Add(assignment._id);
-        //new UserService().UpdateUser(user);
         return dbAssignment;
     }
 

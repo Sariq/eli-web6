@@ -1,10 +1,6 @@
 ﻿using JWT;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Web;
-using System.Web.Script.Serialization;
 using System.Runtime.Serialization.Json;
 using System.IO;
 using System.Text;
@@ -47,7 +43,6 @@ public class ClientServerCommunicationActions
     {
         var request = HttpContext.Current.Request;
         string tokenString = request.Headers["Authorization"];
-        //var tokenString = HttpContext.Current.Response.Headers.Get("id_token");
         var token = JWT.JsonWebToken.Decode(tokenString, "elile");
 
         DataContractJsonSerializer serToken = new DataContractJsonSerializer(typeof(Token));
