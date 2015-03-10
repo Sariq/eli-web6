@@ -1,2 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="FileService" CodeBehind="~/App_Code/files/ImageUploadService.cs"
-    Factory="System.ServiceModel.Activation.WebServiceHostFactory" %>

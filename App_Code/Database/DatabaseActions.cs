@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.ServiceModel.Web;
 using System.Threading.Tasks;
 
 public class DatabaseActions
@@ -17,7 +15,6 @@ public class DatabaseActions
     {
         var collection = database.GetCollection(collectionName);
         obj._id = Convert.ToString((ObjectId.GenerateNewId()));
-        
         await collection.InsertAsync(obj);
     }
 
@@ -37,15 +34,12 @@ public class DatabaseActions
         return obj._id;
     }
 
-
     protected async Task<Object> InsertObjectAndReturnTheObject<ObjectType>(DatabaseObject obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
         obj._id = Convert.ToString((ObjectId.GenerateNewId()));
-        Debug.Write(collectionName);
         await collection.InsertAsync(obj);
         return GetObject<ObjectType>(obj._id, collectionName).Result;
-
     }
 
     protected async void RemoveObject(string objId, string collectionName)
@@ -60,7 +54,6 @@ public class DatabaseActions
         await collection.RemoveAsync(new QueryDocument(fieldName, fieldValue));
     }
 
-    //Update one object
     protected async void UpdateObject(DatabaseObject obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
@@ -68,22 +61,8 @@ public class DatabaseActions
         await collection.UpdateAsync(new QueryDocument("_id", obj._id), new UpdateDocument(new BsonDocument(obj.ToBsonDocument())));
     }
 
-    //Update some objects by query
-    //protected void UpdateObjects(string fieldName, BsonValue fieldValue, string collectionName, string fieldNameToUpdate, BsonValue fieldValueToUpdate)
-    //{
-    //    var collection = database.GetCollection(collectionName);
-    //    collection.Update(new QueryDocument(fieldName, fieldValue), new UpdateDocument(fieldNameToUpdate, fieldValueToUpdate));
-    //}
-
     protected void UpdateObjects(string fieldName, BsonValue fieldValue, string collectionName, string fieldNameToUpdate, BsonValue fieldValueToUpdate)
     {
-        //var collection = database.GetCollection(collectionName);
-        //var query = Query<Web>.EQ(w => w.clientId, fieldValue);
-        //var update=Update<Web>.Set(w=>w.isNewMessage,false);
-        //collection.Update(query, update);
-       
-       // collection.Update(new QueryDocument(fieldName, fieldValue), new UpdateDocument(fieldNameToUpdate, fieldValueToUpdate));
-
         var collection = database.GetCollection(collectionName);
         collection.Update(new QueryDocument(fieldName, fieldValue), Update.Set(fieldNameToUpdate, fieldValueToUpdate));
     }
@@ -91,7 +70,6 @@ public class DatabaseActions
     protected void UpdateObjectNotAsync(DatabaseObject obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
-        Debug.Write(obj._id);
         collection.Update(new QueryDocument("_id", obj._id), new UpdateDocument(new BsonDocument(obj.ToBsonDocument())));
     }
 
@@ -108,17 +86,15 @@ public class DatabaseActions
     }
 
     protected List<ObjectType> GetAllObject<ObjectType>(string collectionName)
-    {
-      
+    {  
         var collection = database.GetCollection(collectionName);
         var obj = collection.FindAllAs<ObjectType>();
-         return obj.ToList<ObjectType>();
+        return obj.ToList<ObjectType>();
     }
 
     protected List<ObjectType> GetAllObject<ObjectType>(string fieldName, BsonValue fieldValue, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
-      
         var searchQuery = Query.EQ(fieldName, fieldValue);
         var obj = collection.FindAs<ObjectType>(searchQuery);
         return obj.ToList<ObjectType>();
@@ -126,12 +102,10 @@ public class DatabaseActions
 
     protected List<ObjectType> GetAllObject<ObjectType>(List<string> objectsId, string collectionName)
     {
-        Debug.Write(collectionName);
         var collection = database.GetCollection(collectionName);
         var objList = new List<ObjectType>();
         foreach (string id in objectsId)
         {
-            Debug.Write(id);
             var obj = GetObject<ObjectType>(id, collectionName).Result;
             objList.Add(obj);
         }

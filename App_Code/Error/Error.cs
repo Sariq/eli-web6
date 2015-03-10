@@ -11,8 +11,7 @@ public class Error
         NoUserInHeader,
         UserInHeaderIsNotExist,
         PatientIsNotExist,
-        PatientIsAlreadyExist,
-        AsyncResultIsAlreadyExist
+        PatientIsAlreadyExist
     }
 
     [DataMember] 

@@ -1,10 +1,8 @@
 ﻿using MongoDB.Driver;
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.ServiceModel.Web;
 using System.Linq;
-using System.Diagnostics;
 
 public class UserService : DatabaseActions, IUser
 {
@@ -14,7 +12,6 @@ public class UserService : DatabaseActions, IUser
 
     public User SignIn(User user)
     {
-        Debug.Write("user");
         var dbUser = GetUserForSignIn(user.userId);
 
         if (dbUser == null)
@@ -36,12 +33,6 @@ public class UserService : DatabaseActions, IUser
         UpdateUser(dbUser);
 
         communication.SetTokenToHeader(dbUser);
-
-        // Example
-        //var token2 = new ClientServerCommunicationActions().GetTokenFromHeader();
-        //new ClientServerCommunicationActions().SetTokenToHeader(token2);
-        //new ClientServerCommunicationActions().SetTokenToHeader_AllDetails_OnlyForExample(token2);
-        // End Example
 
         return dbUser;
     }
@@ -192,5 +183,13 @@ public class UserService : DatabaseActions, IUser
             user.projectAassignments.Add(assignmentId);
             UpdateUser(user);
         }
+    }
+
+    public List<int> GetAssignmentsCountsOfUser(string userId)
+    {
+        var allAssignments = GetAssignmentsOfUser(userId);
+        var allDoneAssignments = allAssignments.Where(assignment => assignment.isDone).ToList();
+
+        return new List<int>{allAssignments.Count, allDoneAssignments.Count};
     }
 }

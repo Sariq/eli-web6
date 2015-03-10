@@ -5,6 +5,19 @@ using System.Runtime.Serialization;
 [DataContract]
 public class User : DatabaseObject
 {
+    private string p1;
+    private string p2;
+    private string p3;
+    private string p4;
+    private string p5;
+    private string p6;
+    private string p7;
+    private bool isRememberMe1;
+    private List<string> list1;
+    private List<string> list2;
+    private List<string> list3;
+    private List<string> list4;
+
     [DataMember]
     public string userId { get; set; }
     [DataMember]
@@ -46,13 +59,6 @@ public class User : DatabaseObject
         this.projectAassignments =projectAassignments;
         this.projects = projects;
         this.patients = patients;
-    }
-
-    public User(string userId, string password)
-        : base()
-    {
-        this.userId = userId;
-        this.password = password;
     }
 
     public User(User user)

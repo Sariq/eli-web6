@@ -32,8 +32,7 @@ public class AsyncResult : DatabaseObject, IAsyncResult
         _isCompleted = true;
         _callback(this);
     }
-
-
+    
     public Boolean CompletedSynchronously
     {
         get

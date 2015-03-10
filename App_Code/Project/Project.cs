@@ -8,6 +8,7 @@ public class Project : DatabaseObject
     public List<Item> items { get; set; }
     [DataMember]
     public string name { get; set; }
+
     public Project(List<Item> items,string name)
         : base()
     {

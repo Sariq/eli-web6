@@ -1,8 +1,4 @@
-﻿using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.ServiceModel.Web;
+﻿using System.Collections.Generic;
 
 public class NewsService : DatabaseActions, INews
 {

@@ -1,7 +1,4 @@
 using System.Collections.Generic;
-using System.Net;
-using System.ServiceModel.Web;
-using MongoDB.Driver;
 using System.Diagnostics;
 
 
@@ -11,7 +8,6 @@ public class ProjectService : DatabaseActions, IProject
     public Project AddProject(Project project)
     {
         return (Project)InsertObjectAndReturnTheObject<Project>(project, "Project").Result;
-
     }
 
     public void RemoveProject(string projectId)
@@ -26,8 +22,7 @@ public class ProjectService : DatabaseActions, IProject
 
     public Project GetProject(string projectId)
     {
-        Debug.Write(projectId);
-        return GetObject<Project>("_id", projectId, "Project").Result;
+        return GetObject<Project>(projectId, "Project").Result;
     }
 
     public List<Project> GetAllProjects()

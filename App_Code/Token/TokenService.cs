@@ -7,7 +7,6 @@ public class TokenService : DatabaseActions, IToken
 
     public void RefreshToken()
     {
-        
         var id = communication.GetID_FromTokenInHeader();
      
         try
@@ -21,9 +20,7 @@ public class TokenService : DatabaseActions, IToken
         }
 
         Token newToken = new Token(id);
-        communication.SetTokenToHeader(newToken);
-
-       
+        communication.SetTokenToHeader(newToken);      
     }
 
     public User SignIn(User user)

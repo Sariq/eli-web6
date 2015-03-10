@@ -131,5 +131,14 @@ public interface IUser
     ]
     void AddAssignmentOfProjectToUsers(List<string> list);
 
+    [OperationContract]
+    [WebInvoke(
+         Method = "POST",
+         ResponseFormat = WebMessageFormat.Json,
+         BodyStyle = WebMessageBodyStyle.Bare,
+         UriTemplate = "GetAssignmentsCountsOfUser")
+    ]
+    List<int> GetAssignmentsCountsOfUser(string id);
+
 }
 
