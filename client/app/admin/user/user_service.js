@@ -111,6 +111,17 @@
         return self.userResource.update(user)
 
     }
+    self.fromUserToId = function (message) {
+        self.userList = self.getUserList();
+        for (var i = 0; i < self.userList.length; i++) {
+         
+            if (self.userList[i].userId == message.fromUser[0]) {
+                message.fromUser[0] = self.userList[i]._id;
+                break;
+                }
+        }
+        return message;
+    }
 
 
 

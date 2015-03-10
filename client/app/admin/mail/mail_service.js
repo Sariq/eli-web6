@@ -16,7 +16,9 @@
         self.getInboxMessages = function () {
             return self.inboxMessages;
         }
-
+        self.update = function (message) {
+            self.mailResource.update(message);
+        }
         //Sent
         self.setSentMessages = function (sentMessages) {
 

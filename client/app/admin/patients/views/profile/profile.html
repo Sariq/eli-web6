@@ -29,7 +29,7 @@
     </div>
 
 
-    <div class="col-md-3">
+    <div class="col-md-3 slideLeft">
 
         <div class="modal-content">
             <div class="modal-header text-right">
@@ -58,7 +58,7 @@
                         <ul class="profile-details">
                                <li>
                                 <div><i class="fa fa-phone"></i> Birht Date</div>
-                                <strong>{{profile.patient.birthDate}}</strong>
+                                <strong>{{profile.patient.birthDate | jsDate  | date:'dd/MM/yyyy'}}</strong>
                             </li>
                             <li>
                                 <div><i class="fa fa-phone"></i> work Place</div>

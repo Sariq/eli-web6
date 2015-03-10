@@ -23,7 +23,7 @@
 
         }
         $scope.setIsReadReminder = function (reminder) {
-            //reminder.isApproved = true;
+            reminder.isApproved = true;
 
             ReminderService.update(reminder);
             $scope.reminderCounter--;
@@ -50,21 +50,30 @@
         }
 
         $scope.setIsReadTask = function (task) {
-
-            //$scope.taskCounter--;
+            task.isDone = true;
+            $scope.taskCounter--;
             ReminderService.setTaskId(task.idInProject)
+            TaskgAdmin.update(task)
             self.showTask(task)
             //$location.path('/projects/task/' + task.title);
         }
 
         $scope.setIsReadMailMessage = function (message) {
+            $scope.inboxCounter--;
+            message.isRead = true;
             MailService.setCurMessage(message);
+            $scope.currMessage = UserAdmin.fromUserToId(message)
+         
+            //MailService.update(message);
+            $http.post('/MailMessageService.svc/UpdateMailMessages', [$scope.currMessage]).
+            success(function (data, status, headers, config) {
+               
+            }).error(function (data, status, headers, config) { });
+           
             $location.path('/mail/mail_message');
         }
 
-        self.setNavMailMessages = function (data) {
-            $scope.inBoxMessages = data;
-        }
+   
         //Get MailMeesages
         $scope.getMailMessages = function () {
             $scope.inBoxMessages = [];
@@ -79,13 +88,21 @@
                     //console.log(response.data)
                 
                    // MailService.setMailMessages(response.data);
-                    $scope.inBoxMessages = response.data;
-                    
-                    angular.forEach($scope.inBoxMessages, function (value, key) {
-                        if (!value.isDelete && value.fromUser[0] != $scope.userInfo._id) {
-                            if (!value.isRead)
-                                $scope.inboxCounter++;
-                        }
+                    $scope.inBoxMessages =[];
+                   
+
+                   // alert(response.data)
+                    angular.forEach(response.data, function (value, key) {
+                             
+                            if (!value.isDelete && value.fromUser[0] != self.user._id) {
+                                if (!value.isRead) { 
+                                    $scope.inboxCounter++;
+                              
+                                $scope.inBoxMessages.push(value);
+                            }
+                            }
+
+                        
                     });
 
                     //$timeout(function () {
@@ -115,7 +132,7 @@
             }).then(function (response) {
 
                 $scope.taskList = response.data;
-                $scope.tasksCounter = $scope.taskList.length;
+                $scope.taskCounter = $scope.taskList.length;
                 console.log("$scope.taskList")
                 console.log($scope.taskList)
 

@@ -39,7 +39,7 @@
 
             </a>
             <ul class="dropdown-menu dropdown-messages" role="menu">
-                <li ng-repeat="message in inBoxMessages  | idToUserName">
+                <li ng-repeat="message in inBoxMessages " ng-if="!message.isRead">
                     <a  ng-click="setIsReadMailMessage(message)" href="#">
                         <div>
                             <strong>{{message.fromUser[0]}}</strong>
@@ -91,8 +91,8 @@
                  <li ng-repeat="reminder in reminderList" ng-if="!reminder.isApproved" style="border-bottom:solid;border-bottom-width:1px">
                     <a href="#">
                         <div ng-click="setIsReadReminder(reminder)">
-                            <i class="fa fa-comment fa-fw"></i>{{reminder.title}}
-                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            <i class="fa fa-bell fa-fw"></i>{{reminder.title}}
+                                <span class="pull-right text-muted small">1 minutes ago</span>
                         </div>
                     </a>
                     
@@ -104,7 +104,7 @@
 
                 <li class="btn-group" dropdown>
             <a class=" dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                <span class="nav-lable label-info">{{tasksCounter}}</span>
+                <span ng-if="taskCounter!=0" class="nav-lable label-warning">{{taskCounter}}</span>
                 <i class="fa fa-tasks fa-fw"></i><i class="fa fa-caret-down"></i></a>
 
             <ul class="dropdown-menu dropdown-alerts" role="menu">
@@ -112,8 +112,8 @@
                  <li ng-repeat="task in taskList" ng-if="!task.isDone" style="border-bottom:solid;border-bottom-width:1px">
                     <a href="#">
                         <div ng-click="setIsReadTask(task)">
-                            <i class="fa fa-comment fa-fw"></i>{{task.title}}
-                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            <i class="fa fa-tasks fa-fw"></i>{{task.title}}
+                                <span class="pull-right text-muted small">1 minutes ago</span>
                         </div>
                     </a>
                     
@@ -184,15 +184,15 @@
                 <li>
                     <a href="#chat">{{"Chat" | translate}} <i class="fa fa-weixin fa-fw"></i></a>
                 </li>
-                <li>
+   <!--             <li>
                     <a href="#files">{{"Files" | translate}} <i class="fa fa-folder fa-fw"></i></a>
-                </li>
+                </li>-->
                  <li>
                     <a href="#project/list">{{"Projects" | translate}} <i class="fa fa-folder fa-fw"></i></a>
                 </li>
-                      <li>
+      <!--                <li>
                     <a href="#private">{{"Private" | translate}} <i class="fa fa-folder fa-fw"></i></a>
-                </li>
+                </li>-->
 
 
             </ul>

@@ -44,7 +44,7 @@
 
 
 
-<div class="row ">
+<div class="row slideUp">
 
     <div class="col-md-9">
 
@@ -56,12 +56,12 @@
     <div class="col-md-3">
         <div class="modal-content">
             <div class="modal-header text-right">
-                <h3 class="text-center">User </h3>
+                <h3 class="text-center">{{project.name}} </h3>
             </div>
             <div class="panel-body" style="background: #006079; direction: rtl">
 
 
- <iui-treeview name="{{treeName}}" class="directive" items="remoteData"  allow-drag="true" allow-drop="true" drag-drop="onDragDrop(e)"  rtl="showRTL"  label-edit="true" events="treeEvents" item-added="myfun(e)" show-icons="false" tabindex="0"></iui-treeview>
+ <iui-treeview name="{{treeName}}" class="directive" items="remoteData"  allow-drag="true" allow-drop="true" drag-drop="onDragDrop(e)"  rtl="showRTL"  label-edit="true" events="treeEvents" item-added="myfun(e)" show-icons="false" tabindex="0" ></iui-treeview>
 
 
 
@@ -97,4 +97,3 @@
     </div>
 </div>
 <!--  <abn-tree tree-data="projectArr" tree-control="my_tree" on-select="my_tree_handler(branch)" expand-level="1" initial-selection="Granny Smith"></abn-tree>-->
-{{remoteData}}

@@ -14,16 +14,20 @@
 //    console.log(data)
 //}).error(function (data, status, headers, config) { alert("Project Add") });
         self.myTestFun = function () {
-           
-           // $scope.id_token = getResponseHeaders()['id_token'];
-            ipCookie('id_token', 'tesssssssssssss', { expires: 30 })
+
+            $http.post('/DublexService.svc/ProcessReport').
+    success(function (data, status, headers, config) {
+        console.log(data)
+    }).error(function (data, status, headers, config) { alert("Project Add") });
+
+         
         }
    
-        $http.post('/UserService.svc/GetMeetingsOfUser', self.userInfo._id).
-success(function (data, status, headers, config) {
-    console.log(data)
-}).error(function (data, status, headers, config) { alert("Project Add") });
 
+//        $http.post('/UserService.svc/GetMeetingsOfUser', self.userInfo._id).
+//success(function (data, status, headers, config) {
+//    console.log(data)
+//}).error(function (data, status, headers, config) { alert("Project Add") });
 
   }
 

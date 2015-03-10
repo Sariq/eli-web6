@@ -64,6 +64,10 @@
     <link href="project/tree_view/css/samples.css" rel="stylesheet" />
     <link href="project/tree_view/css/integralui.treeview.css" rel="stylesheet" />
     <!--tree_view-->
+
+        <!--animation-->
+    <link href="../common/css/animations.css" rel="stylesheet" />
+    <!--animation-->
 </head>
 <body ng-app="eli.admin" ng-controller="LogInCtrl" autoscroll="true" autoscroll="false">
     <div ng-controller="NavCtrl" ng-if="nav.show==true" ng-include='"templates/navigation.html"'></div>
@@ -72,7 +76,7 @@
     <div id="page-wrapper">
         <div id="page-inner">
 
-            <div ui-view=""></div>
+            <div ui-view="" ></div>
 
         </div>
         <script src="../bower_components/Chart.js/Chart.min.js"></script>

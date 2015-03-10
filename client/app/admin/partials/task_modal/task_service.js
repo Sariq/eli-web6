@@ -2,11 +2,6 @@
                                                                                                                               
   function TaskgAdmin($resource) {
     var self = this;
-    self.info ={
-      os:['linux','windows'],
-      stages:['DOCS','TF', 'QL', 'Production'],
-      locations:['apc', 'afula']
-    };
 
     self.taskResource = $resource('/AssignmentService.svc/api/:id', {},
       {update: {method: 'PUT'}}
@@ -15,6 +10,11 @@
     self.get = function (task_id) {
       
       return self.taskResource.get({id:task_id });
+    };
+
+    self.update = function (task) {
+
+        return self.taskResource.update(task);
     };
 
     self.addTask = function (task,task) {

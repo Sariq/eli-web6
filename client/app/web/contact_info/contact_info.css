@@ -5,8 +5,7 @@
 #section-6 {
     background-color: #2f2f2f;
     color: #e4e6e5;
-    padding-bottom: 350px;
-    padding-top: 50px;
+
 
 }
 
@@ -22,3 +21,14 @@
         font-size: 80px;
         color: white;
     }
+
+.contact-info {
+
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+    color: #e4e6e5;
+  display: flex;
+  align-items: center;
+
+} 

@@ -79,7 +79,7 @@
 
         $scope.$on('mailMessagesFromHttp', function () {
 
-            
+            self.getInboxFromHttp();
         });
 
         $interval(function () {
@@ -125,6 +125,7 @@
 
         //toRead
         self.toRead = function (messages) {
+            alert(angular.toJson(messages))
             var flag = false;
             angular.forEach(messages, function (value, key) {
                 if (value.isChecked) {

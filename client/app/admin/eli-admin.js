@@ -72,7 +72,7 @@ angular.module('eli.admin').filter("idToUserName", function (UserAdmin) {
         var userList = UserAdmin.getUserList();
 
 
-
+      //  alert(angular.toJson(items))
         for (var i = 0; i < items.length; i++) {
 
             for (var j = 0; j < userList.length; j++) {

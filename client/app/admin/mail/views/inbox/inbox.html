@@ -1,5 +1,5 @@
-﻿
-<section class="modal-dialog " style="width: auto; margin-top: 0px;">
+﻿<div class="fadeIn">
+<section class="modal-dialog  " style="width: auto; margin-top: 0px;">
 
     <div class="modal-content">
         <header class="panel-heading wht-bg">
@@ -25,8 +25,8 @@
                                         <i class="fa fa-angle-down "></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a ng-click="mail.toRead(sent.messages)">Read</a></li>
-                            <li><a ng-click="mail.toUnRead(sent.messages)">Unread</a></li>
+                            <li><a ng-click="mail.toRead(inbox.messages)">Read</a></li>
+                            <li><a ng-click="mail.toUnRead(inbox.messages)">Unread</a></li>
                         </ul>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     </a>
                 </div>
                 <div class="btn-group hidden-phone">
-                    <a ng-click="mail.deleteMail(sent.messages)" href="#" class="btn mini blue">
+                    <a ng-click="mail.deleteMail(inbox.messages)" href="#" class="btn mini blue">
                         <i class="fa fa-trash-o"></i>Delete
                     </a>
 
@@ -238,3 +238,4 @@
 
     </div>
 </section>
+</div>

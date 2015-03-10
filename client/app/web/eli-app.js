@@ -4,7 +4,7 @@
 angular.module('eliApp', [
 'ngCookies',
 'eli.common',
-
+              
 'duScroll',
 
 
@@ -31,6 +31,13 @@ angular.module('eliApp', [
       })
 
 
+           .state('modal', {
+               url: '/modal',
+               templateUrl: 'templates/modal.html',
+
+               controller: ''
+        , controllerAs: ''
+           })
 
            .state('home', {
                url: '/home',

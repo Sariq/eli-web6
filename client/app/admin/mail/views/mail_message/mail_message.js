@@ -18,7 +18,16 @@
         
         self.message = MailService.getCurMessage();
     
+  
 
+        for (var j = 0; j < self.userList.length; j++) {
+
+            if (self.message.fromUser[0] == self.userList[j]._id) {
+                self.message.fromUser[0] = self.userList[j].userId;
+                break;
+                }
+            }
+ 
 
 
 

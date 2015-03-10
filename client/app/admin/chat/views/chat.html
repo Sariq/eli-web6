@@ -74,7 +74,7 @@
                             <tr ng-click="chat.getWebUserChat(webUser,$index)" ng-repeat="webUser in chat.chatWebs" ng-class="{'success':webUser.isOnline,'danger':!webUser.isOnline}">
                                 <td>{{$index}}</td>
                                 <td>{{webUser.webName}}</td>
-                                <td><span ng-if="webUser.isNewMessage" class="badge bg-info">הודעה חדשה</span></td>
+                                <td><span ng-if="webUser.isNewMessage" class="badge bg-info" style="font-size:16px">הודעה חדשה</span></td>
 
                                 <td><span ng-click="chat.createReport()" ng-if="!webUser.isOnline" class="badge bg-danger" style="font-size:16px">השיחה הסתיימה</span></td>
                                  <td><span ng-click="chat.createReport()" ng-if="!webUser.isOnline" class="btn btn-warning pull-left">create report</span></td>

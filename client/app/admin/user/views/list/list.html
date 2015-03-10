@@ -41,9 +41,24 @@
     </div>
 </div><div class="col-md-12 col-xs-12 ">
 <!--  <span  class="pull-left">  <a  class="btn btn-info" href="#/user/add"><span class="fa fa-plus" ></span>{{'Add user'|translate}}</a></span>-->
-                  <md-button class="md-fab md-primary" aria-label="Use Android"><a   href="#/user/add">{{'Add user'|translate}}
-        <md-icon md-svg-src="img/icons/plus.svg"></md-icon></a>
-      </md-button>
+                  <a   href="#/user/add"><md-button class="md-fab md-primary" aria-label="Use Android">
+        <md-icon md-svg-src="img/icons/plus-md.svg"></md-icon>
+      </md-button></a>
 </div>
 </div>
 
+<style>
+    md-icon {
+    height:40px;
+    width:40px;
+    }
+    .md-button.md-fab {
+    height:70px;
+    width:70px;
+    }
+
+    .md-button.md-default-theme.md-primary.md-raised, .md-button.md-default-theme.md-primary.md-fab {
+    background-color:#ba8c3c;
+    }
+
+</style>

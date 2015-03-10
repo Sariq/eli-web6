@@ -1,12 +1,12 @@
 ﻿
-<div class="row " ng-if="tree.item.text">
+<div class="row slideRight" ng-if="tree.item.text">
 
 
     <div class="modal-content">
         <div class="modal-header text-right">
             <h3 class="text-center">{{tree.item.text}}</h3>
         </div>
-        {{task.task}} 
+       
                   <div class="panel-body">
 
 <!--                      <div class="row">
@@ -33,6 +33,7 @@
                       </div>
                       <br />
                         <div class="row">
+                            <label>Send To :</label>
                                <tags-input ng-model="tags" min-length="0"
                         replace-spaces-with-dashes="false"
                         add-from-autocomplete-only="true"
@@ -43,7 +44,7 @@
                           </div>
                       <div class="row">
                         
-                          <div class="col-md-4 col-xs-4 pull-right">
+                          <div class="col-md-4 col-xs-4 ">
                               <datetimepicker ng-change="task.validateDate()"
                                   min-date="task.tmpDate"
                                   hour-step="task.hourStep" minute-step="task.minuteStep"
@@ -53,8 +54,8 @@
                      
                           </div>
                       </div>
- <button class="btn btn-info" ng-click="task.saveReminder()">Remind Me</button>
- <button class="btn btn-info" ng-click="tree.saveTask(task.task,task.sendToUser,task.reminder)">Save</button>
+<!-- <button class="btn btn-info" ng-click="task.saveReminder()">Remind Me</button>-->
+ <button class="btn btn-info pull-right" ng-click="tree.saveTask(task.task,task.sendToUser,task.reminder)">Save</button>
 
                   </div>
     </div>
