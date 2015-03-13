@@ -42,6 +42,8 @@ public class User : DatabaseObject
     public List<string> reminders { get; set; }
     [DataMember]
     public List<string> patients { get; set; }
+    [DataMember]
+    public bool isDelete { get; set; }
 
     public User(string userId, string password, string name, string email, string address, string birthDate,
         string role, bool isRememberMe, List<string> reminders, List<string> projectAassignments, List<string> projects,List<string> patients)
@@ -59,6 +61,7 @@ public class User : DatabaseObject
         this.projectAassignments =projectAassignments;
         this.projects = projects;
         this.patients = patients;
+        this.isDelete = false;
     }
 
     public User(User user)
@@ -76,6 +79,7 @@ public class User : DatabaseObject
         this.projectAassignments = user.projectAassignments;
         this.reminders = user.reminders;
         this.patients = user.patients;
+        this.isDelete = user.isDelete;
     }
  
 }

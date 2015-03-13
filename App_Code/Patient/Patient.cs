@@ -23,6 +23,9 @@ public class Patient : DatabaseObject
     public List<Person> contacts { get; set; }
     [DataMember]
     public List<string> meetings { get; set; }
+    [DataMember]
+    public bool isDelete { get; set; }
+
 
     public Patient (string identityNumber, string name, string email, string address, DateTime birthDate, string education, string workplace,
         List<Person> contacts, List<string> meetings)
@@ -37,6 +40,7 @@ public class Patient : DatabaseObject
         this.workplace = workplace;
         this.contacts = contacts;
         this.meetings = meetings;
+        this.isDelete = false;
     }
 
     public Patient(Patient patient)
@@ -52,6 +56,7 @@ public class Patient : DatabaseObject
         this.workplace = patient.workplace;
         this.contacts = patient.contacts;
         this.meetings = patient.meetings;
+        this.isDelete = patient.isDelete;
     }
  
 }

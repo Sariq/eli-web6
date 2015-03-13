@@ -21,7 +21,7 @@
             </div>
             <div class="panel-body">
                 <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
-                    <tr ng-repeat="user in $data" class="text-right">
+                    <tr ng-repeat="user in $data" ng-if="!user.isDelete" class="text-right">
 
                         <td data-title="'First_name'" sortable="'first_name'">
                             <a ng-click="list.setPatientId(user)" href="#/user/profile/{{user._id}}">{{user.name}}</a>

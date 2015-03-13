@@ -16,6 +16,8 @@ public class Meeting : DatabaseObject
     public string note { get; set; }
     [DataMember]
     public List<string> assignments { get; set; }
+    [DataMember]
+    public bool isDelete { get; set; }
 
 
     public Meeting(string therapistId, string patientId, string title, string address, string note, List<string> assignments)
@@ -27,6 +29,7 @@ public class Meeting : DatabaseObject
         this.address = address;
         this.note = note;
         this.assignments = assignments;
+        this.isDelete = false;
     }
 
     public Meeting(Meeting meeting)
@@ -40,6 +43,7 @@ public class Meeting : DatabaseObject
         this.address = meeting.address;
         this.note = meeting.note;
         this.assignments = meeting.assignments;
+        this.isDelete = meeting.isDelete;
     }
  
 }

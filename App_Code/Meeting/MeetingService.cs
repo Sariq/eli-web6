@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 
 public class MeetingService : DatabaseActions, IMeeting
@@ -10,9 +11,11 @@ public class MeetingService : DatabaseActions, IMeeting
         return dbMeeting;
     }
 
-    public void RemoveMeeting(string mettingId)
+    public void RemoveMeeting(string meetingId)
     {
-        RemoveObject(mettingId, "Meeting");
+        Debug.Write(meetingId);
+        UpdateObjects("_id", meetingId, "Meeting", "isDelete", true);
+        //RemoveObject(meetingId, "Meeting");
     }
 
     public void UpdateMeeting(Meeting metting)

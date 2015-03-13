@@ -23,9 +23,10 @@ public class PatientService : DatabaseActions, IPatient
         return dbPatient;
     }
 
-    public void RemovePatient(string patientIdentityNumber)
+    public void RemovePatient(string patientId)
     {
-        RemoveObject(patientIdentityNumber, "Patient");
+        UpdateObjects("_id", patientId, "Patient", "isDelete", true);
+        //RemoveObject(patientIdentityNumber, "Patient");
     }
 
     public void UpdatePatient(Patient patient)

@@ -62,7 +62,8 @@ public class UserService : DatabaseActions, IUser
 
     public void RemoveUser(string id)
     {
-        RemoveObject(id, "User");
+        UpdateObjects("_id", id, "User", "isDelete", true);
+        //RemoveObject(id, "User");
     }
 
     public void UpdateUser(User user)

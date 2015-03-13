@@ -283,11 +283,11 @@
             console.log(meeting);
             console.log(meeting._id);
 
-        
+            alert(angular.toJson(meeting))
             $http({
                 url: '/MeetingService.svc/deleteMeeting',
                 method: 'POST',
-                data: meeting._id
+                data: meeting
             }).then(function (response) {
                 PatientAdmin.deleteMeeting(self.patient, idx);
                 //self.patient.$update(function (response) {
