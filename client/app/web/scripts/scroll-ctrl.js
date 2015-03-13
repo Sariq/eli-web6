@@ -75,10 +75,10 @@ angular.module('eliApp').
           e.preventDefault();
 
           if ($(this).hasClass('disabled')) {
-
+            
               return;
           }
-
+       
           var slide = null;
           console.log($('.nav > li >a.active'))
           var datasheet = $('.nav > li> a.active').data('slide');

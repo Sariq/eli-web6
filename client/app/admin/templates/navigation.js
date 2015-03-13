@@ -1,6 +1,7 @@
 (function () {
     function NavCtrl(AuthService, $scope, $rootScope, $http, $timeout, ReminderService, $location, MailService, $interval, UserAdmin, TaskgAdmin, $modal) {
         var self = this;
+
         console.log("nav2");
         $scope.inboxCounter = 0;
         $scope.reminderCounter = 0;
@@ -104,7 +105,9 @@
 
                         
                     });
-
+                    for (var j = 0; j < $scope.inBoxMessages.length; j++) {
+                        $scope.inBoxMessages[j].messageUpdateT = self.updateMessageTme($scope.inBoxMessages[j]._date)
+                    }
                     //$timeout(function () {
                     //    $rootScope.$broadcast("mailMessagesFromService");
                     //}, 60000)
@@ -132,6 +135,9 @@
             }).then(function (response) {
 
                 $scope.taskList = response.data;
+                for (var j = 0; j < $scope.taskList.length; j++) {
+                    $scope.taskList[j].messageUpdateT = self.updateMessageTme($scope.taskList[j]._date)
+                }
                 $scope.taskCounter = $scope.taskList.length;
                 console.log("$scope.taskList")
                 console.log($scope.taskList)
@@ -149,6 +155,9 @@
                 console.log('getReminderList')
                 console.log(response.data)
                 $scope.reminderList = response.data;
+                for (var j = 0; j < $scope.reminderList.length; j++) {
+                    $scope.reminderList[j].messageUpdateT = self.updateMessageTme($scope.reminderList[j]._date)
+                }
                 $scope.reminderCounter = 0;
                 var endTime = new Date()
                 for (var i = 0; i < response.data.length; i++) {
@@ -174,50 +183,44 @@
 
         });
 
-        //      var endTime = new Date()
-        //      for (var i = 0; i < $scope.reminderList.length; i++) {
-        //          var difference = new Date((parseInt($scope.reminderList[i].reminderTime.substr(6)))) - endTime.getTime();
-        //          if (difference > 0) {
-        //              $scope.reminderList[i].remindeMe = $timeout(function () {
-        //                  $scope.reminderCounter++;
-        //                  alert('My  Reminder at ' + difference)
-        //              }, difference)
-        //          } else {
-        //              if (!$scope.reminderList[i].isApproved) {
-        //                  $scope.reminderCounter++;
-        //              }
-        //          }
-        //      }
-        //      console.log($scope.reminderList)
+        //Time Update
+         //Reminder
+        $interval(function () {
+            for (var j = 0; j < $scope.reminderList.length; j++) {
+                $scope.reminderList[j].messageUpdateT = self.updateMessageTme($scope.reminderList[j]._date)
+            }
+        }, 20000);
 
+        //mail
+        $interval(function () {
+            for (var j = 0; j < $scope.taskList.length; j++) {
+                $scope.taskList[j].messageUpdateT = self.updateMessageTme($scope.taskList[j]._date)
+            }
+        }, 20000);
 
-        //console.log($scope.test)
-        //$http({
-        //    url: '/UserService.svc/GetAllNotApprovedRemindersOfUser',
-        //    method: 'POST',
-        //    data: self.user._id
-        //}).then(function (response) {
-        //    console.log('getReminderList')
-        //    console.log(response.data)
-        //    //response.data[i].remindeMe = [];
-        //    $scope.reminderList = response.data;
-        //    var endTime = new Date()
-        //    for (var i = 0; i < response.data.length; i++) {
-        //        var difference = new Date((parseInt(response.data[i].reminderTime.substr(6)))) - endTime.getTime();
-        //        if (difference > 0) {
-        //            response.data[i].remindeMe = $timeout(function () {
-        //                $scope.reminderCounter++;
-        //                alert('My  Reminder at ' + difference)
-        //            }, difference)
-        //        } else {
-        //            if (!response.data[i].isApproved) {
-        //                $scope.reminderCounter++;
-        //            }
-        //        }
-        //    }
-        //    console.log(response.data)
-        //    //alert(difference)
-        //}, function () { alert("getReminderList error") });
+        //task
+        $interval(function () {
+            for (var j = 0; j < $scope.inBoxMessages.length; j++) {
+                $scope.inBoxMessages[j].messageUpdateT = self.updateMessageTme($scope.inBoxMessages[j]._date)
+            }
+        }, 20000);
+
+        self.updateMessageTme = function (messageTime) {
+
+            var startTime = new Date(parseInt(messageTime.substr(6)))
+            console.log(startTime)
+            var endTime = new Date()
+            var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
+
+            var resultInMinutes = Math.round(difference / 60000);
+            if (resultInMinutes > 60) {
+                return "more than 1h";
+            } else {
+
+                return resultInMinutes + " mins ago";
+            }
+
+        }
 
     }
 

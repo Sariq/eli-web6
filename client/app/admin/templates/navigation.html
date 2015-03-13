@@ -19,7 +19,7 @@
 
         <li class="btn-group" dropdown>
             <a class=" dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                <i class="fa fa-user"></i>{{userInfo.userId}} <b
+                <i class="fa fa-user"></i> {{userInfo.userId}} <b
                     class="caret"></b></a>
 
             <ul class="dropdown-menu " role="menu">
@@ -39,16 +39,17 @@
 
             </a>
             <ul class="dropdown-menu dropdown-messages" role="menu">
-                <li ng-repeat="message in inBoxMessages " ng-if="!message.isRead">
+                <li ng-repeat="message in inBoxMessages | idToUserName " ng-if="!message.isRead">
                     <a  ng-click="setIsReadMailMessage(message)" href="#">
                         <div>
                             <strong>{{message.fromUser[0]}}</strong>
                             <span class="pull-right text-muted">
-                                <em>Yesterday</em>
+                                <em>{{message.messageUpdateT}}</em>
                             </span>
                         </div>
                         <div>{{message.subject}}</div>
                     </a>
+                    <div style="height: 1px;margin: 9px 0;overflow: hidden;background-color: #e5e5e5;padding-left:0;padding-right:0"></div>
                 </li>
 
             </ul>
@@ -87,17 +88,18 @@
                 <i class="fa fa-bell fa-fw"></i><i class="fa fa-caret-down"></i></a>
 
             <ul class="dropdown-menu dropdown-alerts" role="menu">
-    
-                 <li ng-repeat="reminder in reminderList" ng-if="!reminder.isApproved" style="border-bottom:solid;border-bottom-width:1px">
+<!--    style="border-bottom:solid;border-bottom-width:1px"-->
+                 <li ng-repeat="reminder in reminderList" ng-if="!reminder.isApproved" >
                     <a href="#">
                         <div ng-click="setIsReadReminder(reminder)">
                             <i class="fa fa-bell fa-fw"></i>{{reminder.title}}
-                                <span class="pull-right text-muted small">1 minutes ago</span>
+                                <span class="pull-right text-muted small">{{reminder.messageUpdateT}}</span>
                         </div>
+                        <div style="height: 1px;margin: 9px 0;overflow: hidden;background-color: #e5e5e5;padding-left:0;padding-right:0"></div>
                     </a>
                     
                 </li>
-
+              
            
             </ul>
         </li>
@@ -109,14 +111,14 @@
 
             <ul class="dropdown-menu dropdown-alerts" role="menu">
     
-                 <li ng-repeat="task in taskList" ng-if="!task.isDone" style="border-bottom:solid;border-bottom-width:1px">
+                 <li ng-repeat="task in taskList" ng-if="!task.isDone" >
                     <a href="#">
                         <div ng-click="setIsReadTask(task)">
                             <i class="fa fa-tasks fa-fw"></i>{{task.title}}
-                                <span class="pull-right text-muted small">1 minutes ago</span>
+                                <span class="pull-right text-muted small">{{task.messageUpdateT}}</span>
                         </div>
                     </a>
-                    
+                    <div style="height: 1px;margin: 9px 0;overflow: hidden;background-color: #e5e5e5;padding-left:0;padding-right:0"></div>
                 </li>
 
            

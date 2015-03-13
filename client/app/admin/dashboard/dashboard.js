@@ -1,12 +1,22 @@
-(function () {
+﻿(function () {
     /** Task Controller
      *
      * @param $location:
      * @param TaskAdmin: Service
      * @constructor
      */
-    function DashboardCtrl($location, $scope, TaskAdmin, $stateParams) {
+    function DashboardCtrl($location, $scope, TaskAdmin, $stateParams, AuthService, $http) {
+  
         var self = this;
+        self.userInfo = AuthService.getUserInfo();
+        self.meetingsCount = self.userInfo
+        $http.post('/UserService.svc/GetAssignmentsCountsOfUser', self.userInfo._id).
+            success(function (data, status, headers, config) {
+                $scope.countTask = data[0];
+                $scope.doneTask = data[1];
+                self.setDataLine();
+            }).error(function (data, status, headers, config) { alert("Project Add") });
+
         self.data = [
     {
         value: 300,
@@ -61,9 +71,9 @@
             legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
 
         };
-
+        self.setDataLine = function () {
         self.lineData = {
-            labels: ['January'],
+            labels: ['יחס משימות'],
             datasets: [
               {
                   label: 'My First dataset',
@@ -71,7 +81,7 @@
                   strokeColor: 'rgba(220,220,220,0.8)',
                   highlightFill: 'rgba(220,220,220,0.75)',
                   highlightStroke: 'rgba(220,220,220,1)',
-                  data: [65]
+                  data: [6]
               },
               {
                   label: 'My Second dataset',
@@ -79,11 +89,11 @@
                   strokeColor: 'rgba(151,187,205,0.8)',
                   highlightFill: 'rgba(151,187,205,0.75)',
                   highlightStroke: 'rgba(151,187,205,1)',
-                  data: [28]
+                  data: [10]
               }
             ]
         };
-
+        }
         // Chart.js Options
         self.lineOptions = {
 
@@ -123,7 +133,7 @@
     }
 
     angular.module('eli.admin')
-        .controller('DashboardCtrl', ['$location', '$scope', 'TaskAdmin', '$stateParams', DashboardCtrl]);
+        .controller('DashboardCtrl', ['$location', '$scope', 'TaskAdmin', '$stateParams','AuthService', '$http', DashboardCtrl]);
 }());
 
 

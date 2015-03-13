@@ -331,7 +331,7 @@ padding-left:300px;
 }
 
 .chat-panel .panel-body {
-    height: 350px;
+    height: 100%;
     overflow-y: scroll;
 }
 
