@@ -8,9 +8,9 @@ public class DatabaseService : IDatabaseService
 
     #region Properties
 
-    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "A", "role", true, new List<string> {}, new List<string> {}, new List<string> {}, new List<string> {});
-    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", "role", true, new List<string> {}, new List<string> {}, new List<string> {}, new List<string> {});
-    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K", "role", true, new List<string> {}, new List<string> {}, new List<string> {}, new List<string> {});
+    public readonly User userA = new User("Karin", "123", "Karin", "B", "karin@gmail.com", "A", Role.RoleType.Director.ToString(), true, new List<string> {}, new List<string> {}, new List<string> {}, new List<string> {});
+    public readonly User userB = new User("Sari", "123", "Sari", "Q", "sari@gmail.com", "T", Role.RoleType.Director.ToString(), true, new List<string> { }, new List<string> { }, new List<string> { }, new List<string> { });
+    public readonly User userC = new User("Adi", "123", "Adi", "B", "adi@gmail.com", "K", Role.RoleType.Therapist.ToString(), true, new List<string> { }, new List<string> { }, new List<string> { }, new List<string> { });
 
     public readonly Assignment assignmentA = new Assignment("AssignmentA", "FreeText", false, true, "123", "123");
     public readonly Assignment assignmentB = new Assignment("AssignmentB", "FreeText", false, false, "123", "123");
@@ -32,6 +32,9 @@ public class DatabaseService : IDatabaseService
     public readonly Reminder reminderA = new Reminder(DateTime.Today, "ReminderA", "Assignment", "ReminderTitle");
     public readonly Reminder reminderB = new Reminder(DateTime.Today, "ReminderB", "Meeting", "ReminderTitle");
 
+    public readonly Role directorRole = new Role(Role.RoleType.Director);
+    public readonly Role therapistRole = new Role(Role.RoleType.Therapist);
+    public readonly Role secretaryRole = new Role(Role.RoleType.Secretary);
     #endregion
 
     public void Initialize()
@@ -60,6 +63,8 @@ public class DatabaseService : IDatabaseService
 
         CreateCollection("Project");
 
+        CreateCollection("Role");
+
         InitializeUserCollection();
         InitializeMeetingCollection();
         InitializeAssignmentCollection();
@@ -67,6 +72,15 @@ public class DatabaseService : IDatabaseService
         InitializeMailMessageCollection();
         InitializeNewsCollection();
         InitializeReminderCollection();
+        InitializeRoleCollection();
+    }
+
+    private void InitializeRoleCollection()
+    {
+        var roleService = new RoleService();
+        roleService.AddRole(directorRole);
+        roleService.AddRole(therapistRole);
+        roleService.AddRole(secretaryRole);
     }
 
     private void InitializeAssignmentCollection()
