@@ -1,0 +1,2 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="RoleService" CodeBehind="~/App_Code/Role/RoleService.cs"
+    Factory="System.ServiceModel.Activation.WebServiceHostFactory" %>
