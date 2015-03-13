@@ -158,7 +158,7 @@
       
         self.createReport = function () {
             var modalInstance = $modal.open({
-                templateUrl: '../admin/report/report.html',
+                templateUrl: '../admin/report/views/add/add.html',
                 controller: 'ReportCtrl',
                 controllerAs: 'report',
                 size: 'lg'

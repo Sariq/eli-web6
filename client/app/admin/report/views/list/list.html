@@ -1,0 +1,23 @@
+﻿<div class="modal-content slideRight" style="margin-bottom: 30px">
+    <div class="modal-header text-right">
+        <h1 class="text-center">טבלת טיפולם</h1>
+    </div>
+    <div class="panel-body" style="width: 100%">
+        <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
+            <tr ng-repeat="meeting in $data" class="text-right">
+
+                <td data-title="'Title'" sortable="'title'">
+                    <a href="#/meeting/item/{{meeting._id}}/{{$index}}">{{meeting.title}}</a>
+                </td>
+
+                <td data-title="'date'" sortable="'date'">
+                    <a href="#/meeting/item/{{meeting._id}}/{{$index}}">{{meeting._date | jsDate  | date:'dd/MM/yyyy'}}</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <span class="pull-left"><a class="btn btn-info" href="#/meeting/add"><span class="fa fa-plus"></span>{{'Add meeting'|translate}}</a></span>
+</div>
