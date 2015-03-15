@@ -5,14 +5,14 @@
      * @param UserAdmin: Service
      * @constructor
      */
-    function UserAddController($location, $scope, UserAdmin, $stateParams) {
+    function UserAddController($location, $scope, UserAdmin, $stateParams, RoleService) {
         var self = this;
         self.error = '';
         self.debug = '';
         self.isNew = false;
         self.info = UserAdmin.info;
- 
-  
+        self.roleList=RoleService.query();
+        self.roleList.$promise.then(function (response) { console.log(response) })
    
         self.userId = $stateParams.userId;
         self.meetingId = $stateParams.meetingId;
@@ -72,7 +72,10 @@
 
 
 
-
+        self.addRole = function (role) {
+            self.user.role.push(role._id);
+            self.get_add_groups();
+        };
 
 
 
@@ -82,7 +85,7 @@
     }
 
     angular.module('eli.admin')
-        .controller('UserAddController', ['$location', '$scope', 'UserAdmin', '$stateParams', UserAddController]);
+        .controller('UserAddController', ['$location', '$scope', 'UserAdmin', '$stateParams','RoleService', UserAddController]);
 }());
 
 

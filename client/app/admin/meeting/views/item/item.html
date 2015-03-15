@@ -13,48 +13,7 @@
 <div class="row ">
 
     <div class="col-sm-9">
-
-        <div class="modal-content" style="width: 100%">
-
-            <div class="modal-header">
-                <h3 class="text-center">משימות</h3>
-            </div>
-
-            <div class="panel-body text-right">
-                <section class="task-panel tasks-widget">
-
-                    <div class="">
-                        <div class="">
-                            <ul id="sortable" class="task-list ui-sortable">
-                                <li ng-repeat="assignment in item.assignments" class=" " ng-class="{'list-success':assignment.isDone,'list-warning':!assignment.isDone}">
-                               
-                                    <div class="task-title">
-
-                                        <div class="pull-left hidden-phone">
-                                            <button ng-if="!assignment.isDone" ng-click="item.isDoneAssignmentToggle(assignment)" class="btn btn-success btn-md fa fa-check"></button>
-                                            <button ng-if="assignment.isDone" ng-click="item.isDoneAssignmentToggle(assignment)" class="btn btn-warning btn-md fa fa-remove"></button>
-                                            <button ng-click="item.editAssignment(assignment)" class="btn btn-primary btn-md fa fa-pencil"></button>
-                                            <button object-name="Assignment" confirm-action="item.removeAssignment(assignment,$index)"    class="btn btn-danger btn-md fa fa-trash-o"></button>
-                                            
-                                        </div>
-
-                                        <span class="assignment-title-sp pull-right" style="font-size: 130%"><a ng-click="item.showTask(assignment)">{{assignment.title}}</a></span>
-
-
-                                    </div>
-                                </li>
-
-
-                            </ul>
-                        </div>
-
-                    </div>
-
-                </section>
-            </div>
-        </div>
-        <br />
-           <a ng-click="item.openModal()" class="btn btn-success btn-sm pull-left">Add New Tasks</a>
+         <span ui-view></span>
     </div>
 
 
@@ -76,19 +35,6 @@
                             <label for="first_name" class="control-label "><strong>: מטפל</strong></label>
                         </div>
                     </div>
-
-                        <div class="row form-group ">
-                        <div class="col-md-8 col-xs-8 ">
-                            <label for="first_name" class="control-label "><strong>{{item.meeting.patientId}}</strong></label>
-                        </div>
-                        <div class="col-md-4 col-xs-4 ">
-                            <label for="first_name" class="control-label "><strong>: Last Name</strong></label>
-                        </div>
-                    </div>
-
-                    
-
-
                     <div class="row form-group ">
                         <div class="col-md-8 col-xs-8 ">
                             <label for="first_name" class="control-label "><strong>{{item.meeting.title}}</strong></label>
@@ -97,39 +43,33 @@
                             <label for="first_name" class="control-label "><strong>: title</strong></label>
                         </div>
                     </div>
-
-
-                         <div class="row form-group ">
+                    <div class="row form-group ">
                         <div class="col-md-8 col-xs-8 ">
-                            <label for="first_name" class="control-label "><strong>{{item.meeting.adress}}</strong></label>
+                            <label for="first_name" class="control-label "><strong>{{item.meeting.address}}</strong></label>
                         </div>
                         <div class="col-md-4 col-xs-4 ">
                             <label for="first_name" class="control-label "><strong>: adress</strong></label>
                         </div>
                     </div>
-
-
-                          <div class="row form-group " style="margin-bottom: 0px;">
+                    <div class="row form-group " style="margin-bottom: 0px;">
                         <div class="col-md-8 col-xs-8 ">
                             <label for="first_name" class="control-label "><strong>{{item.meeting.note}}</strong></label>
                         </div>
-                        <div class="col-md-4 col-xs-4 " >
-                            <label for="first_name" class="control-label " ><strong>: note</strong></label>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: note</strong></label>
                         </div>
                     </div>
-
-                    
                 </form>
             </div>
-              <div class="modal-footer ">
-     
-                    <span class="pull-left">
-                     
-                        <a href="#/meeting/edit/{{item.meeting._id}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                        <span ng-click="item.remove(item.meetingIdx,item.meeting)"  data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></span>---
-                   
-                         </span>
-                </div>
+            <div class="modal-footer ">
+
+                <span class="pull-left">
+
+                    <a href="#/meeting/edit/{{item.meeting._id}}/{{item.index}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                    <span ng-click="item.remove(item.meetingIdx,item.meeting)" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></span>
+
+                </span>
+            </div>
         </div>
     </div>
 

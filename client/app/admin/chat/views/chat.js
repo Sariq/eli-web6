@@ -156,7 +156,7 @@
         }
 
       
-        self.createReport = function () {
+        self.createReport = function (webUser) {
             var modalInstance = $modal.open({
                 templateUrl: '../admin/report/views/add/add.html',
                 controller: 'ReportCtrl',
@@ -170,7 +170,7 @@
                 $http.post('/ReportService.svc/addReport', res).
                 success(function (data, status, headers, config) {
                     //DELETE USER
-                    $http.post('/ClientService.svc/RemoveWeb', ChatService.getwebChatId()).
+                    $http.post('/ClientService.svc/RemoveWeb', webUser._id).
                    success(function (data, status, headers, config) {
                   
                        self.chatWebs = ChatService.query()
@@ -211,8 +211,6 @@
                 self.chatMessages[j].messageUpdateT = self.updateMessageTme(self.chatMessages[j]._date)
 
             }
-
-
         }, function () { alert("GetAllMessages error") });
     }
 

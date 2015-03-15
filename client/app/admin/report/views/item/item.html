@@ -1,0 +1,139 @@
+﻿<div class="row form-header text-right">
+
+
+    <ol class="breadcrumb">
+
+        <li class="active" translate>{{item.report.title}}</li>
+        <li><a href="#patients" translate>Reports</a></li>
+        <li><a href="#dashboard" translate>Dashboard</a></li>
+    </ol>
+</div>
+<!--<a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/report/edit/{{item.report._id}}"></a>-->
+
+<div class="row ">
+
+
+
+
+    <div class="col-sm-12">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h3 class="text-center">Report</h3>
+            </div>
+
+            <div class="panel-body text-right" style="padding-bottom: 0px;">
+                <form class="form-horizontal style-form text-right" method="get">
+
+                    <div class="row form-group ">
+                        <div class="col-md-8 col-xs-8 ">
+                            <label for="first_name" class="control-label "><strong>{{item.report.title}}</strong></label>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: title</strong></label>
+                        </div>
+                    </div>
+
+                        <div class="row form-group ">
+                        <div class="col-md-8 col-xs-8 ">
+                            <label for="first_name" class="control-label "><strong ng-bind-html="item.report.content"></strong></label>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: Content</strong></label>
+                        </div>
+                    </div>
+
+                    
+
+
+                    <div class="row form-group ">
+                        <div class="col-md-8 col-xs-8 ">
+                            <label for="first_name" class="control-label "><strong>{{item.report.adminId}}</strong></label>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: admin</strong></label>
+                        </div>
+                    </div>
+
+
+                         <div class="row form-group ">
+                        <div class="col-md-8 col-xs-8 ">
+                            <button class="control-label " ng-click="item.getWebUserChat()">{{item.report.chatId}}</button>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: chatId</strong></label>
+                        </div>
+                    </div>
+
+                    
+                </form>
+            </div>
+              <div class="modal-footer ">
+     
+                    <span class="pull-left">
+                     
+                        <a href="#/report/edit/{{item.report._id}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                        <span ng-click="item.remove()"  data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></span>---
+                   
+                         </span>
+                </div>
+        </div>
+    </div>
+
+</div>
+<br />
+<div class="row">
+       <div class="col-md-4" ng-if="item.isShowChat">
+        <div class="modal-content  chat-panel  panel-primary ">
+            <div class="panel-heading">
+                <i class="fa fa-comments fa-fw"></i>
+                Chat
+                           
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body" scroll-glue>
+
+                <ul class="chat">
+                    <li ng-repeat="message in item.chatMessages">
+                        <span class="left clearfix">
+                           
+                            <div class="chat-body clearfix">
+                                 
+                                <div class="header">
+                                    <small class=" text-muted">
+                                        <i class="fa fa-clock-o fa-fw"></i>{{message.messageUpdateT}}</small>
+                                    <span ng-if="message.type=='web'"><strong class="pull-right primary-font" style="color: blue">User</strong></span>
+                                    <span ng-if="message.type=='admin'"><strong class="pull-right primary-font" style="color: orange">{{report.userInfo.userId}}</strong></span>
+                                </div>
+                                <p class="text-right">
+                                    {{message.messageContent}}-{{$index}}
+                                </p>
+                            </div>
+                        </span>
+
+
+                    </li>
+                </ul>
+            </div>
+            <!-- /.panel-body -->
+
+            <div class="panel-footer">
+                <div ng-if="chat.isAdminOnline && chat.currentWebUser!=''" class="input-group">
+                    <input ng-keypress="($event.which === 13)?chat.myClick():0" style="direction: RTL;" ng-model="chat.myMessage" id="btn-input" type="text" class="form-control input-sm" placeholder="הכנס הודעה..." />
+
+
+                    <span class="input-group-btn">
+                        <button ng-click="chat.myClick()" class="btn btn-warning btn-sm" id="Button1">
+                            Send
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <!-- /.panel-footer -->
+        </div>
+    </div>
+
+
+</div>
+
+

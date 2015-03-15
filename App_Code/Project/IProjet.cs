@@ -16,10 +16,10 @@ public interface IProject
 
     [OperationContract]
     [WebInvoke(
-         Method = "DELETE",
+         Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/{id}")
+         UriTemplate = "RemoveProject")
     ]
     void RemoveProject(string id);
 

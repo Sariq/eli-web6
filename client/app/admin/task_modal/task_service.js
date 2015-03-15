@@ -3,8 +3,13 @@
   function TaskgAdmin($resource) {
     var self = this;
 
-    self.taskResource = $resource('/AssignmentService.svc/api/:id', {},
-      {update: {method: 'PUT'}}
+    self.taskResource = $resource('/AssignmentService.svc/api/:action:id', { id: "@id", action: "@action" },
+                   {
+                       update: { method: 'PUT' },
+                       getAssignmentsByIds: {
+                           method: 'POST', params: { action: 'getAssignmentsByIds' }, isArray: true
+                       }
+                   }
     );
 
     self.get = function (task_id) {

@@ -1,30 +1,26 @@
 ﻿<style>
-
-    .date-input{
-    display:table;
+    .date-input {
+        display: table;
     }
+
     .contact-li {
-/* display: block; */
-/* width: 100%; */
-height: 34px;
-padding: 6px 12px;
-font-size: 14px;
-line-height: 1.42857143;
-color: #555;
-background-color: #fff;
-background-image: none;
-border: 1px solid #ccc;
-border-radius: 4px;
--webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
--webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
--o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-}
-
-
-
-
+        /* display: block; */
+        /* width: 100%; */
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857143;
+        color: #555;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
 </style>
 
 
@@ -44,153 +40,153 @@ transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
             <h1 class="text-center">מטופל חדש</h1>
         </div>
         <form name="Form">
-        <div class="panel-body text-right">
-            <div class="row">
-                <div class="col-md-12  col-xs-12">
-                    <label class="label-text-size">
-                        : שם
+            <div class="panel-body text-right">
+                <div class="row">
+                    <div class="col-md-12  col-xs-12">
+                        <label class="label-text-size">
+                            : שם
                    
-                    </label>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                    <input class="form-control input-md"   ng-model="add.patient.name" validator="string" required-error-message="הכנס שם" valid-method="blur">
-                </div>
+                        </label>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <input class="form-control input-md" ng-model="add.patient.name" validator="string" required-error-message="הכנס שם" valid-method="blur">
+                    </div>
 
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-12  col-xs-12">
-                    <label class="label-text-size">
-                        : birthDate
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12  col-xs-12">
+                        <label class="label-text-size">
+                            : birthDate
               
-                    </label>
+                        </label>
+                    </div>
+                    <div class="date-input col-md-12  col-xs-12">
+                        <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="temp_birthDate" is-open="opened" datepicker-options="dateOptions"
+                             />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    
+                    </div>
+
                 </div>
-               <div class="date-input col-md-12  col-xs-12" >
-              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="add.patient.birthDate" is-open="opened" datepicker-options="dateOptions" 
-               close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </div>
 
-            </div>
-
-            <br />
-            <div class="row">
-                <div class="col-md-12  col-xs-12">
-                    <label class="label-text-size">
-                        : ת.ז
+                <br />
+                <div class="row">
+                    <div class="col-md-12  col-xs-12">
+                        <label class="label-text-size">
+                            : ת.ז
                    
-                    </label>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                    <input class="form-control input-md" ng-model="add.patient.identityNumber" placeholder=""  validator="identity" valid-method="blur">
-                </div>
+                        </label>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <input class="form-control input-md" ng-model="add.patient.identityNumber" placeholder="" validator="identity" valid-method="blur">
+                    </div>
 
-            </div>
-            <br />
-            <div class="row">
-                <div class="col-md-12  col-xs-12">
-                    <label class="label-text-size">
-                        : address
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12  col-xs-12">
+                        <label class="label-text-size">
+                            : address
                    
-                    </label>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                    <input class="form-control input-md" ng-model="add.patient.address" placeholder="" validator="string" required-error-message="הכנס שם" valid-method="blur">
+                        </label>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <input class="form-control input-md" ng-model="add.patient.address" placeholder="" validator="string" required-error-message="הכנס שם" valid-method="blur">
+                    </div>
+
                 </div>
 
-            </div>
-
-            <br />
-            <div class="row">
-                <div class="col-md-12  col-xs-12">
-                    <label class="label-text-size">
-                        : email
+                <br />
+                <div class="row">
+                    <div class="col-md-12  col-xs-12">
+                        <label class="label-text-size">
+                            : email
                    
-                    </label>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                    <input class="form-control input-md " style="direction:ltr" ng-model="add.patient.email" placeholder="" validator="email" required-error-message="הכנס אימייל נכון" valid-method="blur">
+                        </label>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <input class="form-control input-md " style="direction: ltr" ng-model="add.patient.email" placeholder="" validator="email" required-error-message="הכנס אימייל נכון" valid-method="blur">
+                    </div>
+
                 </div>
 
-            </div>
-
-                 <br />
-            <div class="row">
-                <div class="col-md-12  col-xs-12">
-                    <label class="label-text-size">
-                        : education
+                <br />
+                <div class="row">
+                    <div class="col-md-12  col-xs-12">
+                        <label class="label-text-size">
+                            : education
                    
-                    </label>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                    <input class="form-control input-md" ng-model="add.patient.education" placeholder="" validator="string" required-error-message="הכנס שם" valid-method="blur">
-                </div>
+                        </label>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <input class="form-control input-md" ng-model="add.patient.education" placeholder="" validator="string" required-error-message="הכנס שם" valid-method="blur">
+                    </div>
 
-            </div>
-              <br />
-            <div class="row">
-                <div class="col-md-12  col-xs-12">
-                    <label class="label-text-size">
-                        : workplace
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12  col-xs-12">
+                        <label class="label-text-size">
+                            : workplace
                    
-                    </label>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                    <input class="form-control input-md" ng-model="add.patient.workplace" placeholder="" validator="string" required-error-message="הכנס שם" valid-method="blur">
-                </div>
+                        </label>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <input class="form-control input-md" ng-model="add.patient.workplace" placeholder="" validator="string" required-error-message="הכנס שם" valid-method="blur">
+                    </div>
 
-            </div>
-                 <br />
-            <div class="row">
-                <div class="col-md-12  col-xs-12">
-                    <label class="label-text-size">
-                        : contacts
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12  col-xs-12">
+                        <label class="label-text-size">
+                            : contacts
                  
-                    </label>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                    <ul class="list-inline">
-                        <li ng-repeat="contact in add.patient.contacts" >
-                            
-                        <input class="contact-li " ng-model="contact.phoneNumber" placeholder="phoneNumber">
-                         <input class="contact-li " ng-model="contact.age" placeholder="age">
-                            <input  class="contact-li  " ng-model="contact.name" placeholder="name">
-                        </li>
+                        </label>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <ul class="list-inline">
+                            <li ng-repeat="contact in add.patient.contacts">
 
-                    </ul>
-                   <button ng-click="add.addContact()" class="btn btn-info btn-xs"><span class="fa fa-plus"></span></button>
+                                <input class="contact-li " ng-model="contact.phoneNumber" placeholder="phoneNumber">
+                                <input class="contact-li " ng-model="contact.age" placeholder="age">
+                                <input class="contact-li  " ng-model="contact.name" placeholder="name">
+                            </li>
+
+                        </ul>
+                        <button ng-click="add.addContact()" class="btn btn-info btn-xs"><span class="fa fa-plus"></span></button>
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
-
-        <div class="panel-footer">
-            <div class="form-group row">
-                <div class="col-md-6  ">
-                    <a href="#/patients" class="btn btn-warning btn-block label-text-size">בטל</a>
-                </div>
-                <div class="col-md-6  ">
-                    <button validation-submit="Form" ng-click="add.save();"
-                        class="btn btn-info btn-block label-text-size"
-                        translate>
-                        שמור
+            <div class="panel-footer">
+                <div class="form-group row">
+                    <div class="col-md-6  ">
+                        <a href="#/patients" class="btn btn-warning btn-block label-text-size">בטל</a>
+                    </div>
+                    <div class="col-md-6  ">
+                        <button ng-click="add.save()"
+                            class="btn btn-info btn-block label-text-size"
+                            translate>
+                            Save
                   
-                    </button>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-            </form>
+        </form>
     </div>
 </div>
 
-   <div class="row">
-        <div class="col-md-6">
-           
-        </div>
+<div class="row">
+    <div class="col-md-6">
     </div>
+</div>
 
- 
+
 

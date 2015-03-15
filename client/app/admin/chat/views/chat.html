@@ -77,7 +77,7 @@
                                 <td><span ng-if="webUser.isNewMessage" class="badge bg-info" style="font-size:16px">הודעה חדשה</span></td>
 
                                 <td><span ng-click="chat.createReport()" ng-if="!webUser.isOnline" class="badge bg-danger" style="font-size:16px">השיחה הסתיימה</span></td>
-                                 <td><span ng-click="chat.createReport()" ng-if="!webUser.isOnline" class="btn btn-warning pull-left">create report</span></td>
+                                 <td><span ng-click="chat.createReport(webUser)" ng-if="!webUser.isOnline" class="btn btn-warning pull-left">create report</span></td>
                                 <td><span ng-click="chat.remove(webUser._id)" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger pull-left"><i class="glyphicon glyphicon-trash"></i></span></td>
                             </tr>
 

@@ -65,18 +65,18 @@
     <link href="project/tree_view/css/integralui.treeview.css" rel="stylesheet" />
     <!--tree_view-->
 
-        <!--animation-->
+    <!--animation-->
     <link href="../common/css/animations.css" rel="stylesheet" />
     <!--animation-->
 </head>
-<body ng-app="eli.admin" ng-controller="LogInCtrl" autoscroll="true" autoscroll="false">
-    <div ng-controller="NavCtrl" ng-if="nav.show==true" ng-include='"templates/navigation.html"'></div>
+<body ng-app="eli.admin" ng-controller="LogInCtrl" >
+    <div ng-controller="NavCtrl" ng-if="nav.show==true" ng-include='"navigation/navigation.html"'></div>
 
 
     <div id="page-wrapper">
         <div id="page-inner">
 
-            <div ui-view="" ></div>
+            <div ui-view=""></div>
 
         </div>
         <script src="../bower_components/Chart.js/Chart.min.js"></script>
@@ -98,7 +98,7 @@
         <script src="css/sb-admin-2.js"></script>
         <script src="../bower_components/angular-validation/dist/angular-validation.min.js"></script>
         <script src="../bower_components/angular-validation/dist/angular-validation-rule.min.js"></script>
-       <script src="../bower_components/angular-material/angular-material.js"></script>
+        <script src="../bower_components/angular-material/angular-material.js"></script>
         <script src="../bower_components/tc-angular-chartjs/dist/tc-angular-chartjs.min.js"></script>
         <!--common-->
         <!--text_angular-->
@@ -110,9 +110,12 @@
         <script src="../common/common_module.js"></script>
         <script src="../common/services/task_modal.js"></script>
         <!--Task Modal-->
-        <script src="partials/task_modal/views/add/add.js"></script>
-        <script src="partials/task_modal/routes.js"></script>
-        <script src="partials/task_modal/task_service.js"></script>
+        <script src="task_modal/views/add/add.js"></script>
+        <script src="task_modal/routes.js"></script>
+        <!-- <script src="task_modal/views/list/list.js"></script>-->
+        <script src="task_modal/task_service.js"></script>
+        <script src="task_modal/views/content/content.js"></script>
+       
         <!--Task Modal-->
 
 
@@ -137,7 +140,7 @@
         <script src="auth/auth_service.js"></script>
         <script src="auth/routes.js"></script>
         <!--auth-->
-        <script src="templates/navigation.js"></script>
+        <script src="navigation/navigation.js"></script>
         <!--user-->
         <script src="user/routes.js"></script>
         <script src="user/user_service.js"></script>
@@ -170,7 +173,7 @@
         <script src="../bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
         <script src="../common/translation/translation.js"></script>
         <!--assigment-->
-        <script src="partials/task_modal/views/edit/edit.js"></script>
+        <script src="task_modal/views/edit/edit.js"></script>
         <!--Chat-->
         <script src="chat/views/chat.js"></script>
         <script src="chat/chat_service.js"></script>
@@ -235,12 +238,17 @@
         <script src="project/tree_view/js/angular.integralui.treeview.min.js"></script>
         <script src="project/tree_view/tree_view.js"></script>
         <!--tree_view-->
-         <!--report-->
+        <!--report-->
         <script src="report/report_service.js"></script>
         <script src="report/views/add/add.js"></script>
         <script src="report/views/list/list.js"></script>
         <script src="report/routes.js"></script>
-         <!--report-->
+        <script src="report/views/item/item.js"></script>
+        <!--report-->
+
+        <!--role-->
+        <script src="role/role_service.js"></script>
+        <!--role-->
         <!--aninmate-->
 
 

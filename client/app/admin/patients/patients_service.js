@@ -1,106 +1,120 @@
 (function () {
-                                                                                                                              
+
     function PatientAdmin($resource, localStorageService) {
-    var self = this;
-    self.info ={
-      os:['linux','windows'],
-      stages:['DOCS','TF', 'QL', 'Production'],
-      locations:['apc', 'afula']
-    };
-    self.patient = '';
+        var self = this;
+        self.patient = '';
 
-    self.patientResource = $resource('/PatientService.svc/api/:id', {},
-      {update: {method: 'PUT'}}
-    );
+        //Patient Resource
+        self.patientResource = $resource('/PatientService.svc/api/:id', {},
+          { update: { method: 'PUT' } }
+        );
 
-    self.get = function (patient_id) {
-        self.patient = self.patientResource.get({ id: patient_id });
-       
-        return self.patient;
-    };
-
-    self.save = function (patient) {
-      return self.patientResource.save();
-    };
-        //'/Date('+new Date().getTime()+')/'
-    self.create = function(){
-        var patient = {
-        identityNumber:'',
-        name: '',
-        
-        education: '',
-            workplace :'',
-            birthDate:'' ,
-        address: '',
-        email:'',
-        meetings: [],
-       
-        contacts: []
-          //{ name: 'name', phoneNumber: 'phoneNumber', age: 'age', isContact: true }
+        //Get Patient full list
+        self.query = function () {
+            return self.patientResource.query();
         };
-        self.patient = new self.patientResource(patient)
-        return self.patient;
-    };
-    
-      self.deleteTask = function (idx,patient) {
+        //Get Patinet by ID
+        self.get = function (patient_id) {
+            return self.patientResource.get({ id: patient_id });
+        };
 
-        patient.configurations.splice(idx,1);
-        console.log(patient)
+        //Remove Patient from DB
+        self.remove = function (patient) {
+            self.patientResource.remove({ id: patient._id })
+        }
 
-      };
-
-      self.addContact = function (patient) {
-          console.log(patient)
-          
-          patient.contacts.push({ name: '', phoneNumber: '', age: '', isContact: false });
-      }
-
-      self.addMeeting = function (patient, meetingId) {
-          console.log(patient)
-          patient.meetings.push(meetingId);
-      }
-      self.deleteMeeting = function (patient, idx) {
-         return patient.meetings.splice(idx, 1);
-      };
-
-
-    self.query = function (){
-      return self.patientResource.query();
-    };
-
-    self.listPatients = function(){
-      return self.patientResource.query()
-    };
-
-
-    self.setPatientId = function (patient) {
-
+        //Set Patient data
+        self.setPatient = function (patient) {
             return localStorageService.set("patient", patient);
-    };
-    self.remove = function () {
-        alert(self.getPatientId()._id)
-        self.patientResource.remove({ id: self.getPatientId()._id })
+        };
+
+        //Get Patient data
+        self.getPatient = function () {
+            return localStorageService.get("patient");
+        };
+
+        //Add contact in Patient contacts array
+        self.addContact = function (patient) {
+            patient.contacts.push({ name: '', phoneNumber: '', age: '', isContact: false });
+        }
+        
+        //Update Patient data in DB
+        self.update = function (patient) {
+            return self.patientResource.update(patient)
+        }
+
+        //Creat Patient Object
+        self.create = function () {
+            var patient = {
+                identityNumber: '',
+                name: '',
+                education: '',
+                workplace: '',
+                birthDate: '',
+                address: '',
+                email: '',
+                meetings: [],
+                contacts: []
+            };
+            self.patient = new self.patientResource(patient)
+            return self.patient;
+        };
+
+        /////////////////////////////
+
+
+
+
+
+
+
+
+
+        self.save = function (patient) {
+            return self.patientResource.save();
+        };
+
+
+        self.deleteTask = function (idx, patient) {
+
+            patient.configurations.splice(idx, 1);
+            console.log(patient)
+
+        };
+
+
+
+        self.addMeeting = function (patient, meetingId) {
+            console.log(patient)
+            patient.meetings.push(meetingId);
+        }
+        self.deleteMeeting = function (patient, idx) {
+            return patient.meetings.splice(idx, 1);
+        };
+
+
+
+
+        self.listPatients = function () {
+            return self.patientResource.query()
+        };
+
+
+
+
+
+       
+        self.clearPatientId = function () {
+
+            return localStorageService.remove("patient");
+        }
+
+
+        return self;
+
+
 
     }
-    self.update = function () {
-        alert(self.getPatientId()._id)
-        return self.patientResource.update( self.getPatientId() )
-
-    }
-    self.getPatientId = function () {
-        return localStorageService.get("patient");
-    };
-    self.clearPatientId = function () {
-
-        return localStorageService.remove("patient");
-    }
-
-
-    return self;
-
-
-
-  }
 
     angular.module('eli.admin')
     .service('PatientAdmin', ['$resource', 'localStorageService', PatientAdmin])

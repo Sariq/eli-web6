@@ -65,10 +65,4 @@ public class ClientService : DatabaseActions, IClient
         return (GetAllAdmins().Count > 0);
     }
 
-    public void SetNoNewMessage(string webId)
-    {
-        var web = GetWeb(webId);
-        web.isNewMessage = false;
-    }
-
 }

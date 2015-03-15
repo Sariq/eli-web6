@@ -69,7 +69,11 @@
     };
 
 
-    return self;
+    self.remove = function (id) {
+       
+        self.reportResource.remove({ id: id })
+
+    }
 
 
 

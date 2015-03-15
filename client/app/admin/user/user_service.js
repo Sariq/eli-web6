@@ -1,6 +1,6 @@
 (function () {
                                                                                                                               
-  function UserAdmin($resource,AuthService) {
+    function UserAdmin($resource, AuthService, localStorageService) {
     var self = this;
 
     self.user = AuthService.getUserInfo();
@@ -14,7 +14,8 @@
     }
     self.get = function (user_id) {
         self.user = self.userResource.get({ id: user_id });
-        console.log("GEEEEEEEEEEtUSSSSSSSer")
+       localStorageService.set("userInfo", self.user);
+      
         console.log(self.user)
         return self.user;
     };
@@ -68,16 +69,17 @@
 
       //reminder add/delete
       self.addReminder = function (reminderId) {
-          console.log(reminderId)
-          console.log("selfReminder000");
-          console.log(self.user.reminders)
-          self.user.reminders.push(reminderId);
-          //self.user.update().$promise.then(function () { alert("good reminder") }, function () { alert("error reminder") })
-          console.log("selfReminder");
-          console.log(self.user.reminders)
-          AuthService.setUserInfo(self.user);
-          self.update();
-          console.log(self.user)
+          self.userIngoHttp = self.get(self.user._id);
+          self.userIngoHttp.$promise.then(function (response) {
+           //   alert(angular.toJson(response))
+              response.reminders.push(reminderId);
+              AuthService.setUserInfo(response);
+              self.update();
+                self.userResource.update(response)
+              $rootScope.$broadcast("newReminder");
+          })
+
+
       }
       self.deleteReminder = function (user, idx) {
           return user.reminders.splice(idx, 1);
@@ -85,7 +87,8 @@
 
 
 
-    self.query = function (){
+      self.query = function () {
+          console.log(self.userResource.query())
       return self.userResource.query();
     };
 
@@ -128,5 +131,5 @@
   }
 
     angular.module('eli.admin')
-    .service('UserAdmin', ['$resource', 'AuthService', UserAdmin])
+    .service('UserAdmin', ['$resource', 'AuthService','localStorageService', UserAdmin])
 }());

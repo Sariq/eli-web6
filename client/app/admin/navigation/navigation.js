@@ -1,8 +1,10 @@
 (function () {
-    function NavCtrl(AuthService, $scope, $rootScope, $http, $timeout, ReminderService, $location, MailService, $interval, UserAdmin, TaskgAdmin, $modal) {
+    function NavCtrl(AuthService, $scope, $rootScope, $http, $timeout, ReminderService, $location, MailService, $interval, UserAdmin, TaskgAdmin, $modal, RoleService, TaskAdmin) {
         var self = this;
 
         console.log("nav2");
+        self.roleList = RoleService.query();
+        self.roleList.$promise.then(function (response) { RoleService.setRoleList(response) })
         $scope.inboxCounter = 0;
         $scope.reminderCounter = 0;
         $scope.taskCounter = 0;
@@ -35,12 +37,9 @@
         }
 
         self.showTask = function (assignment) {
-            //MeetingAdmin.addTask(self.meeting);
-
-            console.log('TaskModalService.openModal');
             var modalInstance = $modal.open({
-                templateUrl: '../admin/partials/task_modal/views/content/content.html',
-                controller: 'TaskModalInstanceCtrl',
+                templateUrl: '../admin/task_modal/views/content/content.html',
+                controller: 'TaskModalItemCtrl',
                 size: 'lg',
                 resolve: {
                     data: function () {
@@ -128,21 +127,30 @@
         //Get Tasks
         $scope.getTasks = function () {
             console.log($scope.userInfo)
-            $http({
-                url: '/AssignmentService.svc/getAssignmentsByIds',
-                method: 'POST',
-                data: $scope.userInfo.projectAassignments
-            }).then(function (response) {
-
-                $scope.taskList = response.data;
+            TaskAdmin.taskResource.getAssignmentsByIds($scope.userInfo.projectAassignments).$promise.then(function (response) {
+                $scope.taskList = response;
                 for (var j = 0; j < $scope.taskList.length; j++) {
                     $scope.taskList[j].messageUpdateT = self.updateMessageTme($scope.taskList[j]._date)
                 }
                 $scope.taskCounter = $scope.taskList.length;
                 console.log("$scope.taskList")
                 console.log($scope.taskList)
+            })
+            //$http({
+            //    url: '/AssignmentService.svc/getAssignmentsByIds',
+            //    method: 'POST',
+            //    data: $scope.userInfo.projectAassignments
+            //}).then(function (response) {
 
-            }, function () { alert("getAssignmentsByIds edit error") });
+            //    $scope.taskList = response.data;
+            //    for (var j = 0; j < $scope.taskList.length; j++) {
+            //        $scope.taskList[j].messageUpdateT = self.updateMessageTme($scope.taskList[j]._date)
+            //    }
+            //    $scope.taskCounter = $scope.taskList.length;
+            //    console.log("$scope.taskList")
+            //    console.log($scope.taskList)
+
+            //}, function () { alert("getAssignmentsByIds edit error") });
         }
         if ($scope.userInfo.projectAassignments != null) {
             console.log($scope.userInfo.projectAassignments)
@@ -221,9 +229,12 @@
             }
 
         }
-
+        $scope.hasPermission = function (role) {
+           
+            return RoleService.hasPermission(role);
+        }
     }
 
     angular.module('eli.admin')
-      .controller('NavCtrl', ['AuthService', '$scope', '$rootScope', '$http', '$timeout', 'ReminderService', '$location', 'MailService', '$interval','UserAdmin','TaskgAdmin','$modal', NavCtrl]);
+      .controller('NavCtrl', ['AuthService', '$scope', '$rootScope', '$http', '$timeout', 'ReminderService', '$location', 'MailService', '$interval','UserAdmin','TaskgAdmin','$modal','RoleService','TaskAdmin', NavCtrl]);
 }());

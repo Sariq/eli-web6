@@ -4,7 +4,7 @@
         $stateProvider
        .state('navigation', {
            url: '/navigation',
-           templateUrl: 'templates/navigation.html',
+           templateUrl: 'navigation/navigation.html',
            controller: 'NavCtrl',
            controllerAs: 'NavCtrl'
        })

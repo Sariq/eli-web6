@@ -18,7 +18,7 @@
                     <tr ng-repeat="patient in $data" ng-if="!patient.isDelete" class="text-right">
 
                         <td data-title="'name'" sortable="'name'">
-                            <a ng-click="list.setPatientId(patient)" href="#/patient/profile/{{patient._id}}">{{patient.name}}</a>
+                            <a  href="#/patient/profile/{{patient._id}}">{{patient.name}}</a>
                         </td>
                         <td data-title="'birthDate'" sortable="'birthDate'">
                                 

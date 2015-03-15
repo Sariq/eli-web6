@@ -16,12 +16,14 @@ public interface IMeeting
 
     [OperationContract]
     [WebInvoke(
-         Method = "POST",
+         Method = "DELETE",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "deleteMeeting")
+         UriTemplate = "api/{id}")
     ]
     void RemoveMeeting(string id);
+
+
 
     [OperationContract]
     [WebInvoke(
@@ -55,7 +57,7 @@ public interface IMeeting
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetMeetingsByIds")
+         UriTemplate = "api/getMeetingsByIds")
     ]
     List<Meeting> GetMeetingsByIds(List<string> meetings);
 

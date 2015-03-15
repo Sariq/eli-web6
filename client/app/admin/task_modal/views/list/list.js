@@ -1,41 +1,9 @@
 (function () {
-    function MeetingItemController($location, $state, MeetingAdmin, $stateParams, $modal, PatientAdmin, TaskAdmin) {
-
+    function AssignmentListCtrl($scope, AssignmentAdmin, PatientAdmin, $filter, ngTableParams) {
         var self = this;
-        self.isNew = false;
-        self.meetingId = $stateParams.meetingId;
-        self.index = $stateParams.index;
+       
         self.patient = PatientAdmin.getPatient();
-
-
-        //Get Meeting and assignments
-        if (self.meetingId) {
-            self.meeting = MeetingAdmin.get(self.meetingId);
-            self.meeting.$promise.then(function (reponse) {
-                MeetingAdmin.setMeeting(reponse);
-                
-                $location.path('/meeting/item/' + self.meetingId+'/'+self.index + '/assignments');
-                TaskAdmin.taskResource.getAssignmentsByIds(reponse.assignments).$promise.then(function (response) {
-                    self.assignments = response;
-                })
-            });
-        }
-        self.remove = function (idx, meeting) {
-            MeetingAdmin.remove(meeting).$promise.then(function () {
-                PatientAdmin.deleteMeeting(self.patient, idx);
-                PatientAdmin.update(self.patient).$promise.then(function () {
-                    $location.path('/patient/profile/' + self.patient._id);
-                })
-            })
-        };
-
-
-        /////////////////////////////////////
-
-
-
-        //Assignmetns
-
+        self.meeting = MeetingAdmin.getMeeting();
         self.getAssignmentsByIds = function () {
             TaskAdmin.taskResource.getAssignmentsByIds(self.meeting.assignments).$promise.then(function (response) {
                 self.assignments = response;
@@ -96,6 +64,7 @@
         //Show Assignment
         self.showTask = function (assignment) {
             console.log(assignment)
+            console.log('TaskModalService.openModal');
             var modalInstance = $modal.open({
                 templateUrl: '../admin/task_modal/views/content/content.html',
                 controller: 'TaskModalItemCtrl',
@@ -110,10 +79,15 @@
 
 
     }
-
     angular.module('eli.admin')
-        .controller('MeetingItemController', ['$location', '$state', 'MeetingAdmin', '$stateParams', '$modal', 'PatientAdmin', 'TaskAdmin', MeetingItemController]);
+      .controller('AssignmentListCtrl', ['$scope', 'AssignmentAdmin', 'PatientAdmin', '$filter', 'ngTableParams', AssignmentListCtrl]);
 }());
+
+
+
+
+
+
 
 
 

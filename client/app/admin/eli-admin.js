@@ -67,8 +67,7 @@ angular.module('eli.admin')
  //TO CHECK
 angular.module('eli.admin').filter("idToUserName", function (UserAdmin) {
     return function (items) {
-        console.log("IN")
-        console.log(items)
+      
         var userList = UserAdmin.getUserList();
 
 
@@ -84,13 +83,13 @@ angular.module('eli.admin').filter("idToUserName", function (UserAdmin) {
             }
         }
 
-        console.log("OUT")
-        console.log(items)
+
         return items;
     };
 });
 angular.module('eli.admin').filter("jsDate", function () {
     return function (x) {
+        if(x)
         return new Date(parseInt(x.substr(6)));
     };
 });

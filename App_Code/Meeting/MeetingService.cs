@@ -13,7 +13,7 @@ public class MeetingService : DatabaseActions, IMeeting
 
     public void RemoveMeeting(string meetingId)
     {
-        Debug.Write(meetingId);
+    
         UpdateObjects("_id", meetingId, "Meeting", "isDelete", true);
         //RemoveObject(meetingId, "Meeting");
     }

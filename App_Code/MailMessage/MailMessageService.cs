@@ -32,9 +32,11 @@ public class MailMessageService : DatabaseActions, IMailMessage
     {
         foreach (string mailMessageId in mailMessagesId)
         {
-            MailMessage dbMailMessage = GetMailMessage(mailMessageId);
-            dbMailMessage.isDelete = true;
-            UpdateMailMessage(dbMailMessage);
+            //MailMessage dbMailMessage = GetMailMessage(mailMessageId);
+            //dbMailMessage.isDelete = true;
+            //UpdateMailMessage(dbMailMessage);
+            UpdateObjects("_id", mailMessageId, "MailMessage", "isDelete", true);
+
         }
     }
 

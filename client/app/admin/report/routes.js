@@ -16,7 +16,20 @@
                   controllerAs: 'list'
 
               })
-     
+
+                .state('report/item/:reportId', {
+                    url: '/report/item/:reportId',
+                    templateUrl: 'report/views/item/item.html',
+                    controller: 'ReportItemCtrl',
+                    controllerAs: 'item'
+
+                })
+                            .state('report/edit/:reportId', {
+                                url: '/report/edit/:reportId',
+                                templateUrl: 'report/views/add/add.html',
+                                controller: 'ChatController',
+                                controllerAs: 'chat'
+                            })
   }
   angular.module('eli.admin')
     .config(['$stateProvider','$urlRouterProvider',routes])

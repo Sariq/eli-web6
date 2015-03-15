@@ -3,7 +3,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 
 [ServiceContract]
-public interface IAssignment
+public interface IContact
 {
     [OperationContract]
     [WebInvoke(
@@ -12,16 +12,8 @@ public interface IAssignment
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    Assignment AddAssignment(Assignment assignment);
+    Contact AddContact(Contact contact);
 
-    //[OperationContract]
-    //[WebInvoke(
-    //     Method = "POST",
-    //     ResponseFormat = WebMessageFormat.Json,
-    //     BodyStyle = WebMessageBodyStyle.Bare,
-    //     UriTemplate = "deleteAssignment")
-    //]
-    //void RemoveAssignment(string id);
 
     [OperationContract]
     [WebInvoke(
@@ -30,7 +22,7 @@ public interface IAssignment
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api/{id}")
     ]
-    void RemoveAssignment(string id);
+    void RemoveContact(string id);
 
     [OperationContract]
     [WebInvoke(
@@ -39,7 +31,7 @@ public interface IAssignment
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    void UpdateAssignment(Assignment assignment);
+    void UpdateContact(Contact contact);
 
     [OperationContract]
     [WebInvoke(
@@ -48,7 +40,7 @@ public interface IAssignment
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api/{id}")
     ]
-    Assignment GetAssignment(string id);
+    Contact GetContact(string id);
 
     [OperationContract]
     [WebInvoke(
@@ -57,16 +49,5 @@ public interface IAssignment
          BodyStyle = WebMessageBodyStyle.Bare,
          UriTemplate = "api")
     ]
-    List<Assignment> GetAllAssignments();
-
-    
-    [OperationContract]
-    [WebInvoke(
-         Method = "POST",
-         ResponseFormat = WebMessageFormat.Json,
-         BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api/getAssignmentsByIds")
-    ]
-    List<Assignment> GetAssignmentsByIds(List<string> assignments);
-
+    List<Contact> GetAllContacts();
 }

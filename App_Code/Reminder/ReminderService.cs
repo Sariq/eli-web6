@@ -39,11 +39,4 @@ public class ReminderService : DatabaseActions, IReminder
         return GetAllObject<Reminder>("isApproved", false, "Reminder");
     }
 
-    public void ApproveReminder(string reminderId)
-    {
-        var reminder = GetReminder(reminderId);
-        reminder.isApproved = true;
-        UpdateReminder(reminder);
-    }
-
 }

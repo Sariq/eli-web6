@@ -16,10 +16,10 @@ public interface IReport
 
     [OperationContract]
     [WebInvoke(
-         Method = "POST",
+         Method = "DELETE",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "api")
+         UriTemplate = "api/{id}")
     ]
     void RemoveReport(string id);
 

@@ -61,7 +61,7 @@
                         if (e.item.idOfAssignments.length == 0) {
                             $location.path('/item/' + self.projectId + '/add');
                         } else {
-                            self.taskItem=TaskgAdmin.get(e.item.idOfAssignments[0]);
+                            self.taskItem = TaskgAdmin.get(e.item.idOfAssignments[0]);
                             console.log(self.taskItem)
                             $location.path('/item/' + self.projectId + '/item/' + e.item.id);
                         }
@@ -75,7 +75,7 @@
             $scope.update();
         }
 
-        //treeEvents
+        //treeEvents                     
         $scope.treeEvents = {
 
             itemClick: function (e) {
@@ -91,8 +91,13 @@
 
 
 
-
-
+         //Delete Project
+        $scope.deleteProject = function () {
+            $http.post('/ProjectService.svc/RemoveProject', self.projectId).
+                success(function (data, status, headers, config) {
+           
+                }).error(function (data, status, headers, config) { alert("RemoveProject error") });
+        }
 
 
         $scope.save = function () {
@@ -119,7 +124,7 @@
             var project = { items: $scope.remoteData, _id: self.projectId, name: $scope.project.name };
             $http.post('/ProjectService.svc/update', project).
        success(function (data, status, headers, config) {
-         //  alert(data.data)
+           //  alert(data.data)
        }).error(function (data, status, headers, config) { alert("Project update") });
 
         }
@@ -133,18 +138,19 @@
         });
 
 
-        self.saveTask = function (task, sendToUser,reminder) {
+        self.saveTask = function (task, sendToUser, reminder) {
             console.log(self.item.idOfAssignments)
             if (self.item.id == undefined) {
                 alert("please click on task")
             }
+            alert(self.projectId)
             task.isProject = true;
-            task.projecId = self.projectId;
+            task.projectId = self.projectId;
             task.idInProject = self.item.id;
             task.title = self.item.text;
             $http.post('/AssignmentService.svc/api', task).
        success(function (data, status, headers, config) {
-       
+
            self.assId = data._id;
            self.item.idOfAssignments.push(data._id);
            $scope.update();
@@ -167,10 +173,10 @@
             }).then(function (response) {
                 console.log(response)
                 UserAdmin.addReminder(response.data._id);
-                $rootScope.$broadcast("newReminder");
+                
 
             }, function () { alert("ReminderService add error") });
-           /// alert(reminder.reminderTime)
+            /// alert(reminder.reminderTime)
         }
 
 
@@ -228,7 +234,7 @@
     }
 
     angular.module('eli.admin')
-      .controller('TreeViewController', ['PatientAdmin', '$stateParams', '$scope', '$filter', '$location', 'IntegralUITreeViewService', 'ProjectService', 'ReminderService', '$rootScope', '$timeout', 'AuthService', '$http', 'TaskgAdmin','UserAdmin', TreeViewController]);
+      .controller('TreeViewController', ['PatientAdmin', '$stateParams', '$scope', '$filter', '$location', 'IntegralUITreeViewService', 'ProjectService', 'ReminderService', '$rootScope', '$timeout', 'AuthService', '$http', 'TaskgAdmin', 'UserAdmin', TreeViewController]);
 }());
 
 

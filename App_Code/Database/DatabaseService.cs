@@ -35,6 +35,10 @@ public class DatabaseService : IDatabaseService
     public readonly Role directorRole = new Role(Role.RoleType.Director);
     public readonly Role therapistRole = new Role(Role.RoleType.Therapist);
     public readonly Role secretaryRole = new Role(Role.RoleType.Secretary);
+
+    public readonly Contact contactA = new Contact("nameA", "email@gmail.com", "ContactA", "FreeText");
+    public readonly Contact contactB = new Contact("nameB", "email@gmail.com", "ContactB", "FreeText");
+
     #endregion
 
     public void Initialize()
@@ -65,6 +69,8 @@ public class DatabaseService : IDatabaseService
 
         CreateCollection("Role");
 
+        CreateCollection("Contact");
+
         InitializeUserCollection();
         InitializeMeetingCollection();
         InitializeAssignmentCollection();
@@ -73,6 +79,7 @@ public class DatabaseService : IDatabaseService
         InitializeNewsCollection();
         InitializeReminderCollection();
         InitializeRoleCollection();
+        InitializeContactCollection();
     }
 
     private void InitializeRoleCollection()
@@ -81,6 +88,13 @@ public class DatabaseService : IDatabaseService
         roleService.AddRole(directorRole);
         roleService.AddRole(therapistRole);
         roleService.AddRole(secretaryRole);
+    }
+
+    private void InitializeContactCollection()
+    {
+        var contactService = new ContactService();
+        contactService.AddContact(contactA);
+        contactService.AddContact(contactB);
     }
 
     private void InitializeAssignmentCollection()

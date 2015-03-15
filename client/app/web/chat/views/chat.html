@@ -86,7 +86,7 @@
 
 .fixedHeader {
 
-    width: 395px;   
+    /*width: 395px;*/   
     font-weight:700;
     font-size:15px;
 }
@@ -142,7 +142,7 @@
     
             <div class="row">
                
-                <div class="col-lg-4">
+                <div class="">
 
                     <!-- /.panel -->
 
@@ -151,7 +151,7 @@
                         <div class="panel-heading fixedHeader" >
                             <i class="fa fa-comments fa-fw"></i>
                             Chat 
-                           <span class="pull-right"><button class="btn btn-danger" ng-if="chat.GuID!=null" ng-click="chat.myUnLoad()">End Chat</button></span>
+                           <span class="pull-right"><button class="btn btn-danger btn-xs" ng-if="chat.GuID!=null" ng-click="chat.myUnLoad()">End Chat</button></span>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body fixedContent" scroll-glue>
@@ -178,7 +178,7 @@
                             </ul>
                         </div>
                         <!-- /.panel-body -->
-                        <div class="panel-footer" style="width: 400px;">
+                        <div class="panel-footer" >
                             <div class="input-group"  >
                                 <input  ng-keypress="($event.which === 13)?chat.myClick():0" ng-if="chat.GuID!=null" ng-model="chat.myMessage" id="btn-input" type="text" class="form-control input-sm" style="direction:RTL;" placeholder="הכנס הודעה..." />
                                 <span class="input-group-btn">

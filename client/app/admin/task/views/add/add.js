@@ -19,7 +19,6 @@
 
         self.addTask = function (task) {
             return TaskAdmin.addTask(task);
-
         }
 
         self.isValid = function () {
