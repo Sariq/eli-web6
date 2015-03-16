@@ -6,8 +6,7 @@ angular.module('eli.admin', [
   'eli.common',
           'ngMaterial',
           'tc.chartjs',
-      'angularBootstrapNavTree',
-      'AbnTest',
+
       'integralui',
       'ngTagsInput',
   'textAngular',

@@ -51,12 +51,21 @@ public interface IMailMessage
     ]
     void DeleteMailMessageFromTrash(string[] mailMessagesId);
 
+    //[OperationContract]
+    //[WebInvoke(
+    //     Method = "POST",
+    //     ResponseFormat = WebMessageFormat.Json,
+    //     BodyStyle = WebMessageBodyStyle.Bare,
+    //     UriTemplate = "GetInboxMessages")
+    //]
+    //List<MailMessage> GetInboxMessages(string id);
+
     [OperationContract]
     [WebInvoke(
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetInboxMessages")
+         UriTemplate = "api/GetInboxMessages")
     ]
     List<MailMessage> GetInboxMessages(string id);
 

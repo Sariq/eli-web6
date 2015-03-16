@@ -302,7 +302,8 @@ angular.module('duScroll.spyAPI', ['duScroll.scrollContainerAPI'])
                     mytops.push($(element).offset().top - 200);
                     //alert(mytops.length)
                 });
-
+                $rootScope.$broadcast('sectionChanged', toBeActive.$element.data('slide'));
+           
                 $('#arrows div').addClass('disabled');
                 if (toBeActive.$element.data('slide') != 1) {
                     $('#arrow-up').removeClass('disabled');
@@ -339,7 +340,7 @@ angular.module('duScroll.spyAPI', ['duScroll.scrollContainerAPI'])
 
 
                 //active - menu + enable_arrows
-
+                console.log("yesss");
                 $rootScope.$broadcast('duScrollspy:becameActive', toBeActive.$element);
             }
 
@@ -380,7 +381,7 @@ angular.module('duScroll.spyAPI', ['duScroll.scrollContainerAPI'])
         $scope.$on('$destroy', function () {
             destroyContext($scope);
         });
-
+   
         return id;
     };
 

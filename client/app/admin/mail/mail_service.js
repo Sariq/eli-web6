@@ -5,8 +5,18 @@
         self.userList = [];
       
 
-        self.mailResource = $resource('/MailMessageService.svc/api/:id', {},
-          { update: { method: 'PUT' } }
+        self.mailResource = $resource('/MailMessageService.svc/api/:action:id', { id: "@id", action: "@action" },
+                   {
+                       update: { method: 'PUT' },
+                       UpdateMailMessages: {
+                           method: 'POST', params: { action: 'UpdateMailMessages' }
+                       },
+                       GetInboxMessages: {
+                           method: 'POST', params: { action: 'GetInboxMessages' }, isArray: true
+                       }
+
+                       
+                   }
         );
         //Inbox
         self.setInboxMessages = function (inboxMessages) {

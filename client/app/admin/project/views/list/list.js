@@ -7,7 +7,6 @@
      
 
     self.projects.$promise.then(function (result) {
-        console.log(result);
         self.data = result;
         self.myFun();
 
@@ -36,7 +35,6 @@
     }
 
     self.setProjectId = function (project) {
- 
         ProjectService.setProjectId(project._id)
     }
      self.remove = function (project) {

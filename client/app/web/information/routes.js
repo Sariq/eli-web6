@@ -4,23 +4,16 @@
 
     function routes($stateProvider, $urlRouterProvider, $resourceProvider) {
 
-        $stateProvider
-       .state('forParents', {
-           url: '/forParents',
-           templateUrl: 'information/forParents.html',
-           resolve: {
-               fun: function ($rootScope) {
-                   $rootScope.widgets = []
-                 
-               }
+    //    $stateProvider
+    //   .state('forParents', {
+    //       url: '/forParents',
+    //       templateUrl: 'information/forParents.html',
+    //       controller: 'Parents',
+    //       controllerAs: ''
 
-           },
-           controller: 'Parents',
-           controllerAs: ''
-
-       })
+    //   })
    
-    }
+    //}
     angular.module('eliApp')
       .config(['$stateProvider', '$urlRouterProvider', '$resourceProvider', routes])
 

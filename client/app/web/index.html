@@ -4,6 +4,9 @@
 <head>
     <title>ELI</title>
 
+   
+
+
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="/client/app/bower_components/bootstrap/dist/css/bootstrap.css">
     <link href="css/main.css" rel="stylesheet" />
@@ -35,6 +38,11 @@
     <link href="help_us/help_us.css" rel="stylesheet" />
     <!--help_us-->
 
+    <!--PageTest-->
+    <link href="css/animate/animate.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <!--forParents-->
+   <!-- <link href="information/css/forParents.css" rel="stylesheet" />-->
 
     <link href="/client/app/templates/animate/page-animate.css" rel="stylesheet" />
     <link rel="stylesheet" href="/client/app/web/css/fancybox/jquery.fancybox-v=2.1.5.css" type="text/css" media="screen">
@@ -43,7 +51,7 @@
     <link rel="prefetch" href="/client/app/images/zoom.png">
     <!--main-->
 </head>
-<body ng-app="eliApp">
+<body ng-app="eliApp" style="background-color: #482A70">
 
     <div class="ui-view-container angular-animate" ui-view=""></div>
     <div ng-controller="ChatController as chat" ng-include='"chat/views/chat.html"'></div>
@@ -76,7 +84,8 @@
 
     <!-- app -->
     <script src="eli-app.js"></script>
-
+    <script src="routes.js"></script>
+    <script src="main/main.js"></script>
     <!-- app -->
     <script src="scripts/scroll-ctrl.js"></script>
     <script src="../common/common_module.js"></script>
@@ -115,7 +124,7 @@
     <script src="chat/chat_service.js"></script>
     <!--chat-->
     <!--information-->
-    <script src="information/routes.js"></script>
+<!--    <script src="information/routes.js"></script>-->
     <!--information-->
 
     <!--page-animate-->
@@ -125,9 +134,10 @@
     <!--contactUs-->
     <script src="contactUs/routes.js"></script>
     <!--contactUs-->
-
-   
-
-
+    <!--forParents-->
+<!--    <script src="information/js/isotope.pkgd.min.js"></script>
+    <script src="information/js/jquery.backstretch.min.js"></script>
+    <script src="information/js/modernizr.js"></script>
+    <script src="information/js/template.js"></script>-->
 </body>
 </html>

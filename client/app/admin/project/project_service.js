@@ -116,6 +116,6 @@
 
   }
 
-    angular.module('AbnTest')
+    angular.module('eli.admin')
     .service('ProjectService', ['$resource', 'localStorageService', ProjectService])
 }());

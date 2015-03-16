@@ -12,12 +12,12 @@
         <div class="" style="margin-left:auto;margin-right:auto; width:70%">
             <div class=" nav-collapse  navbar-responsive-collapse ">
                 <ul class=" nav row">
-                    <li data-slide="6" class="col-12 col-sm-2"><a data-slide="6" href="#section-6" du-smooth-scroll du-scrollspy><span class="text">{{ 'contact us' | translate }}&nbsp;<span class="icon icon-envelope"></span></span></a></li>
+                    <li data-slide="6" ng-click="setSection(6)" class="col-12 col-sm-2"><a data-slide="6" href="#section-6" du-smooth-scroll du-scrollspy><span class="text">{{ 'contact us' | translate }}&nbsp;<span class="icon icon-envelope"></span></span></a></li>
                     <li data-slide="5" class="col-12 col-sm-2"><a data-slide="5" href="#section-5" du-smooth-scroll du-scrollspy><span class="text">{{ 'about us' | translate }}&nbsp;<span class="icon icon-user"></span></span></a></li>
-                    <li data-slide="4" class="col-12 col-sm-2"><a data-slide="4" href="#section-4" du-smooth-scroll du-scrollspy><span class="text">{{ 'help us' | translate }}&nbsp;<span class="icon icon-briefcase"></span></span></a></li>
+                    <li data-slide="4"  ng-click="setSection(4)" class="col-12 col-sm-2"><a data-slide="4" href="#section-4" du-smooth-scroll du-scrollspy><span class="text">{{ 'help us' | translate }}&nbsp;<span class="icon icon-briefcase"></span></span></a></li>
                     <li data-slide="3" class="col-12 col-sm-2"><a data-slide="3" href="#section-3" du-smooth-scroll du-scrollspy><span class="text">{{ 'Information' | translate }}&nbsp;<span class="icon icon-info"></span></span></a></li>
                     <li data-slide="2" class="col-12 col-sm-2"><a data-slide="2" href="#section-2" du-smooth-scroll du-scrollspy><span class="text">{{ 'Doing' | translate }}&nbsp;<span class="icon icon-heart"></span></span></a></li>
-                    <li data-slide="1" class="col-12 col-sm-2"><a data-slide="1" href="#section-1" du-smooth-scroll du-scrollspy><span class="text">{{ 'Home' | translate }}&nbsp;<span class="icon icon-home"></span></span></a></li>
+                    <li data-slide="1" class="col-12 col-sm-2"><a data-slide="1" href="#section-1" du-smooth-scroll du-scrollspy><span class="text">{{ 'Home' | translate }}--{{currSection}}&nbsp;<span class="icon icon-home"></span></span></a></li>
                 </ul>
                 <div class=" row">
                     <div class=" col-sm-3 active-menu"></div>
@@ -63,7 +63,7 @@
   <!-- === Section 2 === -->
     <section  data-slide="2"  id="section-2">
 
-   <we-doing></we-doing>
+   <we-doing ng-if="currSection2"></we-doing>
 
     </section>
     <!-- === Section 2 === -->
@@ -75,7 +75,7 @@
           
 
     
-               <professional-info></professional-info> 
+               <professional-info ng-if="currSection3"></professional-info> 
   
     </section>
     <!-- === Section 3 === -->
@@ -83,9 +83,9 @@
 
  
     <!-- === Section 4 === -->
-    <section class="slide story "  id="section-4">
+    <section class="slide story "  id="section-4" >
       
-       <help-us></help-us> 
+       <help-us ng-if="currSection4"></help-us> 
   
     </section>
     <!-- === Section 4 === -->
@@ -96,7 +96,7 @@
     <section class="slide story " data-slide="5" id="section-5">
 
 
-        <about-us></about-us>
+        <about-us ng-if="currSection5"></about-us>
          <!--   <div proxy="widget" proxy-value="{{widget}}"></div>-->
 
 
@@ -112,7 +112,7 @@
     <!-- === Section 6 === -->
     <section class="slide story" data-slide="6" id="section-6" style="color: white">
     
-            <contact-info></contact-info>
+            <contact-info ng-if="currSection6"></contact-info>
       
     </section>
     <!-- === Section 6 === -->

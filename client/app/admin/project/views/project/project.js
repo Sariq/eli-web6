@@ -14,14 +14,6 @@
               { "id": "1", "items": [{ "id": "11", "items": null, "pId": null, "text": "Art" }, { "id": "12", "items": [{ "id": "121", "items": null, "pId": null, "text": "Economics" }, { "id": "122", "items": [{ "id": "1221", "items": null, "pId": null, "text": "Bonds" }, { "id": "1222", "items": null, "pId": null, "text": "Options" }, { "id": "1223", "items": null, "pId": null, "text": "Stocks" }], "pId": null, "text": "Investing" }, { "id": "123", "items": null, "pId": null, "text": "Management" }, { "id": "124", "items": null, "pId": null, "text": "Small Business" }], "pId": null, "text": "Business" }, { "id": "13", "items": null, "pId": null, "text": "Health" }, { "id": "14", "items": null, "pId": null, "text": "Literature" }, { "id": "15", "items": [{ "id": "151", "items": null, "pId": null, "text": "Astronomy" }, { "id": "152", "items": null, "pId": null, "text": "Mathematics" }, { "id": "153", "items": null, "pId": null, "text": "Evolution" }, { "id": "154", "items": null, "pId": null, "text": "Nature" }], "pId": null, "text": "Science" }], "pId": null, "text": "Books" }, { "id": "2", "items": null, "pId": null, "text": "Computers" }, { "id": "3", "items": [{ "id": "31", "items": null, "pId": null, "text": "Camera" }, { "id": "32", "items": null, "pId": null, "text": "Cell Phones" }, { "id": "33", "items": null, "pId": null, "text": "Video Game Consoles" }], "pId": null, "text": "Electronics" }, { "id": "4", "items": [{ "id": "41", "items": null, "pId": null, "text": "Blues" }, { "id": "42", "items": null, "pId": null, "text": "Classic Rock" }, { "id": "43", "items": null, "pId": null, "text": "Pop" }, { "id": "44", "items": null, "pId": null, "text": "Jazz" }], "pId": null, "text": "Music" }, { "id": "5", "items": null, "pId": null, "text": "Watches" }
           ]
 
-
-
-
-
-
-
-
-
         //actions on project
         var getCurrentSelection = function () {
             return $treeService.selectedItem($scope.treeName);
