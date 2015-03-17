@@ -5,6 +5,10 @@ angular.module('eliApp').
       $scope.setSection = function (currSection) {
           $scope.currSection = currSection;
       }
+      $scope.back = function () {
+          window.history.back();
+      };
+     
       $scope.$on('sectionChanged', function (event, currSection) {
           console.log("herrree");
           $scope.currSection = currSection;

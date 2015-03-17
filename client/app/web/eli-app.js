@@ -4,7 +4,7 @@
 angular.module('eliApp', [
 'ngCookies',
 'eli.common',
-              
+   'ngAnimate',           
 'duScroll',
 
 

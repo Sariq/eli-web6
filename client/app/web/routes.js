@@ -23,56 +23,56 @@
        .state('forParents', {
            url: '/forParents',
            templateUrl: 'templates/forParents.html',
-           controller: 'Parents',
+           controller: 'MainCtrl',
            controllerAs: ''
 
        })
       .state('abuse', {
           url: '/abuse',
           templateUrl: 'templates/abuse.html',
-          controller: 'Parents',
+          controller: 'MainCtrl',
           controllerAs: ''
 
       })
       .state('abuse_signs', {
           url: '/abuse_signs',
           templateUrl: 'templates/abuse_signs.html',
-          controller: 'Parents',
+          controller: 'MainCtrl',
           controllerAs: ''
 
       })
       .state('internet_safety', {
           url: '/internet_safety',
           templateUrl: 'templates/internet_safety.html',
-          controller: 'Parents',
+          controller: 'MainCtrl',
           controllerAs: ''
 
       })
       .state('info_for_prof', {
           url: '/info_for_prof',
           templateUrl: 'templates/info_for_prof.html',
-          controller: 'Parents',
+          controller: 'MainCtrl',
           controllerAs: ''
 
       })
       .state('info_for_educators', {
           url: '/info_for_educators',
           templateUrl: 'templates/info_for_educators.html',
-          controller: 'Parents',
+          controller: 'MainCtrl',
           controllerAs: ''
 
       })
       .state('abuse_detection', {
           url: '/abuse_detection',
           templateUrl: 'templates/abuse_detection.html',
-          controller: 'Parents',
+          controller: 'MainCtrl',
           controllerAs: ''
 
       })
       .state('info_for_therapists', {
           url: '/info_for_therapists',
           templateUrl: 'templates/info_for_therapists.html',
-          controller: 'Parents',
+          controller: 'MainCtrl',
           controllerAs: ''
 
       })

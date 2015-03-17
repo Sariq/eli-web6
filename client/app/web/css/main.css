@@ -728,7 +728,19 @@ body {
         width: 25%;
         border-radius:0 5px 5px 0 ;
     }
-
+        #Social-Sidebar-allpages.Theme-Color ul li a[class*="Back"] {
+        background: #ffd800;
+        width: 25%;
+        margin-top:5px;
+        border-radius:0 5px 5px 0 ;
+    }
+                #Social-Sidebar-allpages.Theme-Color ul li a[class*="Menu"] {
+        background: #eb0f0f;
+        width: 25%;
+        margin-top:5px;
+        border-radius:0 5px 5px 0 ;
+    }
+      
       #Social-Sidebar-allpages.Theme-Color ul li {
         background: transparent;
         border: 0;
