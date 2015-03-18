@@ -26,7 +26,8 @@
 	 "angular-material":"*",
 	 "angular-aria":"*"	,
 	 "material-design-icons":"*" ,
-	 "tc-angular-chartjs" :"*"
+	 "tc-angular-chartjs" :"*",
+	 "angular-google-maps":"*"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",

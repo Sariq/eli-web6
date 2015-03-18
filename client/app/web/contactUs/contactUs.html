@@ -1,4 +1,7 @@
-﻿ <div class="modal-dialog">
+﻿<style>
+    .angular-google-map-container { height: 400px; }
+</style> 
+<div class="modal-dialog">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -39,4 +42,14 @@
                         </div>
                     </div>
                 </div>
+            <div class="rows">
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?language=ar"></script>
+  <!--              <script src='//maps.googleapis.com/maps/api/js?sensor=false&language=ar'></script>-->
+                <ui-gmap-google-map center='map.center' zoom='15'>
+                                    <ui-gmap-marker idKey='1'coords='marker'>
+       
+</ui-gmap-marker>
+
+                </ui-gmap-google-map>
+
             </div>

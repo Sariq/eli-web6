@@ -9,7 +9,7 @@
         console.log("NewsItemController")
         var self = this;
 
-        self.patient = PatientAdmin.getPatientId();
+        self.patient = PatientAdmin.getPatient();
 
         self.newsId = $stateParams.newsId;
 

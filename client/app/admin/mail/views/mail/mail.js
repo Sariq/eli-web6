@@ -19,12 +19,19 @@
             self.messagesByCat();
         }
         self.getInboxFromHttp = function () {
-            self.mailMessagesPromise = MailService.getMailMessagesHttp(self.user._id);
-            self.mailMessagesPromise.then(function (response) {
-                MailService.setMailMessages(response.data)
-                self.mailMessages = response.data;
+          
+            MailService.mailResource.GetInboxMessages(self.user._id).$promise.then(function (response) {
+                MailService.setMailMessages(response)
+                self.mailMessages = response;
                 self.messagesByCat();
-            });
+            })
+
+            //self.mailMessagesPromise = MailService.getMailMessagesHttp(self.user._id);
+            //self.mailMessagesPromise.then(function (response) {
+            //    MailService.setMailMessages(response.data)
+            //    self.mailMessages = response.data;
+            //    self.messagesByCat();
+            //});
             
         }
 

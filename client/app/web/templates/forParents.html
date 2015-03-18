@@ -1,25 +1,21 @@
-﻿
-    <!-- === navbar === -->
-    <div class="navbar navbar-fixed-top" data-activeslide="1">
-        <div class="" style="margin-left:auto;margin-right:auto; width:70%">
-            <div class=" nav-collapse  navbar-responsive-collapse ">
-                <ul class=" nav row">
-                    <li data-slide="6" ng-click="setSection(6)" class="col-12 col-sm-2"><a data-slide="6" href="#section-6" du-smooth-scroll du-scrollspy><span class="text">{{ 'contact us' | translate }}&nbsp;<span class="icon icon-envelope"></span></span></a></li>
-                    <li data-slide="5" class="col-12 col-sm-2"><a data-slide="5" href="#section-5" du-smooth-scroll du-scrollspy><span class="text">{{ 'about us' | translate }}&nbsp;<span class="icon icon-user"></span></span></a></li>
-                    <li data-slide="4"  ng-click="setSection(4)" class="col-12 col-sm-2"><a data-slide="4" href="#section-4" du-smooth-scroll du-scrollspy><span class="text">{{ 'help us' | translate }}&nbsp;<span class="icon icon-briefcase"></span></span></a></li>
-                    <li data-slide="3" class="col-12 col-sm-2"><a data-slide="3" href="#section-3" du-smooth-scroll du-scrollspy><span class="text">{{ 'Information' | translate }}&nbsp;<span class="icon icon-info"></span></span></a></li>
-                    <li data-slide="2" class="col-12 col-sm-2"><a data-slide="2" href="#section-2" du-smooth-scroll du-scrollspy><span class="text">{{ 'Doing' | translate }}&nbsp;<span class="icon icon-heart"></span></span></a></li>
-                    <li data-slide="1" class="col-12 col-sm-2"><a data-slide="1" href="#section-1" du-smooth-scroll du-scrollspy><span class="text">{{ 'Home' | translate }}&nbsp;<span class="icon icon-home"></span></span></a></li>
-                </ul>
-                <div class=" row">
-                    <div class=" col-sm-3 active-menu"></div>
-                </div>
-            </div>
-        </div>
+﻿<style>
+    .cat-badge {
+        color: #fff;
+        background-color: #FA8B0C;
+        border-radius: 10px 0 0 10px;
+    }
 
-    </div>
-    <!-- === navbar === -->
+    .cat-badge-left {
+        color: #fff;
+        background-color: #FA8B0C;
+        border-radius: 0 10px 0 0;
+    }
 
+    a {
+        text-decoration: none;
+        color: white;
+    }
+</style>
 
 
 
@@ -32,7 +28,7 @@
         </li>
         <li ng-click="showMe=!showMe"><a href="" class="Menu" rel="nofollow"><span class="glyphicon glyphicon-list"></span></a>
         </li>
-<!--        <li ng-show="!showMe" ng-click="showMe=!showMe"><a href="" class="Facebook" rel="nofollow"><span>הסתר תפריט</span></a>
+        <!--        <li ng-show="!showMe" ng-click="showMe=!showMe"><a href="" class="Facebook" rel="nofollow"><span>הסתר תפריט</span></a>
         </li>-->
     </ul>
 </aside>
@@ -40,8 +36,8 @@
 <aside ng-show="!showMe" id="Social-Sidebar" class="Theme-Color">
     <ul class="fadeIn">
         <li><a href="#abuse" class="Facebook" rel="nofollow"><span>מהי התעללות</span></a></li>
-        <li><a href="#abuse_signs" class="Twitter"  rel="nofollow"><span>סממנים לפגיעה</span></a></li>
-        
+        <li><a href="#abuse_signs" class="Twitter" rel="nofollow"><span>סממנים לפגיעה</span></a></li>
+
     </ul>
 </aside>
 
@@ -51,24 +47,66 @@
 
         <div class="col-md-12 ">
 
+            <div class="row">
+                <h4 class="notopmarg nobotmarg">מידע להורים</h4>
+                <p style="direction: rtl">
 
-            <h4 class="notopmarg nobotmarg">מידע להורים</h4>
-            <p style="direction: rtl">
 
 
-
-            <p>
-                הורים יקרים, אנחנו באל"י יודעים שאתם מנסים לעשות את הטוב ביותר עבור ילדכם, אם זאת, אנו מודעים לכך כי ההורות היא מורכבת ומבלבלת.
-לשם כך, ניסינו לרכז עבורכם מידע חשוב.
-            </p>
+                <p><strong>
+                    הורים יקרים, אנחנו באל"י יודעים שאתם מנסים לעשות את הטוב ביותר עבור ילדכם, אם זאת, אנו מודעים לכך כי ההורות היא מורכבת ומבלבלת.
+לשם כך, ניסינו לרכז עבורכם מידע חשוב.</strong>
+                </p>
+            </div>
             <br />
-            <div class="col-md-6 ">
-                <a href="#abuse" class="btn btn-primary" translet>מהי התעללות</a>
-            </div>
-            <div class="col-md-6 ">
-                <a href="#abuse_signs" class="btn btn-primary" translet>סממנים לפגיעה מינית, פיזית,
+            <!--<div class="row">
+                <div class="col-md-6 ">
+                    <a href="#abuse" class="btn btn-primary" translet>מהי התעללות</a>
+                </div>
+                <div class="col-md-6 ">
+                    <a href="#abuse_signs" class="btn btn-primary" translet>סממנים לפגיעה מינית, פיזית,
 נפשית או חברתית בילד</a>
+                </div>
             </div>
+            <br />-->
+            <div class="row cat-badge  " style="border: 1px solid #f2f2f2; max-height: 100px; min-height: 200px; margin-bottom: 30px;">
+                <div class="col-md-8 ">
+                    <a href="#abuse">
+                        <h4>מה היא התעללות</h4>
+                        <p>
+                            מקובל לראות את המשפחה כמקור של אהבה ללא תנאי, חום ותמיכה, מסגרת המעניקה חסות לחבריה ומאפשרת גדילה ואושר. החברה מצפה מן המשפחה להגן על ילדיה ואף מטילה על ההורים אחריות חוקית לכך. רוב ההורים אכן אוהבים את ילדיהם, דואגים להם ומגנים עליהם. אך ישנם ממקרים בהם...
+                        </p>
+                    </a>
+                    <a class="btn btn-primary pull-left">קרא עוד</a>
+                </div>
+                <div class="col-md-4 " style="padding-right: 0">
+
+                    <img src="../images/abuse_signs.jpg" style="min-height: 198px" alt="">
+                </div>
+            </div>
+
+            <div class="row cat-badge-left" style="border: 1px solid #f2f2f2; max-height: 100px; min-height: 200px; ">
+
+                <div class="col-md-4 " style="padding-left: 0">
+
+                    <img src="../images/what_is_abuse.jpg" style="min-height: 198px" alt="">
+                </div>
+                <div class="col-md-8 ">
+                    <a href="#abuse_signs">
+                        <h4>סממנים לפגיעה מינית, פיזית, נפשית או חברתית בילד
+
+                        </h4>
+                        <p>
+                            הורים ואנשי חינוך רבים פונים לקו החם של אל"י ושואלים האם יש סימנים היכולים להעיד על חשד שמא ילדם עובר התעללות. לאור זאת אנחנו מציגים רשימה של סממנים שעלולים להיות סימפטומים לפגיעה בילד (חשוב לציין שנוכחות אחד או יותר מהסממנים אצל הילד לא בהכרח...
+                        </p>
+                    </a>
+
+                </div>
+
+            </div>
+            <a style="margin-top: -1px; margin-right: -14px;"
+                class="btn btn-primary ">קרא עוד</a>
+
 
         </div>
     </div>

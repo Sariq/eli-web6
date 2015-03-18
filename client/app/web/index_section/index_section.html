@@ -1,4 +1,120 @@
-﻿<div class="row">
+﻿<style>
+    .list1 {
+        padding: 0;
+        margin: 0;
+        position: relative;
+        list-style: none;
+        overflow: hidden;
+    }
+
+        .list1 li a {
+            display: block;
+            position: relative;
+            padding: 0;
+            -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+        }
+
+            .list1 li a p {
+                text-shadow: 1px 1px 2px #c1c1c1;
+                font-family: 'Georgia', serif;
+                font-size: 30px;
+                line-height: 32px;
+                font-weight: normal;
+                padding: 44px 0 41px;
+                margin-bottom: 0;
+            }
+
+            .list1 li a:hover {
+                text-decoration: none;
+            }
+
+                .list1 li a:hover p {
+                    color: #4e4134;
+                    text-decoration: none;
+                    -webkit-transition: all 0.2s ease;
+                    transition: all 0.2s ease;
+                }
+
+    .listbox1 {
+        padding-right: 15px;
+    }
+
+    .listbox2 {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .listbox3 {
+        padding-left: 15px;
+    }
+
+    .box1 {
+        background: #eb5368;
+        border-radius: 20px;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+
+        .box1 figure {
+            width: 100%;
+        }
+
+            .box1 figure img {
+                width: 100%;
+            }
+
+        .box1 p {
+            color: #ffffff;
+        }
+
+    .box2 {
+        background: #f1d154;
+        margin-right: 15px;
+        margin-left: 15px;
+        border-radius: 20px;
+    }
+
+        .box2 figure {
+            width: 100%;
+        }
+
+            .box2 figure img {
+                width: 100%;
+                height: 216px;
+            }
+
+        .box2 p {
+            color: #ffffff;
+        }
+
+    .box3 {
+        background: #5bb4d6;
+        margin-right: 15px;
+        margin-left: 15px;
+        border-radius: 20px;
+    }
+
+        .box3 figure {
+            width: 100%;
+        }
+
+            .box3 figure img {
+                width: 100%;
+            }
+
+        .box3 p {
+            color: #ffffff;
+        }
+
+            .cat-badge {
+        color: #fff;
+        background-color: #FA8B0C;
+        border-radius: 10px 10px 10px 10px;
+    }
+</style>
+
+<div class="row">
     <div id="home-row-1" class="row clearfix">
         <div class="col-md-12 col-xs-12">
             <!--<h1 class="font-semibold">אל"י - האגודה להגנת הילד </h1>-->
@@ -9,14 +125,53 @@
         <!-- /col-12 -->
     </div>
 </div>
+<div class="" style="margin-left:150px;margin-right:150px">
 <div class="row">
 
     <div class="col-md-6 col-xs-6 centered fadeIn">
-        <news-feed ></news-feed>
+        <news-feed></news-feed>
     </div>
     <div class="col-md-6  col-xs-6 centered img-fade">
-<iframe class="fadeIn" width="80%" height="600" src="https://www.youtube.com/embed/tT_J8wuuXqU?autoplay=1" frameborder="0" auto-play="true" allowfullscreen></iframe>
-        <!-- <div id="home-row-2">
+        <!--<iframe class="fadeIn" width="80%" height="600" src="https://www.youtube.com/embed/tT_J8wuuXqU?autoplay=1" frameborder="0" auto-play="true" allowfullscreen></iframe>-->
+        <div class="">
+
+
+
+            <ul class="list1">
+                <li class="col-lg-4 col-md-4 col-sm-4 listbox1 fadeInUp  animated" style="visibility: visible; -webkit-animation-delay: .6s; -moz-animation-delay: .6s; animation-delay: .6s;">
+                    <div class="box1" style="background: #900;">
+                        <a href="#internet_safety">
+                            <figure>
+                                <img src="../images/how_help.jpg" style="height: 300px" alt="">
+                            </figure>
+                            <p>איך תוכלו לעזור</p>
+                        </a>
+                    </div>
+                </li>
+                <li class="col-lg-4 col-md-4 col-sm-4 listbox2 fadeInUp  animated" style="visibility: visible; -webkit-animation-delay: .4s; -moz-animation-delay: .4s; animation-delay: .4s;">
+                    <div class="box2" style="background: #afa92e;">
+                        <a href="#forParents">
+                            <p>מידע</p>
+                            <figure>
+                                <img src="../images/info.jpg" style="height: 300px" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                </li>
+                <li class="col-lg-4 col-md-4 col-sm-4 listbox3 fadeInUp  animated" style="visibility: visible; -webkit-animation-delay: .2s; -moz-animation-delay: .2s; animation-delay: .2s;">
+                    <div class="box3" style="background: #0721fa;">
+                        <a href="#info_for_prof">
+                            <figure>
+                                <img src="../images/we_do.jpg" style="height: 300px" alt="">
+                            </figure>
+                            <p>מה אנחנו עושים</p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <!--<div id="home-row-2" class="fadeIn" >
                     <div class="col-12 col-sm-4">
                         <a href="#home">
                             <div class="home-hover">
@@ -40,3 +195,98 @@
                 </div>-->
     </div>
 </div>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-6 col-xs-6 centered fadeIn">
+<!--             <iframe class="fadeIn" width="80%" height="600" src="https://www.youtube.com/embed/tT_J8wuuXqU" frameborder="0" auto-play="true" allowfullscreen></iframe>-->
+                    <div class=" cat-badge  " style="border: 1px solid #f2f2f2; max-height: 100px; min-height: 400px; margin-bottom: 30px;width:70%;margin-left:10px;background-color:#3A16B8">
+                <div class="col-md-12 ">
+                  
+                        <h2 style="background-color: crimson;">למה לטפל</h2><br />
+                        <p style="font-size:20px;direction:rtl" class="text-right">
+                 טיפול יכול לעצור את ההתעללות נוכחית, לשנות את הדינאמיקה המשפחתית, ולעזור לילדים להתגבר על ההרס כתוצאה מההתעללות שיכולה להשפיע על היכולת שלהם ליצור יחסים של אהבה ואמון לאורך כל חייהם. בעיה זו לעתים קרובות כרוכה במצב של משבר שבו התערבות מיידית היא הכרחית.
+                        </p>
+            
+                    <a class="btn btn-primary pull-left">קרא עוד</a>
+                </div>
+                
+            </div>
+    </div>
+    <div class="col-md-6  col-xs-6 centered img-fade">
+
+        <div class="">
+
+
+
+            <ul class="list1">
+                <li class="col-lg-4 col-md-4 col-sm-4 listbox1 fadeInUp  animated" style="visibility: visible; -webkit-animation-delay: .6s; -moz-animation-delay: .6s; animation-delay: .6s;">
+                    <div class="box1" style="background: #5477F1;">
+                        <a href="#internet_safety">
+                            <figure>
+                                <img src="../images/info_parents.jpg" style="height: 300px" alt="">
+                            </figure>
+                            <p>צור קשר</p>
+                        </a>
+                    </div>
+                </li>
+                <li class="col-lg-4 col-md-4 col-sm-4 listbox2 fadeInUp  animated" style="visibility: visible; -webkit-animation-delay: .4s; -moz-animation-delay: .4s; animation-delay: .4s;">
+                    <div class="box2" style="background: #b200ff;">
+                        <a href="#forParents">
+                            <p>אודיתנו</p>
+                            <figure>
+                                <img src="../images/About-us.jpg" style="height: 300px" alt="">
+                            </figure>
+                        </a>
+                    </div>
+                </li>
+                <li class="col-lg-4 col-md-4 col-sm-4 listbox3 fadeInUp  animated" style="visibility: visible; -webkit-animation-delay: .2s; -moz-animation-delay: .2s; animation-delay: .2s;">
+                    <div class="box3" style="background: #115321;">
+                        <a href="#info_for_prof">
+                            <figure>
+                                <img src="../images/HomeIcon.jpg" style="height: 300px" alt="">
+                            </figure>
+                            <p>בית</p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <!--<div class="container">
+
+
+      
+            <ul class="list1">
+                <li class="col-lg-4 col-md-4 col-sm-4 listbox1 fadeInUp  animated"  style="visibility: visible;-webkit-animation-delay: .6s; -moz-animation-delay: .6s; animation-delay: .6s;">
+                    <div class="box1">
+                        <a href="#internet_safety">
+                            <figure>
+                                <img src="../images/mainImg.jpg" style="height: 300px" alt=""></figure>
+                            <p>מידע לילדים ובני נוער</p>
+                        </a>
+                    </div>
+                </li>
+                <li class="col-lg-4 col-md-4 col-sm-4 listbox2 fadeInUp  animated"  style="visibility: visible;-webkit-animation-delay: .4s; -moz-animation-delay: .4s; animation-delay: .4s;">
+                    <div class="box2">
+                        <a href="#forParents">
+                            <p>מידע להורים</p>
+                            <figure>
+                                <img src="../images/imaginary-friend-2.png" style="height: 300px" alt=""></figure>
+                        </a>
+                    </div>
+                </li>
+                <li class="col-lg-4 col-md-4 col-sm-4 listbox3 fadeInUp  animated"  style="visibility: visible;-webkit-animation-delay: .2s; -moz-animation-delay: .2s; animation-delay: .2s;">
+                    <div class="box3">
+                        <a href="#info_for_prof">
+                            <figure>
+                                <img src="../images/colorchild.jpg" style="height: 300px" alt=""></figure>
+                            <p>מידע לאנשי מקצוע</p>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+        </div>-->
+    </div>
+    </div>

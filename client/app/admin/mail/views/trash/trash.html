@@ -1,4 +1,4 @@
-﻿<section class="modal-dialog " style="width: auto; margin-top: 0px;">
+﻿<section class="modal-dialog fadeIn animated" style="width: auto; margin-top: 0px;">
 
     <div class="modal-content">
         <header class="panel-heading wht-bg">
@@ -44,7 +44,7 @@
 
 
                 <ul class="unstyled inbox-pagination">
-                    <li><span>{{trash.pageIdx*50+1}}-{{(trash.pageIdx+1)*50}} of {{trash.messages.length}}</span></li>
+                    <li><span>{{trash.pageIdx*50}}-{{(trash.pageIdx+1)*50}} of {{trash.messages.length}}</span></li>
                     <li>
                         <a ng-click="trash.pageIdx=trash.pageIdx-1" class="np-btn"><i class="fa fa-angle-left  pagination-left"></i></a>
                     </li>

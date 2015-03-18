@@ -5,7 +5,7 @@
       .state('contactUs', {
           url: '/contactUs',
           templateUrl: 'contactUs/contactUs.html',
-        controller: '',
+          controller: 'MainCtrl',
         controllerAs: ''
 
       })

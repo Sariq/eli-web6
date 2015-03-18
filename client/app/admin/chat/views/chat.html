@@ -53,7 +53,7 @@
 
 
 <div class="row">
-    <div class="col-md-8" style="direction: rtl">
+    <div class="col-md-8 slideInRight animated" style="visibility: visible; -webkit-animation-delay: .2s; -moz-animation-delay: .2s; animation-delay: .2s; direction: rtl">
         <div class="modal-content panel-primary">
             <div class="panel-heading">
                 Users Table
@@ -70,27 +70,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                             <tr ng-click="chat.getWebUserChat(webUser,$index)" ng-repeat="webUser in chat.chatWebs" ng-class="{'success':webUser.isOnline,'danger':!webUser.isOnline}">
                                 <td>{{$index}}</td>
                                 <td>{{webUser.webName}}</td>
-                                <td><span ng-if="webUser.isNewMessage" class="badge bg-info" style="font-size:16px">הודעה חדשה</span></td>
+                                <td><span ng-if="webUser.isNewMessage" class="badge bg-info" style="font-size: 16px">הודעה חדשה</span></td>
 
-                                <td><span ng-click="chat.createReport()" ng-if="!webUser.isOnline" class="badge bg-danger" style="font-size:16px">השיחה הסתיימה</span></td>
-                                 <td><span ng-click="chat.createReport(webUser)" ng-if="!webUser.isOnline" class="btn btn-warning pull-left">create report</span></td>
+                                <td><span ng-click="chat.createReport()" ng-if="!webUser.isOnline" class="badge bg-danger" style="font-size: 16px">השיחה הסתיימה</span></td>
+                                <td><span ng-click="chat.createReport(webUser)" ng-if="!webUser.isOnline" class="btn btn-warning pull-left">create report</span></td>
                                 <td><span ng-click="chat.remove(webUser._id)" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger pull-left"><i class="glyphicon glyphicon-trash"></i></span></td>
                             </tr>
 
                         </tbody>
                     </table>
                 </div>
-     
+
             </div>
 
         </div>
 
     </div>
-    <div class="col-md-4">
+
+    <div  class="col-md-4 slideInRight animated" style="visibility: visible; -webkit-animation-delay: .8s; -moz-animation-delay: .8s; animation-delay: .8s;">
         <div class="modal-content  chat-panel  panel-primary ">
             <div class="panel-heading">
                 <i class="fa fa-comments fa-fw"></i>
@@ -120,15 +121,15 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body" scroll-glue>
-                <div class=" bg-info badge " style="height: 20%;margin-top: 10%;display:block" ng-if="chat.isAdminOnline && chat.currentWebUser==''">
-                  <h2> בחר במשתמש על מנת להתחיל בשיחה</h2> 
+                <div class=" bg-info badge " style="height: 20%; margin-top: 10%; display: block" ng-if="chat.isAdminOnline && chat.currentWebUser==''">
+                    <h2>בחר במשתמש על מנת להתחיל בשיחה</h2>
                 </div>
                 <ul class="chat">
                     <li ng-repeat="message in chat.chatMessages">
                         <span class="left clearfix">
-                           
+
                             <div class="chat-body clearfix">
-                                 
+
                                 <div class="header">
                                     <small class=" text-muted">
                                         <i class="fa fa-clock-o fa-fw"></i>{{message.messageUpdateT}}</small>

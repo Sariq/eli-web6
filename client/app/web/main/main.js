@@ -1,6 +1,6 @@
-﻿
+﻿//uiGmapGoogleMapApi
 angular.module('eliApp').
-  controller('MainCtrl', function ($rootScope,$scope, $document) {
+  controller('MainCtrl', function ($rootScope, $scope, $document) {
       $scope.currSection = '';
       $scope.setSection = function (currSection) {
           $scope.currSection = currSection;
@@ -8,12 +8,19 @@ angular.module('eliApp').
       $scope.back = function () {
           window.history.back();
       };
-     
+      $scope.options = { language: 'ar' };
+      $scope.map = { center: { latitude: 32.072776, longitude: 34.781906 }, zoom: 8 };
+      $scope.marker = { latitude: 32.072776, longitude: 34.781906 };
+
+  
+      //uiGmapGoogleMapApi.then(function (maps) {
+      //    console.log(maps);
+      //})
+
       $scope.$on('sectionChanged', function (event, currSection) {
           console.log("herrree");
+
           $scope.currSection = currSection;
-          
-        
           switch(currSection) {
               case 1:
                   $scope.currSection1=true;

@@ -9,7 +9,7 @@
 
 <div class="row mt ">
             <div class="col-sm-3">
-                <section class=" modal-content">
+                <section class=" modal-content slideInLeft animated" style="visibility: visible; -webkit-animation-delay: .2s; -moz-animation-delay: .2s; animation-delay: .2s;">
                     <div class="panel-body">
                         <a ui-sref=".mail_compose" class="btn btn-compose">
                             <i class="fa fa-pencil"></i>  Compose Mail
@@ -23,7 +23,7 @@
                     </div>
                 </section>
                 <br />
-                <section class="modal-content">
+                <section class="modal-content slideInLeft animated" style="visibility: visible; -webkit-animation-delay: .4s; -moz-animation-delay: .4s; animation-delay: .4s;">
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked labels-info ">
                             <li> <h4>Friends </h4> </li>
@@ -50,8 +50,8 @@
                     </div>
                 </section>
             </div>
-            <div class="col-sm-9">
-                <div ui-view></div>
+            <div class="col-sm-9 slideInUp animated">
+                <div ui-view ></div>
             </div>
         </div>
 

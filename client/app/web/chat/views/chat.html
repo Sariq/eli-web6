@@ -24,7 +24,7 @@
  padding: 0; 
 	list-style: none;
     position:fixed;
-
+      width: 356px;
 }
 
 .chat li {
@@ -138,6 +138,7 @@
 
 
 </style>
+
        <div  ng-show="chat.adminOnlineStatus"   id="fixed" >
     
             <div class="row">
@@ -154,6 +155,7 @@
                            <span class="pull-right"><button class="btn btn-danger btn-xs" ng-if="chat.GuID!=null" ng-click="chat.myUnLoad()">End Chat</button></span>
                         </div>
                         <!-- /.panel-heading -->
+                        <div class="row">
                         <div class="panel-body fixedContent" scroll-glue>
                             <ul class="chat">
                                 <li  ng-repeat="message in chat.chatMessages" >
@@ -176,7 +178,7 @@
                                 </li>
  
                             </ul>
-                        </div>
+                        </div></div>
                         <!-- /.panel-body -->
                         <div class="panel-footer" >
                             <div class="input-group"  >

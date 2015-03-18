@@ -4,22 +4,22 @@
 <head>
     <title>ELI</title>
 
-   
+
 
 
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="/client/app/bower_components/bootstrap/dist/css/bootstrap.css">
     <link href="css/main.css" rel="stylesheet" />
-    
+
     <!--index_section-->
     <link href="index_section/index_section.css" rel="stylesheet" />
-  
+
     <!--index_section-->
     <!--news_feed-->
     <link href="newsFeed/news_feed.css" rel="stylesheet" />
 
     <!--news_feed-->
-           <!--animation-->
+    <!--animation-->
     <link href="../common/css/animations.css" rel="stylesheet" />
     <!--animation-->
     <!--contact_info-->
@@ -34,7 +34,7 @@
     <!--about_us-->
     <link href="about_us/about_us.css" rel="stylesheet" />
     <!--about_us-->
-        <!--help_us-->
+    <!--help_us-->
     <link href="help_us/help_us.css" rel="stylesheet" />
     <!--help_us-->
 
@@ -42,7 +42,7 @@
     <link href="css/animate/animate.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <!--forParents-->
-   <!-- <link href="information/css/forParents.css" rel="stylesheet" />-->
+    <!-- <link href="information/css/forParents.css" rel="stylesheet" />-->
 
     <link href="/client/app/templates/animate/page-animate.css" rel="stylesheet" />
     <link rel="stylesheet" href="/client/app/web/css/fancybox/jquery.fancybox-v=2.1.5.css" type="text/css" media="screen">
@@ -55,7 +55,7 @@
 
     <div class="ui-view-container " ui-view=""></div>
     <div ng-controller="ChatController as chat" ng-include='"chat/views/chat.html"'></div>
-
+<!--        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&language=ja"></script>-->
     <script src="/client/app/bower_components/jquery/dist/jquery.js"></script>
     <script src="/client/app/bower_components/angular/angular.js"></script>
 
@@ -72,16 +72,20 @@
     <script src="/client/app/bower_components/angular-translate/angular-translate.js"></script>
     <script src="/client/app/bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="/client/app/common/directives/auto-scroll.js"></script>
-<!--       <script src="/client/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="../bower_components/lodash/dist/lodash.js"></script>
+    <script src="/client/app/bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+
+
+    <!--       <script src="/client/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script src="/client/app/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>-->
     <script src="scripts/jquery.newsTicker.js"></script>
-                   <!--text_angular-->
-       
-        <script src='../bower_components/textAngular/dist/textAngular-rangy.min.js'></script>
-        <script src='../bower_components/textAngular/dist/textAngular-sanitize.min.js'></script>
-        <script src='../bower_components/textAngular/dist/textAngular.min.js'></script>
-        <!--text_angular-->
+    <!--text_angular-->
+
+    <script src='../bower_components/textAngular/dist/textAngular-rangy.min.js'></script>
+    <script src='../bower_components/textAngular/dist/textAngular-sanitize.min.js'></script>
+    <script src='../bower_components/textAngular/dist/textAngular.min.js'></script>
+    <!--text_angular-->
 
     <!-- app -->
     <script src="eli-app.js"></script>
@@ -117,7 +121,7 @@
     <!--about_us-->
     <script src="about_us/about_us.js"></script>
     <!--about_us-->
-     <!--help_us-->
+    <!--help_us-->
     <script src="help_us/help_us.js"></script>
     <!--help_us-->
     <!--chat-->
@@ -125,7 +129,7 @@
     <script src="chat/chat_service.js"></script>
     <!--chat-->
     <!--information-->
-<!--    <script src="information/routes.js"></script>-->
+    <!--    <script src="information/routes.js"></script>-->
     <!--information-->
 
     <!--page-animate-->
@@ -136,7 +140,7 @@
     <script src="contactUs/routes.js"></script>
     <!--contactUs-->
     <!--forParents-->
-<!--    <script src="information/js/isotope.pkgd.min.js"></script>
+    <!--    <script src="information/js/isotope.pkgd.min.js"></script>
     <script src="information/js/jquery.backstretch.min.js"></script>
     <script src="information/js/modernizr.js"></script>
     <script src="information/js/template.js"></script>-->

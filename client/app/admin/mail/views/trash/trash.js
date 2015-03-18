@@ -8,7 +8,7 @@
     function TrashCtrl($location, $scope, MailService, $stateParams, $http, AuthService, MailService, UserAdmin, $rootScope) {
         var self = this;
         self.userList = MailService.getUserList();
-
+        self.pageIdx = 0;
         $scope.$on('CatMailMessages', function () {
 
             self.messages = MailService.getTrashMessages();

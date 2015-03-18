@@ -4,7 +4,7 @@
 
  
     //self.patient = PatientAdmin.patient;
-    self.patient = PatientAdmin.get($stateParams.patientId);
+    
     console.log(self.patient)
     self.op1 = false;
     self.op2 = true;
