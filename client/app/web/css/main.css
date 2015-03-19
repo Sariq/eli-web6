@@ -117,17 +117,17 @@ section {
 }
 
 .font-thin {
-    font-family: "Titillium Web", sans-serif;
+  
     font-weight: 200;
 }
 
 .font-semibold {
-    font-family: "Titillium Web", sans-serif;
+   
     font-weight: 600;
 }
 
 .font-light {
-    font-family: "Titillium Web", sans-serif;
+  
     font-weight: 300;
 }
 
@@ -151,7 +151,7 @@ html, body {
 
 
 body {
-    font-family: "Titillium Web", sans-serif;
+    font-family: Gisha;
     font-weight: normal;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased !important;
@@ -177,7 +177,7 @@ body {
 
     .navbar .nav a {
         color: #5f5f5f;
-        font-family: "Titillium Web", sans-serif;
+     
         font-weight: 600;
         transition: all .5 linear;
     }
@@ -249,7 +249,7 @@ body {
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px) /*{
 
     .nav li {
         text-align: left;
@@ -308,7 +308,7 @@ body {
         margin: 0;
         text-align: left;
     }
-}
+}*/
 
 :focus {
     outline: none;
@@ -451,7 +451,7 @@ body {
     }
 
     .content-row h4 {
-        font-family: "Titillium Web", "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+       
         font-size: 20px;
         font-weight: 300;
     }
@@ -710,7 +710,7 @@ body {
 /*papers*/
 #Social-Sidebar-allpages {
     position: fixed;
-    font-family: Arial,Verdana,sans-serif;
+   
     top: 10%;
 }
 
@@ -769,7 +769,7 @@ body {
 
 #Social-Sidebar {
     position: fixed;
-    font-family: Arial,Verdana,sans-serif;
+   
     top: 25%;
 }
 
@@ -835,7 +835,7 @@ a {
     margin: 0px auto;
     margin-top: 40px;
     font-size: 15px;
-    font-family: Tahoma;
+   
 }
 
     .papers:before, .papers:after {

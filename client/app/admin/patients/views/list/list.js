@@ -13,7 +13,7 @@
                 page: 1,            // show first page
                 count: 10,          // count per page
                 sorting: {
-                    name: 'asc'     // initial sorting
+                    _date: 'desc'     // initial sorting
                 }
             }, {
                 total: self.data.length, // length of self.data

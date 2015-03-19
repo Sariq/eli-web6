@@ -81,10 +81,10 @@ angular.module('eliApp').config(function (localStorageServiceProvider) {
       .setStorageCookie('/');
 });
 
-angular.module('eliApp').config(function (uiGmapGoogleMapApiProvider) {
-    uiGmapGoogleMapApiProvider.configure({
-        //    key: 'your api key',
-        v: '3.17',
-        libraries: 'weather,geometry,visualization'
-    });
-})
+//angular.module('eliApp').config(function (uiGmapGoogleMapApiProvider) {
+//    uiGmapGoogleMapApiProvider.configure({
+//        //    key: 'your api key',
+//        v: '3.17',
+//        libraries: 'weather,geometry,visualization'
+//    });
+//})

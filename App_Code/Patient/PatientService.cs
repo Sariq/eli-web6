@@ -10,6 +10,7 @@ public class PatientService : DatabaseActions, IPatient
 
     public Patient AddPatient(Patient patient)
     {
+     
         Patient dbPatient = null;
         try
         {

@@ -1,5 +1,10 @@
 ﻿<style>
-  
+  .nav > li {
+  position: relative;
+  display: inline-block;
+  padding-left:15px;
+  padding-right:15px;
+}
 </style>
 
 
@@ -9,15 +14,15 @@
 
     <!-- === navbar === -->
     <div class="navbar navbar-fixed-top" data-activeslide="1">
-        <div class="" style="margin-left:auto;margin-right:auto; width:70%">
-            <div class=" nav-collapse  navbar-responsive-collapse ">
+        <div class="col-md-12 " style="">
+            <div class=" nav-collapse  navbar-responsive-collapse text-center">
                 <ul class=" nav row">
-                    <li data-slide="6" ng-click="setSection(6)" class="col-12 col-sm-2"><a data-slide="6" href="#section-6" du-smooth-scroll du-scrollspy><span class="text">{{ 'contact us' | translate }}&nbsp;<span class="icon icon-envelope"></span></span></a></li>
-                    <li data-slide="5" class="col-12 col-sm-2"><a data-slide="5" href="#section-5" du-smooth-scroll du-scrollspy><span class="text">{{ 'about us' | translate }}&nbsp;<span class="icon icon-user"></span></span></a></li>
-                    <li data-slide="4"  ng-click="setSection(4)" class="col-12 col-sm-2"><a data-slide="4" href="#section-4" du-smooth-scroll du-scrollspy><span class="text">{{ 'help us' | translate }}&nbsp;<span class="icon icon-briefcase"></span></span></a></li>
-                    <li data-slide="3" class="col-12 col-sm-2"><a data-slide="3" href="#section-3" du-smooth-scroll du-scrollspy><span class="text">{{ 'Information' | translate }}&nbsp;<span class="icon icon-info"></span></span></a></li>
-                    <li data-slide="2" class="col-12 col-sm-2"><a data-slide="2" href="#section-2" du-smooth-scroll du-scrollspy><span class="text">{{ 'Doing' | translate }}&nbsp;<span class="icon icon-heart"></span></span></a></li>
-                    <li data-slide="1" class="col-12 col-sm-2"><a data-slide="1" href="#section-1" du-smooth-scroll du-scrollspy><span class="text">{{ 'Home' | translate }}&nbsp;<span class="icon icon-home"></span></span></a></li>
+                    <li data-slide="6" ng-click="setSection(6)" class=""><a data-slide="6" href="#section-6" du-smooth-scroll du-scrollspy><span class="text">{{ 'contact us' | translate }}&nbsp;<span class="icon icon-envelope"></span></span></a></li>
+                    <li data-slide="5" class=""><a data-slide="5" href="#section-5" du-smooth-scroll du-scrollspy><span class="text">{{ 'about us' | translate }}&nbsp;<span class="icon icon-user"></span></span></a></li>
+                    <li data-slide="4" ng-click="setSection(4)" class=""><a data-slide="4" href="#section-4" du-smooth-scroll du-scrollspy><span class="text">{{ 'help us' | translate }}&nbsp;<span class="icon icon-briefcase"></span></span></a></li>
+                    <li data-slide="3" class=""><a data-slide="3" href="#section-3" du-smooth-scroll du-scrollspy><span class="text">{{ 'Information' | translate }}&nbsp;<span class="icon icon-info"></span></span></a></li>
+                    <li data-slide="2" class=""><a data-slide="2" href="#section-2" du-smooth-scroll du-scrollspy><span class="text">{{ 'Doing' | translate }}&nbsp;<span class="icon icon-heart"></span></span></a></li>
+                    <li data-slide="1" class=""><a data-slide="1" href="#section-1" du-smooth-scroll du-scrollspy><span class="text">{{ 'Home' | translate }}&nbsp;<span class="icon icon-home"></span></span></a></li>
                 </ul>
                 <div class=" row">
                     <div class=" col-sm-3 active-menu"></div>
@@ -31,12 +36,12 @@
 
 
     <!-- === Arrows === -->
-    <div id="arrows">
+<!--    <div id="arrows">
         <div id="arrow-up" ng-click="arrowClick($event)" class="disabled"></div>
         <div id="arrow-down" ng-click="arrowClick($event)"></div>
         <div id="arrow-left" ng-click="arrowClick($event)" class="disabled visible-lg"></div>
         <div id="arrow-right" ng-click="arrowClick($event)" disabled="class visible-lg"></div>
-    </div>
+    </div>-->
     <!-- === Arrows === -->
 
 
@@ -46,24 +51,24 @@
 
 
 
- <section  class="slide story " data-slide="1" id="section-1">
-               
-         <index-section></index-section>
-     
+    <section class="slide story " data-slide="1" id="section-1">
+
+        <index-section></index-section>
+
     </section>
 
 
-    
 
-  <!--  <section ng-repeat="widget in widgets" class="slide story " data-slide="{{$index+1}}" id="section-{{$index+1}}">
+
+    <!--  <section ng-repeat="widget in widgets" class="slide story " data-slide="{{$index+1}}" id="section-{{$index+1}}">
                
           <div proxy="widget" proxy-value="{{widget}}"></div>
      
     </section>-->
-  <!-- === Section 2 === -->
-    <section  data-slide="2"  id="section-2" style="background-color: #348c9a;">
+    <!-- === Section 2 === -->
+    <section data-slide="2" id="section-2" style="background-color: #348c9a;">
 
-   <we-doing ng-if="currSection2"></we-doing>
+        <we-doing ng-if="currSection2"></we-doing>
 
     </section>
     <!-- === Section 2 === -->
@@ -72,21 +77,21 @@
 
     <!-- === Section 3 === -->
     <section class="slide story  professional-info" data-slide="3" id="section-3" scroll-glue>
-          
 
-    
-               <professional-info ng-if="currSection3"></professional-info> 
-  
+
+
+        <professional-info ng-if="currSection3"></professional-info>
+
     </section>
     <!-- === Section 3 === -->
 
 
- 
-    <!-- === Section 4 === --> 
-    <section class="slide story " style="background-color: #3798D3;"  id="section-4" >
-      
-       <help-us ng-if="currSection4"></help-us> 
-  
+
+    <!-- === Section 4 === -->
+    <section class="slide story " style="background-color: #3798D3;" id="section-4">
+
+        <help-us ng-if="currSection4"></help-us>
+
     </section>
     <!-- === Section 4 === -->
 
@@ -97,12 +102,12 @@
 
 
         <about-us ng-if="currSection5"></about-us>
-         <!--   <div proxy="widget" proxy-value="{{widget}}"></div>-->
+        <!--   <div proxy="widget" proxy-value="{{widget}}"></div>-->
 
 
-         
-     
-     
+
+
+
 
     </section>
     <!-- === Section 5 === -->
@@ -111,9 +116,9 @@
 
     <!-- === Section 6 === -->
     <section class="slide story" data-slide="6" id="section-6" style="color: white">
-    
-            <contact-info ng-if="currSection6"></contact-info>
-      
+
+        <contact-info ng-if="currSection6"></contact-info>
+
     </section>
     <!-- === Section 6 === -->
 

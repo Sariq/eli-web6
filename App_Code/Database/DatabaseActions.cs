@@ -37,6 +37,7 @@ public class DatabaseActions
     protected async Task<Object> InsertObjectAndReturnTheObject<ObjectType>(DatabaseObject obj, string collectionName)
     {
         var collection = database.GetCollection(collectionName);
+        obj._date = Convert.ToDateTime(DateTime.Now.ToString());
         obj._id = Convert.ToString((ObjectId.GenerateNewId()));
         await collection.InsertAsync(obj);
         return GetObject<ObjectType>(obj._id, collectionName).Result;

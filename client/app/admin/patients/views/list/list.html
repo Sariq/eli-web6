@@ -17,17 +17,23 @@
                 <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
                     <tr ng-repeat="patient in $data" ng-if="!patient.isDelete" class="text-right">
 
-                        <td data-title="'name'" sortable="'name'">
-                            <a  href="#/patient/profile/{{patient._id}}">{{patient.name}}</a>
+                        <td data-title="'שם'" sortable="'name'">
+                            <a href="#/patient/profile/{{patient._id}}">{{patient.name}}</a>
                         </td>
                         <td data-title="'birthDate'" sortable="'birthDate'">
-                                
-                            <a href="#/patient/profile/{{patient._id}}"> {{patient.birthDate | jsDate  | date:'dd/MM/yyyy'}}</a>
+
+                            <a href="#/patient/profile/{{patient._id}}">{{patient.birthDate | jsDate  | date:'dd/MM/yyyy'}}</a>
                         </td>
 
                         <td data-title="'identityNumber'" sortable="'identityNumber'">
                             <a href="#/patient/profile/{{patient._id}}">{{patient.identityNumber}}</a>
                         </td>
+                           <td data-title="'email'" sortable="'email'">
+                            <a href="#/patient/profile/{{patient._id}}">{{patient.email}}</a>
+                        </td>
+        <!--                <td data-title="'_date'" sortable="'_date'">
+                            <a href="#/patient/profile/{{patient._id}}">{{patient._date| jsDate  | date:'dd/MM/yyyy'}}</a>
+                        </td>-->
 
                     </tr>
                 </table>
