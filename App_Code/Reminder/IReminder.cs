@@ -52,12 +52,21 @@ public interface IReminder
     //]
     //List<Reminder> GetAllReminders();
 
+    //[OperationContract]
+    //[WebInvoke(
+    //     Method = "POST",
+    //     ResponseFormat = WebMessageFormat.Json,
+    //     BodyStyle = WebMessageBodyStyle.Bare,
+    //     UriTemplate = "GetRemindersByIds")
+    //]
+    //List<Reminder> GetRemindersByIds(List<string> reminders);
+
     [OperationContract]
     [WebInvoke(
          Method = "POST",
          ResponseFormat = WebMessageFormat.Json,
          BodyStyle = WebMessageBodyStyle.Bare,
-         UriTemplate = "GetRemindersByIds")
+         UriTemplate = "api/GetRemindersByIds")
     ]
     List<Reminder> GetRemindersByIds(List<string> reminders);
 

@@ -3,7 +3,8 @@
 
 
     function routes($stateProvider, $urlRouterProvider, $resourceProvider) {
-        
+        $urlRouterProvider.when('/forParents_index', '/forParents_index/forParents');
+        $urlRouterProvider.when('/info_for_prof_index', '/info_for_prof_index/info_for_prof');
         $stateProvider
        .state('main', {
            url: '/main',
@@ -12,6 +13,8 @@
            controllerAs: ''
 
        })
+
+
                    .state('testPage', {
                        url: '/testPage',
                        templateUrl: 'templates/testPage.html',
@@ -20,13 +23,82 @@
 
                    })
 
-       .state('forParents', {
+  //forParents
+       .state('forParents_index', {
+           url: '/forParents_index',
+           templateUrl: 'templates/forParents_index.html',
+           controller: 'MainCtrl',
+           controllerAs: ''
+
+       })
+       .state('forParents_index.forParents', {
            url: '/forParents',
            templateUrl: 'templates/forParents.html',
            controller: 'MainCtrl',
            controllerAs: ''
 
        })
+
+        .state('forParents_index.abuse', {
+            url: '/abuse',
+            templateUrl: 'templates/abuse.html',
+            controller: 'MainCtrl',
+            controllerAs: ''
+
+        })
+
+      .state('forParents_index.abuse_signs', {
+          url: '/abuse_signs',
+          templateUrl: 'templates/abuse_signs.html',
+          controller: 'MainCtrl',
+          controllerAs: ''
+
+      })
+   //info_for_prof_index
+       .state('info_for_prof_index', {
+           url: '/info_for_prof_index',
+           templateUrl: 'templates/info_for_prof_index.html',
+           controller: 'MainCtrl',
+           controllerAs: ''
+
+       })
+
+      .state('info_for_prof_index.info_for_prof', {
+          url: '/info_for_prof',
+          templateUrl: 'templates/info_for_prof.html',
+          controller: 'MainCtrl',
+          controllerAs: ''
+
+      })
+
+
+        .state('info_for_prof_index.info_for_educators', {
+            url: '/info_for_educators',
+            templateUrl: 'templates/info_for_educators.html',
+            controller: 'MainCtrl',
+            controllerAs: ''
+
+        })
+
+         .state('info_for_prof_index.info_for_therapists', {
+             url: '/info_for_therapists',
+             templateUrl: 'templates/info_for_therapists.html',
+             controller: 'MainCtrl',
+             controllerAs: ''
+
+         })
+         .state('info_for_prof_index.abuse_detection', {
+             url: '/abuse_detection',
+             templateUrl: 'templates/abuse_detection.html',
+             controller: 'MainCtrl',
+             controllerAs: ''
+
+         })
+
+
+
+        
+
       .state('abuse', {
           url: '/abuse',
           templateUrl: 'templates/abuse.html',
@@ -34,6 +106,7 @@
           controllerAs: ''
 
       })
+
       .state('abuse_signs', {
           url: '/abuse_signs',
           templateUrl: 'templates/abuse_signs.html',

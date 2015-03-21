@@ -17,6 +17,9 @@
     self.setRoleList = function (roleList) {
         self.roleList = roleList;
     };
+    self.getRoleList = function () {
+        return self.roleList;
+    };
     
     self.hasPermission = function (role) {
         //  alert()

@@ -1,9 +1,9 @@
 (function () {
-    function UserListController($scope, UserAdmin, $stateParams, ngTableParams, $filter) {
+    function UserListController($scope, UserAdmin, $stateParams, ngTableParams, $filter, RoleService) {
     var self = this;
     console.log(UserAdmin);
     self.users = UserAdmin.query();
-
+    self.roleList = RoleService.getRoleList();
     self.users.$promise.then(function (result) {
         console.log(result);
         self.data = result;
@@ -46,7 +46,7 @@
   }
 
   angular.module('eli.admin')
-    .controller('UserListController', ['$scope','UserAdmin', '$stateParams','ngTableParams','$filter', UserListController]);
+    .controller('UserListController', ['$scope','UserAdmin', '$stateParams','ngTableParams','$filter','RoleService', UserListController]);
 }());
 
 

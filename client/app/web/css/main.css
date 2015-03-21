@@ -64,9 +64,32 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/alefhebrew.css);
 
-section {
+
+/* Mobile ----------- */
+@media (min-width: 320px) {
+    section {
+   
+}
+}
+/* Tablet ----------- */
+@media (min-width: 767px) {
+    section {
     height: 100vh;
 }
+}
+/* Desktops and laptops ----------- */
+@media (min-width: 1224px) {
+    section {
+    height: 100vh;
+}
+}
+/* Large screens ----------- */
+@media (min-width: 1824px) {
+    section {
+        height: 100vh;
+    }
+}
+
 
 .lead {
     font-size: 19px;
@@ -117,17 +140,14 @@ section {
 }
 
 .font-thin {
-  
     font-weight: 200;
 }
 
 .font-semibold {
-   
     font-weight: 600;
 }
 
 .font-light {
-  
     font-weight: 300;
 }
 
@@ -177,7 +197,6 @@ body {
 
     .navbar .nav a {
         color: #5f5f5f;
-     
         font-weight: 600;
         transition: all .5 linear;
     }
@@ -240,13 +259,20 @@ body {
 
 
 
+/* Large screens ----------- */
+@media (min-width: 1224px) and (max-width: 1824px) {
+}
 
+/* Desktops and laptops ----------- */
+@media (min-width: 768px) and (max-width: 1224px) {
+}
 
+/* Tablet ----------- */
+@media (min-width: 320px) and (max-width: 768px) {
+}
 
-@media (min-width: 768px) and (max-width: 991px) {
-    #section-4 .content-row h2 {
-        min-height: 6em;
-    }
+/* Mobile ----------- */
+@media (max-width: 320px) {
 }
 
 @media (max-width: 767px) /*{
@@ -309,7 +335,6 @@ body {
         text-align: left;
     }
 }*/
-
 :focus {
     outline: none;
 }
@@ -327,7 +352,7 @@ body {
     text-align: center;
 }
 
-#section-1 {
+/*#section-1 {
     background-image: url('/client/app/images/bg1.jpg');
     color: #ffffff;
     -webkit-background-size: 100%;
@@ -342,11 +367,11 @@ body {
     min-height: 100%;
     background-attachment: relative;
     background-position: center center;
-}
+}*/
 
-    #section-1 h1 {
-        padding-top: 130px;
-    }
+#section-1 h1 {
+    padding-top: 130px;
+}
 
 @media (max-width: 991px) {
     #section-1 {
@@ -451,7 +476,6 @@ body {
     }
 
     .content-row h4 {
-       
         font-size: 20px;
         font-weight: 300;
     }
@@ -697,7 +721,7 @@ body {
 /*sections*/
 .section-container {
     min-height: 100%; /* Fallback for browsers do NOT support vh unit */
-    min-height: 100vh; /* These two lines are counted as one :-)       */
+
     display: flex;
     align-items: center;
 }
@@ -710,7 +734,6 @@ body {
 /*papers*/
 #Social-Sidebar-allpages {
     position: fixed;
-   
     top: 10%;
 }
 
@@ -720,28 +743,29 @@ body {
         margin: 0;
         padding: 0;
         list-style: none;
-        
     }
 
     #Social-Sidebar-allpages.Theme-Color ul li a[class*="Home"] {
         background: #1abc9c;
         width: 25%;
-        border-radius:0 5px 5px 0 ;
+        border-radius: 0 5px 5px 0;
     }
-        #Social-Sidebar-allpages.Theme-Color ul li a[class*="Back"] {
+
+    #Social-Sidebar-allpages.Theme-Color ul li a[class*="Back"] {
         background: #ffd800;
         width: 25%;
-        margin-top:5px;
-        border-radius:0 5px 5px 0 ;
+        margin-top: 5px;
+        border-radius: 0 5px 5px 0;
     }
-                #Social-Sidebar-allpages.Theme-Color ul li a[class*="Menu"] {
+
+    #Social-Sidebar-allpages.Theme-Color ul li a[class*="Menu"] {
         background: #eb0f0f;
         width: 25%;
-        margin-top:5px;
-        border-radius:0 5px 5px 0 ;
+        margin-top: 5px;
+        border-radius: 0 5px 5px 0;
     }
-      
-      #Social-Sidebar-allpages.Theme-Color ul li {
+
+    #Social-Sidebar-allpages.Theme-Color ul li {
         background: transparent;
         border: 0;
         margin: 0;
@@ -752,24 +776,23 @@ body {
 
 
 
-#Social-Sidebar-allpages ul li a {
-    width: 100%;
-    height: 35px;
-    line-height: 40px;
-    font-size: 19px;
-    text-align: center;
-    position: relative;
-    display: block;
-    background: #333;
-    color: #FFF;
-}
+    #Social-Sidebar-allpages ul li a {
+        width: 100%;
+        height: 35px;
+        line-height: 40px;
+        font-size: 19px;
+        text-align: center;
+        position: relative;
+        display: block;
+        background: #333;
+        color: #FFF;
+    }
 
 
 
 
 #Social-Sidebar {
     position: fixed;
-   
     top: 25%;
 }
 
@@ -835,7 +858,6 @@ a {
     margin: 0px auto;
     margin-top: 40px;
     font-size: 15px;
-   
 }
 
     .papers:before, .papers:after {

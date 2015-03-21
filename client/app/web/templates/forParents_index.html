@@ -1,0 +1,46 @@
+﻿<style>
+    .cat-badge {
+        color: #fff;
+        background-color: #FA8B0C;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .cat-badge-left {
+        color: #fff;
+        background-color: #FA8B0C;
+        border-radius: 0 10px 0 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+</style>
+
+
+
+
+<aside id="Social-Sidebar-allpages" class="Theme-Color">
+    <ul>
+        <li class="fadeIn"><a href="#main" class="Home"><span class="glyphicon glyphicon-home"></span></a>
+        </li>
+        <li><a href="" ng-click="back()" class="Back" rel="nofollow"><span class="glyphicon glyphicon-arrow-left"></span></a>
+        </li>
+        <li ng-click="showMe=!showMe"><a href="" class="Menu" rel="nofollow"><span class="glyphicon glyphicon-list"></span></a>
+        </li>
+        <!--        <li ng-show="!showMe" ng-click="showMe=!showMe"><a href="" class="Facebook" rel="nofollow"><span>הסתר תפריט</span></a>
+        </li>-->
+    </ul>
+</aside>
+
+<aside ng-show="!showMe" id="Social-Sidebar" class="Theme-Color">
+    <ul class="fadeIn">
+        <li><a href="#forParents_index/abuse" class="Facebook" rel="nofollow"><span>מהי התעללות</span></a></li>
+        <li><a href="#forParents_index/abuse_signs" class="Twitter" rel="nofollow"><span>סממנים לפגיעה</span></a></li>
+
+    </ul>
+</aside>
+
+<div  class="col-md-8 col-md-offset-2" >
+<ui-view></ui-view>
+    </div>

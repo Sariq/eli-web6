@@ -15,14 +15,7 @@
             transition: all 0.2s ease;
         }
 
-            .list1 li a p {
-                text-shadow: 1px 1px 2px #c1c1c1;
-                font-size: 30px;
-                line-height: 32px;
-                font-weight: normal;
-                padding: 44px 0 41px;
-                margin-bottom: 0;
-            }
+
 
             .list1 li a:hover {
                 text-decoration: none;
@@ -48,24 +41,19 @@
         padding-left: 15px;
     }
 
-    .box1 {
-        background: #eb5368;
-        border-radius: 20px;
-        margin-right: 15px;
-        margin-left: 15px;
+
+
+    .box1 figure {
+        width: 100%;
     }
 
-        .box1 figure {
+        .box1 figure img {
             width: 100%;
         }
 
-            .box1 figure img {
-                width: 100%;
-            }
-
-        .box1 p {
-            color: #ffffff;
-        }
+    .box1 p {
+        color: #ffffff;
+    }
 
     .box2 {
         background: #f1d154;
@@ -112,26 +100,96 @@
         border-radius: 10px 10px 10px 10px;
     }
 
-    .index-menu-img {
-        min-height: 200px;
-        max-height: 200px;
+
+
+
+
+
+
+
+    /* Mobile ----------- */
+    @media (min-width: 320px) {
+    }
+    /* Tablet ----------- */
+    @media (min-width: 767px) {
+        .index-menu-img {
+            min-height: 50px;
+            max-height: 50px;
+        }
+    }
+    /* Desktops and laptops ----------- */
+    @media (min-width: 1224px) {
+        .index-menu-img {
+            min-height: 200px;
+            max-height: 200px;
+        }
+
+        .box1 {
+            background: #eb5368;
+            border-radius: 20px;
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+
+        .list1 li a p {
+            text-shadow: 1px 1px 2px #c1c1c1;
+            font-size: 30px;
+            line-height: 32px;
+            font-weight: normal;
+            padding: 20px 0 21px;
+            margin-bottom: 0;
+        }
+    }
+    /* Large screens ----------- */
+    @media (min-width: 1824px) {
+        .index-menu-img {
+            min-height: 200px;
+            max-height: 200px;
+        }
+
+        .list1 li a p {
+            text-shadow: 1px 1px 2px #c1c1c1;
+            font-size: 30px;
+            line-height: 32px;
+            font-weight: normal;
+            padding: 44px 0 41px;
+            margin-bottom: 0;
+        }
     }
 </style>
 
 <div class="row">
-        <div id="home-row-1" class="col-md-6 col-md-offset-3">
-            <img class="fadeIn" style="width: 70%" src="/client/app/images/logo3.png">
-        </div>
+    <div id="home-row-1" class="col-md-6 col-md-offset-3 slideInDown animated">
+        <img class="fadeIn" style="width: 70%" src="/client/app/images/logo3.png">
+    </div>
 </div>
 
-    <div class="row">
 
-        <div class="col-md-4 col-md-offset-1 fadeIn">
-            <news-feed></news-feed>
+<div class="row">
+    <div class="col-md-4 col-md-offset-1 slideInLeft animated">
+        <br />
+        <br />
+        <news-feed></news-feed>
+    </div>
+    <div class="col-md-6  centered img-fade slideInRight animated">
+        <br />
+        <br />
+        <div class="modal-content" style="color: rgb(253, 245, 245); background: #384b83;">
+            <div class="modal-header text-right">
+                <h3 class="text-center">מי אנחנו</h3>
+            </div>
+            <div class="panel-body">
+                <p style="font-size: 21px" class="text-right">
+                    ​למרות שהמסורת יהודית מוקירה ילדים כאפוטרופוסים של עתידנו, החברה של היום סובלת מכל המחלות של חיים מודרניים. בישראל, סקר שנערך לאחרונה הראה כי 40,000 ילדים, לפחות 1.5% מכלל אוכלוסיית הילדים , הם קורבנות של אכזריות, הזנחה או התעללות רגשית, פיזית ומינית. שירותים טיפוליים הוכיחו כמתודולוגיה היעילה ביותר לטיפול באלימות במשפחה, והדרך היחידה לשבור את מעגל ההתעללות לאורך דורות. האגודה הישראלית להגנת ילד (אל"י) מוכרת על ידי ממשלת ישראל וגופים אחרים כארגון העוסק בכל ההיבטים השונים של התעללות בילדים. הארגון פועל ללא לאות כדי להגביר את המודעות לבעיה על ידי: חינוך הציבור הרחב, הכשרה של אנשי מקצוע, השפעה על מקבלי החלטות ומדיניות ,ועל ידי מתן מידע חיוני לקורבנות פוטנציאלים, הוריהם ובני משפחתם
+                </p>
+            </div>
+            <!--          <div class="modal-footer ">
+            
+            </div>-->
         </div>
-        <div class="col-md-6  col-xs-6 centered img-fade">
 
-            <div class="">
+
+        <!--<div class="">
 
 
 
@@ -168,13 +226,39 @@
                     </li>
                 </ul>
 
+            </div>-->
+
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 " style="margin-right: 0px;">
+        <div class="modal-content" style="color: rgb(253, 245, 245); background: none;">
+            <div class="modal-header text-right" style="border-bottom: 1px solid #7506EA; background: #384b83;">
+                <h3 class="text-center">קישורים</h3>
             </div>
+<div class="panel-body">
+                      <div class="col-md-2">
+                    <img src="/client/app/images/doing1.jpg" class=" modal-content" width="150" height="150"></div>
+            <div class="col-md-2">
+                    <img src="/client/app/images/doing2.jpg" class=" modal-content" width="150" height="150"></div>
+                  <div class="col-md-2">
+                    <img src="/client/app/images/doing3.jpg" class=" modal-content" width="150" height="150"></div>
+                  <div class="col-md-2">
+                    <img src="/client/app/images/doing4.jpg" class=" modal-content" width="150" height="150"></div>
+                <div class="col-md-2">
+                    <img src="/client/app/images/doing5.jpg" class=" modal-content" width="150" height="150"></div>
+                <div class="col-md-2">
+                    <img src="/client/app/images/doing6.jpg" class=" modal-content" width="150" height="150"></div>
+
+
 
         </div>
     </div>
-    <br />
-    <br />
-    <div class="row">
+</div>
+
+<!--<div class="row">
         <div class="col-md-4 col-md-offset-1 fadeIn">
                 <div class="col-lg-12 cat-badge" style="border: 1px solid #f2f2f2;background-color: #3A16B8">
                     <h2 style="background-color: crimson;">למה לטפל</h2>
@@ -230,4 +314,4 @@
             </div>
 
         </div>
-    </div>
+    </div>-->

@@ -1,6 +1,6 @@
 (function () {
                                                                                                                               
-    function UserAdmin($resource, AuthService, localStorageService) {
+    function UserAdmin($resource, AuthService, localStorageService, $rootScope) {
     var self = this;
 
     self.user = AuthService.getUserInfo();
@@ -131,5 +131,5 @@
   }
 
     angular.module('eli.admin')
-    .service('UserAdmin', ['$resource', 'AuthService','localStorageService', UserAdmin])
+    .service('UserAdmin', ['$resource', 'AuthService','localStorageService','$rootScope', UserAdmin])
 }());

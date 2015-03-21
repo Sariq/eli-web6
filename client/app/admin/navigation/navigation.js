@@ -74,6 +74,7 @@
 
         //Get MailMeesages
         $scope.getMailMessages = function () {
+        
             $scope.inBoxMessages = [];
             $scope.inboxCounter = 0;
             MailService.mailResource.GetInboxMessages($scope.userInfo._id).$promise.then(function (response) {
@@ -90,24 +91,28 @@
                     $scope.inBoxMessages[j].messageUpdateT = self.updateMessageTme($scope.inBoxMessages[j]._date)
                 }
             })
+        
         }
 
-        $scope.getMailMessages();
-        $interval(function () {
-            $scope.getMailMessages();
-        }, 9000)
+        //$scope.getMailMessages();
+        //$interval(function () {
+        //    $scope.getMailMessages();
+        //}, 9000)
 
         //Get Tasks
         $scope.getTasks = function () {
+    
+            if ($scope.userInfo.projectAassignments.length>0) {
             TaskAdmin.taskResource.getAssignmentsByIds($scope.userInfo.projectAassignments).$promise.then(function (response) {
                 $scope.taskList = response;
                 angular.forEach($scope.taskList, function (value, key) {
                     value.messageUpdateT = self.updateMessageTme(value._date)
                     if (!value.isDone) {
                         $scope.taskCounter++;
-                    }
-                })
+            }
             })
+            })
+                }
         }
         //Check Get Tasks
         if ($scope.userInfo.projectAassignments != null) {

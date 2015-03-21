@@ -86,6 +86,26 @@ angular.module('eli.admin').filter("idToUserName", function (UserAdmin) {
         return items;
     };
 });
+
+angular.module('eli.admin').filter("idToRole", function (RoleService) {
+    return function (roleId) {
+
+        var roleList = RoleService.getRoleList();
+
+
+        //  alert(angular.toJson(items))
+        for (var i = 0; i < roleList.length; i++) {
+
+            if (roleId == roleList[i]._id) {
+                roleId = roleList[i].role;
+
+            }
+        }
+
+
+        return roleId;
+    };
+});
 angular.module('eli.admin').filter("jsDate", function () {
     return function (x) {
         if(x)
