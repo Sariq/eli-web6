@@ -27,13 +27,14 @@
 <div class="row form-header text-right">
 
     <ol class="breadcrumb">
-        <li class="active"><a href="#patients" translate>Patients</a></li>
+        <li class="active" translate>Add Patient</a></li>
+        <li ><a href="#patients" translate>Patients</a></li>
         <li><a href="#dashboard" translate>Dashboard</a></li>
     </ol>
 </div>
 
 
-<div class="modal-dialog add-form form_container">
+<div class="modal-dialog add-form form_container slideInUp animated">
     <div class="modal-content">
 
         <div class="modal-header">
@@ -56,8 +57,8 @@
                 <br />
                 <div class="row">
                     <div class="col-md-12  col-xs-12">
-                        <label class="label-text-size">
-                            : birthDate
+                        <label class="label-text-size" >
+                            : תאריך לידה
               
                         </label>
                     </div>
@@ -89,7 +90,7 @@
                 <div class="row">
                     <div class="col-md-12  col-xs-12">
                         <label class="label-text-size">
-                            : address
+                            : כתובת
                    
                         </label>
                     </div>
@@ -103,7 +104,7 @@
                 <div class="row">
                     <div class="col-md-12  col-xs-12">
                         <label class="label-text-size">
-                            : email
+                            : כתובת דואר
                    
                         </label>
                     </div>
@@ -117,7 +118,7 @@
                 <div class="row">
                     <div class="col-md-12  col-xs-12">
                         <label class="label-text-size">
-                            : education
+                            : השכלה
                    
                         </label>
                     </div>
@@ -130,7 +131,7 @@
                 <div class="row">
                     <div class="col-md-12  col-xs-12">
                         <label class="label-text-size">
-                            : workplace
+                            : מקום עבודה
                    
                         </label>
                     </div>
@@ -143,7 +144,7 @@
                 <div class="row">
                     <div class="col-md-12  col-xs-12">
                         <label class="label-text-size">
-                            : contacts
+                            : אנשי קשר
                  
                         </label>
                     </div>
@@ -151,9 +152,9 @@
                         <ul class="list-inline">
                             <li ng-repeat="contact in add.patient.contacts">
 
-                                <input class="contact-li " ng-model="contact.phoneNumber" placeholder="phoneNumber">
-                                <input class="contact-li " ng-model="contact.age" placeholder="age">
-                                <input class="contact-li  " ng-model="contact.name" placeholder="name">
+                                <input class="contact-li " ng-model="contact.phoneNumber" placeholder="מס' טלפון">
+                                <input class="contact-li " ng-model="contact.age" placeholder="גיל">
+                                <input class="contact-li  " ng-model="contact.name" placeholder="שם">
                             </li>
 
                         </ul>

@@ -6,11 +6,11 @@
         <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
             <tr ng-repeat="meeting in $data" ng-if="!meeting.isDelete" class="text-center">
 
-                <td data-title="'Title'" sortable="'title'">
+                <td data-title="'כותרת'" sortable="'title'">
                     <a href="#/meeting/item/{{meeting._id}}/{{$index}}">{{meeting.title}}</a>
                 </td>
 
-                <td data-title="'date'" sortable="'date'">
+                <td data-title="'תאריך יצירה'" sortable="'date'">
                     <a href="#/meeting/item/{{meeting._id}}/{{$index}}">{{meeting._date | jsDate  | date:'dd/MM/yyyy'}}</a>
                 </td>
             </tr>
@@ -18,6 +18,12 @@
     </div>
 </div>
 
-<div class="col-md-12">
-    <span class="pull-left"><a class="btn btn-info" href="#/meeting/add"><span class="fa fa-plus"></span>{{'Add meeting'|translate}}</a></span>
+<div class="col-md-12 fadeIn animated">
+    <a href="#/meeting/add">
+        <md-button class="md-fab md-primary">
+        <md-icon md-svg-src="img/icons/plus-md.svg"></md-icon>
+      </md-button>
+    </a>
+
 </div>
+

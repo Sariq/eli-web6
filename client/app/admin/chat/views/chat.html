@@ -56,7 +56,7 @@
     <div class="col-md-8 slideInRight animated" style="visibility: visible; -webkit-animation-delay: .2s; -moz-animation-delay: .2s; animation-delay: .2s; direction: rtl">
         <div class="modal-content panel-primary">
             <div class="panel-heading">
-                Users Table
+                טבלת משתמשים
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -65,7 +65,7 @@
                         <thead>
                             <tr>
                                 <td>#</td>
-                                <td>First Name</td>
+                                <td>משתמש</td>
                                 <td></td>
                             </tr>
                         </thead>
@@ -77,7 +77,7 @@
                                 <td><span ng-if="webUser.isNewMessage" class="badge bg-info" style="font-size: 16px">הודעה חדשה</span></td>
 
                                 <td><span ng-click="chat.createReport()" ng-if="!webUser.isOnline" class="badge bg-danger" style="font-size: 16px">השיחה הסתיימה</span></td>
-                                <td><span ng-click="chat.createReport(webUser)" ng-if="!webUser.isOnline" class="btn btn-warning pull-left">create report</span></td>
+                                <td><span ng-click="chat.createReport(webUser)" ng-if="!webUser.isOnline" class="btn btn-warning pull-left">צור דווח</span></td>
                                 <td><span ng-click="chat.remove(webUser._id)" data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger pull-left"><i class="glyphicon glyphicon-trash"></i></span></td>
                             </tr>
 
@@ -95,7 +95,7 @@
         <div class="modal-content  chat-panel  panel-primary ">
             <div class="panel-heading">
                 <i class="fa fa-comments fa-fw"></i>
-                Chat
+                צ'אט
                             <div class="btn-group pull-right">
                                 <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                                     <i ng-class="{'text-green':chat.isAdminOnline,'text-red':!chat.isAdminOnline}" class="fa fa-square "></i><i class="fa fa-chevron-down"></i>
@@ -104,7 +104,7 @@
 
                                     <li>
                                         <a ng-click="chat.register()" href="#">
-                                            <i class="fa fa-check-circle fa-fw"></i>OnLine
+                                            <i class="fa fa-check-circle fa-fw"></i>התחבר
                                         </a>
                                     </li>
 
@@ -113,7 +113,7 @@
                                     <li>
                                         <a ng-click="chat.unRegister()" href="#">
 
-                                            <i class="fa fa-sign-out fa-fw"></i>Sign Out
+                                            <i class="fa fa-sign-out fa-fw"></i>יציאה
                                         </a>
                                     </li>
                                 </ul>
@@ -137,7 +137,7 @@
                                     <span ng-if="message.type=='admin'"><strong class="pull-right primary-font" style="color: orange">{{chat.userInfo.userId}}</strong></span>
                                 </div>
                                 <p class="text-right">
-                                    {{message.messageContent}}-{{$index}}
+                                    {{message.messageContent}}
                                 </p>
                             </div>
                         </span>

@@ -211,8 +211,16 @@ angular.module('eli.admin').config(function ($translateProvider) {
         'help us': 'איך תוכלי לעזור',
         Information: 'מידע',
         'about us': 'אודיתנו',
-        'contact us': 'צור קשר'
-
+        'contact us': 'צור קשר',
+        Users: 'משתמשים',
+        Inbox: 'דואר',
+        Chat: "צ'אט",
+        Projects: 'פרויקטים',
+        Reports : 'דוחות',
+        "Add User": 'הוסף משתמש',
+        "Add Patient": 'הוסף מטופל',
+        Dashboard: 'ראשי',
+        News: 'חדשות'
     })
 .translations('ar', {
     name: 'الاسم',

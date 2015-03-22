@@ -1,25 +1,25 @@
 ﻿<div class="row form-header text-right">
 
     <ol class="breadcrumb">
-         <li class="active">add item</li>
+         <li class="active">הוסף כתבה</li>
       <li class="active"><a href="#news" translate>news</a></li>
         <li><a href="#dashboard" translate>Dashboard</a></li>
     </ol>
 </div>
 
 
-<div class="modal-dialog add-form form_container">
+<div class="modal-dialog add-form form_container" style="width:60%">
     <div class="modal-content">
 
         <div class="modal-header">
-            <h1 class="text-center">Add News</h1>
+            <h1 class="text-center">הוסף כתבה</h1>
        </div>
 
         <div class="panel-body text-right">
             <div class="row">
                 <div class="col-md-12  col-xs-12">
                     <label class="label-text-size">
-                        : כותרת
+                     <strong><h3> : כותרת</h3></strong>  
                     </label>
                 </div>
                 <div class="col-md-12 col-xs-12">
@@ -32,7 +32,8 @@
 
                 <div class="form-group">
           <div class="col-md-12 col-xs-12 " >
-                <label class="pull-right" for="content">: תוכן</label>
+                     
+                <label class="pull-right" for="content"><strong><h3> :תוכן</h3></strong></label>
      <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
               <text-angular style="direction:rtl" ng-model="add.news.content"></text-angular>
               </div>

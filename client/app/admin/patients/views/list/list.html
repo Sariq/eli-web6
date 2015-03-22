@@ -20,15 +20,15 @@
                         <td data-title="'שם'" sortable="'name'">
                             <a href="#/patient/profile/{{patient._id}}">{{patient.name}}</a>
                         </td>
-                        <td data-title="'birthDate'" sortable="'birthDate'">
+                        <td data-title="'תאריך לידה'" sortable="'birthDate'">
 
                             <a href="#/patient/profile/{{patient._id}}">{{patient.birthDate | jsDate  | date:'dd/MM/yyyy'}}</a>
                         </td>
 
-                        <td data-title="'identityNumber'" sortable="'identityNumber'">
+                        <td data-title="'ת.ז'" sortable="'identityNumber'">
                             <a href="#/patient/profile/{{patient._id}}">{{patient.identityNumber}}</a>
                         </td>
-                        <td data-title="'email'" sortable="'email'">
+                        <td data-title="'כתובת דואר'" sortable="'email'">
                             <a href="#/patient/profile/{{patient._id}}">{{patient.email}}</a>
                         </td>
                         <!--                <td data-title="'_date'" sortable="'_date'">

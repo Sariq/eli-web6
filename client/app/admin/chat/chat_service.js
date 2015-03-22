@@ -86,7 +86,7 @@
         }
 
         self.myClick = function (myMessage, currentWebUser) {
-            alert(self.getadminChatId())
+           // alert(self.getadminChatId())
             var url = "/AsyncHandler.ashx?cmd=sendMessage&myText=" + encodeURIComponent(myMessage) + "&clientId=" + encodeURIComponent(currentWebUser) + "&type=" + "admin";
 
             self.xmlHttp_OneTime.open("POST", url, true);

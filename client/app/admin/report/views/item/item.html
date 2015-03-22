@@ -6,81 +6,8 @@
     </ol>
 </div>
 <!--<a class="btn btn-warning btn-xs glyphicon glyphicon-pencil" href="#/report/edit/{{item.report._id}}"></a>-->
-
 <div class="row ">
-
-
-
-
-    <div class="col-sm-12 slideInDown animated">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h2 class="text-center">דווח</h2>
-            </div>
-
-            <div class="panel-body text-right" style="padding-bottom: 0px;">
-                <form class="form-horizontal style-form text-right" method="get">
-
-                    <div class="row form-group ">
-                        <div class="col-md-8 col-xs-8 ">
-                            <label for="first_name" class="control-label "><strong>{{item.report.title}}</strong></label>
-                        </div>
-                        <div class="col-md-4 col-xs-4 ">
-                            <label for="first_name" class="control-label "><strong>: title</strong></label>
-                        </div>
-                    </div>
-
-                        <div class="row form-group ">
-                        <div class="col-md-8 col-xs-8 ">
-                            <label for="first_name" class="control-label "><strong ng-bind-html="item.report.content"></strong></label>
-                        </div>
-                        <div class="col-md-4 col-xs-4 ">
-                            <label for="first_name" class="control-label "><strong>: Content</strong></label>
-                        </div>
-                    </div>
-
-                    
-
-
-                    <div class="row form-group ">
-                        <div class="col-md-8 col-xs-8 ">
-                            <label for="first_name" class="control-label "><strong>{{item.report.adminId | idToAdmin}}</strong></label>
-                        </div>
-                        <div class="col-md-4 col-xs-4 ">
-                            <label for="first_name" class="control-label "><strong>: admin</strong></label>
-                        </div>
-                    </div>
-
-
-                         <div class="row">
-                        <div class="col-md-8 col-xs-8 ">
-                            <button class="control-label btn btn-primary" ng-click="item.getWebUserChat()">הצג שיחה</button>
-                        </div>
-                        <div class="col-md-4 col-xs-4 ">
-                            <label for="first_name" class="control-label "><strong>: chatId</strong></label>
-                        </div>
-                    </div>
-
-                    <br />
-                </form>
-            </div>
-              <div class="modal-footer ">
-     
-                    <span class="pull-left">
-                     
-                        <a href="#/report/edit/{{item.report._id}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                        <span ng-click="item.remove()"  data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></span>
-                   
-                         </span>
-                </div>
-        </div>
-    </div>
-
-</div>
-<br />
-<div class="row">
-       <div class="col-md-4 slideInLeft animated" ng-if="item.isShowChat">
+       <div class="col-md-4 slideInLeft animated " ng-if="item.isShowChat">
         <div class="modal-content  chat-panel  panel-primary ">
             <div class="panel-heading">
                 <i class="fa fa-comments fa-fw"></i>
@@ -103,7 +30,7 @@
                                     <span ng-if="message.type=='admin'"><strong class="pull-right primary-font" style="color: orange">{{item.report.adminId | idToAdmin}}</strong></span>
                                 </div>
                                 <p class="text-right">
-                                    {{message.messageContent}}-{{$index}}
+                                    {{message.messageContent}}
                                 </p>
                             </div>
                         </span>
@@ -132,5 +59,79 @@
 
 
 </div>
+<br />
+<div class="row ">
+
+
+
+
+    <div class="col-sm-12 slideInDown animated">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 class="text-center">דווח</h2>
+            </div>
+
+            <div class="panel-body text-right" style="padding-bottom: 0px;">
+                <form class="form-horizontal style-form text-right" method="get">
+
+                    <div class="row form-group ">
+                        <div class="col-md-8 col-xs-8 ">
+                            <label for="first_name" class="control-label "><strong>{{item.report.title}}</strong></label>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: כותרת</strong></label>
+                        </div>
+                    </div>
+
+                        <div class="row form-group ">
+                        <div class="col-md-8 col-xs-8 ">
+                            <label for="first_name" class="control-label "><strong ng-bind-html="item.report.content"></strong></label>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: תוכן</strong></label>
+                        </div>
+                    </div>
+
+                    
+
+
+                    <div class="row form-group ">
+                        <div class="col-md-8 col-xs-8 ">
+                            <label for="first_name" class="control-label "><strong>{{item.report.adminId | idToAdmin}}</strong></label>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: שם נציג</strong></label>
+                        </div>
+                    </div>
+
+
+                         <div class="row">
+                        <div class="col-md-8 col-xs-8 ">
+                            <button class="control-label btn btn-primary" ng-click="item.getWebUserChat()">הצג שיחה</button>
+                        </div>
+                        <div class="col-md-4 col-xs-4 ">
+                            <label for="first_name" class="control-label "><strong>: שיחת צ'אט</strong></label>
+                        </div>
+                    </div>
+
+                    <br />
+                </form>
+            </div>
+              <div class="modal-footer ">
+     
+                    <span class="pull-left">
+                     
+                        <a href="#/report/edit/{{item.report._id}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                        <span ng-click="item.remove()"  data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></span>
+                   
+                         </span>
+                </div>
+        </div>
+    </div>
+
+</div>
+<br />
+
 
 

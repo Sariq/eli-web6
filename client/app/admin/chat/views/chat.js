@@ -66,7 +66,7 @@
             if (self.xmlHttp_OneTime.readyState == 4) {
 
                 var myJSON_Text = self.xmlHttp_OneTime.responseText;
-                alert(myJSON_Text)
+                //alert(myJSON_Text)
                 myJsonObject = eval('(' + myJSON_Text + ')');
                 console.log(myJsonObject)
 
@@ -149,7 +149,7 @@
 
         self.myClick = function () {
             self.flagAdminMsg = true;
-            alert(self.currentWebUser.clientId)
+            //alert(self.currentWebUser.clientId)
             ChatService.myClick(self.myMessage, self.currentWebUser.clientId);
             self.myMessage = '';
 
@@ -176,9 +176,9 @@
                        self.chatWebs = ChatService.query();
                        self.currentWebUser = '';
                        self.chatMessages = [];
-                   }).error(function (data, status, headers, config) { alert("Project Add") });
+                   }).error(function (data, status, headers, config) { console.log("RemoveWeb") });
 
-            }).error(function (data, status, headers, config) { alert("Project Add") });
+                }).error(function (data, status, headers, config) { console.log("addReport error") });
         }, function (data) {
             var resp = angular.copy(data);
             console.log('Selected false');
@@ -190,7 +190,7 @@
                   success(function (data, status, headers, config) {
                      
                       self.chatWebs = ChatService.query()
-                  }).error(function (data, status, headers, config) { alert("Project Add") });
+                  }).error(function (data, status, headers, config) { console.log("RemoveWeb") });
 
         }
 
@@ -198,7 +198,7 @@
     self.getWebUserChat = function (webUser, index) {
 
         ChatService.setwebChatId(webUser.clientId)
-        alert(webUser.clientId)
+       // alert(webUser.clientId)
         self.currentWebUser = webUser;
         self.chatWebs[index].isNewMessage = false;
 
@@ -213,7 +213,7 @@
                 self.chatMessages[j].messageUpdateT = self.updateMessageTme(self.chatMessages[j]._date)
 
             }
-        }, function () { alert("GetAllMessages error") });
+        }, function () { console.log("GetAllOnlineMessagesOfClient error") });
     }
 
 

@@ -171,7 +171,7 @@
 
                 }
 
-            }, function () { alert("GetAllOnlineMessagesOfClient error") });
+            }, function () { console.log("GetAllOnlineMessagesOfClient error") });
         }
 
         if (ChatService.getChatUserId() != null) {

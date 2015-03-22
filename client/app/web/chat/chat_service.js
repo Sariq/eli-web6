@@ -38,7 +38,7 @@
         }
 
         self.myUnLoad = function () {
-            alert(self.getChatUserId())
+            //alert(self.getChatUserId())
             var url = "/AsyncHandler.ashx?cmd=unregister&type=web&clientId=" + self.getChatUserId();
             self.xmlHttp_OneTime.open("POST", url, true);
             self.xmlHttp_OneTime.send();
