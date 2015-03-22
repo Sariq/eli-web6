@@ -6,7 +6,7 @@ angular.module('eli.admin', [
   'eli.common',
           'ngMaterial',
           'tc.chartjs',
-
+          'pascalprecht.translate',
       'integralui',
       'ngTagsInput',
   'textAngular',
@@ -89,21 +89,38 @@ angular.module('eli.admin').filter("idToUserName", function (UserAdmin) {
 
 angular.module('eli.admin').filter("idToRole", function (RoleService) {
     return function (roleId) {
-
         var roleList = RoleService.getRoleList();
-
-
-        //  alert(angular.toJson(items))
         for (var i = 0; i < roleList.length; i++) {
 
             if (roleId == roleList[i]._id) {
                 roleId = roleList[i].role;
-
             }
         }
-
-
         return roleId;
+    };
+}); 
+angular.module('eli.admin').filter("idToRole", function (RoleService) {
+    return function (roleId) {
+        var roleList = RoleService.getRoleList();
+        for (var i = 0; i < roleList.length; i++) {
+
+            if (roleId == roleList[i]._id) {
+                roleId = roleList[i].role;
+            }
+        }
+        return roleId;
+    };
+});
+angular.module('eli.admin').filter("idToAdmin", function (UserAdmin) {
+    return function (userId) {
+        var userList = UserAdmin.getUserList();;
+        for (var i = 0; i < userList.length; i++) {
+
+            if (userId == userList[i]._id) {
+                userId = userList[i].userId;
+            }
+        }
+        return userId;
     };
 });
 angular.module('eli.admin').filter("jsDate", function () {
@@ -183,3 +200,24 @@ angular.module('eli.admin').config(function ($provide) {
         };
     });
 });
+
+angular.module('eli.admin').config(function ($translateProvider) {
+
+    $translateProvider.translations('he', {
+
+        name:'שם', 
+        identityNumber: 'ת.ז',
+        "Birht Date": 'תאריך לידה',
+        'help us': 'איך תוכלי לעזור',
+        Information: 'מידע',
+        'about us': 'אודיתנו',
+        'contact us': 'צור קשר'
+
+    })
+.translations('ar', {
+    name: 'الاسم',
+
+
+});
+    $translateProvider.preferredLanguage('he');
+})

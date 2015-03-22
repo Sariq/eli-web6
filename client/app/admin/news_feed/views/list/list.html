@@ -14,7 +14,7 @@
     </div>
     <div class="panel-body" style="width: 100%">
         <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
-            <tr ng-repeat="news in $data" class="text-right">
+            <tr ng-repeat="news in $data" class="text-center">
 
                 <td data-title="'Title'" sortable="'title'">
                     <a href="#/news/item/{{news._id}}" >{{news.title}}</a>
@@ -34,5 +34,9 @@
 </div>
 
 <div class="col-md-12 fadeIn animated">
-    <span class="pull-left"><a class="btn btn-info" href="#/news/add"><span class="fa fa-plus"></span>{{'Add news'|translate}}</a></span>
+      <a href="#/news/add">
+        <md-button class="md-fab md-primary">
+        <md-icon md-svg-src="img/icons/plus-md.svg"></md-icon>
+      </md-button>
+    </a>
 </div>

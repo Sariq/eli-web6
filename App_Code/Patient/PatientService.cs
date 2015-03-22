@@ -16,7 +16,7 @@ public class PatientService : DatabaseActions, IPatient
         {
             dbPatient = (Patient)(InsertObjectAndReturnTheObject<Patient>(patient, "Patient").Result);
         }
-        catch (MongoDuplicateKeyException)
+        catch
         {
             var error = new Error(Error.ErrorType.PatientIsAlreadyExist);
             throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);

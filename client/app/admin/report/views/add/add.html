@@ -1,55 +1,54 @@
-﻿
+﻿<div class="modal-content">
 
-
-    <div class="modal-content">
-
-        <div class="modal-header">
-            <h1 class="text-center">Report-{{report.report}}</h1>
-       </div>
-
-        <div class="panel-body text-right">
-            <div class="row">
-                <div class="col-md-12  col-xs-12">
-                    <label class="label-text-size">
-                        : כותרת
-                    </label>
-                </div>
-                <div class="col-md-12 col-xs-12">
-                    <input style="direction:rtl" class="form-control input-md" ng-model="report.report.title" placeholder="">
-                </div>
-
-            </div>
-            <br/>
-
-
-                <div class="form-group">
-          <div class="col-md-12 col-xs-12 " >
-                <label class="pull-right" for="content">: תוכן</label>
-     <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
-              <text-angular style="direction:rtl" ng-model="report.report.content"></text-angular>
-              </div>
+    <div class="modal-header">
+        <h1 class="text-center">דווח</h1>
     </div>
 
-       
+    <div class="panel-body text-right">
+        <div class="row">
+            <div class="col-md-12 col-xs-12 ">
+                <label class="pull-right">
+                    <h3><strong>: כותרת</strong></h3>
+                </label>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <input style="direction: rtl" class="form-control input-md" ng-model="report.report.title" placeholder="">
+            </div>
+
         </div>
+        <br />
 
 
-        
-        <div class="panel-footer">
-            <div class="form-group row">
-                <div class="col-md-6  ">
-                    <a href="#/patients" class="btn btn-warning btn-block label-text-size">בטל</a>
-                </div>
-                <div class="col-md-6  ">
-              <button ng-click="report.saveReport();"
-                        class="btn btn-info btn-block label-text-size"
-                        translate>
-                        Save
-                    </button>
-
-                </div>
+        <div class="form-group">
+            <div class="col-md-12 col-xs-12 ">
+                <label class="pull-right">
+                    <h3><strong>: תוכן דווח</strong></h3>
+                </label>
+                <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
+                <text-angular style="direction: rtl" ng-model="report.report.content"></text-angular>
             </div>
         </div>
-             
+
+
     </div>
+
+
+
+    <div class="panel-footer">
+        <div class="form-group row">
+            <div class="col-md-6  ">
+                <a href="#/patients" class="btn btn-warning btn-block label-text-size">בטל</a>
+            </div>
+            <div class="col-md-6  ">
+                <button ng-click="report.saveReport();"
+                    class="btn btn-info btn-block label-text-size"
+                    translate>
+                    Save
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</div>
 

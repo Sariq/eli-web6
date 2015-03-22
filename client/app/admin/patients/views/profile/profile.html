@@ -1,7 +1,7 @@
 ﻿<div class="row form-header text-right">
 
     <ol class="breadcrumb">
-        <li class="active"><a href="#" translate>{{profile.patient.first_name}}</a></li>
+        <li class="active"><a href="#" translate>{{profile.patient.name}}</a></li>
         <li><a href="#patients" translate>Patients</a></li>
         <li><a href="#dashboard" translate>Dashboard</a></li>
     </ol>
@@ -33,7 +33,7 @@
 
         <div class="modal-content">
             <div class="modal-header text-right">
-                <h3 class="text-center">User</h3>
+                <h3 class="text-center">מטופל</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -42,12 +42,12 @@
 
                         <ul class="profile-details">
                             <li>
-                                <div><i class="fa fa-briefcase"></i> Name</div>
-                                <strong>{{profile.patient.name}}</strong>
+                                <div><i class="fa fa-male"></i> {{'name'| translate}}</div>
+                                <strong >{{profile.patient.name }}</strong>
                             </li>
                             <br />
                             <li>
-                                <div><i class="fa fa-building-o"></i> identityNumber</div>
+                                <div><i class="fa fa-building-o"></i> {{'identityNumber'| translate}} </div>
                                 <strong>{{profile.patient.identityNumber}}</strong>
                             </li>
                             <br />
@@ -57,11 +57,11 @@
 
                         <ul class="profile-details">
                                <li>
-                                <div><i class="fa fa-phone"></i> Birht Date</div>
+                                <div><i class="fa fa-calendar"></i> {{'Birht Date'| translate}}</div>
                                 <strong>{{profile.patient.birthDate | jsDate  | date:'dd/MM/yyyy'}}</strong>
                             </li>
                             <li>
-                                <div><i class="fa fa-phone"></i> work Place</div>
+                                <div><i class="fa fa-briefcase"></i> work Place</div>
                                 <strong>{{profile.patient.workplace}}</strong>
                             </li>
                             <li>
@@ -92,7 +92,7 @@
             <div class="modal-footer ">
               <!--  <a ui-sref=".meetings({ patientId: profile.patient._id})" class="btn btn-primary">טיפולים</a>
                 <a ui-sref=".inbox" class="btn btn-primary">הערות</a>-->
-                <span class="pull-right">
+                <span class="pull-left">
                     <a href="#/patient/edit/{{profile.patient._id}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
 <span ng-click="profile.remove(profile.patient)"  data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></span>
 

@@ -1,4 +1,18 @@
-﻿<div class="row slideUp">
+﻿<style>
+    .iui-treeview-block-rtl {
+  min-height:400px;
+}
+</style>
+
+<div class="row form-header text-right">
+
+    <ol class="breadcrumb">
+         <li class="active">{{project.name}}</li>
+      <li class="active"><a href="#project/list" translate>Projects</a></li>
+        <li><a href="#dashboard" translate>Dashboard</a></li>
+    </ol>
+</div>
+<div class="row slideUp">
 
     <div class="col-md-9 ">
 
@@ -21,13 +35,13 @@
                 
                                 <button class="btn btn-primary" ng-click="addRoot()">הוסף תיקייה</button>
                 <span ng-click="remove()"  data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger pull-left"><i class="glyphicon glyphicon-trash"></i></span>
-           <!--     <button ng-click="remove()">Remove</button><br />-->
+           <!--     <button ng-click="remove()">Remove</button><br />
 <!--                <button ng-click="clear()">Clear</button>
                 <button ng-click="save()">Save</button>
                 <button ng-click="get()">get</button>
                 <button ng-click="update()">update</button>
-                <button ng-click="test()">test</button>
-                <button ng-click="deleteProject()">delete</button>-->
+                <button ng-click="test()">test</button>-->
+                <button ng-click="deleteProject()">מחק את הפרויקט</button>
             </div>
         </div>
     </div>

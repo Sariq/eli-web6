@@ -1,4 +1,26 @@
-﻿
+﻿<style>
+    tags-input .tags {
+     display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+
+
+</style>
+
 <div class="row slideInLeft animated" ng-if="tree.item.text">
 
 
@@ -6,10 +28,10 @@
         <div class="modal-header text-right">
             <h3 class="text-center">{{tree.item.text}}</h3>
         </div>
-       
-                  <div class="panel-body">
 
-<!--                      <div class="row">
+        <div class="panel-body">
+
+            <!--                      <div class="row">
                           <div class="col-md-12  col-xs-12">
                               <label class="label-text-size pull-right">
                                   : כותרת
@@ -20,44 +42,66 @@
                           </div>
 
                       </div>-->
-                      <br />
+            <br />
 
-                      <div class="row">
-                          <div class="form-group">
-                              <div class="col-md-12 col-xs-12 ">
-                                  <label class="pull-right" for="content">: תוכן</label>
-                                  <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
-                                  <text-angular style="direction: rtl" ng-model="task.task.content"></text-angular>
-                              </div>
-                          </div>
-                      </div>
-                      <br />
-                        <div class="row">
-                            <label>Send To :</label>
-                               <tags-input ng-model="tags" min-length="0"
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12 col-xs-12 ">
+                                            <label class="pull-right">
+                        <h3><strong>: תוכן משימה</strong></h3>
+                    </label>
+                        <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
+                        <text-angular style="direction: rtl" ng-model="task.task.content"></text-angular>
+                    </div>
+                </div>
+            </div>
+            <br />    <hr />
+            <div class="row ">
+                <div class="col-md-12 col-xs-12 ">
+                    <label class="pull-right">
+                        <h3><strong>: שתף עם</strong></h3>
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12 ">
+                    <tags-input   ng-model="tags" min-length="0"
+                        
                         replace-spaces-with-dashes="false"
                         add-from-autocomplete-only="true"
                         on-tag-added="tagAdded($tag)"
                         on-tag-removed="tagRemoved($tag)" style="direction: ltr"> <auto-complete
 											source="loadTags($query)" min-length="0" debounce-delay="0"
 											max-results-to-show="10" ></auto-complete> </tags-input>
-                          </div>
-                      <div class="row">
-                        
-                          <div class="col-md-4 col-xs-4 ">
-                              <datetimepicker ng-change="task.validateDate()"
-                                  min-date="task.tmpDate"
-                                  hour-step="task.hourStep" minute-step="task.minuteStep"
-                                  ng-model="task.reminder.reminderTime" show-meridian="task.showMeridian"
-                                  date-format="dd/MM/yyyy" 
-                                  date-disabled="task.disabled(date, mode)" readonly-time="false"></datetimepicker>
-                     
-                          </div>
-                      </div>
-<!-- <button class="btn btn-info" ng-click="task.saveReminder()">Remind Me</button>-->
- <button class="btn btn-info pull-right" ng-click="tree.saveTask(task.task,task.sendToUser,task.reminder)">Save</button>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                     <div class="col-md-12 col-xs-12 ">
+                    <label class="pull-right">
+                        <h3><strong>: הוסף תזכורת </strong></h3>
+                    </label>
+                </div>
+                  <md-switch class="pull-right" ng-model="toggleFlag" aria-label="Switch 1">
 
-                  </div>
+  </md-switch>
+                <div ng-if="toggleFlag" class="col-md-4 col-xs-4 ">
+                    <datetimepicker 
+                        min-date="task.tmpDate"
+                        hour-step="task.hourStep" minute-step="task.minuteStep"
+                        ng-model="task.reminder.reminderTime" show-meridian="task.showMeridian"
+                        date-format="dd/MM/yyyy"
+                        date-disabled="task.disabled(date, mode)" readonly-time="false"></datetimepicker>
+
+                </div>
+            </div>
+           
+
+        </div>
+
+                <div class="modal-footer ">
+          <!-- <button class="btn btn-info" ng-click="task.saveReminder()">Remind Me</button>-->
+            <button class="btn btn-info pull-right" ng-click="tree.saveTask(task.task,task.sendToUser,task.reminder)">שמור</button>
+
+        </div>
     </div>
 </div>
 

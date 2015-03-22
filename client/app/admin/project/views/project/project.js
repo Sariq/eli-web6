@@ -33,8 +33,11 @@
             $scope.update();
         }
         $scope.remove = function () {
-            $treeService.removeItem($scope.treeName, getCurrentSelection());
-            $scope.update()
+            alert(self.item)
+            if (getCurrentSelection() != null) {
+                $treeService.removeItem($scope.treeName, getCurrentSelection());
+                $scope.update()
+            }
         }
         $scope.onDragDrop = function (e) {
 
@@ -43,21 +46,23 @@
         $scope.onItemClick = function (e) {
 
             if (e.item) {
-
+    
                 if (e.item.items == null) {
                     self.item = e.item;
                     console.log(self.item)
                     // ProjectService.setTask(e.item);
-
-                    $timeout(function () {
-                        if (e.item.idOfAssignments.length == 0) {
+              
+                   
+                    if (e.item.idOfAssignments.length == 0) {
+                        $timeout(function () {
                             $location.path('/item/' + self.projectId + '/add');
+                        }, 0)
                         } else {
                             self.taskItem = TaskgAdmin.get(e.item.idOfAssignments[0]);
                             console.log(self.taskItem)
                             $location.path('/item/' + self.projectId + '/item/' + e.item.id);
                         }
-                    }, 0)
+                  
                 }
             }
         }

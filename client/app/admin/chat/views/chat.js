@@ -173,7 +173,9 @@
                     $http.post('/ClientService.svc/RemoveWeb', webUser._id).
                    success(function (data, status, headers, config) {
                   
-                       self.chatWebs = ChatService.query()
+                       self.chatWebs = ChatService.query();
+                       self.currentWebUser = '';
+                       self.chatMessages = [];
                    }).error(function (data, status, headers, config) { alert("Project Add") });
 
             }).error(function (data, status, headers, config) { alert("Project Add") });

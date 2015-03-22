@@ -4,7 +4,7 @@
             restrict: 'E',
             templateUrl: 'newsFeed/news_feed.html',
             link: function (scope, element, attr) {
-
+                scope.newsFeed = '';
                 scope.newsFeed = NewsFeedService.getNews();
                
 //                scope.newsFeed =

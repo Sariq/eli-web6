@@ -88,3 +88,14 @@ angular.module('eliApp').config(function (localStorageServiceProvider) {
 //        libraries: 'weather,geometry,visualization'
 //    });
 //})
+
+angular.module('eliApp').filter("jsDate", function ($filter) {
+    return function (x) {
+        var first = new Date(parseInt(x.substr(6)));
+
+
+ 
+            return $filter('date')(first, 'H:mm')
+ 
+    };
+});

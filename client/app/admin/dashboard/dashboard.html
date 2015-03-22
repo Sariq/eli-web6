@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">{{"Patients" | translate}}</div>
-                                    <div>26</div>
+                                    <div>{{dashboard.userInfo.patients.length}}</div>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">{{"Assignments" | translate}}</div>
-                                    <div>17</div>
+                                    <div>{{countTask}}</div>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +123,7 @@
     <div class="col-md-4">
         <div class="panel panel-info" style="height: 360px;">
             <div class="panel-heading text-right" >
-                         {{countTask}}-  {{doneTask}}   יחס משימות <i class="fa fa-bar-chart-o fa-fw "></i>
+                         יחס משימות <i class="fa fa-bar-chart-o fa-fw "></i>
                         </div> <div class="panel-body">  <div class="panel-body">
     <canvas tc-chartjs-bar chart-options="dashboard.lineOptions" chart-data="dashboard.lineData"></canvas>  </div>
           </div>

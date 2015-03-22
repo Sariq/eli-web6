@@ -3,8 +3,6 @@
 
 
 <div class="row form-header text-right">
-
-
    <ol class="breadcrumb">
   <li class="active"><a href="#users" translate>Users</a></li>
   <li  ><a href="#dashboard" translate>Dashboard</a></li>
@@ -21,7 +19,7 @@
             </div>
             <div class="panel-body">
                 <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
-                    <tr ng-repeat="user in $data" ng-if="!user.isDelete" class="text-right">
+                    <tr ng-repeat="user in $data" ng-if="!user.isDelete" class="text-center">
 
                         <td data-title="'First_name'" sortable="'first_name'">
                             <a ng-click="list.setPatientId(user)" href="#/user/profile/{{user._id}}">{{user.name}}</a>
@@ -41,24 +39,9 @@
     </div>
 </div><div class="col-md-12 col-xs-12 ">
 <!--  <span  class="pull-left">  <a  class="btn btn-info" href="#/user/add"><span class="fa fa-plus" ></span>{{'Add user'|translate}}</a></span>-->
-                  <a   href="#/user/add"><md-button class="md-fab md-primary" aria-label="Use Android">
+                  <a   href="#/user/add"><md-button class="md-fab md-primary" >
         <md-icon md-svg-src="img/icons/plus-md.svg"></md-icon>
       </md-button></a>
 </div>
 </div>
 
-<style>
-    md-icon {
-    height:40px;
-    width:40px;
-    }
-    .md-button.md-fab {
-    height:70px;
-    width:70px;
-    }
-
-    .md-button.md-default-theme.md-primary.md-raised, .md-button.md-default-theme.md-primary.md-fab {
-    background-color:#ba8c3c;
-    }
-
-</style>

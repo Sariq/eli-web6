@@ -53,7 +53,7 @@ public class UserService : DatabaseActions, IUser
         {
             InsertObjectNotAsync(user, "User");
         }
-        catch (MongoDuplicateKeyException)
+        catch
         {
             var error = new Error(Error.ErrorType.UserIsAlreadyExist);
             throw new WebFaultException<Error>(error, HttpStatusCode.BadRequest);

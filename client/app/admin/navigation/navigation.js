@@ -20,6 +20,7 @@
         //Get user list
         self.userList = UserAdmin.query();
         self.userList.$promise.then(function (result) {
+            console.log(result)
             UserAdmin.setUserList(result)
         });
 
@@ -94,10 +95,10 @@
         
         }
 
-        //$scope.getMailMessages();
-        //$interval(function () {
-        //    $scope.getMailMessages();
-        //}, 9000)
+        $scope.getMailMessages();
+        $interval(function () {
+            $scope.getMailMessages();
+        }, 9000)
 
         //Get Tasks
         $scope.getTasks = function () {
@@ -165,14 +166,14 @@
             });
         }, 20000);
 
-        //mail
+        //task
         $interval(function () {
             angular.forEach($scope.taskList, function (value, key) {
                 value.messageUpdateT = self.updateMessageTme(value._date)
             });
         }, 20000);
 
-        //task
+        //mail
         $interval(function () {
             angular.forEach($scope.inBoxMessages, function (value, key) {
                 value.messageUpdateT = self.updateMessageTme(value._date)
@@ -180,15 +181,17 @@
         }, 20000);
 
         self.updateMessageTme = function (messageTime) {
-            var startTime = new Date(parseInt(messageTime.substr(6)))
-            var endTime = new Date()
-            var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
-            var resultInMinutes = Math.round(difference / 60000);
-            if (resultInMinutes > 60) {
-                return "more than 1h";
-            } else {
+            if (messageTime) {
+                var startTime = new Date(parseInt(messageTime.substr(6)))
+                var endTime = new Date()
+                var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
+                var resultInMinutes = Math.round(difference / 60000);
+                if (resultInMinutes > 60) {
+                    return "more than 1h";
+                } else {
 
-                return resultInMinutes + " mins ago";
+                    return resultInMinutes + " mins ago";
+                }
             }
         }
         $scope.hasPermission = function (role) {

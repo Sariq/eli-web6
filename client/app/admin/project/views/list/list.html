@@ -2,7 +2,7 @@
 
 
     <ol class="breadcrumb">
-        <li class="active"><a href="#projects" translate>Projects</a></li>
+        <li class="active">Projects</li>
         <li><a href="#dashboard" translate>Dashboard</a></li>
     </ol>
 </div>
@@ -12,21 +12,21 @@
         <div class="modal-content">
             <div class="modal-header text-right">
                 <h3 class="text-center">טבלת פרויקטים</h3>
-                
+
             </div>
             <div class="panel-body" style="width: 100%">
                 <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
-                    <tr ng-repeat="project in $data" class="text-right">
+                    <tr ng-repeat="project in $data" class="text-center">
 
                         <td data-title="'name'" sortable="'name'">
                             <a href="#item/{{project._id}}">{{project.name}}</a>
                         </td>
                         <td data-title="'Created'" sortable="'_date'">
-                                
-                            <a href="#item/{{project._id}}"> {{project._date | jsDate  | date:'dd/MM/yyyy'}}</a>
+
+                            <a href="#item/{{project._id}}">{{project._date | jsDate  | date:'dd/MM/yyyy'}}</a>
                         </td>
 
-     
+
 
                     </tr>
                 </table>
@@ -35,7 +35,11 @@
     </div>
 </div>
 <div class="col-md-12 fadeIn animated">
-    <span class="pull-left"><a class="btn btn-info" href="#/project/add"><span class="fa fa-plus"></span>{{'Add project'|translate}}</a></span>
+    <a href="#/project/add">
+        <md-button class="md-fab md-primary">
+        <md-icon md-svg-src="img/icons/plus-md.svg"></md-icon>
+      </md-button>
+    </a>
 </div>
 
 

@@ -1,5 +1,4 @@
-﻿
-<div class="row slideInLeft animated" ng-if="tree.item.text">
+﻿<div class="row slideInLeft animated" ng-if="tree.item.text">
 
 
     <div class="modal-content">
@@ -7,22 +6,24 @@
             <h3 class="text-center">{{tree.item.text}}</h3>
         </div>
 
-                  <div class="panel-body">
+        <div class="panel-body">
 
 
-                      <br />
+            <br />
 
-                      <div class="row">
-                          <div class="form-group">
-                              <div class="col-md-12 col-xs-12 ">
-                                  <label class="pull-right" for="content">: תוכן</label>
-                                  <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
-                                  <label style="direction: rtl" >{{tree.taskItem.content}}</label>
-                              </div>
-                          </div>
-                      </div>
-                      <br />
-<!--                        <div class="row">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12 col-xs-12 ">
+                        <label class="pull-right">
+                            <h3><strong>: תוכן משימה</strong></h3>
+                        </label>
+                        <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
+                        <label style="direction: rtl">{{tree.taskItem.content}}</label>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <!--                        <div class="row">
                                <tags-input ng-model="tags" min-length="0"
                         replace-spaces-with-dashes="false"
                         add-from-autocomplete-only="true"
@@ -44,8 +45,8 @@
                           </div>
                       </div>-->
 
-                        <a href="#/item/{{tree.projectId}}/edit/{{tree.item.idOfAssignments[0]}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                  </div>
+            <a href="#/item/{{tree.projectId}}/edit/{{tree.item.idOfAssignments[0]}}" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+        </div>
     </div>
 </div>
 

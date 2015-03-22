@@ -5,9 +5,11 @@
      * @param ReportService: Service
      * @constructor
      */
-    function ReportItemCtrl($location, $rootScope, $state, $scope, ReportService, $stateParams, TaskModalService, $modal, $http, PatientAdmin) {
+    function ReportItemCtrl($location, $rootScope, $state, $scope, ReportService, $stateParams, TaskModalService, $modal, $http, PatientAdmin, UserAdmin) {
         console.log("ReportItemCtrl")
-        var self = this; 
+        var self = this;
+        self.userList = UserAdmin.getUserList();
+        console.log(self.userList)
         self.reportId = $stateParams.reportId;
         self.isShowChat = false;
         if (self.reportId) {
@@ -38,7 +40,7 @@
     }
 
     angular.module('eli.admin')
-        .controller('ReportItemCtrl', ['$location', '$rootScope', '$state', '$scope', 'ReportService', '$stateParams', 'TaskModalService', '$modal', '$http', 'PatientAdmin', ReportItemCtrl]);
+        .controller('ReportItemCtrl', ['$location', '$rootScope', '$state', '$scope', 'ReportService', '$stateParams', 'TaskModalService', '$modal', '$http', 'PatientAdmin','UserAdmin', ReportItemCtrl]);
 }());
 
 

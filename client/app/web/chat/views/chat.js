@@ -135,7 +135,9 @@
         self.myUnLoad = function () {
       
           
-           ChatService.myUnLoad();
+            ChatService.myUnLoad();
+            self.GuID = null;
+            self.chatMessages = [];
             //var url = "AsyncHandler.ashx?cmd=unregister&type=" + "web";
             //xmlHttp_OneTime.open("POST", url, true);
             //xmlHttp_OneTime.send();
@@ -157,7 +159,7 @@
             var clinetId = ChatService.getChatUserId()
        
             $http({
-                url: '/MessageService.svc/GetAllOnlineMessagesOfClient',
+                url: '/ChatMessageService.svc/GetAllOnlineMessagesOfClient',
                 method: 'POST',
                 data: clinetId
             }).then(function (response) {

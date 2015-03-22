@@ -553,7 +553,16 @@ table.dataTable thead .sorting:after {
   
 
 }
+    /*metrial design*/
+md-icon {
+    height: 40px;
+    width: 40px;
+}
 
+.md-button.md-fab {
+    height: 70px;
+    width: 70px;
+}
     /*Fade*/
 
     .img-fade {

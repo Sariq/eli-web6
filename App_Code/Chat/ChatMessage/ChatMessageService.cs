@@ -15,7 +15,7 @@ public class ChatMessageService : DatabaseActions, IChatMessage
 
     public List<ChatMessage> GetAllOnlineMessagesOfClient(string clientId)
     {
-        Debug.Write(clientId);
+        Debug.Write("TESSSSSSSSSSSSSSSS");
         var onlineMessagesOfClientList = GetAllObject<ChatMessage>("clientId", clientId, "ChatMessage");
 
        // UpdateObjects("clientId", clientId, "Web", "isNewMessage", false);

@@ -29,8 +29,11 @@
             userId:'',
             password: '',
             name: '',
-
-        address: '',
+            address: '',
+            projectAassignments: [],
+            projects: [],
+            reminders: [],
+            patients: [],
             //birthDate:''
         };
 

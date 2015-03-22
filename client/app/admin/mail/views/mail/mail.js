@@ -19,7 +19,7 @@
             self.messagesByCat();
         }
         self.getInboxFromHttp = function () {
-          
+
             MailService.mailResource.GetInboxMessages(self.user._id).$promise.then(function (response) {
                 MailService.setMailMessages(response)
                 self.mailMessages = response;

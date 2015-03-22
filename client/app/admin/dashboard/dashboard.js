@@ -12,12 +12,12 @@
         self.meetingsCount = self.userInfo
 
       
-            //$http.post('/UserService.svc/GetAssignmentsCountsOfUser', self.userInfo._id).
-            //    success(function (data, status, headers, config) {
-            //        $scope.countTask = data[0];
-            //        $scope.doneTask = data[1];
-            //        self.setDataLine();
-            //    }).error(function (data, status, headers, config) { alert("Project Add") });
+            $http.post('/UserService.svc/GetAssignmentsCountsOfUser', self.userInfo._id).
+                success(function (data, status, headers, config) {
+                    $scope.countTask = data[0];
+                    $scope.doneTask = data[1];
+                    self.setDataLine();
+                }).error(function (data, status, headers, config) { alert("Project Add") });
         
         self.data = [
     {
