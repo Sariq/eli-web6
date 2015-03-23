@@ -52,7 +52,7 @@
         self.validateDate = function () {
 
             if (Date.parse(self.reminder.reminderTime) < Date.parse(self.tmpDate)) {
-                alert("reminder need to be bigger than today date")
+               console.log("reminder need to be bigger than today date")
                 self.reminder.reminderTime = self.tmpDate;
             }
 
@@ -75,8 +75,8 @@
                 UserAdmin.addReminder(response.data._id);
                 $rootScope.$broadcast("newReminder");
 
-            }, function () { alert("ReminderService add error") });
-            alert(self.reminder.reminderTime)
+            }, function () { console.log("ReminderService add error") });
+           // alert(self.reminder.reminderTime)
         }
 
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];

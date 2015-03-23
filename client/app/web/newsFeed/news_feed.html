@@ -4,7 +4,7 @@
 
                             <li  ng-repeat="item in newsFeed" data-infos="{{item.content}}" style="margin-top: 0px;">
                                 <i class="fa fa-fw state fa-pause"></i>
-                              {{item.title}}    <span class="hour">{{item._date | jsDate}}</span> 
+                              <span class="hour">{{item._date | jsDate}}</span>   {{item.title}}  
                             </li>
 
                         </ul>

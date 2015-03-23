@@ -33,7 +33,7 @@
             $scope.update();
         }
         $scope.remove = function () {
-            alert(self.item)
+           // alert(self.item)
             if (getCurrentSelection() != null) {
                 $treeService.removeItem($scope.treeName, getCurrentSelection());
                 $scope.update()
@@ -93,7 +93,7 @@
             $http.post('/ProjectService.svc/RemoveProject', self.projectId).
                 success(function (data, status, headers, config) {
            
-                }).error(function (data, status, headers, config) { alert("RemoveProject error") });
+                }).error(function (data, status, headers, config) { console.log("RemoveProject error") });
         }
 
 
@@ -102,7 +102,7 @@
             $http.post('/ProjectService.svc/api', project).
        success(function (data, status, headers, config) {
            $scope.prjId = data;
-       }).error(function (data, status, headers, config) { alert("Project Add") });
+       }).error(function (data, status, headers, config) { console.log("Project Add") });
 
         }
 
@@ -113,7 +113,7 @@
 
                      $treeService.loadData($scope.treeName, data.items);
                      $treeService.collapse($scope.treeName);
-                 }).error(function (data, status, headers, config) { alert("Project Get") });
+                 }).error(function (data, status, headers, config) { console.log("Project Get") });
         }
         // 
         $scope.get();
@@ -122,25 +122,25 @@
             $http.post('/ProjectService.svc/update', project).
        success(function (data, status, headers, config) {
            //  alert(data.data)
-       }).error(function (data, status, headers, config) { alert("Project update") });
+       }).error(function (data, status, headers, config) { console.log("Project update") });
 
         }
 
         //task
         $rootScope.$on('taskReminder', function () {
-            alert(ReminderService.getTaskId())
+            console.log(ReminderService.getTaskId())
         });
         $rootScope.$on('taskShared', function () {
-            alert(ReminderService.getTaskId())
+            console.log(ReminderService.getTaskId())
         });
 
 
         self.saveTask = function (task, sendToUser, reminder) {
             console.log(self.item.idOfAssignments)
             if (self.item.id == undefined) {
-                alert("please click on task")
+                console.log("please click on task")
             }
-            alert(self.projectId)
+            //alert(self.projectId)
             task.isProject = true;
             task.projectId = self.projectId;
             task.idInProject = self.item.id;
@@ -152,7 +152,7 @@
            self.item.idOfAssignments.push(data._id);
            $scope.update();
            //SendToUSers
-           alert(data._id)
+           //alert(data._id)
            sendToUser.push(data._id)
            $http.post('/UserService.svc/AddAssignmentOfProjectToUsers', sendToUser).
     success(function (data, status, headers, config) {
@@ -172,7 +172,7 @@
                 UserAdmin.addReminder(response.data._id);
                 
 
-            }, function () { alert("ReminderService add error") });
+            }, function () { console.log("ReminderService add error") });
             /// alert(reminder.reminderTime)
         }
 
@@ -181,11 +181,11 @@
         self.taskItem = TaskgAdmin.get(self.item.idOfAssignments[0]);
         console.log(self.taskItem)
         $location.path('/item/' + self.projectId + '/item/' + self.item.id);
-    }).error(function (data, status, headers, config) { alert("Project Add") });
+    }).error(function (data, status, headers, config) { console.log("AssignmentService Add") });
 
 
 
-       }).error(function (data, status, headers, config) { alert("Project Add") });
+       }).error(function (data, status, headers, config) { console.log("AddAssignmentOfProjectToUsers Add") });
 
         }
 

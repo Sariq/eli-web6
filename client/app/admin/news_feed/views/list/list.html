@@ -14,7 +14,7 @@
     </div>
     <div class="panel-body" style="width: 100%">
         <table ng-table="tableParams" class="table table-striped table-bordered table-hover table-condensed">
-            <tr ng-repeat="news in $data" class="text-center">
+            <tr ng-repeat="news in $data" class="text-right">
 
                 <td data-title="'כותרת'" sortable="'title'">
                     <a href="#/news/item/{{news._id}}" >{{news.title}}</a>
