@@ -5,8 +5,8 @@
       .state('contactUs', {
           url: '/contactUs',
           templateUrl: 'contactUs/contactUs.html',
-          controller: 'MainCtrl',
-        controllerAs: ''
+          controller: 'ContactUsAddController',
+          controllerAs: 'contactUs'
 
       })
 

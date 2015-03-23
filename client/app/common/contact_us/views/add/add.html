@@ -1,0 +1,83 @@
+﻿<!--<script src="meeting/css/tasks.js"></script>-->
+
+
+<div class="modal-dialog add-form form_container">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h1 class="text-center">טיפול חדש</h1>
+        </div>
+
+        <div class="panel-body text-right" >
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : מטפל
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.meeting.therapistId" placeholder="" validator="string" valid-method="blur">
+                </div>
+
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : title
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.meeting.title" placeholder="" validator="string" valid-method="blur">
+                </div>
+
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : address
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.meeting.address" placeholder="" validator="string" valid-method="blur">
+                </div>
+
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <label class="label-text-size">
+                        : note
+                    </label>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <input class="form-control input-md" ng-model="add.meeting.note" placeholder="" validator="string" valid-method="blur">
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="panel-footer">
+            <div class="form-group row">
+                <div class="col-md-6  ">
+                    <a href="#/patient/profile/{{add.patient._id}}" class="btn btn-warning btn-block label-text-size">בטל</a>
+                </div>
+                <div class="col-md-6  ">
+                    <button ng-click="add.save();"
+                        class="btn btn-info btn-block label-text-size"
+                        translate>
+                        שמור
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
