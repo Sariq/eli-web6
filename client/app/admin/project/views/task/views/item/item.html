@@ -16,9 +16,10 @@
                     <div class="col-md-12 col-xs-12 ">
                         <label class="pull-right">
                             <h3><strong>: תוכן משימה</strong></h3>
-                        </label>
+                         
+                        </label>   <br /> <br />
                         <!-- <textarea ng-model="add.news.content" class="form-control text-right" rows="4"  id="content"></textarea>-->
-                        <label style="direction: rtl">{{tree.taskItem.content}}</label>
+                        <label class="pull-right" style="direction: rtl" ng-bind-html="tree.taskItem.content"></label>
                     </div>
                 </div>
             </div>
