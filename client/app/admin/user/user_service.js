@@ -51,8 +51,7 @@
 
 
       self.addPatient = function (user, patientId) {
-         
-   
+          
           user.patients.push(patientId);
          
      

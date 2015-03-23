@@ -220,7 +220,8 @@ angular.module('eli.admin').config(function ($translateProvider) {
         "Add User": 'הוסף משתמש',
         "Add Patient": 'הוסף מטופל',
         Dashboard: 'ראשי',
-        News: 'חדשות'
+        News: 'חדשות',
+        "Contact US": 'פניות הציבור'
     })
 .translations('ar', {
     name: 'الاسم',

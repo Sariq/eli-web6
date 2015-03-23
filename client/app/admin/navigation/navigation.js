@@ -96,9 +96,9 @@
         }
 
         $scope.getMailMessages();
-        $interval(function () {
-            $scope.getMailMessages();
-        }, 9000)
+        //$interval(function () {
+        //    $scope.getMailMessages();
+        //}, 9000)
 
         //Get Tasks
         $scope.getTasks = function () {

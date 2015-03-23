@@ -37,6 +37,7 @@
         self.addContact = function (patient) {
             patient.contacts.push({ name: '', phoneNumber: '', age: '', isContact: false });
         }
+
         
         //Update Patient data in DB
         self.update = function (patient) {

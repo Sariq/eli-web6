@@ -26,6 +26,8 @@
                 self.patient.birthDate = '/Date(' + self.patient.birthDate.getTime() + ')/'
                 self.patient.$save(function (response) {
                     UserAdmin.addPatient(self.userInfo, response._id)
+          
+                    AuthService.setUserInfo(self.userInfo);
                     UserAdmin.updateUser(self.userInfo);
                     $location.path('/patient/profile/' + response._id);
                 });
