@@ -5,12 +5,20 @@
      * @param ContactUsAdmin: Service
      * @constructor
      */
-    function ContactUsAddController($location, $state, ContactUsAdmin, $stateParams) {
+    function ContactUsAddController($location,$scope, $state, ContactUsAdmin, $stateParams) {
         var self = this;
         self.isNew = false;
 
         self.contactUsId = $stateParams.contactUsId;
- 
+        $scope.map = { center: { latitude: 32.072776, longitude: 34.781906 }, zoom: 8 };
+        $scope.marker = { latitude: 32.072776, longitude: 34.781906 };
+
+        $scope.back = function () {
+            window.history.back();
+        };
+        //uiGmapGoogleMapApi.then(function (maps) {
+        //    console.log(maps);
+        //})
 
         //Checks Add or Update
         if (self.contactUsId) {
@@ -33,7 +41,7 @@
         };
     }
     angular.module('eli.common')
-        .controller('ContactUsAddController', ['$location','$state', 'ContactUsAdmin', '$stateParams', ContactUsAddController]);
+        .controller('ContactUsAddController', ['$location','$scope','$state', 'ContactUsAdmin', '$stateParams', ContactUsAddController]);
 }());
 
 

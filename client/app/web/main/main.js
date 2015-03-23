@@ -9,13 +9,7 @@ angular.module('eliApp').
           window.history.back();
       };
       $scope.options = { language: 'ar' };
-      $scope.map = { center: { latitude: 32.072776, longitude: 34.781906 }, zoom: 8 };
-      $scope.marker = { latitude: 32.072776, longitude: 34.781906 };
 
-  
-      //uiGmapGoogleMapApi.then(function (maps) {
-      //    console.log(maps);
-      //})
 
       $scope.$on('sectionChanged', function (event, currSection) {
           console.log("herrree");
